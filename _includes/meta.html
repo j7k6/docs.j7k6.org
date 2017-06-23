@@ -1,0 +1,6 @@
+<ul class="meta">
+  <li><code class="date"><i class="fa fa-calendar"></i>{{ post.date | date_to_string }}</code></li>
+  {% for tag in post.tags %}
+  <li><a href="/tags/#{{ tag }}"><code><i class="fa fa-tag"></i>{{ tag }}</code></a></li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,15 @@
+---
+layout: default
+title: "Archive"
+---
+
+<div class="archive">
+  {% for post in site.posts %}
+    <article>
+      {% include post-header.html %}
+      <div class="post">
+        {% include meta.html %}
+      </div>
+    </article>
+  {% endfor %}
+</div>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ page.title }}</title>
+    <meta name="author" content="Johannes Kullick">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Fauna+One|Inconsolata|Open+Sans+Condensed:300,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css?{{ site.time | date: '%s'}}">
+    <meta name="google-site-verification" content="iSJ1aZUbjccG7ySAnFxdzx4aNniac2xpTYO7xRgOulc" />
+  </head>
+
+  <body>
+    <header>
+      {% assign current = page.url | split: '/' %}
+      <ul>
+      <li><a href="/" class="{% if current[1] != 'archive' %}active{% endif %}"><i class="fa fa-book"></i>Docs</a></li>
+      <li><a href="/archive/" class="{% if current[1] == 'archive' %}active{% endif %}"><i class="fa fa-archive"></i>Archive</a></li>
+    </header>
+
+    <div class="content">
+      {{ content }}
+    </div>
+
+    <footer>
+      <ul>
+        <li><i class="fa fa-code"></i>2013-2017</li>
+        <li><i class="fa fa-envelope"></i><a href="mailto:docs@j7k6.org">docs@j7k6.org</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

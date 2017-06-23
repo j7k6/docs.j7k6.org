@@ -1,0 +1,27 @@
+---
+layout: default
+title: "Docs"
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article>
+      {% include post-header.html %}
+      <div class="post">
+        {{ post.content }}
+        {% include meta.html %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+<nav>
+  <ul>
+    {% if paginator.previous_page %}
+     <li><a href="{{ paginator.previous_page_path }}"><i class="fa fa-angle-double-left"></i> Previous</a></li>
+    {% endif %}
+    {% if paginator.next_page %}
+      <li><a href="{{ paginator.next_page_path }}">Next <i class="fa fa-angle-double-right"></i></a></li>
+    {% endif %}
+  <ul>
+</nav>
