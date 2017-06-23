@@ -1,0 +1,11 @@
+paginate: 10
+paginate_path: /page/:num/
+destination: /var/www/dev.docs.j7k6.org
+name: docs.j7k6.org
+base: /
+permalink: /:title/
+encoding: utf-8
+sass:
+  style: compressed
+gems:
+  - jekyll-paginate
