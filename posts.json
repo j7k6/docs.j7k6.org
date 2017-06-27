@@ -1,0 +1,13 @@
+---
+---
+
+[
+{% for post in site.posts %}
+  {
+      "id": "{{ post.slug }}",
+      "url": "{{ post.url }}",
+      "title": "{{ post.title }}",
+      "date": "{{ post.date }}"
+  }{% if forloop.last %}{% else %},{% endif %}
+{% endfor %}
+]
