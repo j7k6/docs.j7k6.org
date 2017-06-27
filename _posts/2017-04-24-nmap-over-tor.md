@@ -23,5 +23,4 @@ tags: [security, tor, nmap, linux]
 
 
 ---
-1.
-[https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/](https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/)
+1. [https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/](https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/)

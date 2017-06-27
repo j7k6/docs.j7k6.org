@@ -101,5 +101,4 @@ docker exec -it <CONTAINER_NAME> /bin/bash
 
 
 ---
-1.
-[https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy](https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy)
+1. [https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy](https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy)
