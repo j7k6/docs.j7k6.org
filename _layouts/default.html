@@ -15,8 +15,9 @@
     <header>
       {% assign current = page.url | split: '/' %}
       <ul>
-      <li><a href="/" class="{% if current[1] != 'archive' %}active{% endif %}"><i class="fa fa-book"></i>Docs</a></li>
-      <li><a href="/archive/" class="{% if current[1] == 'archive' %}active{% endif %}"><i class="fa fa-archive"></i>Archive</a></li>
+        <li><a href="/" class="{% if current[1] != 'archive' %}active{% endif %}"><i class="fa fa-book"></i>Docs</a></li>
+        <li><a href="/archive/" class="{% if current[1] == 'archive' %}active{% endif %}"><i class="fa fa-archive"></i>Archive</a></li>
+      </ul>
     </header>
 
     <div class="content">
