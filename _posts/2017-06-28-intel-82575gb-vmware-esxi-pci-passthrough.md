@@ -4,7 +4,7 @@ title: "Enable PCI Passthrough for Intel 82575GB NIC in VMWare ESXi"
 tags: [vmware, esxi, intel-82575gb, fix, pci-passthrough]
 ---
 
-> *Manage > Advanced settings*
+> *Manage > System > Advanced settings*
 
 Set `VMkernel.Boot.disableACSCheck` to `True`.
 
