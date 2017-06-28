@@ -12,6 +12,6 @@ tags: [vmware, esxi]
    ```bash
    esxcli software vib install -d "/vmfs/volumes/<DATASTORE>/ESXi650-201704001.zip"
    ```
-3. `reboot`
-  
+3. Reboot
+
 ---
