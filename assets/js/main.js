@@ -30,7 +30,6 @@ $(document).ready(function() {
 							return 1;
 						return 0;
 					});
-						console.log(results);
 					
 					$.each(results, function(key, result) {
 						$('#results ul').append('<li><a href="'+result.url+'">'+result.title+'</a></li>');
