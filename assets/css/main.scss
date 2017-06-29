@@ -117,6 +117,7 @@ header {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color: darken($link, 10%);
       }
 
       li:hover a, li:focus a, li.focus a {
@@ -137,7 +138,6 @@ header {
       visibility: hidden;
     }
   }
-
 
   input {
     display: inline-block;
