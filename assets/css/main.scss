@@ -46,6 +46,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*:focus {
+  outline: none;
+}
+
 ::selection {
   background: $black;
   color: $light;
@@ -84,7 +88,7 @@ header {
     }
   }
 
-  #results {
+  .results {
     position: relative;
     top: 4.5em;
     width: 100%;
@@ -100,20 +104,22 @@ header {
       opacity: 0.98;
       border: 1px solid lighten($black, 80%);
       border-radius: 3px;
+      overflow: hidden;
 
       li {
         display: block;
-        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       li a {
         display: block;
         padding: 10px;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
-      li:hover a {
+      li:hover a, li:focus a, li.focus a {
         background-color: $link;
         color: $white;
         text-decoration: none;
@@ -298,8 +304,8 @@ footer {
   margin: 50px auto;
   width: 100%;
 
-  a {
-    color: $black;
+  * {
+    color: lighten($black, 33%);
   }
 }
 
@@ -366,7 +372,7 @@ article {
       width: 100%;
       margin: 50px auto 0 auto;
       text-align: center;
-      color: $light;
+      color: darken($light, 10%);
     }
   }
 }
