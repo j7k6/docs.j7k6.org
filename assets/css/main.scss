@@ -56,16 +56,102 @@ body {
 }
 
 header {
-  text-align: right;
-  width: 100%;
-  height: $headerHeight !important;
+  text-align: left;
+  height: auto;
+  vertical-align: middle;
+  line-height: 2em;
+  margin: 25px auto !important;
 
-  a:hover {
-    text-decoration: none;
+  .nav {
+    display: flex;
+    width: 100%;
+    position: absolute;
+
+    a {
+      display: inline-block;
+      width: 1.5em;
+      font-size: 2em;
+      padding: 10px;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    a:hover {
+      text-decoration: none;
+      background-color: $link;
+      color: $white;
+      box-shadow: 0 0 7px $link;
+    }
   }
 
-  ul {
-    height: $headerHeight !important;
+  #results {
+    position: relative;
+    top: 4.5em;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    visibility: hidden;
+
+    ul {
+      display: inline-block;
+      height: auto;
+      width: 100%;
+      background-color: $light;
+      opacity: 0.98;
+      border: 1px solid lighten($black, 80%);
+      border-radius: 3px;
+
+      li {
+        display: block;
+        text-overflow: ellipsis;
+      }
+
+      li a {
+        display: block;
+        padding: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      li:hover a {
+        background-color: $link;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 1.5em;
+      height: auto;
+      font-size: 2em;
+      padding: 10px;
+      content: "\f066";
+      font-family: 'FontAwesome';
+      visibility: hidden;
+    }
+  }
+
+
+  input {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    font-size: 2em;
+    text-align: left;
+    font-family: $codeFont;
+    background: lighten($light, 33%);
+    color: lighten($black, 33%);
+    border: 1px solid lighten($black, 80%);
+    border-radius: 3px;
+    padding: 10px;
+    margin: 0 auto;
+    transition: all 0.30s ease-in-out;
+    outline: none;
+  }
+
+  input:focus {
+    box-shadow: 0 0 7px $link;
   }
 }
 
@@ -136,28 +222,11 @@ ul {
   li {
     margin-left: 30px;
     
-    header & {
-      margin-right: -5px !important;
-      height: 100%;
-    }
-
     footer & {
       padding: 0 10px !important;
     }
 
     a {
-      header & {
-        padding: 0 20px;
-        display: inline-block;
-        line-height: $headerHeight;
-        height: $headerHeight;
-
-        &:hover, &.active {
-          background: $link;
-          color: $light;
-        } 
-      }
-
       nav & {
         padding: 10px;
         display: inline-block;
@@ -223,10 +292,6 @@ ol {
   }
 }
 
-
-header, footer {
-  margin: 0 auto;
-}
 
 footer {
   text-align: center;
@@ -306,18 +371,26 @@ article {
   }
 }
 
-div.content {
+div.content, header {
+  position: absolute;
+  left: 25vw;
   width: 50vw;
-  margin: 50px auto;
 
   @media screen and (max-width: $break-large) {
     width: 75vw;
+    left: 12.5vw;
   }
 
   @media screen and (max-width: $break-small) {
     width: 90vw;
+    left: 5vw;
   }
 }
+
+div.content {
+  top: 150px;
+}
+
 
 img {
   display: block;
