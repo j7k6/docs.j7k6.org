@@ -424,6 +424,7 @@ hr {
       line-height: 1.5;
       margin: 0;
       padding: 0;
+      white-space: nowrap;
 
       &:before {
         content: '[' counter(o-counter) '] ';
@@ -431,6 +432,10 @@ hr {
       }
 
       a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
         &:before {
           font-family: FontAwesome;
           content: "\f08e";
