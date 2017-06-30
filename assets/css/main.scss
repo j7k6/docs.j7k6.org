@@ -310,9 +310,11 @@ footer {
 }
 
 blockquote {
-  border-left: 5px solid $light;
+  border-left: 3px solid darken($light, 10%);
   margin-left: 10px;
   padding-left: 10px;
+  font-style: italic;
+  color: lighten($black, 30%);
 }
 
 pre, code {
@@ -321,6 +323,7 @@ pre, code {
 }
 
 pre {
+  border-left: 3px solid darken($light, 10%);
   padding: 10px;
   margin: 10px auto;
   background: $light !important;
@@ -334,7 +337,7 @@ pre {
     display: inline-block;
     width: auto;
     line-height: 1.5 !important;
-    color: inherit !important;
+    color: lighten($black, 20%) !important;
     background: $light !important;
   }
 }
@@ -366,12 +369,14 @@ article {
  
   div.posts & {
     &:after {
-      font-family: FontAwesome;
-      content: "\2014 \f005 \2014";
+      font-family: $codeFont;
+      content: "~";
+      font-size: 1.75em;
       display: block;
       width: 100%;
       margin: 50px auto 0 auto;
       text-align: center;
+      vertical-align: center;
       color: darken($light, 10%);
     }
   }
