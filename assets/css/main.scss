@@ -64,7 +64,7 @@ header {
   height: auto;
   vertical-align: middle;
   line-height: 2em;
-  margin: 25px auto !important;
+  margin: 2.5em auto !important;
 
   .nav {
     display: flex;
@@ -75,26 +75,25 @@ header {
       display: inline-block;
       width: 1.5em;
       font-size: 2em;
-      padding: 10px;
+      padding: 0.5em;
       transition: all 0.3s ease-in-out;
       text-align: center;
     }
 
     a:hover {
       text-decoration: none;
-      background-color: $link;
-      color: $white;
-      box-shadow: 0 0 7px $link;
     }
   }
 
   .results {
     position: relative;
-    top: 4.5em;
+    top: 4em;
     width: 100%;
     z-index: 1000;
     display: flex;
     visibility: hidden;
+    display: flex;
+    align-items: center;
 
     ul {
       display: inline-block;
@@ -113,7 +112,7 @@ header {
 
       li a {
         display: block;
-        padding: 10px;
+        padding: 0.5em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -132,7 +131,7 @@ header {
       width: 1.5em;
       height: auto;
       font-size: 2em;
-      padding: 10px;
+      padding: 0.5em;
       content: "\f066";
       font-family: 'FontAwesome';
       visibility: hidden;
@@ -148,12 +147,13 @@ header {
     font-family: $codeFont;
     background: lighten($light, 33%);
     color: lighten($black, 33%);
-    border: 1px solid lighten($black, 80%);
+    border: 1px solid lighten($black, 75%);
     border-radius: 3px;
-    padding: 10px;
+    padding: 0.5em;
     margin: 0 auto;
     transition: all 0.30s ease-in-out;
     outline: none;
+    z-index: 2000;
   }
 
   input:focus {
@@ -185,7 +185,7 @@ a {
 h1, h2, h3 {
   font-family: $headerFont;
   font-weight: 700;
-  margin: 30px 0 10px 0;
+  margin: 0.75em auto;
   line-height: 1.1em;
   white-space: pre-wrap;
   text-transform: capitalize;
