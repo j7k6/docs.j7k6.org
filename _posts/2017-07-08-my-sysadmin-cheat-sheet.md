@@ -15,7 +15,11 @@ tags: []
   ```
 - Edit Comment:
   ```bash
-  ssh-keygen -p -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519"
+  ssh-keygen -c -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519"
+  ```
+- View Public Key Fingerprint:
+  ```bash
+  ssh-keygen -l -f "$HOME/.ssh/id_ed25519.pub"
   ```
 
 ---
