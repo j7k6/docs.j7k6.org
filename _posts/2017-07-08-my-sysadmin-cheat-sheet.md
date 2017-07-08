@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "My Sysadmin Cheat Sheet"
+title: "My SysAdmin Cheat Sheet"
 tags: []
 ---
 
