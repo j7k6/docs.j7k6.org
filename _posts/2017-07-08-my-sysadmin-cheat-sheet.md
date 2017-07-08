@@ -111,3 +111,15 @@ tags: []
   ```
 
 ---
+
+## Git
+- Add Remote URL
+  ```bash
+  git remote add origin <REMOTE_URL>
+  ```
+- Change Remote URL
+  ```bash
+  git remote set-url origin <REMOTE_URL>
+  ```
+
+---
