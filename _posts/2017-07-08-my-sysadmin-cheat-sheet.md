@@ -26,7 +26,8 @@ tags: []
 ### SSH Tunnel
 - Forward Tunnel (open remote port on local host):
   ```bash
-  ssh -L <LOCAL_PORT>:<REMOTE_IP>:<REMOTE_PORT> ...
+  ssh -L <LOCAL_PORT>:127.0.0.1:<REMOTE_PORT> ...
+  ssh -L <LOCAL_PORT>:192.168.1.2:<REMOTE_PORT> ...
   ```
 - Reverse Tunnel (open local port on remote host):
   ```bash
