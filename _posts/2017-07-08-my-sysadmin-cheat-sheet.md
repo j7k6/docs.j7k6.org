@@ -7,12 +7,16 @@ tags: []
 ## SSH
 - Generate SSH Key (unencrypted, without password):
   ```bash
-  ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa -C '<EMAIL>'
+  ssh-keygen -t ed25519 -b 4096 -N "" -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519"
   ```
 - Password-Protect Private Key:
   ```bash
-  ssh-keygen -p -f ~/.ssh/id_rsa
+  ssh-keygen -p -N "<PASSWORD>" -f "$HOME/.ssh/id_ed25519"
   ```
+- Edit Comment:
+  ```bash
+  ssh-keygen -p -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519
+  "```
 
 ---
 
