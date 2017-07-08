@@ -41,21 +41,18 @@ tags: []
   ```
 
 ## Linux Networking
-
-### Set Default Route
-```bash
-ip route add default via <GATEWAY>
-```
-
-### Change Default Route
-```bash
-ip route replace default via <GATEWAY_IP>
-```
-
-### Add Static Route
-```bash
-ip route add <DESTINATION> via <GATEWAY> dev <DEVICE>
-```
+- Set Default Route
+  ```bash
+  ip route add default via <GATEWAY>
+  ```
+- Change Default Route
+  ```bash
+  ip route replace default via <GATEWAY_IP>
+  ```
+- Add Static Route
+  ```bash
+  ip route add <DESTINATION> via <GATEWAY> dev <DEVICE>
+  ```
 
 ## Docker
 ### Remove all Containers
