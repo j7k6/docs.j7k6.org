@@ -15,8 +15,8 @@ tags: []
   ```
 - Edit Comment:
   ```bash
-  ssh-keygen -p -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519
-  "```
+  ssh-keygen -p -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519"
+  ```
 
 ---
 
