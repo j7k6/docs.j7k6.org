@@ -14,6 +14,8 @@ tags: []
   ssh-keygen -p -f ~/.ssh/id_rsa
   ```
 
+---
+
 ## SSL
 - Generate Secret Key & CSR:
   ```bash
@@ -40,6 +42,8 @@ tags: []
   printf "<USER>:$(openssl passwd -crypt <PASSWORD>)\n" >> .htpasswd
   ```
 
+---
+
 ## Linux Networking
 - Set Default Route:
   ```bash
@@ -53,6 +57,8 @@ tags: []
   ```bash
   ip route add <DESTINATION> via <GATEWAY> dev <DEVICE>
   ```
+
+---
 
 ## Docker
 - Remove all Containers:
