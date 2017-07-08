@@ -82,6 +82,22 @@ tags: []
 
 ---
 
+## Windows Networking
+- Open Port in Windows Firewall:
+  ```powershell
+  netsh firewall set portopening tcp <PORT> "<DESCRIPTION>" enable all
+  ```
+- Set Default Route:
+  ```powershell
+  route ADD 0.0.0.0 MASK 0.0.0.0 <GATEWAY>
+  ```
+- Add Static Route:
+  ```powershell
+  route -p ADD <DESTINATION> MASK <MASK> <GATEWAY>
+  ```
+
+---
+
 ## Docker
 - Remove all Containers:
   ```bash
