@@ -5,15 +5,14 @@ tags: []
 ---
 
 ## SSH
-### Generate SSH Key (unencrypted, without password)
-```bash
-ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa -C '<EMAIL>'
-```
-
-### Password-Protect Private Key
-```bash
-ssh-keygen -p -f ~/.ssh/id_rsa
-```
+- Generate SSH Key (unencrypted, without password)
+  ```bash
+  ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa -C '<EMAIL>'
+  ```
+- Password-Protect Private Key
+  ```bash
+  ssh-keygen -p -f ~/.ssh/id_rsa
+  ```
 
 ## SSL
 ### Generate Key & CSR
