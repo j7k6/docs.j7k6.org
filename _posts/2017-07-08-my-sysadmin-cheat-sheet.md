@@ -15,35 +15,30 @@ tags: []
   ```
 
 ## SSL
-### Generate Key & CSR
-```bash
-openssl req -out <DOMAIN>.csr -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -subj "/CN=<DOMAIN>"
-```
-
-### Self-Sign Certificate
-```bash
-openssl req -out <DOMAIN>.csr -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -subj "/CN=<DOMAIN>"
-```
-
-### Generate Self Signed Certificate (One-Liner)
-```bash
-openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -out <DOMAIN>.pem -days 365 -subj "/CN=<DOMAIN>"
-```
-
-### Generate DHParam
-```bash
-openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
-```
-
-### Test SSL Connection
-```bash
-openssl s_client -connect <SERVER>:<PORT>
-```
-
-### Generate .htpasswd
-```bash
-printf "<USER>:$(openssl passwd -crypt <PASSWORD>)\n" >> .htpasswd
-```
+- Generate Key & CSR
+  ```bash
+  openssl req -out <DOMAIN>.csr -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -subj "/CN=<DOMAIN>"
+  ```
+- Self-Sign Certificate
+  ```bash
+  openssl req -out <DOMAIN>.csr -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -subj "/CN=<DOMAIN>"
+  ```
+- Generate Self Signed Certificate (One-Liner)
+  ```bash
+  openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout <DOMAIN>.key -out <DOMAIN>.pem -days 365 -subj "/CN=<DOMAIN>"
+  ```
+- Generate DHParam
+  ```bash
+  openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+  ```
+- Test SSL Connection
+  ```bash
+  openssl s_client -connect <SERVER>:<PORT>
+  ```
+- Generate .htpasswd
+  ```bash
+  printf "<USER>:$(openssl passwd -crypt <PASSWORD>)\n" >> .htpasswd
+  ```
 
 ## Linux Networking
 
