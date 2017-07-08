@@ -5,6 +5,7 @@ tags: []
 ---
 
 ## SSH
+### SSH Keygen
 - Generate SSH Key (unencrypted, without password):
   ```bash
   ssh-keygen -t ed25519 -b 4096 -N "" -C "<EMAIL>" -f "$HOME/.ssh/id_ed25519"
@@ -21,6 +22,18 @@ tags: []
   ```bash
   ssh-keygen -l -f "$HOME/.ssh/id_ed25519.pub"
   ```
+
+### SSH Tunnel
+- Forward Tunnel (open remote port on local host):
+  ```bash
+  ssh -L <LOCAL_PORT>:<REMOTE_IP>:<REMOTE_PORT> ...
+  ```
+- Reverse Tunnel (open local port on remote host):
+  ```bash
+  ssh -R <REMOTE_PORT>:127.0.0.1:<LOCAL_PORT> ...
+  ssh -R <REMOTE_PORT>:10.11.12.13:<LOCAL_PORT> ...
+  ```
+  
 
 ---
 
@@ -59,7 +72,7 @@ tags: []
   ```
 - Change Default Route:
   ```bash
-  ip route replace default via <GATEWAY_IP>
+  ip route replace default via <GATEWAY>
   ```
 - Add Static Route:
   ```bash
