@@ -33,7 +33,6 @@ tags: []
   ssh -R <REMOTE_PORT>:127.0.0.1:<LOCAL_PORT> ...
   ```
   
-
 ---
 
 ## SSL
@@ -78,9 +77,9 @@ tags: []
   ip route add <DESTINATION> via <GATEWAY> dev <DEVICE>
   ```
 - Enable IP Forwarding:
-```bash
-sysctl -w net.ipv4.ip_forward=1
-```
+  ```bash
+  sysctl -w net.ipv4.ip_forward=1
+  ```
 
 ---
 
