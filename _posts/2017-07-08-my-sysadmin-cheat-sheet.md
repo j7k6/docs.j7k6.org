@@ -93,6 +93,10 @@ tags: []
   ```powershell
   route -p ADD <DESTINATION> MASK <MASK> <GATEWAY>
   ```
+- Enable IP Forwarding:
+  ```bash
+  sysctl -w net.ipv4.ip_forward=1
+  ```
 
 ---
 
