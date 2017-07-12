@@ -13,7 +13,7 @@ $light: #F7F8F9;
 
 $defaultFont: 'Fauna One';
 $codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
-$headerFont: 'Open Sans Condensed', Helvetica, sans-serif;
+$headerFont: 'Oswald', 'Open Sans Condensed', Helvetica, sans-serif;
 
 $headerHeight: 75px;
 
@@ -184,9 +184,9 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 700;
-  margin: 0.75em auto;
-  line-height: 1.1em;
+  font-weight: 300;
+  margin: 0.5em auto;
+  line-height: 1.4em;
   white-space: pre-wrap;
   text-transform: capitalize;
 }
@@ -194,12 +194,13 @@ h1, h2, h3 {
 h1 {
   font-size: 2.5em;
   margin-top: 0;
+  margin-left: -3px;
+  padding: 3px;
 
   a {
     color: inherit;
     text-decoration: none;
     border-radius: 3px;
-    line-height: 1;
     overflow: hidden;
 
     &:hover {
@@ -366,6 +367,10 @@ code {
   .meta & {
     color: $light;
   }
+}
+
+.meta, footer {
+  font-size: 90%;
 }
 
 article {
