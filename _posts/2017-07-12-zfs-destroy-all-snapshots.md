@@ -5,7 +5,7 @@ tags: [zfs]
 ---
 
 ```bash
-zfs list -H -t snapshot -o name | xargs -n1 zfs destroy
+zfs list -H -t snapshot -o name | xargs -n1 zfs destroy 2>/dev/null
 ```
 
 ---
