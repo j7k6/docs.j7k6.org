@@ -321,6 +321,10 @@ blockquote {
   padding-left: 10px;
   font-style: italic;
   color: lighten($black, 30%);
+
+  p {
+    white-space: pre;
+  }
 }
 
 pre, code {
