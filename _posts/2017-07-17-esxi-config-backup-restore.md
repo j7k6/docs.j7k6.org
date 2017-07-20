@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Backup & Restore ESXi Configuration"
-tags: [backup.vmware,esxi]
+tags: [backup,vmware,esxi]
 ---
 
 ## Backup
