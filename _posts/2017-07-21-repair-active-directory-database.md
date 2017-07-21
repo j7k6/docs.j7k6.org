@@ -33,6 +33,7 @@ tags: [active-directory,windows-server,fix]
    ```
 7. Run `ntdsutil` again:
    ```powershell
+   activate instance ntds
    semantic database analysis
    go
    go fix
