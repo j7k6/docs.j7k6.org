@@ -383,7 +383,6 @@ article {
  
   div.posts & {
     &:after {
-      font-family: $codeFont;
       content: "~";
       font-size: 1.75em;
       display: block;
