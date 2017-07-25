@@ -4,7 +4,7 @@ title: "Enable BitLocker Disk Encryption in VirtualBox Windows VM"
 tags: [windows,bitlocker,virtualbox]
 ---
 
-1. Run *Group Policy Editor*:
+1. Run ***Group Policy Editor***:
    ```powershell
    gpedit.msc
    ```
