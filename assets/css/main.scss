@@ -213,10 +213,16 @@ h1 {
 
 h2 {
   font-size: 1.75em;
+  margin-top: 2em;
 }
 
 h3 {
   font-size: 1.25em;
+  margin-top: 2em;
+}
+
+h2 + h3 {
+  margin-top: 1em;
 }
 
 .archive h1 {
@@ -469,4 +475,9 @@ hr {
 
 #disqus_thread {
   margin: 5em auto;
+}
+
+.tags em {
+  color: darken($light, 20%);
+  padding-left: 0.25em;
 }
