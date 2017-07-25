@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Enable BitLocker Disk Encryption in VirtualBox"
+title: "Enable BitLocker Disk Encryption in VirtualBox Windows VM"
 tags: [windows,bitlocker,virtualbox]
 ---
 
