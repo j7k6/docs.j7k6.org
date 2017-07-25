@@ -26,7 +26,7 @@ title: Tags
   <h1>Tags</h1>
   <ul class="meta">
   {% for tag in tags %}
-    <li><a href="/tags/#{{ tag }}"><code><i class="fa fa-tag"></i>{{ tag }}</code></a></li>
+  <li><a href="/tags/#{{ tag }}"><code><i class="fa fa-tag"></i>{{ tag }}</code></a></li>
   {% endfor %}
   </ul>
 
@@ -37,7 +37,7 @@ title: Tags
     <ul>
       {% for post in site.posts %}
         {% if post.tags contains tag %}
-          <li><a href="{{ post.url }}"></i>{{ post.title }}</a></li>
+          <li><a href="{{ post.url }}"></i>{{ post.title }}</a> <em>{{ post.date | date_to_string }}</em></li>
        {% endif %}
      {% endfor %}
     </ul>
