@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fork mail() to Background (Async) in PHP"
+title: "Fork mail() into Background (Async) in PHP"
 tags: [php,async]
 ---
 
