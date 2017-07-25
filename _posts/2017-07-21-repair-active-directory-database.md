@@ -14,7 +14,7 @@ tags: [active-directory,windows-server,fix]
    ```powershell
    esentutl /g c:\Windows\NTDS\ntds.dit /!10240 /8 /o
    ```
-4. If the check return **CORRUPTED**, run `ntdsutil` for *Soft Recovery*:
+4. If the check returns **CORRUPTED**, run `ntdsutil` for *Soft Recovery*:
    ```powershell
    activate instance ntds
    files
