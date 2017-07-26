@@ -4,7 +4,7 @@ title: "Force Cloudflare Cache Purge when Pushing to Github Pages Repository"
 tags: [git,github,gh-pages,cloudflare]
 ---
 
-**Scenario:** A static website is hosted on *Github Pages* and SSL-terminated
+**Scenario:** A static website is hosted on *Github Pages* and is SSL-terminated
 by Cloudflare. it can take some time until the Cloudflare cache is regenerated,
 so the changes to the website are not publicly available right after a push to the repository.
 
