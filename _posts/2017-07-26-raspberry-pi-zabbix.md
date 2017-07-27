@@ -100,6 +100,7 @@ EOF
    ```
 8. Enable & Start Services:
    ```bash
+   systemctl daemon-reload
    systemctl enable zabbix-server
    systemctl enable zabbix-agent
    systemctl start zabbix-server
