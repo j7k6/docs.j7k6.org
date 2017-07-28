@@ -21,6 +21,8 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
      libcurl4-openssl-dev \
      libmariadbclient-dev \
      libsnmp-dev \
+     snmp-mibs-downloader \
+     snmp \
      nginx \
      php7.0-fpm \
      php7.0-mysql \
