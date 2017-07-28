@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fix Zabbix Error 'snmp_parse_oid(): cannot parse OID "IF-MIB::ifDescr"'
+title: "Fix Zabbix Error 'snmp_parse_oid(): cannot parse OID IF-MIB::ifDescr'"
 tags: [zabbix,snmp,fix]
 ---
 
