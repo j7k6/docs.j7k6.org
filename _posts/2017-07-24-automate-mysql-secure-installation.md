@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Automate 'mysql_secure_installation''"
+title: "Automate 'mysql_secure_installation'"
 tags: [mysql]
 ---
 
