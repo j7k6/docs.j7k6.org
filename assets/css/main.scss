@@ -176,20 +176,11 @@ h1, h2, h3 {
 h1 {
   font-size: 2.25em;
   margin-top: 0;
-  margin-left: -0.5em;
-  padding: 0.5em;
 
   a {
     color: inherit;
     text-decoration: none;
-    border-radius: 0.25em;
     overflow: hidden;
-
-    &:hover {
-      text-decoration: none;
-      background-color: $black;
-      color: $light;
-    }
   }
 }
 
@@ -432,7 +423,7 @@ hr {
     counter-reset: o-counter 0;
     
     li {
-      font-size: 0.9em;
+      font-size: 0.75em;
       line-height: 1.5;
       margin: 0;
       padding: 0;
