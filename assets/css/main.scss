@@ -11,9 +11,9 @@ $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
 
-$defaultFont: 'Quattrocento';
+$defaultFont: 'Playfair Display', Helvetica, sans-serif;
 $codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
-$headerFont: 'Oswald', Helvetica, sans-serif;
+$headerFont: 'Playfair Display', Helvetica, sans-serif;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -37,7 +37,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -167,15 +167,14 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 300;
+  font-weight: 700;
   margin: 0.5em auto;
-  line-height: 1.4em;
+  line-height: 1.2em;
   white-space: pre-wrap;
-  text-transform: uppercase;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2.25em;
   margin-top: 0;
   margin-left: -0.5em;
   padding: 0.5em;
@@ -196,12 +195,14 @@ h1 {
 
 h2 {
   font-size: 1.75em;
-  margin-top: 2em;
+  margin-top: 1em;
+  font-weight: 400;
 }
 
 h3 {
   font-size: 1.25em;
-  margin-top: 2em;
+  margin-top: 1em;
+  font-weight: 400;
 }
 
 h2 + h3 {
