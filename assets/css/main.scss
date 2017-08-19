@@ -75,13 +75,14 @@ header {
     }
 
     a {
-      color: inherit;
+      color: lighten($black, 50%);
       font-style: italic;
       font-size: 1.25em;
       border-bottom: 1px solid transparent;
     }
 
     a:hover {
+      color: inherit;
       text-decoration: none;
       border-bottom: 1px solid $black;
     }
@@ -175,7 +176,8 @@ a {
     text-decoration: underline;
 
     code {
-      background: $black !important;
+      background: $light !important;
+      color: $link !important;
     }
   }
 }
@@ -309,11 +311,12 @@ ol {
 
 footer {
   text-align: center;
+  font-family: $codeFont;
   margin: 2em auto;
   width: 100%;
 
   * {
-    color: lighten($black, 33%);
+    color: lighten($black, 50%);
   }
 }
 
