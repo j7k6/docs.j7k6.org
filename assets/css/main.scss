@@ -37,7 +37,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -199,6 +199,7 @@ h1 {
     text-decoration: none;
     overflow: hidden;
     border-bottom: 1px solid transparent;
+    font-style: italic;
   }
 
   a:hover {
