@@ -110,7 +110,7 @@ header {
       height: auto;
       font-size: 2em;
       text-align: left;
-      font-family: $codeFont, FontAwesome;
+      font-family: $headerFont, FontAwesome;
       color: lighten($black, 50%);
       border: 0.025em solid lighten($black, 75%);
       border-radius: 0.25em;
@@ -275,7 +275,7 @@ ol {
 
 footer {
   text-align: center;
-  font-family: $codeFont;
+  font-family: $headerFont;
   margin: 2em auto;
   width: 100%;
 
@@ -338,6 +338,7 @@ code {
 
   .meta & {
     color: $light;
+		font-family: $headerFont;
   }
 }
 
