@@ -13,7 +13,7 @@ $light: #F7F8F9;
 
 $defaultFont: 'Playfair Display', Helvetica, sans-serif;
 $codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
-$headerFont: $defaultFont;
+$headerFont: Lekton;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -57,15 +57,23 @@ body {
   color: $light;
 }
 
+::-webkit-input-placeholder {
+	color: lighten($black, 75%);
+}
+::-moz-placeholder {
+	color: lighten($black, 75%);
+}
+
 header {
   text-align: left;
   height: auto;
   vertical-align: middle;
   line-height: 2em;
-  margin: 2em auto !important;
+  margin: 0 auto 2em auto !important;
+  padding: 2em 0;
 
   .home {
-    margin: 0.5em 0;
+    margin: 0.5em auto;
     white-space: nowrap;
     overflow: hidden;
 
@@ -93,8 +101,8 @@ header {
   }
 
   .search {
-    width: 100%;
-    position: absolute;
+    width: 75vw;
+    margin: 0.5em auto;
     
     input {
       display: block;
@@ -102,62 +110,20 @@ header {
       height: auto;
       font-size: 2em;
       text-align: left;
-      font-family: $codeFont;
-      background: lighten($light, 33%);
-      color: lighten($black, 33%);
+      font-family: $headerFont, FontAwesome;
+      color: lighten($black, 50%);
       border: 0.025em solid lighten($black, 75%);
       border-radius: 0.25em;
       padding: 0.5em;
-      margin: 0 auto;
+      margin: 0.5em auto;
       transition: all 0.30s ease-in-out;
       outline: none;
-      z-index: 2000;
     }
 
     input:focus {
-      box-shadow: 0 0 0.25em $link;
+      border: 0.025em solid lighten($black, 60%);
     }
   }
-
-  .results {
-    position: relative;
-    top: 4.25em;
-    width: 100%;
-    z-index: 1000;
-    visibility: hidden;
-
-    ul {
-      display: block;
-      height: auto;
-      width: 100%;
-      background-color: $light;
-      opacity: 0.98;
-      border: 0.025em solid lighten($black, 80%);
-      border-radius: 0.25em;
-      overflow: hidden;
-
-      li {
-        display: block;
-        overflow: hidden;
-      }
-
-      li a {
-        display: block;
-        padding: 0.5em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: darken($link, 10%);
-      }
-
-      li:hover a, li:focus a, li.focus a {
-        background-color: $link;
-        color: $white;
-        text-decoration: none;
-      }
-    }
-  }
-
 }
 
 p, div.post {
@@ -184,7 +150,7 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
@@ -199,7 +165,6 @@ h1 {
     text-decoration: none;
     overflow: hidden;
     border-bottom: 1px solid transparent;
-    font-style: italic;
   }
 
   a:hover {
@@ -211,13 +176,11 @@ h1 {
 h2 {
   font-size: 1.75em;
   margin-top: 1em;
-  font-weight: 400;
 }
 
 h3 {
   font-size: 1.25em;
   margin-top: 1em;
-  font-weight: 400;
 }
 
 h2 + h3 {
@@ -312,7 +275,7 @@ ol {
 
 footer {
   text-align: center;
-  font-family: $codeFont;
+  font-family: $headerFont;
   margin: 2em auto;
   width: 100%;
 
@@ -375,6 +338,7 @@ code {
 
   .meta & {
     color: $light;
+		font-family: $headerFont;
   }
 }
 
@@ -400,28 +364,22 @@ article {
   }
 }
 
-div.content, header, hr.line {
-  position: absolute;
-  left: 25vw;
+div.content, div.home, div.search, div.results  {
+  margin: 0 auto;
   width: 50vw;
 
   @media screen and (max-width: $break-large) {
     width: 75vw;
-    left: 12.5vw;
   }
 
   @media screen and (max-width: $break-small) {
     width: 90vw;
-    left: 5vw;
   }
 }
 
-hr.line{
-  top: 9em;
-}
-
-div.content{
-  top: 14em;
+div.results {
+  margin-bottom: 5em;
+  display: none;
 }
 
 
@@ -447,7 +405,7 @@ hr {
     counter-reset: o-counter 0;
     
     li {
-      font-size: 0.75em;
+      font-size: 0.85em;
       line-height: 1.5;
       margin: 0;
       padding: 0;

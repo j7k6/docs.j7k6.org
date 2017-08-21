@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ page.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Inconsolata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Inconsolata|Lekton:400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/main.css?{{ site.time | date: '%s'}}">
     <meta name="google-site-verification" content="iSJ1aZUbjccG7ySAnFxdzx4aNniac2xpTYO7xRgOulc" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,29 +28,27 @@
         <a href="/">My Sysadmin Cheatsheet</a>
       </div>
       <div class="search">
-        <input type="text" id="q" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1">
+        <input type="text"  id="q" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" placeholder="&#xF002">
       </div>
-      <div class="results">
-        <ul>
-        </ul>
-      </div>
-
     </header>
-    
-    <hr class="line">
-    
-    <div class="content">
 
-      {{ content }}
-
-      <footer>
-        <ul>
-          <li><i class="fa fa-code"></i>2013-2017</li>
-          <li><i class="fa fa-envelope"></i><a href="mailto:docs@j7k6.org">docs@j7k6.org</a></li>
-          <li><i class="fa fa-archive"></i><a href="/archive/">Archive</a></li>
-          <li><i class="fa fa-tags"></i><a href="/tags/">Tags</a></li>
-        </ul>
-      </footer>
+    <div class="tags results">
+      <h1>Search</h1>
+      <h3></h3>
+      <ul></ul>
     </div>
+
+    <div class="content">
+      {{ content }}
+    </div>
+
+    <footer>
+      <ul>
+        <li><i class="fa fa-code"></i>2013-2017</li>
+        <li><i class="fa fa-envelope"></i><a href="mailto:docs@j7k6.org">docs@j7k6.org</a></li>
+        <li><i class="fa fa-archive"></i><a href="/archive/">Archive</a></li>
+        <li><i class="fa fa-tags"></i><a href="/tags/">Tags</a></li>
+      </ul>
+    </footer>
   </body>
 </html>

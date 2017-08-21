@@ -7,7 +7,8 @@
       "id": "{{ post.slug }}",
       "url": "{{ post.url }}",
       "title": "{{ post.title }}",
-      "date": "{{ post.date }}"
+      "date": "{{ post.date }}",
+      "date_formatted": "{{ post.date | date_to_string }}"
   }{% if forloop.last %}{% else %},{% endif %}
 {% endfor %}
 ]
