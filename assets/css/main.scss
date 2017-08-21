@@ -13,7 +13,7 @@ $light: #F7F8F9;
 
 $defaultFont: 'Playfair Display', Helvetica, sans-serif;
 $codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
-$headerFont: $defaultFont;
+$headerFont: Lekton;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -150,7 +150,7 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 700;
+  font-weight: 400;
   margin: 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
@@ -165,7 +165,6 @@ h1 {
     text-decoration: none;
     overflow: hidden;
     border-bottom: 1px solid transparent;
-    font-style: italic;
   }
 
   a:hover {
@@ -177,13 +176,11 @@ h1 {
 h2 {
   font-size: 1.75em;
   margin-top: 1em;
-  font-weight: 400;
 }
 
 h3 {
   font-size: 1.25em;
   margin-top: 1em;
-  font-weight: 400;
 }
 
 h2 + h3 {
