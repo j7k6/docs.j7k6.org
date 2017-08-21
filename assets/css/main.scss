@@ -57,6 +57,13 @@ body {
   color: $light;
 }
 
+::-webkit-input-placeholder {
+	color: lighten($black, 75%);
+}
+::-moz-placeholder {
+	color: lighten($black, 75%);
+}
+
 header {
   text-align: left;
   height: auto;
@@ -103,7 +110,7 @@ header {
       height: auto;
       font-size: 2em;
       text-align: left;
-      font-family: $codeFont;
+      font-family: $codeFont, FontAwesome;
       color: lighten($black, 50%);
       border: 0.025em solid lighten($black, 75%);
       border-radius: 0.25em;
@@ -400,7 +407,7 @@ hr {
     counter-reset: o-counter 0;
     
     li {
-      font-size: 0.75em;
+      font-size: 0.85em;
       line-height: 1.5;
       margin: 0;
       padding: 0;
