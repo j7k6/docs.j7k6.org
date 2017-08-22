@@ -42,6 +42,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border-top: 0.25em solid $link;
 }
 
 *:focus {
