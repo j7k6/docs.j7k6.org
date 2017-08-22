@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Force Replication Start on FreeNAS"
-tags: [freenas]
+title: "Force ZFS Replication Start on FreeNAS"
+tags: [freenas,zfs]
 ---
 
 ```bash
