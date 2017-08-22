@@ -411,6 +411,7 @@ hr {
       margin: 0;
       padding: 0;
       white-space: nowrap;
+      font-family: $headerFont;
 
       &:before {
         content: '[' counter(o-counter) '] ';
