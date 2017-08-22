@@ -9,7 +9,7 @@ title: "Archive"
   <h1>Archive ({{ site.posts.size }})</h1>
 
   {% for year in postsByYearMonth %}
-    <h3>{{ year.name }}</h3>
+  <h3>{{ year.name }} ({{ year.items.size}})</h3>
     <ul>
     {% for post in year.items %}
     <li><a href="{{ post.url }}"></i>{{ post.title }}</a> <em>{{ post.date | date_to_string }}</em></li>
