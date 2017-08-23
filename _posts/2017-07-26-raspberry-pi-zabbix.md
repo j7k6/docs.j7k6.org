@@ -22,6 +22,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
      libmariadbclient-dev \
      libsnmp-dev \
      libevent-dev \
+     libpcre3-dev \
      snmp-mibs-downloader \
      snmp \
      nginx \
@@ -49,7 +50,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
      --with-net-snmp \
      --with-libcurl \
      --with-libxml2
-   make && make install
+   make install
    ```
 4. Setup Database:
    ```bash
