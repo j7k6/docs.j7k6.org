@@ -24,14 +24,6 @@ title: Tags
 
 <div class="tags">
   <h1>Tags</h1>
-  <ul class="meta">
-  {% for tag in tags %}
-  <li><a href="/tags/#{{ tag }}"><code><i class="fa fa-tag"></i>{{ tag }}</code></a></li>
-  {% endfor %}
-  </ul>
-
-  <hr>
-
   {% for tag in tags %}
   <h3 id="{{ tag }}">{{ tag }} ({{ site.tags[tag].size }})</h3>
     <ul>
