@@ -118,7 +118,7 @@ header {
       outline: none;
     }
 
-    input:focus {
+    input:focus, input:hover {
       border: 0.025em solid lighten($black, 60%);
     }
   }
