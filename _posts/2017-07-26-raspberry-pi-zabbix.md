@@ -21,6 +21,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
      libcurl4-openssl-dev \
      libmariadbclient-dev \
      libsnmp-dev \
+     libevent-dev \
      snmp-mibs-downloader \
      snmp \
      nginx \
@@ -48,7 +49,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
      --with-net-snmp \
      --with-libcurl \
      --with-libxml2
-   make install
+   make && make install
    ```
 4. Setup Database:
    ```bash
