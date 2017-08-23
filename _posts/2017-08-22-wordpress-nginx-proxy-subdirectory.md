@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Nginx Proxy for Wordpress in Subdirectory (+ 'wp-admin' Fix)"
-tags: [nginx, proxy, wordpress, fix]
+tags: [nginx, proxy, wordpress, fix, docker]
 ---
 
 Appearantly *Wordpress* isn't suppose to be hosted in a subdirectory, especially when reverse-proxied to a Docker container via Nginx.
