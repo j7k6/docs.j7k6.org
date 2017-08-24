@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  if(window.location.hash.substring(1) === "comments") {
+    $('#comments').show();
+  }
+
+  $('.disqus_count').click(function(e) {
+    $('#comments').show();
+  });
+
 	$.getJSON("/posts.json", function(data) {
     var resultList = $('.results ul li');
 
