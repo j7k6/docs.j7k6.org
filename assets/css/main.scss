@@ -209,6 +209,11 @@ a {
     }
   }
 
+  &.disqus_count code {
+    background: $light !important;
+    color: $black !important;
+  }
+
   &:hover {
     text-decoration: underline;
 
@@ -217,11 +222,9 @@ a {
       color: $link !important;
     }
 
-    &.disqus_count {
-      code {
-        background: $black !important;
-        color: $light !important;
-      }
+    &.disqus_count code {
+      background: $black !important;
+      color: $light !important;
     }
   }
 }
@@ -408,8 +411,9 @@ pre {
 }
 
 code {
-  .post &, .meta & {
-    color: $code;
+  &.date, &.disqus_count {
+    background: $light !important;
+    color: $black !important;
   }
 
   .meta & {
