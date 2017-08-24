@@ -132,8 +132,18 @@ a {
   color: $link;
   text-decoration: none;
 
+  &.disqus_count {
+    background: $light !important;
+    color: $black !important;
+  }
+
   code {
     background: $link !important;
+  }
+
+  &.disqus_count code {
+    background: $light !important;
+    color: $black !important;
   }
 
   &:hover {
@@ -142,6 +152,11 @@ a {
     code {
       background: $light !important;
       color: $link !important;
+    }
+
+    &.disqus_count code {
+      background: $black !important;
+      color: $light !important;
     }
   }
 }
@@ -319,7 +334,7 @@ pre {
 }
 
 code {
-  &.date {
+  &.date, &.disqus_count {
     background: $light !important;
     color: $black !important;
   }
@@ -435,6 +450,7 @@ hr {
 
 #disqus_thread {
   margin: 5em auto;
+  display: none;
 }
 
 .tags em {

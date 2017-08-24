@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  $('.disqus_count').click(function(e) {
+    e.preventDefault();
+    $('#disqus_thread').toggle();
+  });
+
 	$.getJSON("/posts.json", function(data) {
     var resultList = $('.results ul li');
 
