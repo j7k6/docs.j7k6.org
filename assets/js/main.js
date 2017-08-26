@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  if(window.location.hash.substring(1) === "disqus_thread") {
-    $('#disqus_thread').show();
+  if(window.location.hash.substring(1) === "comments") {
+    $('#comments').show();
   }
 
   $('.disqus_count').click(function(e) {
-    $('#disqus_thread').toggle();
+    $('#comments').show();
   });
 
 	$.getJSON("/posts.json", function(data) {
