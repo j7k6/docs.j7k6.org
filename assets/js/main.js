@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  if(window.location.hash.substring(1) === "disqus_thread") {
+    $('#disqus_thread').show();
+  }
+
   $('.disqus_count').click(function(e) {
     $('#disqus_thread').toggle();
   });
