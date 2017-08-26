@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $('.disqus_count').click(function(e) {
-    e.preventDefault();
     $('#disqus_thread').toggle();
   });
 
