@@ -450,6 +450,10 @@ hr {
 #comments {
   margin: 5em auto;
   display: none;
+
+  #disqus_thread {
+    height: auto !important;
+  }
 }
 
 .tags em {
