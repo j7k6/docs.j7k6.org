@@ -6,7 +6,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
 
 1. Install Packages:
    ```bash
-   export DEBIAN_FRONTEND_noninteractive
+   export DEBIAN_FRONTEND=noninteractive
    export MYSQL_ROOT_PASSWORD="<PASSWORD>"
 
    echo mysql-server mysql-server/root_password select $MYSQL_ROOT_PASSWORD | debconf-set-selections
@@ -116,3 +116,8 @@ EOF
    cp -r frontends/php/* /var/www/html/zabbix/
    ```
 10. Configure Nginx.
+
+### Updates
+For installing Zabbix updates, just repeat steps *3.* and *9.* & restart services.
+
+---
