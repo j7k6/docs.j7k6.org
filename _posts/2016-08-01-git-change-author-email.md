@@ -25,7 +25,7 @@ git filter-branch --env-filter '
   GIT_AUTHOR_EMAIL=$NEW_EMAIL;
   GIT_AUTHOR_NAME="$NEW_NAME";
   GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL;
-  GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"; fi' -- --all
+  GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME";' -- --all
 ```
 
 ---
