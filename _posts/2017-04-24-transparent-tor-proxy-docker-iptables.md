@@ -97,7 +97,7 @@ docker run -d --name=<CONTAINER_NAME> --restart=always --cap-add=NET_ADMIN --cap
 docker exec -it <CONTAINER_NAME> /bin/bash
 ```
 
-> *Example Usage*: [A dockerized environment for using Kali Linux over Tor.](https://github.com/jkullick/kalitor)
+> *Example Usage*: [A dockerized environment for using Kali Linux over Tor.](https://github.com/j7k6/kalitor)
 
 
 ---
