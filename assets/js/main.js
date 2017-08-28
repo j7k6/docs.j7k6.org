@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if(window.location.hash.substring(1) === "comments") {
+  if(window.location.hash.substring(1).match(/^comment/gi)) {
     $('#comments').show();
   }
 
