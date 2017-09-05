@@ -1,4 +1,3 @@
-2017-09-05-raspbian-raspberry-pi-freeradius.md
 ---
 layout: post
 title: "Install FreeRADIUS on Raspberry Pi (Raspbian) for Active Directory Authentication"
@@ -51,7 +50,7 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
    mschap {
      ...
      winbind_username = "%{mschap:User-Name}"
-     winbind_domain = "INTERACTIVE-PIONEERS.DE"
+     winbind_domain = "<WINDOWS_DOMAIN>"
      ... 
    }
    ```
