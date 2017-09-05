@@ -21,7 +21,7 @@ tags: [zabbix,windows-server,monitoring]
    ```
 3. Install Service & Start *Zabbix Agent*:
    ```powershell
- [M _5[M#_5  c:\zabbix\bin\win64\zabbix_agentd.exe --config "c:\zabbix\conf\zabbix_agentd.win.conf" --install
+   c:\zabbix\bin\win64\zabbix_agentd.exe --config "c:\zabbix\conf\zabbix_agentd.win.conf" --install
    c:\zabbix\bin\win64\zabbix_agentd.exe --start
    ```
 4. Open Zabbix Ports in Firewall:
