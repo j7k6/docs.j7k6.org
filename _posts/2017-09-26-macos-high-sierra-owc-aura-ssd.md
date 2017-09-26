@@ -4,7 +4,7 @@ title: "Install macOS High Sierra on MacBook with OWC Aura SSD"
 tags: [macbook,apple,macos,high-sierra,owc-aura,ssd]
 ---
 
-At this point the new macOS High Sierra is not installable on any **OWC Aura** Macbook SSD.
+At this point the new **macOS High Sierra** is not installable on any **OWC Aura** Macbook SSD. If it's installed via the AppStore directly, it fails with a *Firmware Error*.
 I got it to work by doing this:
 
 1. Download Installer in AppStore
