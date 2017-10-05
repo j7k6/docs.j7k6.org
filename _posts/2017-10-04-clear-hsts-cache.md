@@ -8,7 +8,7 @@ tags: [hsts,chrome,firefox,safari]
 [chrome://net-internals/#hsts](chrome://net-internals/#hsts)
 
 ### Firefox:
-Browse History, search for site & *Forget About This Site*.
+Browse History, search for site & click *Forget About This Site*.
 
 ### Safari:
 Delete `~/Library/Cookies/HSTS.plist`.
