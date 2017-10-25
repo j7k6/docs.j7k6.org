@@ -11,7 +11,7 @@ There also needs to be a **Windows 10 x64** ISO available on the Debian box.
 1. Install packages:
    ```bash
    apt-get update
-   apt-get install -y samba genisoimage wimtools cabextract
+   apt-get install -y samba genisoimage wimtools capextract
    ```
 2. Link `mkisofs`:
    ```bash
@@ -62,7 +62,7 @@ There also needs to be a **Windows 10 x64** ISO available on the Debian box.
    ```
 3. Mount *Windows 10 ISO* onto samba share:
    ```bash
-   mount <$WINDOWS_ISO> /var/lib/tftpboot/windows
+   mount <WINDOWS_ISO> /var/lib/tftpboot/windows
    ```
 
 ## pxelinux
