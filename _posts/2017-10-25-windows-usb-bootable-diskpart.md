@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Make bootable Windows USB Installer"
+title: "Create bootable Windows USB Installer"
 tags: [windows,diskpart]
 ---
 
