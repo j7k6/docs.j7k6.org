@@ -46,7 +46,6 @@ apt-get install -y vim dnsmasq pxelinux
 2. Create file links:
    ```bash
    ln -s /usr/lib/PXELINUX/pxelinux.0 /var/lib/tftpboot/
-   ln -s /usr/lib/syslinux/memdisk /var/lib/tftpboot/
    ln -s /usr/lib/syslinux/modules/bios/{ldlinux,menu,libcom32,libutil}.c32 /var/lib/tftpboot/
    ```
 
