@@ -80,7 +80,7 @@ apt-get install -y vim dnsmasq pxelinux
    ```
 
 ## Optional: Boot from NFS share
-This configuration downloads the whole Kali live-system via TFTP, which is incredibly slow. To speed up the boot process, it can be access via NFS instead of the anachronistic TFTP protocol.
+This configuration downloads the whole Kali live-system via TFTP, which is incredibly slow. To speed up the boot process, it can be accessed via NFS instead of the anachronistic TFTP protocol.
 Follow those steps to boot from an NFS share:
 
 1. Install packages:
