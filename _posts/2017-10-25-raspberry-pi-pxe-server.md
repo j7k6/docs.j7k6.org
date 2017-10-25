@@ -79,7 +79,10 @@ apt-get install -y vim dnsmasq pxelinux
    APPEND initrd=/kali/initrd.img boot=live username=root hostname=kali gfxpayload=1024x768x16,1024x768 components fetch=tftp://192.168.1.10/kali/filesystem.squashfs
    ```
 
-## Optional: Boot from NFS share
+Now it's possible to boot *Kali Linux* over the network:
+![raspberry-pi-pxe-server](/files/raspberry-pi-pxe-server.png)
+
+## Update: Boot from NFS share
 This configuration downloads the whole Kali live-system via TFTP, which is incredibly slow. To speed up the boot process, it can be accessed via NFS instead of the anachronistic TFTP protocol.
 Follow those steps to boot from an NFS share:
 
@@ -104,9 +107,6 @@ Follow those steps to boot from an NFS share:
    ```
    APPEND initrd=/kali/initrd.img boot=live username=root hostname=kali gfxpayload=1024x768x16,1024x768 components netboot=nfs nfsroot=192.168.1.10:/var/lib/tftpboot/kali live-media-path=/
    ```
-
-Now it's possible to boot *Kali Linux* over the network:
-![raspberry-pi-pxe-server](/files/raspberry-pi-pxe-server.png)
 
 ---
 1. [https://github.com/pimterry/rpi-pxe-server](https://github.com/pimterry/rpi-pxe-server)
