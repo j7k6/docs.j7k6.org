@@ -11,7 +11,7 @@ There also needs to be a **Windows 10 x64** ISO available on the Debian box.
 1. Install packages:
    ```bash
    apt-get update
-   apt-get install -y samba genisoimage wimtools capextract
+   apt-get install -y samba genisoimage wimtools cabextract
    ```
 2. Link `mkisofs`:
    ```bash
