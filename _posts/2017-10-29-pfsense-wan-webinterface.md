@@ -12,16 +12,20 @@ In the *pfSense Console*  (Shell), enter `pfctl -d` to disable `pf`. This will o
 ## Allow WAN access to port 443
 Add a new firewall rule:
 ```bash
-easyrule pass wan tcp any <WAN_IP> 443
+easyrule pass wan tcp any any 443
 ```
 
 ## SSH 
 1. In the *pfSense Console*, **Enable Secure Shell (sshd)**
-2. Connect via SSH:
+2. Add firewall rule for port 22:
+   ```bash
+   easyrule pass wan tcp any any 22
+   ```
+3. Connect via SSH:
    ```bash
    ssh -L 4443:<LAN_IP>:443 root@<WAN:IP>
    ```
-3. Browse to https://<LAN_IP>:4443
+4. Browse to https://localhost:4443
 
 ## Troubleshooting
 If none of the above works, it might be possible that the WAN interface is connected to a private (RFC1918) network. This might be the case in a lab environment using VirtualBox, or for any other reason. The problem with that is, that pfSense blocks any private network (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) by default. 
