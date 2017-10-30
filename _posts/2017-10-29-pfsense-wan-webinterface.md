@@ -16,6 +16,7 @@ easyrule pass wan tcp any any 443
 ```
 
 ## SSH 
+Another option is to forward port 443 on the pfSense LAN interface to the local machine with SSH.
 1. In the *pfSense Console*, **Enable Secure Shell (sshd)**
 2. Add firewall rule for port 22:
    ```bash
@@ -23,7 +24,7 @@ easyrule pass wan tcp any any 443
    ```
 3. Connect via SSH:
    ```bash
-   ssh -L 4443:<LAN_IP>:443 root@<WAN:IP>
+   ssh -L 4443:<LAN_IP>:443 root@<WAN_IP>
    ```
 4. Browse to https://localhost:4443
 
