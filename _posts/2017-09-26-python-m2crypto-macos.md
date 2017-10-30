@@ -5,8 +5,8 @@ tags: [python,macos,fix]
 ---
 
 ```bash
-brew install openssl
-brew install swig
+brew install openssl swig
+
 sudo env LDFLAGS="-L$(brew --prefix openssl)/lib" \
   CFLAGS="-I$(brew --prefix openssl)/include" \
   SWIG_FEATURES="-cpperraswarn -includeall -I$(brew --prefix openssl)/include" \
