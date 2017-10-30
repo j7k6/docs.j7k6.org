@@ -32,6 +32,6 @@ Another option is to forward port 443 on the pfSense LAN interface to the local 
 If none of the above works, it might be possible that the WAN interface is connected to a private (*RFC1918*) network. This might be the case in a lab environment using VirtualBox, or for any other reason. The problem with that is, that pfSense blocks any private network on the WAN interface (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) by default. 
 
 To solve this problem, you need to disable the following setting in the webinterface (first run `pfctl -d` to disable the packet filter temporarily):
-*Interfaces > WAN > Block private networks and loopback addresses* + hit `Apply Changes`.
+*Interfaces > WAN >* ***Block private networks and loopback addresses*** + hit `Apply Changes`.
 
 ---
