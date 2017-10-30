@@ -240,7 +240,7 @@ h1, h2, h3 {
 h1 {
   font-size: 2.25em;
   margin-top: 0;
-  font-weight: 300;
+  font-weight: 700;
 
   a {
     color: inherit;
@@ -384,6 +384,10 @@ p {
   margin: 0 auto 1.5em auto;
 }
 
+p {
+  margin: 0.1em auto 1em auto;
+}
+
 pre, code {
   font-family: $codeFont;
   white-space: pre;
@@ -456,10 +460,8 @@ article {
   }
 }
 
-article {
-  *:first-child {
-    margin-top: 0 !important;
-  }
+article *:first-child {
+  margin-top: 0 !important;
 }
 
 div.content, div.home, div.search, div.results  {
