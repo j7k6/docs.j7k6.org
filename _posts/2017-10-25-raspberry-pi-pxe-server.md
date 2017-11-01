@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Raspberry Pi PXE Server"
-tags: [raspberry-pi,pxe,kali]
+tags: [raspberry-pi,pxe,kali,tftp,nfs]
 ---
 
 ## Prerequirements
