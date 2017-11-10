@@ -39,11 +39,12 @@ tags: [tor,ssh,debian,linux]
    systemctl restart tor.service
    ```
 
+
 After restarting `tor`, there are two new files in `/var/lib/tor/hostname`:
 - `hostname` (contains the hidden service hostname)
-- `private_key` (back this up!)
+- `private_key` (back this one up!)
 
-The SSH service is now available as a Tor Hidden Service.
+The SSH service is now available as Tor Hidden Service.
 
 ## Client
 1. Append to `~/.ssh/config`:
