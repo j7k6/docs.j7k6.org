@@ -4,6 +4,8 @@ title: "Use .onion Address to Connect to SSH Server over Tor Hidden Service"
 tags: [tor,ssh,debian,linux]
 ---
 
+*Tor Hidden Services* can be used to connect to services behind firewalls or NAT without port forwardings.
+
 ## Server
 ### Tor Setup
 1. Add `tor` package sources:
