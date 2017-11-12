@@ -9,6 +9,7 @@ Appearantly the `adb backup` command stopped working for older Android devices i
 1. Download zipped `adb` executable:
    ```bash
    wget https://archive.mozilla.org/pub/labs/android-tools/adb-1.0.31-mac.zip
+   ```
 2. Unzip `adb`:
    ```bash
    unzip adb-1.0.31-mac.zip
