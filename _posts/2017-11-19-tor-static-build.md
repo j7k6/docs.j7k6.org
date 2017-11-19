@@ -11,7 +11,7 @@ apt-get update
 apt-get install -y build-essential curl
 ```
 
-## Download & Build Dependecies
+## Dependecies
 ### zLib
 ```bash
 curl -fsSL "https://zlib.net/zlib-1.2.11.tar.gz" | tar zxvf -
