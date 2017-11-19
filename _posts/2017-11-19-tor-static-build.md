@@ -22,7 +22,7 @@ make install
 cd ..
 ```
 
-### bibevent
+### libevent
 ```bash
 curl -fsSL "https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz" | tar zxvf -
 cd libevent-2.1.8-stable
