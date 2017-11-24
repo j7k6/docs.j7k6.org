@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Disabl 'Last Login'-Message in Shell on macOS"
+title: "Disable 'Last Login' Message in Shell on macOS"
 tags: [macos,shell]
 ---
 
