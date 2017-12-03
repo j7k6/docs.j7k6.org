@@ -5,7 +5,7 @@ tags: [chrome, security]
 ---
 
 ```bash
-chrome --user-data-dir="<RANDOM_DIRECTORY>" --disable-web-security 
+open -a "Google Chrome" --args --disable-web-security --user-data-dir
 ```
 
 ---
