@@ -13,6 +13,8 @@ push "rcvbuf 393216"
 
 tun-mtu 1400
 mssfix 1360
+
+cipher AES-128-CBC
 ```
 
 ---
