@@ -4,7 +4,7 @@ title: "Speed-Up SSH Login"
 tags: [ssh]
 ---
 
-If logging into an SSH server takes a long time, this configugation modifications might help:
+If logging into an SSH server takes a long time, this configuration modifications might help:
 
 1. In `/etc/ssh/sshd_config` make sure those lines are set or uncommented:
    ```
