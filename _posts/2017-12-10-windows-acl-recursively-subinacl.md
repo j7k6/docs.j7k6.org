@@ -1,6 +1,6 @@
 ---
 layout: post
-title "Fix Permissions/ACLs on Windows Recursively with SubinACL"
+title: "Fix Permissions/ACLs on Windows Recursively with SubinACL"
 tags: [acl,windows,fix]
 ---
 
