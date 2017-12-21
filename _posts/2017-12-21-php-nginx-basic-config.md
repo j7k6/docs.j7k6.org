@@ -5,7 +5,7 @@ tags: [php,nginx,linux]
 ---
 
 ```
-{
+server {
   listen 80 default_server;
   server_name _;
   root /var/www/html;
