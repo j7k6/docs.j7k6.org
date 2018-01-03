@@ -47,15 +47,18 @@ There are several options to do so, I decided to just spin up a FreeBSD Vagrant 
 After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time to SSH into it to configure the agent.
 
 ### Zabbix Agent Configuration
-
-```bash
-cat > /usr/local/etc/zabbix_agentd.conf << EOF
-Server=<ZABBIX_SERVER_IP>
-ServerActive=<ZABBIX_SERVER_IP>
-Hostname=<ZABBIX_AGENT_HOSTNAME>
-LogFile=/tmp/zabbix_agentd.log
-EOF
-```
+1. Add user:
+   ```bash
+   pw groupadd zabbix
+   pw useradd zabbix -c "Daemon user for Zabbix agent" -d /nonexistent -s /usr/sbin/nologin -w no -g zabbix
+   ```
+2. Create `/usr/local/etc/zabbix_agentd.conf`:
+   ```
+   Server=<ZABBIX_SERVER_IP>
+   ServerActive=<ZABBIX_SERVER_IP>
+   Hostname=<ZABBIX_AGENT_HOSTNAME>
+   LogFile=/tmp/zabbix_agentd.log
+   ```
 
 ### Daemon Configuration
 1. Enable daemon:
