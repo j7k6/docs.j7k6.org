@@ -39,7 +39,7 @@ There are several options to do so, I decided to just spin up a FreeBSD Vagrant 
    scp /usr/local/sbin/zabbix_agentd root@<FREENAS_IP>:/usr/local/sbin/
    ```
 4. Leave VM: `exit`
-5. Destroy VM(optional): `vagrant destroy`
+5. Destroy VM (optional): `vagrant destroy`
 
 
 ## FreeNAS
