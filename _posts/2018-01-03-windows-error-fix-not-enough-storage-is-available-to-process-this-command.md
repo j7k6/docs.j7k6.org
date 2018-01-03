@@ -5,10 +5,10 @@ tags: [windows,fix]
 ---
 
 **Problem**: When I tried using *Robocopy* to sync network shares, it suddenly failed with this error message:
-
 ```
 Not enough storage is available to process this command
 ```
+
 
 **Solution**:
 1. Open `regedit.exe` (with admin rights)
