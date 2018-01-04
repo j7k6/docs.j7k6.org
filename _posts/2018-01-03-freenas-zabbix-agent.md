@@ -52,7 +52,7 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    pw groupadd zabbix
    pw useradd zabbix -c "Daemon user for Zabbix agent" -d /nonexistent -s /usr/sbin/nologin -w no -g zabbix
    ```
-2. Create `/usr/local/etc/zabbix_agentd.conf`:
+2. Create `/etc/zabbix_agentd.conf`:
    ```
    Server=<ZABBIX_SERVER_IP>
    ServerActive=<ZABBIX_SERVER_IP>
@@ -65,7 +65,7 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    ```bash
    echo 'zabbix_agentd_enable="YES"' >> /etc/rc.conf
    ```
-2. Create `/usr/local/etc/rc.d/zabbix_agentd`:
+2. Create `/etc/rc.d/zabbix_agentd`:
    ```
    #!/bin/sh
 
@@ -85,12 +85,12 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    name="zabbix_agentd"
    rcvar=zabbix_agentd_enable
    start_precmd="zabbix_precmd"
-   required_files="/usr/local/etc/zabbix_agentd.conf"
+   required_files="/etc/zabbix_agentd.conf"
 
    # read configuration and set defaultsc
    load_rc_config "$name"
    : ${zabbix_agentd_enable="NO"}
-   #: ${zabbix_agentd_pre:=/usr/local/etc/${name}.pre.sh}
+   #: ${zabbix_agentd_pre:=/etc/${name}.pre.sh}
 
 
    if [ ! -z "$zabbix_agentd_conf" ] ; then
@@ -113,11 +113,17 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    ```
 2. Make executable:
    ```bash
-   chmod +x /usr/local/etc/rc.d/zabbix_agentd
+   chmod +x /etc/rc.d/zabbix_agentd
    ```
 3. Start daemon:
    ```bash
-   /usr/local/etc/rc.d/zabbix_agentd start
+   /etc/rc.d/zabbix_agentd start
+   ```
+4. Make config files persistent and survive reboots:
+   ```bash
+   cp /etc/rc.conf /conf/base/etc/
+   cp /etc/rc.d/zabbix_agentd /conf/base/etc/rc.d/
+   cp /etc/zabbix_agentd.conf /conf/base/etc/
    ```
 
 ---
