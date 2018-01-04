@@ -92,24 +92,25 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    : ${zabbix_agentd_enable="NO"}
    #: ${zabbix_agentd_pre:=/etc/${name}.pre.sh}
 
+   zabbix_agentd_conf="/etc/zabbix_agentd.conf"
 
    if [ ! -z "$zabbix_agentd_conf" ] ; then
-           zabbix_agentd_flags="${zabbix_agentd_flags} -c ${zabbix_agentd_conf}"
-           required_files=${zabbix_agentd_conf}
+     zabbix_agentd_flags="${zabbix_agentd_flags} -c ${zabbix_agentd_conf}"
+     required_files=${zabbix_agentd_conf}
    fi
- 
+
    zabbix_precmd()
    {
-           if [ ! -z "$zabbix_agentd_pre" ] ; then
-                   if [ -e $zabbix_agentd_pre ] ; then
-                           . $zabbix_agentd_pre
-                   fi
-           fi
+     if [ ! -z "$zabbix_agentd_pre" ] ; then
+       if [ -e $zabbix_agentd_pre ] ; then
+         . $zabbix_agentd_pre
+       fi
+     fi
    }
 
    command="/usr/local/sbin/${name}"
- 
-   run_rc_command "$1"
+
+   run_rc_command "$1"  run_rc_command "$1"
    ```
 2. Make executable:
    ```bash
