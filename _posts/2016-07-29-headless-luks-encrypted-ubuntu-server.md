@@ -154,7 +154,7 @@ echo "$SSH_PUBLIC_KEY" > /root/.ssh/authorized_keys
 cp /root/.ssh/authorized_keys /etc/initramfs-tools/root/.ssh/
 
 # download unlock script
-wget https://gist.githubusercontent.com/jkullick/d81b4e93ec128bed217e/raw/e7cbbe640e5263ad6c73dbb02a601588578ba4c1/crypt_unlock.sh -O /etc/initramfs-tools/hooks/crypt_unlock.sh
+wget https://gist.githubusercontent.com/j7k6/409e89d512168d6df2ceff57102446c3/raw/8c6d9474a122703b9ea8adb3cd4feb05c8cf15cc/crypt_unlock.sh -O /etc/initramfs-tools/hooks/crypt_unlock.sh
 chmod +x /etc/initramfs-tools/hooks/crypt_unlock.sh
 
 # update initramfs
