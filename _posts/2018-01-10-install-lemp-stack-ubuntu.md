@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install LEMP-Stack (Linux/Nginx/Mariadb/PHP) on Ubuntu Server"
+title: "Install LEMP-Stack (Linux/Nginx/MariaDB/PHP) on Ubuntu Server"
 tags: [ubuntu,linux,lemp,nginx,php,mysql,mariadb]
 ---
 
@@ -37,7 +37,7 @@ tags: [ubuntu,linux,lemp,nginx,php,mysql,mariadb]
 
      location ~ \.php$ {
        include snippets/fastcgi-php.conf;
-       fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+       fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
      }
    }
    ```
