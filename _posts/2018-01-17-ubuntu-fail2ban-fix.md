@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fix 'Failed to start Fail2Ban Service.' Error on Ubuntu"
+title: "Fix 'Failed to start Fail2Ban Service' Error on Ubuntu"
 tags: [fail2ban,linux,ubuntu,fix]
 ---
 
