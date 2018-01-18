@@ -8,7 +8,7 @@ $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
 
-$defaultFont: 'Playfair Display', Helvetica, sans-serif;
+$defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
 $headerFont: Lekton;
 
@@ -163,7 +163,7 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 400;
+  font-weight: 700;
   margin: 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
