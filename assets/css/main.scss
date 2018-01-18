@@ -82,7 +82,7 @@ header {
 
     a {
       color: lighten($black, 50%);
-      font-style: italic;
+    font-family: $headerFont;
       font-size: 1.25em;
       border-bottom: 1px solid transparent;
     }
