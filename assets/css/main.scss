@@ -7,9 +7,10 @@ $white: White;
 $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
+$code: #333333;
 
-$defaultFont: 'Playfair Display', Helvetica, sans-serif;
-$codeFont: Inconsolata, Monaco, 'Lucida Console', monospace;
+$defaultFont: 'Open Sans', Helvetica, sans-serif;
+$codeFont: Lekton, Monaco, 'Lucida Console', monospace;
 $headerFont: Lekton;
 
 $break-small: 640px;
@@ -34,7 +35,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -82,7 +83,7 @@ header {
 
     a {
       color: lighten($black, 50%);
-      font-style: italic;
+    font-family: $headerFont;
       font-size: 1.25em;
       border-bottom: 1px solid transparent;
     }
@@ -139,6 +140,7 @@ a {
 
   code {
     background: $link !important;
+    color: $code;
   }
 
   &.disqus_count code {
@@ -163,7 +165,7 @@ a {
 
 h1, h2, h3 {
   font-family: $headerFont;
-  font-weight: 400;
+  font-weight: 700;
   margin: 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
@@ -172,7 +174,7 @@ h1, h2, h3 {
 h1 {
   font-size: 2.25em;
   margin-top: 0;
-  font-weight: 700;
+  font-weight: 300;
 
   a {
     color: inherit;
@@ -295,6 +297,14 @@ footer {
 
   * {
     color: lighten($black, 50%);
+  }
+
+  li.donate, li.donate i {
+    color: lighten($black, 75%) !important;
+  }
+
+  li.donate:hover, li.donate:hover i {
+    color: lighten($black, 50%) !important;
   }
 }
 
