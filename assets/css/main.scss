@@ -83,7 +83,7 @@ header {
 
     a {
       color: lighten($black, 50%);
-    font-family: $headerFont;
+      font-family: $headerFont;
       font-size: 1.25em;
       border-bottom: 1px solid transparent;
     }
@@ -342,21 +342,21 @@ pre {
   > code {
     display: inline-block;
     width: auto;
-    line-height: 1.5 !important;
-    color: lighten($black, 20%) !important;
+    line-height: 1.75 !important;
+    color: $code !important;
     background: $light !important;
   }
 }
 
 code {
-  &.date, &.disqus_count {
-    background: $light !important;
-    color: $black !important;
+  .post &, .meta & {
+    color: $code;
   }
 
-  .post &, .meta & {
+  .meta & {
     background: $light;
-    color: $black;
+    color: $light !important;
+		font-family: $headerFont !important;
     display: inline-block;
     line-height: 1;
     padding: 0.25em;
@@ -364,10 +364,11 @@ code {
     vertical-align: middle;
   }
 
-  .meta & {
-    color: $light;
-		font-family: $headerFont;
+  &.date, &.disqus_count {
+    background: $light !important;
+    color: $black !important;
   }
+
 }
 
 .meta, footer {
