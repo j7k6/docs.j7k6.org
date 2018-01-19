@@ -63,7 +63,7 @@ EOF
    mysql -uzabbix -pzabbix zabbix < database/mysql/images.sql
    mysql -uzabbix -pzabbix zabbix < database/mysql/data.sql
    ```
-5. Edit `/usr/local/etc/zabbix/zabbix_server.conf`:
+5. Edit `/usr/local/etc/zabbix_server.conf`:
    ```
    DBHost=localhost
    DBName=zabbix
