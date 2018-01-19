@@ -333,16 +333,16 @@ pre {
   padding: 0.5em;
   margin: 0.5em auto;
   background: $light !important;
-  line-height: 1.5;
   display: block;
   padding: 0.25em;
+    line-height: 1.75 !important;
   border-radius: 0.25em;
   overflow-x: hidden;
 
   > code {
     display: inline-block;
     width: auto;
-    line-height: 1.75 !important;
+    vertical-align: middle;
     color: $code !important;
     background: $light !important;
   }
