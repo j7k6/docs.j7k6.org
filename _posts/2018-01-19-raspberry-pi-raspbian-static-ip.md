@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Set Static IP in Raspbian"
+title: "Set Static IP on Raspbian"
 tags: [raspberry-pi,raspbian,networking,linux,dhcp]
 ---
 
