@@ -7,6 +7,7 @@ $white: White;
 $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
+$code: #333333;
 
 $defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -34,7 +35,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -139,6 +140,7 @@ a {
 
   code {
     background: $link !important;
+    color: $code;
   }
 
   &.disqus_count code {
