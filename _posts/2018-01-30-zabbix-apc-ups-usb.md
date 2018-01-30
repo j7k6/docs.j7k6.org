@@ -66,3 +66,4 @@ Navigate to the hosts *Trigger* tab to create a new trigger for the `APCStatus` 
 Now all the alarms (if configured correctly) will go off as soon as the UPS is on battery support.
 
 ---
+1. [https://www.linuxquestions.org/questions/linux-server-73/ups-monitoring-without-snmp-apcupsd-zabbix-need-some-help-831752/](https://www.linuxquestions.org/questions/linux-server-73/ups-monitoring-without-snmp-apcupsd-zabbix-need-some-help-831752/)
