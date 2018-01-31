@@ -20,8 +20,7 @@ I set myself a goal to reduce my *.vimrc* to a maximum of **50 SLOC**! That mean
 
 Enough of the introduction, here it is:
 
-
-### Basic Settings
+## Basic Settings
 This first lines cover the very basic of *vim*'s behaviour, most of it self-explanatory:
 
 ```
@@ -37,8 +36,7 @@ set term=xterm-256color                          " terminal type
 set wildmenu wildmode=longest:full,full          " wildmode settings
 ```
 
-
-### UI Settings
+## UI Settings
 Some UI settings, like whitespace characters, syntax highlighting and a little hack (*scrollback*), which always keeps the current line vertically centered on the screen:
 
 ```
@@ -50,8 +48,7 @@ set showmatch                                    " show matching brackets
 syntax on                                        " enable syntax highlightning
 ```
 
-
-### Colors
+## Colors
 I really liked *Atom*'s default colorscheme **Onedark**, so I ditched *Solarized Dark* for this one at some point. [Josh Dick recreated it for *vim*](https://github.com/joshdick/onedark.vim).
 
 ```
@@ -60,8 +57,7 @@ hi Normal guibg=NONE ctermbg=NONE|               " transparency fix
 let g:onedark_termcolors=256                     " enable 256 colors support
 ```
 
-
-### Statusline
+## Statusline
 This is propably the most minimalistic (and weirdest) part of my *.vimrc*. I don't use the statusline at all, just the ruler. Besides of it's minimalistic nature, I really like to have only one fixed line on the bottom for everything, I have no need for more fancy information except the cursor position, the current filesize and the modified status:
 
 ```
@@ -71,8 +67,7 @@ set ruler rulerformat=%40(%=%<%F%m\ \
                       \›\ %l/%L:%v%)
 ```
 
-
-### Tabs & Indentation
+## Tabs & Indentation
 [*Spaces* over *Tabs*! (and *vim* over *emacs*!)](https://www.youtube.com/watch?v=SsoOG6ZeyUI), it's the law! Or for me: *2 spaces equal 1 tabstop*:
 
 ```
@@ -80,16 +75,14 @@ set autoindent expandtab                         " autoindentation & tabbing
 set shiftwidth=2 softtabstop=2 tabstop=2         " 1 tab = 2 spaces
 ```
 
-
-### Search Settings
+## Search Settings
 Plain and simple: highlight search results, ignore case, icremental search, use case if at least one character is upper-case and the other isn't:
 
 ```
 set hlsearch ignorecase incsearch smartcase      " search options
 ```
 
-
-### Undo & Backup
+## Undo & Backup
 Very useful feature, which isn't configured properly in default *vim* configs. This one uses *undo* files to make the undo-history persistent on disk. Also it disables the annoying *.swp* files, which tend to pollute directories and git repos (if *.gitignore* is not configured properly):
 
 ```
@@ -97,8 +90,7 @@ set nobackup noswapfile nowritebackup            " disable backup/swap files
 set undofile undodir=~/.vim/undo undolevels=9999 " undo options
 ```
 
-
-### Performace Tuning
+## Performace Tuning
 I don't remember the blog post where this was discussed, but it's a real performance booster:
 
 ```
@@ -107,8 +99,7 @@ set nocursorline                                 " disable cursorline
 set ttyfast                                      " enable fast terminal connection
 ```
 
-
-### Key Mappings
+## Key Mappings
 A very useful *vim* feature, which I only learned to use recently, is the *leader* key. This feature alone gave my *vim* experience a powerful boost:
 
 ```
