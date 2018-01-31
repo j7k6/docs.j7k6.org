@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My Minimal .vimrc"
+title: "My Minimal .vimrc"
 tags: [vim]
 ---
 
