@@ -4,6 +4,8 @@ title: "Delete all Commented and Blank Lines"
 tags: [vim]
 ---
 
+This regex removes all lines starting with '`#`' and all empty lines from a vim buffer/file:
+
 ```
 :g/\v^(#|$)/d_
 ```
