@@ -129,11 +129,9 @@ One last command can save lives if you forgot to run *vim* as root before editin
 cnoreabbrev w!! w !sudo tee > /dev/null %|       " write file with sudo
 ```
 
-
+## ...
 And that's all the *vim* configuration I need!
 
-Of course my dotfiles can be found in a [Github Repo](https://github.com/j7k6/dotfiles).
-
-
+Of course I have a [Github](https://github.com/j7k6) repo for my [*dotfiles*](https://github.com/j7k6/dotfiles).
 
 ---
