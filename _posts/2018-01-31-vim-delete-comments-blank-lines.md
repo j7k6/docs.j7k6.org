@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Delete all Commented and Blank Lines"
+title: "Delete all Commented and Blank Lines in Vim"
 tags: [vim]
 ---
 
