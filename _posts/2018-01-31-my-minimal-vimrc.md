@@ -4,9 +4,9 @@ title: "My Minimal .vimrc"
 tags: [vim]
 ---
 
-When I started using Linux actively 5 years ago, I discovered the [/r/unixporn](https://reddit.com/r/unixporn) subreddit and got lots of inspiration from the lovely crafted terminal setups posted there.
+When I started using Linux actively 5 years ago, I challenged myself to get comfortable with *vim* and despite the usual initial difficulties, I learned to love the editor. As presumably every *vim* novice, I started to get my hands on the mystical *.vimrc* file.
 
-I challenged myself to get comfortable with *vim* and despite the usual initial difficulties, I learned to love the editor. As presumably every *vim* novice, I started to get my hands on the mystical *.vimrc* file.
+I discovered the [/r/unixporn](https://reddit.com/r/unixporn) subreddit and got lots of inspiration from the lovely crafted terminal setups posted there.
 
 Obviously, in the beginning I just copied and pasted blocks of *.vimrc* configs from other dotfile repos and tutorials, without understanding what the lines I pasted mean. Of course I used all kind of seemingly "cool" and useful plugins, added a plugin-manager (*Pathogen*, *Vundler*, ...) and got fancy with the *Powerline* plugin.
 
