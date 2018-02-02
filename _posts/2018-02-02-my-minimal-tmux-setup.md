@@ -13,18 +13,15 @@ In my traditional minimalistic approach to only use the config I *understand* an
 It starts with the usual rebinding of the *Prefix key*, which is `Ctrl+B` by default, but I guess 99% of all *Tmux* users change it to `Ctrl+A` for some good reason (it's the same in `screen`, it's easier to type...):
 
 ```
-set -g prefix C-a                                             # prefix key
-```
-
-```
-set -g default-terminal "screen-256color"                     # terminal type
-set -g aggressive-resize on                                   # aggressive resize
-set -sg escape-time 0                                         # escape time
-set -g base-index 1                                           # set initial window index to 1
-set -g mouse on                                               # enable mouse support
-set -g bell-action none                                       # disable bell
-setw -g xterm-keys on                                         # enable xterm keys
-setw -g mode-keys vi                                          # enable vi mode keys
+set -g prefix C-a                         # prefix key
+set -g default-terminal "screen-256color" # terminal type
+set -g aggressive-resize on               # aggressive resize
+set -sg escape-time 0                     # escape time
+set -g base-index 1                       # set initial window index to 1
+set -g mouse on                           # enable mouse support
+set -g bell-action none                   # disable bell
+setw -g xterm-keys on                     # enable xterm keys
+setw -g mode-keys vi                      # enable vi mode keys
 ```
 
 the last line (`mode-keys vi`) is very important to me, because it makes *vim*-style key-actions possible in *Tmux*! This awesome feature makes Copy & Pasting from inside *Tmux* to whatever application really simple. It basically works like the *vim* *Visual Mode*.
@@ -46,7 +43,7 @@ bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
 Like in *vim* (no statusline, ruler only), I also choose to go an unorthodox path by having the *Tmux* status bar in the top of the screen. This way it doesn't intefere visually with my *vim* ruler line and it's also more like the menu bar in macOS (top) then the task bar in Windows (bottom).
 
 ```
-set -g status-position top                                    # statusbar position
+set -g status-position top               # statusbar position
 set -g status-interval 1
 set -g window-status-format '#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})'
 set -g window-status-current-format '[#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})]'
@@ -62,14 +59,14 @@ The *status bar* is also kept pretty much as simple as possible. Only extra info
 I only use a handful of key bindings for splitting windows, create and close windows and panes. Nothing fancy.
 
 ```
-bind ! split-window -h -c "#{pane_current_path}"              # split horizontally
-bind - split-window -v -c "#{pane_current_path}"              # split vertically
-bind n new-window                                             # open new window
-bind x kill-pane                                              # kill pane without confirmation
-bind k kill-window                                            # kill window
-bind q kill-session                                           # kill session
-bind r source-file ~/.tmux.conf                               # reload tmux config
-bind t select-layout tiled                                    # tiled layout
+bind ! split-window -h -c "#{pane_current_path}" # split horizontally
+bind - split-window -v -c "#{pane_current_path}" # split vertically
+bind n new-window                                # open new window
+bind x kill-pane                                 # kill pane without confirmation
+bind k kill-window                               # kill window
+bind q kill-session                              # kill session
+bind r source-file ~/.tmux.conf                  # reload tmux config
+bind t select-layout tiled                       # tiled layout
 ```
 
 ## Extras
