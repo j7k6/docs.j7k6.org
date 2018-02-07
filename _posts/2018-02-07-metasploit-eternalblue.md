@@ -4,7 +4,8 @@ title: "Exploit ETERNALBLUE with Metasploit"
 tags: [metasploit,eternalblue,smb,pentesting,windows]
 ---
 
-> **Disclaimer**: Only use this in your own environment. Using this exploit against other people's systems is *illegal*!
+> **Disclaimer**: Only use this in your own environment.
+> Using this exploit against other people's systems is *illegal*!
 
 Run `msfconsole`:
 
