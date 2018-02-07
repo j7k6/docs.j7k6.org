@@ -48,9 +48,9 @@ $(document).ready(function() {
 
           if (results.length > 0) {
             results.sort(function(a, b) {
-              if (a.title < b.title)
+              if (new Date(a.date) < new Date(b.date))
                 return -1;
-              if (a.title > b.title)
+              if (new Date(a.data > new Date(b.date))
                 return 1;
               return 0;
             });
