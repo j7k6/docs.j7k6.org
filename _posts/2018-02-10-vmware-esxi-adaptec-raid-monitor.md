@@ -15,6 +15,6 @@ tags: [vmware,esxi,adaptec,raid,monitoring]
 5. Reboot ESXi.
 
 In *vSphere*, navigate to *Monitor* > *Hardware* > *Storage* to view the RAID Controller's status:
-![vmware-esxi-adapted-raid-monitor.png](/files/vmware-esxi-adapted-raid-monitor.png)
+![vmware-esxi-adaptec-raid-monitor.png](/files/vmware-esxi-adaptec-raid-monitor.png)
 
 ---
