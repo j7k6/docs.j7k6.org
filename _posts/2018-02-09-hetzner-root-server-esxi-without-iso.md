@@ -36,10 +36,10 @@ This is how made the RAID a bootable ESXi installer disk:
    w
    ```
 5. Reload partition table:
-   ```bash
-   partprobe && sync
-   ```
-6. Format partition as *FAT*:
+  ```bash
+  partprobe && sync
+  ```
+6. Format Partition as *FAT*:
    ```bash
    mkfs.vfat -F 32 /dev/sda1
    ```
@@ -51,39 +51,39 @@ This is how made the RAID a bootable ESXi installer disk:
    ```bash
    dd if=/usr/lib/syslinux/mbr/mbr.bin of=/dev/sda
    ```
-9. Create mount points:
+9. Create directories:
    ```bash
    mkdir -p /mnt/{iso,raid}
    ```
 10. Mount ESXi ISO:
-    ```bash
-    mount -o loop VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso /mnt/iso
-    ```
+   ```bash
+   mount -o loop VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso /mnt/iso
+   ```
 11. Mount `/dev/sda1`:
-    ```bash
-    mount /dev/sda1 /mnt/raid
-    ```
+   ```bash
+   mount /dev/sda1 /mnt/raid
+   ```
 12. Copy files from ESXi ISO to RAID disk:
-    ```bash
-    cp -r /mnt/iso/* /mnt/raid/
-    ```
+   ```bash
+   cp -r /mnt/iso/* /mnt/raid/
+   ```
 13. Copy *Sylinux* files:
-    ```bash
-    cp /mnt/raid/isolinux.cfg /mnt/raid/syslinux.cfg
-    cp /usr/lib/syslinux/modules/bios/*.c32 /mnt/raid/
-    ```
+   ```bash
+   cp /mnt/raid/isolinux.cfg /mnt/raid/syslinux.cfg
+   cp /usr/lib/syslinux/modules/bios/*.c32 /mnt/raid/
+   ```
 14. Unmount RAID:
-    ```bash
-    umount /mnt/raid
-    sync
-    ```
+   ```bash
+   umount /mnt/raid
+   sync
+   ```
 15. `reboot`
 16. Boot from RAID drive.
 17. Install ESXi to the USB drive.
 18. After ESXi is installed successfully, boot into *Rescue* mode again to wipe the RAID drive's partition table (so it can be initialized as datastore in ESXi, like it was supposed to):
-    ```bash
-    dd if=/dev/zero of=/dev/sda bs=16 count=16 && sync
-    ```
+   ```bash
+   dd if=/dev/zero of=/dev/sda bs=16 count=16 && sync
+   ```
 19. Reboot
 20. Run ESXi from USB drive & have fun!
 
