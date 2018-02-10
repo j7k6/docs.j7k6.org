@@ -12,6 +12,9 @@ tags: [vmware,esxi,ssh]
    ```bash
    chmod +t /etc/ssh/keys-root/authorized_keys
    ```
-3. Run `/sbin/auto-backup.sh` to make the `authorized_keys` file persistent.
+3. Make the `authorized_keys` file persistent:
+   ```bash
+   /sbin/auto-backup.sh
+   ```
 
 ---
