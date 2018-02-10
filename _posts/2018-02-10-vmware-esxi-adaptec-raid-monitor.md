@@ -9,6 +9,7 @@ tags: [vmware,esxi,adaptec,raid,monitoring]
 3. SCP the `cim/esxi6_0/cim/vmware-esx-provider-arc*.vib` files to the ESXi system.
 4. On ESXi, install the driver bundle:
    ```bash
+   esxcli software acceptance set --level=CommunitySupported
    esxcli software vib install -v="/tmp/vmware-esx-provider-arcconf.vib" --no-sig-check
    esxcli software vib install -v="/tmp/vmware-esx-provider-arc-cim-provider.vib" --no-sig-check
    ```
