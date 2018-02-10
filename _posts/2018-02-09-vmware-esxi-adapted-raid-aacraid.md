@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title: "Install Adaptec RAID Controller (aacraid) Driver on VMware ESXi"
 tags: [vmware,esxi,adaptec,raid,aacraid]
 ---
