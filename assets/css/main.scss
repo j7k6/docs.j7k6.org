@@ -390,11 +390,7 @@ blockquote {
   margin-left: 0.5em;
   padding-left: 0.75em;
   font-style: italic;
-  color: $code;
-}
-
-p {
-  margin: 0 auto 1.5em auto;
+  color: lighten($black, 30%);
 }
 
 p {
