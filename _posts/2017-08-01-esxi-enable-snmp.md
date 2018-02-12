@@ -5,7 +5,7 @@ tags: [vmware,esxi,snmp]
 ---
 
 ```bash
-esxcli system snmp set --communities Public
+esxcli system snmp set --communities <$COMMUNITY_STRING>
 esxcli system snmp set --enable true
 
 esxcli network firewall ruleset set --ruleset-id snmp --allowed-all true

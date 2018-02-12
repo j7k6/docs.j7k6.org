@@ -5,8 +5,8 @@ tags: [shell, grep]
 ---
 
 ```bash
-grep -rli "$OLD_STRING" . | \
-  xargs -i@ sed -i 's/$OLD_STRING/$NEW_STRING/g' @
+grep -rli "<$OLD_STRING>" . | \
+  xargs -i@ sed -i 's/<$OLD_STRING>/<$NEW_STRING>/g' @
 ```
 
 ---

@@ -5,7 +5,7 @@ tags: [mail, exchange, powershell]
 ---
 
 ```powershell
-Get-MailboxStatistics $USER | ft DisplayName, TotalItemSize, ItemCount
+Get-MailboxStatistics <$USER> | ft DisplayName, TotalItemSize, ItemCount
 ```
 
 ---

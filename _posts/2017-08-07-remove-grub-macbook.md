@@ -8,7 +8,7 @@ tags: [macos, grub, linux, bootloader]
 mkdir mnt
 sudo mount -t msdos /dev/disk0s1 mnt
 cd mnt/EFI/
-sudo rm -rf <DISTRO>
+sudo rm -rf <$LINUX_DISTRO_NAME>
 sudo reboot
 ```
 

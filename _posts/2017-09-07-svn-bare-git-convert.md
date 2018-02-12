@@ -5,7 +5,7 @@ tags: [git,svn]
 ---
 
 ```bash
-git svn clone -s  file://<SVN_REPO_PATH> <GIT_REPO>
+git svn clone -s  file://<$SVN_REPO_PATH> <$GIT_REPO>
 ```
 
 ---

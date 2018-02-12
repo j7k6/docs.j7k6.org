@@ -17,7 +17,7 @@ server {
 
 ### Generate .htpasswd:
 ```bash
-printf "$USER:$(openssl passwd -apr1 $PASSWORD)\n" >> /etc/nginx/.htpasswd
+printf "<$USER>:$(openssl passwd -apr1 <$PASSWORD>)\n" >> /etc/nginx/.htpasswd
 ```
 
 ---

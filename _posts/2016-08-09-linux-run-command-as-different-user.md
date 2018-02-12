@@ -5,7 +5,7 @@ tags: [linux]
 ---
 
 ```bash
-su - $USER -c "$COMMAND"
+su - <$USER> -c "<$COMMAND>"
 ```
 
 ---

@@ -5,7 +5,7 @@ tags: [linux, networking]
 ---
 
 ```bash
-ip route replace default via <GATEWAY_IP>
+ip route replace default via <$GATEWAY_IP>
 ```
 
 ---

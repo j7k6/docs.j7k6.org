@@ -11,8 +11,8 @@ var crypto = require('crypto');
 var sleep = require('sleep');
 
 // api key & secret
-var apiKey = '$API_KEY';
-var secret = '$SECRET';
+var apiKey = '<$API_KEY>';
+var secret = '<$API_SECRET>';
 
 // get frob
 var frobApiSig = secret+'api_key'+apiKey+'formatjsonmethodflickr.auth.getFrobnojsoncallback1';

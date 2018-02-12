@@ -5,7 +5,7 @@ tags: [wget]
 ---
 
 ```bash
-wget -mpck --user-agent="" -e robots=off -E http://$URL/
+wget -mpck --user-agent="" -e robots=off -E http://<$URL>/
 ```
 
 Example usage: Convert a Wordpress Blog to a static site.

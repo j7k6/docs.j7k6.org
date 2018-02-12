@@ -5,7 +5,7 @@ tags: [vmware, esxi, virtualization]
 ---
 
 1. List VMs: `esxcli vm process list`
-2. Force Shutdown: `esxcli vm process kill --type=force --world-id=$WORLDNUMBER`
+2. Force Shutdown: `esxcli vm process kill --type=force --world-id=<$WORLD_ID>`
 
 
 ---

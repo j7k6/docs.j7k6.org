@@ -6,7 +6,7 @@ tags: [vmware, esxi, syslog, logs]
 
 ### Enable Remote Syslog:
 ```sh
-esxcli system syslog config set --loghost='udp://$SYSLOG_SERVER:514'
+esxcli system syslog config set --loghost='udp://<$SYSLOG_SERVER>:514'
 esxcli system syslog reload
 ```
 

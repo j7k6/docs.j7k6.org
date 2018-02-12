@@ -11,12 +11,12 @@ apt-get install xtables-addons-dkms
 
 ### Tarpit Source IP
 ```bash
-iptables -A INPUT -p tcp -s $SOURCE_IP -j TARPIT
+iptables -A INPUT -p tcp -s <$SOURCE_IP> -j TARPIT
 ```
 
 ### Remove Source IP from Tarpit
 ```bash
-iptables -D INPUT -p tcp -s $SOURCE_IP -j TARPIT
+iptables -D INPUT -p tcp -s <$SOURCE_IP> -j TARPIT
 ```
 
 ---

@@ -11,10 +11,10 @@ tags: [ssh]
 # $REMOTE_PORT: open port on remote site
 
 # Forward Tunnel: map port from remote machine/network on local machine
-ssh -L $LOCAL_PORT:$REMOTE_IP:$REMOTE_PORT $USER@$SERVER
+ssh -L <$LOCAL_PORT>:<$REMOTE_IP>:<$REMOTE_PORT> <$USER>@<$SERVER>
 
 # Reverse Tunnel: make local port accessable to remote machine
-ssh -R $REMOTE_PORT:$LOCAL_IP:$LOCAL_PORT $USER@$SERVER
+ssh -R <$REMOTE_PORT>:<$LOCAL_IP>:<$LOCAL_PORT> <$USER>@<$SERVER>
 ```
 
 ---

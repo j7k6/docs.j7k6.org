@@ -25,7 +25,7 @@ d-i mirror/http/proxy string
 
 # user
 d-i passwd/make-user boolean false
-d-i passwd/root-password-crypted password $6$Tw0wWATN/7$uqxdip/p5S6RpzO9iFNW.aBgSLVHtT/M8bpCcW8g8dfnmkzS6shy1kTCHvDxDtfuOMTvSxwVXnfaUJYTQy.Th0
+d-i passwd/root-password-crypted password <$CRYPTED_ROOT_PASSWORD>
 
 # time
 d-i clock-setup/utc boolean true

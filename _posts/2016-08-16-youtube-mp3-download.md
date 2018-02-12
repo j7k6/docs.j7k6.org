@@ -9,7 +9,7 @@ tags: [macos, youtube, mp3]
 brew install youtube-dl ffmpeg
 
 # download & convert
-youtube-dl "$YOUTUBE_ID" --extract-audio --audio-format mp3
+youtube-dl "<$YOUTUBE_VIDEO_ID>" --extract-audio --audio-format mp3
 ```
 
 ---

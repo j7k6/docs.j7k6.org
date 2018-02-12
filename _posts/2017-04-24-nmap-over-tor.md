@@ -16,7 +16,7 @@ tags: [security, tor, nmap, linux]
    ```
 3. Portscan:
    ```bash
-   proxychains nmap -sT -PN -n -sV -p 22,80,443 <TARGET>
+   proxychains nmap -sT -PN -n -sV -p 22,80,443 <$TARGET_IP>
    ```
 
 > *Note*: `tor` has to be running for this!

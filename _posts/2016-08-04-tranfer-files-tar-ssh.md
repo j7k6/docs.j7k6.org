@@ -5,9 +5,9 @@ tags: [tar, ssh]
 ---
 
 ```bash
-tar czhf - $SRC_DIR | \
-  ssh $SSH_USER@$SSH_HOST \
-    "tar xzhf - -C $DST_DIR"
+tar czhf - <$SRC_DIR> | \
+  ssh <$SSH_USER>@<$SSH_HOST> \
+    "tar xzhf - -C <$DST_DIR>"
 ```
 
 ---

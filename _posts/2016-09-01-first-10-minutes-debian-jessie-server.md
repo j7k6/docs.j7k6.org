@@ -18,12 +18,12 @@ dpkg-reconfigure locales
 3. Set parameters:
 ```bash
 export DEBIAN_FRONTEND="noninteractive"
-export EMAIL="postmaster@domain.com"
+export EMAIL="<$EMAIL_ADDRESS>"
 export MAIL_RELAY=""
-export USER="deploy"
-export PASSWORD="RANDOM_PASSWORD"
-export SSH_PUBKEY="ssh-rsa..."
-export SSH_PORT="2222"
+export USER="<DEPLOY_USER>"
+export PASSWORD="<$RANDOM_PASSWORD>"
+export SSH_PUBKEY="<PUB_KEY>"
+export SSH_PORT="<CUSTOM_SSH_PORT>"
 ```
 
 4. Update & install packages:

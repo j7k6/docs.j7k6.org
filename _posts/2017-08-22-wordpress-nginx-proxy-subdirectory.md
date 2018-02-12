@@ -20,8 +20,8 @@ location /blog/ {
 
 ### wp-config.php
 ```
-define('WP_HOME', 'https://<DOMAIN>/blog');
-define('WP_SITEURL', 'https://<DOMAIN>/blog');
+define('WP_HOME', 'https://<$DOMAIN>/blog');
+define('WP_SITEURL', 'https://<$DOMAIN>/blog');
 
 $_SERVER['REQUEST_URI'] = str_replace("/wp-admin/", "/blog/wp-admin/",  $_SERVER['REQUEST_URI']);
 ```

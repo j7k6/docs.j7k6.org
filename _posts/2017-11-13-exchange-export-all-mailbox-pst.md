@@ -5,7 +5,7 @@ tags: [exchange]
 ---
 
 ```powershell
-foreach ($Mailbox in (Get-Mailbox)) { New-MailboxExportRequest -Mailbox $Mailbox -FilePath "\\<NETWORK_SHARE>\$($Mailbox.Alias).pst" }
+foreach ($Mailbox in (Get-Mailbox)) { New-MailboxExportRequest -Mailbox $Mailbox -FilePath "\\<$NETWORK_SHARE>\$($Mailbox.Alias).pst" }
 ```
 
 ---

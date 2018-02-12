@@ -14,9 +14,9 @@ tags: [zabbix,windows-server,monitoring]
    ```powershell
    del "c:\zabbix\conf\zabbix_agentd.win.conf"
 
-   "Server=<ZABBIX_SERVER>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII
-   "ServerActive=<ZABBIX_SERVER>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII -Append
-   "Hostname=<ZABBIX_AGENT>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII -Append
+   "Server=<$ZABBIX_SERVER>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII
+   "ServerActive=<$ZABBIX_SERVER>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII -Append
+   "Hostname=<$ZABBIX_AGENT>" | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII -Append
    "LogFile=c:\zabbix\zabbix_agentd.log"  | Out-File -FilePath "c:\zabbix\conf\zabbix_agentd.win.conf" -Encoding ASCII -Append
    ```
 3. Install Service & Start *Zabbix Agent*:

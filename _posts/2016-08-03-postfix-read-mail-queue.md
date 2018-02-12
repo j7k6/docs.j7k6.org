@@ -5,7 +5,7 @@ tags: [mail, postfix]
 ---
 
 ```bash
-postcat -q $MESSAGE_ID
+postcat -q <$MESSAGE_ID>
 ```
 
 ---

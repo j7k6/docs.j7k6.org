@@ -7,7 +7,7 @@ tags: [windows-10, fix]
 1. `diskpart`
 3. `select disk 0`
 3. `list partition`
-4. `select partition <PART#>`
+4. `select partition <$PARTITION_ID>`
 5. `delete partition override`
 
 ---

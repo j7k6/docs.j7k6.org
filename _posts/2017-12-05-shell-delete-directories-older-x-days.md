@@ -5,7 +5,7 @@ tags: [shell,linux]
 ---
 
 ```bash
-find <PATH>/* -type d -ctime +<DAYS> -exec rm -rf {} \;
+find <$PATH>/* -type d -ctime +<$DAYS> -exec rm -rf {} \;
 ```
 
 ---

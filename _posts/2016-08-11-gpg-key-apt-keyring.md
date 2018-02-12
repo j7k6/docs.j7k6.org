@@ -5,7 +5,7 @@ tags: [pgp, debian, ubuntu, linux]
 ---
 
 ```bash
-apt-key adv --keyserver pgpkeys.mit.edu --recv-keys $KEY_ID
+apt-key adv --keyserver pgpkeys.mit.edu --recv-keys <$KEY_ID>
 ```
 
 ---

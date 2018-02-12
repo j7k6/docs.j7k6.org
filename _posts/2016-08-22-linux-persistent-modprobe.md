@@ -5,8 +5,8 @@ tags: [linux, kernel]
 ---
 
 ```bash
-modprobe $KERNEL_MODULE
-echo "$KERNEL_MODULE" | sudo tee -a /etc/modules
+modprobe <$KERNEL_MODULE>
+echo "<$KERNEL_MODULE>" | sudo tee -a /etc/modules
 ```
 
 ---
