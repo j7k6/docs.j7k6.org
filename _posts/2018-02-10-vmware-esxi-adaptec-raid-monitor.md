@@ -14,8 +14,7 @@ tags: [vmware,esxi,adaptec,raid,monitoring]
    esxcli software vib install -v="/tmp/vmware-esx-provider-arc-cim-provider.vib" --no-sig-check
    ```
 5. Reboot ESXi.
-
-In *vSphere*, navigate to *Monitor* > *Hardware* > *Storage* to view the RAID Controller's status:
-![vmware-esxi-adaptec-raid-monitor.png](/files/vmware-esxi-adaptec-raid-monitor.png)
+6. In *vSphere*, navigate to *Monitor* > *Hardware* > *Storage* to view the RAID Controller's status:
+   ![vmware-esxi-adaptec-raid-monitor.png](/files/vmware-esxi-adaptec-raid-monitor.png)
 
 ---
