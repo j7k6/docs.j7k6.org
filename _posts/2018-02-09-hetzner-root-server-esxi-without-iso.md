@@ -39,7 +39,7 @@ This is how made the RAID a bootable ESXi installer disk:
   ```bash
   partprobe && sync
   ```
-6. Format Partition as *FAT*:
+6. Format partition as *FAT*:
    ```bash
    mkfs.vfat -F 32 /dev/sda1
    ```
@@ -51,7 +51,7 @@ This is how made the RAID a bootable ESXi installer disk:
    ```bash
    dd if=/usr/lib/syslinux/mbr/mbr.bin of=/dev/sda
    ```
-9. Create directories:
+9. Create mount points:
    ```bash
    mkdir -p /mnt/{iso,raid}
    ```

@@ -11,13 +11,13 @@ To monitor a website in **Zabbix**, a new *web scenario* has to be created.
 2. Go to the **Web scenarios** tab and click on *Create web scenario*.
 3. **Scenario**:
    ![scenario.png](/files/zabbix-website-monitoring/scenario.png)
-   - *Name*: `<WEBSITE_TITLE>`
+   - *Name*: `<$WEBSITE_TITLE>`
    - *Application* OR *New application*: `HTTP`
    - *Enabled*: 
 4. **Steps**:
    ![steps.png](/files/zabbix-website-monitoring/steps.png)
-   - *Name*: `<WEBSITE_TITLE>`
-   - *URL*: `<WEBSITE_URL>`
+   - *Name*: `<$WEBSITE_TITLE>`
+   - *URL*: `<$WEBSITE_URL>`
    - *Follow redirects*: `x`
    - *Retrieve only headers*: `x`
    - *Required status codes*: `200`
@@ -28,9 +28,9 @@ The trigger will take action (e.g. send a notification) when the website does no
 On the host's page, go to the **Triggers** tab and click on *Create trigger*:
 
 ![trigger.png](/files/zabbix-website-monitoring/trigger.png)
-- *Name*: `<WEBSITE_TITLE>`
+- *Name*: `<$WEBSITE_TITLE>`
 - *Severity*: `High`
-- *Expression*: `{<HOST>:web.test.error[<WEBSITE_TITLE>].strlen()}>0 and {<HOST>:web.test.fail[<WEBSITE_TITLE>].last()}>0`
+- *Expression*: `{<$HOST>:web.test.error[<$WEBSITE_TITLE>].strlen()}>0 and {<$HOST>:web.test.fail[<$WEBSITE_TITLE>].last()}>0`
 - *Allow manual close*: `x`
 - *Enabled*: `x`
 

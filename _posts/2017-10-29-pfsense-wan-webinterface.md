@@ -24,7 +24,7 @@ Another option is to forward port 443 on the pfSense LAN interface to the local 
  ```
 3. Connect via SSH:
  ```bash
- ssh -L 4443:<LAN_IP>:443 root@<WAN_IP>
+ ssh -L 4443:<$LAN_IP>:443 root@<$WAN_IP>
  ```
 4. Browse to `https://localhost:4443`.
 
