@@ -5,7 +5,7 @@ tags: [network, nmap]
 ---
 
 ```bash
-nmap -sP $NETWORK/$NETMASK
+nmap -sP <$NETWORK>/<$NETMASK>
 ```
 
 ---

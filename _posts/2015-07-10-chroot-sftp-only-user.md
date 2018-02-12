@@ -5,12 +5,12 @@ tags: [chroot, ssh, linux, sftp]
 ---
 
 ```bash
-usermod -G sftp $USER
-usermod -s /bin/false $USER
-chown root:root /home/$USER
-chmod 0755 /home/$USER
-mkdir /home/$USER/uploads
-chown $USER:$USER /home/$USER/uploads
+usermod -G sftp <$USER>
+usermod -s /bin/false <$USER>
+chown root:root /home/<$USER>
+chmod 0755 /home/<$USER>
+mkdir /home/<$USER>/uploads
+chown <$USER>:<$USER> /home/<$USER>/uploads
 ```
 
 Edit `/etc/ssh/sshd_config`:

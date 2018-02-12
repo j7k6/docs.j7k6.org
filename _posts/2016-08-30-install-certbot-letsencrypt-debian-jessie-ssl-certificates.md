@@ -13,7 +13,7 @@ apt-get install -y certbot -t jessie-backports
 
 ### Request & Install certificate from Let's Encrypt
 ```bash
-certbot certonly --email "postmaster@$DOMAIN" --agree-tos --standalone -d "$DOMAIN"
+certbot certonly --email "postmaster@<$DOMAIN>" --agree-tos --standalone -d "<$DOMAIN>"
 ```
 
 ---

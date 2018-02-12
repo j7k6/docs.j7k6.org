@@ -6,12 +6,12 @@ tags: [unix,date]
 
 ### GNU/Linux
 ```bash
-date -d @<TIMESTAMP>
+date -d @<$TIMESTAMP>
 ```
 
 ### MacOS
 ```bash
-date -r <TIMESTAMP>
+date -r <$TIMESTAMP>
 ```
 
 ---

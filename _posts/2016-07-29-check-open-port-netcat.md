@@ -5,7 +5,7 @@ tags: [netcat]
 ---
 
 ```bash
-nc -z $SERVER $PORT
+nc -z <$SERVER> <$PORT>
 ```
 
 ---

@@ -5,7 +5,7 @@ tags: [wget, ftp]
 ---
 
 ```bash
-wget -r -l inf -nH -nc --restrict-file-names=nocontrol ftp://$USER:'$PASSWORD'@$SERVER/
+wget -r -l inf -nH -nc --restrict-file-names=nocontrol ftp://<$USER>:'<$PASSWORD>'@<$SERVER>/
 ```
 
 ---

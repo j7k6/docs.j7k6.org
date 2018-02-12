@@ -7,7 +7,7 @@ tags: [ldap, gitlab]
 Run `gitlab-rails console production` and enter those commands:
 
 ```
-user = User.find_by_email("$USER_EMAIL")
+user = User.find_by_email("<$USER_EMAIL>")
 user.state = "active"
 user.save
 exit

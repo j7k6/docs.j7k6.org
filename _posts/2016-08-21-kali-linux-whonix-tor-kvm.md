@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Kali Linux with Whonix Tor Gateway on KVM"
-tags: [kali, linux, whonix, tor, kvm, virtualization, network]
+tags: [kali, linux, whonix, tor, kvm, virtualization, network, pentesting]
 ---
 
 ## Prerequirements
 
 Connect to Host via SSH with tunneled ports:
 ```bash
-ssh $USER@$HOST -L 5910:localhost:5910 -L 5911:localhost:5911
+ssh <$USER>@<$HOST> -L 5910:localhost:5910 -L 5911:localhost:5911
 ```
 
 ## Whonix Gateway

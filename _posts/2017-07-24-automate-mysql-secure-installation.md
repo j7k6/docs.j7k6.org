@@ -5,7 +5,7 @@ tags: [mysql]
 ---
 
 ```bash
-export MYSQL_ROOT_PASSWORD="<PASSWORD>"
+export MYSQL_ROOT_PASSWORD="<$PASSWORD>"
 
 mysql -uroot << 'EOF'
 UPDATE mysql.user SET Password=PASSWORD('$MYSQL_ROOT_PASSWORD') WHERE User='root';

@@ -5,7 +5,7 @@ tags: [windows-server]
 ---
 
 ```powershell
-slmgr.vbs -ipk <PRODUCT_KEY>
+slmgr.vbs -ipk <$PRODUCT_KEY>
 slmgr.vbs -ato
 ```
 

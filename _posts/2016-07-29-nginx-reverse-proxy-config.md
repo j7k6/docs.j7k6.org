@@ -5,8 +5,8 @@ tags: [nginx, proxy]
 ---
 
 ```
-upstream $PROXY_NAME {
-  server 127.0.0.1:$PROXY_PORT;
+upstream <$PROXY_NAME> {
+  server 127.0.0.1:<$PROXY_PORT>;
 }
 
 server {
@@ -14,7 +14,7 @@ server {
     proxy_set_header  Host      $host;
     proxy_set_header  Proxy     "";
     proxy_set_header  X-Real-IP $remote_addr;
-    proxy_pass                  http://$PROXY_NAME;
+    proxy_pass                  http://<$PROXY_NAME>;
   }
 }
 ```

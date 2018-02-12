@@ -11,18 +11,18 @@ tags: [vpn,l2tp,edgerouter,radius]
    set vpn ipsec ipsec-interfaces interface eth0
    
    set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
-   set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <PRE_SHARED_SECRET>
+   set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <$PRE_SHARED_SECRET>
 
-   set vpn l2tp remote-access client-ip-pool start <START_ADDRESS>
-   set vpn l2tp remote-access client-ip-pool stop <END_ADDRESS>
+   set vpn l2tp remote-access client-ip-pool start <$START_ADDRESS>
+   set vpn l2tp remote-access client-ip-pool stop <$END_ADDRESS>
 
-   set vpn l2tp remote-access dns-servers server-1 <DNS1>
-   set vpn l2tp remote-access dns-servers server-2 <DNS2>
+   set vpn l2tp remote-access dns-servers server-1 <$DNS1>
+   set vpn l2tp remote-access dns-servers server-2 <$DNS2>
 
-   set vpn l2tp remote-access outside-address <WAN_ADDRESS>
+   set vpn l2tp remote-access outside-address <$WAN_ADDRESS>
 
    set vpn l2tp remote-access authentication mode radius
-   set vpn l2tp remote-access authentication radius-server <RADIUS_IP> key <RADIUS_KEY>
+   set vpn l2tp remote-access authentication radius-server <$RADIUS_IP> key <$RADIUS_KEY>
    ```
 4. Configure **Firewall**:
    ```

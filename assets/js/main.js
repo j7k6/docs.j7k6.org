@@ -7,6 +7,10 @@ $(document).ready(function() {
     $('#comments').show();
   });
 
+  $('div.post code').each(function() {
+    $(this).html($(this).text().replace(/<(\$[A-Z|_|0-9]+)>/g, '<span class="var">$1</span>'));
+  });
+
 	$.getJSON("/posts.json", function(data) {
     var resultList = $('.results ul li');
 

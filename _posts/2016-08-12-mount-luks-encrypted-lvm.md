@@ -6,7 +6,7 @@ tags: [luks, lvm, encryption, linux]
 
 ### Decrypt LUKS:
 ```bash
-cryptsetup luksOpen $DISK $MAPPER_LABEL
+cryptsetup luksOpen <$DISK> <$MAPPER_LABEL>
 ```
 
 ### Scan LVMs
@@ -16,7 +16,7 @@ vgscan
 
 ### Activate Volume Group
 ```bash
-vgchange -ay $VOLUME_GROUP
+vgchange -ay <$VOLUME_GROUP>
 ```
 
 ### List Logical Volumes
@@ -26,7 +26,7 @@ lvs
 
 ### Mount Logical Volume
 ```bash
-mount /dev/$VOLUME_GROUP/$LOGICAL_VOLUME /mnt
+mount /dev/<$VOLUME_GROUP>/<$LOGICAL_VOLUME> /mnt
 ```
 
 ---

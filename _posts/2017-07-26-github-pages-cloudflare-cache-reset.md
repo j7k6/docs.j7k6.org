@@ -14,9 +14,9 @@ to the repo. Edit `.git/hooks/post-receive`:
 ```
 #!/bin/sh
 
-export CLOUDFLARE_AUTH_EMAIL="<EMAIL>"
-export CLOUDFLARE_API_KEY="<API_KEY>"
-export CLOUDFLARE_ZONE_ID="<ZONE_ID>"
+export CLOUDFLARE_AUTH_EMAIL="<$EMAIL>"
+export CLOUDFLARE_API_KEY="<$API_KEY>"
+export CLOUDFLARE_ZONE_ID="<$ZONE_ID>"
 
 sleep 10
 

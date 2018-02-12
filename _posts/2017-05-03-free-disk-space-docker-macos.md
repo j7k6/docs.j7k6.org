@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Free Disk Space from Docker VM on MacOS"
-tags: [docker, macos, fix]
+tags: [docker,macos,fix]
 ---
 
 1. Connect to VM:

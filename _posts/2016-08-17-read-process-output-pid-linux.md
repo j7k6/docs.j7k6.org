@@ -6,12 +6,12 @@ tags: [linux]
 
 # stdout
 ```bash
-tail -f /proc/$PID/fd/1
+tail -f /proc/<$PID>/fd/1
 ```
 
 ### stderr
 ```bash
-tail -f /proc/$PID/fd/2
+tail -f /proc/<$PID>/fd/2
 ```
 
 ---

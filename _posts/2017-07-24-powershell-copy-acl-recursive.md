@@ -5,8 +5,8 @@ tags: [powershell]
 ---
 
 ```powershell
-Get-ChildItem <TARGET> -Recurse -Force | %{
-  Get-Acl <SOURCE> | Set-Acl -Path $_.fullname
+Get-ChildItem <$TARGET> -Recurse -Force | %{
+  Get-Acl <$SOURCE> | Set-Acl -Path $_.fullname
 }
 ```
 

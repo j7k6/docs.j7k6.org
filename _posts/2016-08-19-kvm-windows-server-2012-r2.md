@@ -6,7 +6,7 @@ tags: [windows-server, kvm]
 
 ### Conncet to Host with SSH and VNC Port Tunnel
 ```bash
-ssh $USER@$HOST -L 5901:localhost:5901
+ssh <$USER>@<$HOST> -L 5901:localhost:5901
 ```
 
 ### Create Disk Image

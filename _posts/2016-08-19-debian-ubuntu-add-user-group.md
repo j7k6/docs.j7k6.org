@@ -5,7 +5,7 @@ tags: [debian, ubuntu, linux, user]
 ---
 
 ```bash
-usermod -aG $GROUP $USER
+usermod -aG <$GROUP> <$USER>
 ```
 
 ---

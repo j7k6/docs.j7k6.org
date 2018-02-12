@@ -23,9 +23,9 @@ Another option is to forward port 443 on the pfSense LAN interface to the local 
  easyrule pass wan tcp any any 22
  ```
 3. Connect via SSH:
-   ```bash
-   ssh -L 4443:<LAN_IP>:443 root@<WAN_IP>
-   ```
+ ```bash
+ ssh -L 4443:<$LAN_IP>:443 root@<$WAN_IP>
+ ```
 4. Browse to `https://localhost:4443`.
 
 ## Troubleshooting

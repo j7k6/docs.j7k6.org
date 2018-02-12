@@ -5,7 +5,7 @@ tags: [windows, active-directory, ntp]
 ---
 
 ```powershell
-net time /DOMAIN:$DOMAIN /set /y
+net time /DOMAIN:<$DOMAIN> /set /y
 ```
 
 ---

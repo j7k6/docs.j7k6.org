@@ -5,7 +5,7 @@ tags: [macos]
 ---
 
 ```bash
-security unlock-keychain -p "$PASSWORD" "$HOME/Library/Keychains/login.keychain"
+security unlock-keychain -p "<$PASSWORD>" "$HOME/Library/Keychains/login.keychain"
 ```
 
 ---

@@ -8,7 +8,7 @@ Edit `/etc/systemd/system/getty@tty1.service.d/autologin.conf`:
 ```
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty --autologin $USER %I 38400
+ExecStart=-/sbin/agetty --autologin <$USER> %I 38400
 ```
 
 ---

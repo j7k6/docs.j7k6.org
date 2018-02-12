@@ -8,7 +8,7 @@ Email subjects are not UTF-8 encoded, even if the Content Type is set to `Conten
 To make the subject UTF-8 encoded, set the subject header line to:
 
 ```
-Subject: =?utf-8?B?<BASE64_ENCODED_SUBJECT>?=
+Subject: =?utf-8?B?<$BASE64_ENCODED_SUBJECT>?=
 ```
 
 ---

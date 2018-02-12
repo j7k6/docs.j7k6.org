@@ -5,7 +5,7 @@ tags: [ffmpeg, appletv, mkv, mp4]
 ---
 
 ```bash
-ffmpeg -i <INPUT_FILE>.mkv -c:v copy -c:a aac -strict experimental <OUTPUT_FILE>.m4v
+ffmpeg -i <$INPUT_FILE>.mkv -c:v copy -c:a aac -strict experimental <$OUTPUT_FILE>.m4v
 ```
 
 ---

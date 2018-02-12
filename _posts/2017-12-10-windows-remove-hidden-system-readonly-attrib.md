@@ -5,7 +5,7 @@ tags: [windows]
 ---
 
 ```powershell
-attrib -h -r -s "<DIRECTORY>\*.*" /s /d
+attrib -h -r -s "<$PATH>\*.*" /s /d
 ```
 
 ---

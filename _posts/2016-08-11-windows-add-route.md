@@ -5,7 +5,7 @@ tags: [windows, network, routing]
 ---
 
 ```powershell
-route [-p] ADD $NETWORK_IP MASK $SUBNET_MASK $GATEWAY_IP
+route [-p] ADD <$NETWORK_IP> MASK <$SUBNET_MASK> <$GATEWAY_IP>
 ```
 
 ---

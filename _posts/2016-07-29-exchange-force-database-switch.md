@@ -5,7 +5,7 @@ tags: [exchange]
 ---
 
 ```powershell
-Move-ActiveMailboxDatabase $DATABASE -ActivateOnServer $SERVER -SkipLagCheck -SkipClientExperience -SkipHealthChecks -MountDialOverride:None
+Move-ActiveMailboxDatabase <$DATABASE> -ActivateOnServer <$SERVER> -SkipLagCheck -SkipClientExperience -SkipHealthChecks -MountDialOverride:None
 ```
 
 ---

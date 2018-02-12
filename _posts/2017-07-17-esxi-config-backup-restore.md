@@ -13,7 +13,7 @@ vim-cmd hostsvc/firmware/backup_config
 ## Restore
 ```bash
 vim-cmd hostsvc/maintenance_mode_enter
-vim-cmd hostsvc/firmware/restore_config <CONFIG_BUNDLE>
+vim-cmd hostsvc/firmware/restore_config <$CONFIG_BUNDLE_FILE>
 ```
 
 ---

@@ -5,7 +5,7 @@ tags: [nat, network, macos]
 ---
 
 ```bash
-echo "nat on $EXT_INTERFACE inet from $INT_NETWORK/$INT_NETMASK to any -> $EXT_INTERFACE" | sudo pfctl -v -ef -
+echo "nat on <$EXT_INTERFACE> inet from <$INT_NETWORK>/<$INT_NETMASK> to any -> <$EXT_INTERFACE>" | sudo pfctl -v -ef -
 ```
 
 ---

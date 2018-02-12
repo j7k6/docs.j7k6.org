@@ -6,8 +6,8 @@ tags: [git]
 
 ### Change Specific Author
 ```bash
-export NEW_EMAIL="<NEW_EMAIL>"
-export NEW_NAME="<NEW_NAME>"
+export NEW_EMAIL="<$NEW_EMAIL>"
+export NEW_NAME="<$NEW_NAME>"
 
 git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]; then
   GIT_AUTHOR_EMAIL=$NEW_EMAIL;
@@ -18,8 +18,8 @@ git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]; then
 
 ### Change All
 ```bash
-export NEW_EMAIL="<NEW_EMAIL>"
-export NEW_NAME="<NEW_NAME>"
+export NEW_EMAIL="<$NEW_EMAIL>"
+export NEW_NAME="<$NEW_NAME>"
 
 git filter-branch --env-filter '
   GIT_AUTHOR_EMAIL=$NEW_EMAIL;

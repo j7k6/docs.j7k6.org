@@ -11,11 +11,11 @@ tags: [letsencrypt, nginx, debian, linux, ssllabs, ssl]
 ## Initial Nginx Config
 Initially, a non-SSL virtual host config has to be created, because the certificate is not yet available at this point.
 
-1. Create `/etc/nginx/sites-available/$DOMAIN.conf`:
+1. Create `/etc/nginx/sites-available/<$DOMAIN>.conf`:
    ```bash
    server {
      listen 80;
-     server_name $DOMAIN www.$DOMAIN;
+     server_name <$DOMAIN> www.<$DOMAIN>;
       
      location /.well-known/acme-challenge {
        root /var/www/letsencrypt;
@@ -28,7 +28,7 @@ Initially, a non-SSL virtual host config has to be created, because the certific
    ```
 3. Link virtual host config:
    ```bash
-   ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/
+   ln -s /etc/nginx/sites-available/<$DOMAIN>.conf /etc/nginx/sites-enabled/
    ```
 4. Restart Nginx:
    ```bash
@@ -38,36 +38,36 @@ Initially, a non-SSL virtual host config has to be created, because the certific
 ## Certbot
 1. Request a certificate from [*Let's Encrypt*](https://letsencrypt.org):
    ```bash
-   certbot certonly --rsa-key-size 4096 --webroot -w /var/www/letsencrypt -d $DOMAIN -d www.$DOMAIN
+   certbot certonly --rsa-key-size 4096 --webroot -w /var/www/letsencrypt -d $<DOMAIN> -d www.<$DOMAIN>
    ```
 2. Modify Renewal Cronjob in `/etc/cron.d/certbot`, append `--post-hook "service nginx reload"` to `certbot renew` command.
 
 ## Final Nginx SSL Config
 Now that the certificate is available, the final virtual host config can be deployed.
 
-1. Edit `/etc/nginx/sites-available/$DOMAIN.conf`:
+1. Edit `/etc/nginx/sites-available/<$DOMAIN>.conf`:
    ```
    server {
      listen 80;
-     server_name $DOMAIN www.$DOMAIN;
+     server_name <$DOMAIN> www.<$DOMAIN>;
 
      location /.well-known/acme-challenge {
        root /var/www/letsencrypt;
      }
 
      location / {
-       return 301 https://www.$DOMAIN$request_uri;
+       return 301 https://www.<$DOMAIN>$request_uri;
      }
    }
 
    server {
      listen 443 ssl http2;
-     server_name $DOMAIN www.$DOMAIN;
+     server_name <$DOMAIN> www.<$DOMAIN>;
 
      ssl on;
-     ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
-     ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
-     ssl_trusted_certificate /etc/letsencrypt/live/$DOMAIN/chain.pem;
+     ssl_certificate /etc/letsencrypt/live/<$DOMAIN>/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/<$DOMAIN>/privkey.pem;
+     ssl_trusted_certificate /etc/letsencrypt/live/<$DOMAIN>/chain.pem;
 
      ssl_protocols TLSv1.2;
      ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';

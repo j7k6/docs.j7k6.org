@@ -5,7 +5,7 @@ tags: [windows]
 ---
 
 ```powershell
-query user /server:$TARGET
+query user /server:<$TARGET>
 ```
 
 ---

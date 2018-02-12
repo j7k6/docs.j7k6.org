@@ -5,7 +5,7 @@ tags: [nodejs]
 ---
 
 ```javascript
-var hash = require('crypto').createHash('md5').update($STRING).digest("hex");
+var hash = require('crypto').createHash('md5').update(<$STRING>).digest("hex");
 ```
 
 ---

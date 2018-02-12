@@ -5,7 +5,7 @@ tags: [linux]
 ---
 
 ```
-readlink -f /proc/$PID/exe
+readlink -f /proc/<$PID>/exe
 ```
 
 ---

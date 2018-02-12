@@ -9,15 +9,15 @@ This is based on a `postfix` MX server, whose single purpose is to relay mails f
 1. Edit `/etc/postfix/main.cf`:
    ```
    ...
-   relay_domains = <DOMAIN>
-   relay_transport = smtp:[<EXCHANGE>]:25
+   relay_domains = <$DOMAIN>
+   relay_transport = smtp:[<$EXCHANGE_IP>]:25
    transport_maps = hash:/etc/postfix/transport_maps
    ...
    ```
 2. Edit `/etc/postfix/transport_maps`:
    ```
-   <DOMAIN> smtp:[<EXCHANGE>]:25
-   <USER>@<DOMAIN> smtp:<COMPANY>.mail.protection.outlook.com
+   <$DOMAIN> smtp:[<$EXCHANGE_IP>]:25
+   <$USER>@<$DOMAIN> smtp:<$ORG>.mail.protection.outlook.com
    ```
 3. Regenerate `transport_maps`:
    ```bash

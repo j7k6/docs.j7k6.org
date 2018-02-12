@@ -17,7 +17,7 @@ echo "rdr on en2 inet proto tcp to any port 443 -> 127.0.0.1 port 8080" | sudo p
 3. Run `mitmproxy`
 4. Send `~/.mitmproxy/mitmproxy-ca-cert.pem` to iPhone by mail & install the certificate.
 5. Set *HTTP Proxy* in iPhone WLAN settings:
-  - *Server*: `$HOST_IP`
+  - *Server*: `<$HOST_IP>`
   - *Port*: `8080`
 
 ---

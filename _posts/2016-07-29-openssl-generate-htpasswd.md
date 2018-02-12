@@ -5,7 +5,7 @@ tags: [shell, openssl, password]
 ---
 
 ```bash
-printf "$USER:$(openssl passwd -crypt $PASSWORD)\n" >> .htpasswd
+printf "<$USER>:$(openssl passwd -apr1 <$PASSWORD>)\n" >> .htpasswd
 ```
 
 ---

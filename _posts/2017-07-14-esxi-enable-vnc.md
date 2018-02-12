@@ -38,7 +38,7 @@ EOF
    > RemoteDisplay.vnc.port = "5901"
    > RemoteDisplay.vnc.password = "$PASSWORD"
 5. Power-on VM.
-6. Connect to VM display with a VNC client via `<ESX_HOST>:5901`.
+6. Connect to VM display with a VNC client via `<$ESX_HOST>:5901`.
 
 ---
 1. [https://www.hostingjamaica.com/knowledgebase/10078/How-do-I-enable-VNC-access-for-my-Esxi-hosts.html](https://www.hostingjamaica.com/knowledgebase/10078/How-do-I-enable-VNC-access-for-my-Esxi-hosts.html)

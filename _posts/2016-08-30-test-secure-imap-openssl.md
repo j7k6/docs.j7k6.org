@@ -5,21 +5,21 @@ tags: [imap, ssl]
 ---
 
 ```bash
-openssl s_client -crlf -connect $SERVER:993
+openssl s_client -crlf -connect <$SERVER>:993
 ```
 
 ```
 # login
-A login $USER $PASSWORD
+A login <$USER> <$PASSWORD>
 
 # show message count
 A status INBOX (messages)
 
 # read message body
-A fetch $ID rfc822.text
+A fetch <$MESSAGE_ID> rfc822.text
 
 # read message header
-A fetch $ID rfc822.header
+A fetch <$MESSAGE_ID> rfc822.header
 ```
 
 ---

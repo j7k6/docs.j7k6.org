@@ -5,7 +5,7 @@ tags: [windows, firewall]
 ---
 
 ```powershell
-netsh firewall set portopening tcp $PORT "$DESCRIPTION" enable all
+netsh firewall set portopening tcp <$PORT> "<$DESCRIPTION>" enable all
 ```
 
 ---

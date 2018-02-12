@@ -36,7 +36,7 @@ There are several options to do so, I decided to just spin up a FreeBSD Vagrant 
    ```
 3. Transfer compiled binary to FreeNAS system:
    ```bash
-   scp /usr/local/sbin/zabbix_agentd root@<FREENAS_IP>:/usr/local/sbin/
+   scp /usr/local/sbin/zabbix_agentd root@<$FREENAS_IP>:/usr/local/sbin/
    ```
 4. Leave VM: `exit`
 5. Destroy VM (optional): `vagrant destroy`
@@ -54,9 +54,9 @@ After the *zabbix_agentd* binary is transferred to the FreeNAS system, it's time
    ```
 2. Create `/etc/zabbix_agentd.conf`:
    ```
-   Server=<ZABBIX_SERVER_IP>
-   ServerActive=<ZABBIX_SERVER_IP>
-   Hostname=<ZABBIX_AGENT_HOSTNAME>
+   Server=<$ZABBIX_SERVER_IP>
+   ServerActive=<$ZABBIX_SERVER_IP>
+   Hostname=<$ZABBIX_AGENT_HOSTNAME>
    LogFile=/tmp/zabbix_agentd.log
    ```
 

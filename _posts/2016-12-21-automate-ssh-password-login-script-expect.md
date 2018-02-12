@@ -18,11 +18,11 @@ tags: [ssh, except, password]
 3. Run SSH command with wrapper script:
     - **SSH**:
       ```
-      ./ssh_wrapper $SSH_PASSWORD ssh -t -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST $COMMAND
+      ./ssh_wrapper <$SSH_PASSWORD> ssh -t -o StrictHostKeyChecking=no <$SSH_USER>@<$SSH_HOST> <$COMMAND>
       ```
     - **SCP**:
       ```
-      ./ssh_wrapper $SSH_PASSWORD scp -r $LOCAL_DIR/. $SSH_USER@$SSH_HOST:§REMOTE_DIR/
+      ./ssh_wrapper <$SSH_PASSWORD> scp -r <$LOCAL_DIR>/. <$SSH_USER>@<$SSH_HOST>:<$REMOTE_DIR>/
       ```
   
 ---

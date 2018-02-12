@@ -5,7 +5,7 @@ tags: [shell, sha]
 ---
 
 ```bash
-printf "$TEXT" | shasum -a 256
+printf "<$STRING>" | shasum -a 256
 ```
 
 ---

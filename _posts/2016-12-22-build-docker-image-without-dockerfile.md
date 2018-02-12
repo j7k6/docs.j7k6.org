@@ -5,7 +5,7 @@ tags: [docker]
 ---
 
 ```
-docker build -t $IMAGE_NAME - << EOF
+docker build -t <$IMAGE_NAME> - << EOF
 FROM alpine:latest
 ...
 EXPOSE 80

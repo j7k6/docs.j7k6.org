@@ -24,8 +24,8 @@ tags: [git, linux, debian, ubuntu]
    ```
 4. Create new Git repo:
    ```bash
-   sudo -u git mkdir ~git/$REPO.git
-   sudo -u git git -C ~git/$REPO.git init --bare
+   sudo -u git mkdir ~git/<$REPO>.git
+   sudo -u git git -C ~git/<$REPO>.git init --bare
    ```
 
 ---

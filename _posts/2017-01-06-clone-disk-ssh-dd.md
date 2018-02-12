@@ -5,7 +5,7 @@ tags: [dd, ssh, linux]
 ---
 
 ```bash
-ssh -C $USER@$REMOTE_HOST "dd if=/dev/sda" | dd of=/dev/sda
+ssh -C <$USER>@<$REMOTE_HOST> "dd if=/dev/sda" | dd of=/dev/sda
 ```
 
 ---

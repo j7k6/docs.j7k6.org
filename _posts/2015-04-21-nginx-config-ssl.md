@@ -14,12 +14,12 @@ server {
 
 server {
   listen 443;
-  server_name $DOMAIN;
+  server_name <$DOMAIN>;
   
   ssl on;
  
-  ssl_certificate /etc/ssl/certs/$DOMAIN.pem;
-  ssl_certificate_key /etc/ssl/private/$DOMAIN.pem;
+  ssl_certificate /etc/ssl/certs/<$DOMAIN>.pem;
+  ssl_certificate_key /etc/ssl/private/<$DOMAIN>.pem;
   ssl_dhparam /etc/ssl/certs/dhparam.pem;
   
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;

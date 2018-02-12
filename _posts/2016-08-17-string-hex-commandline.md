@@ -5,7 +5,7 @@ tags: [hex, converter]
 ---
 
 ```bash
-printf "$STRING" | xxd -p
+printf "<$STRING>" | xxd -p
 ```
 
 ---

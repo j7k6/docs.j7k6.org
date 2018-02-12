@@ -5,7 +5,7 @@ tags: [git]
 ---
 
 ```bash
-git checkout $COMMIT -- $FILE_TO_RESTORE
+git checkout <$COMMIT_ID> -- <$FILE_TO_RESTORE>
 ```
 
 ---

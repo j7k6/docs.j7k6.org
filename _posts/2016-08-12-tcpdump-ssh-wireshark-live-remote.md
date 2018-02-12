@@ -5,7 +5,7 @@ tags: [tcpdump, wireshark, ssh, network]
 ---
 
 ```bash
-ssh $USER@$SERVER tcpdump -s0 -w - -U $FILTER | wireshark -k -i -
+ssh <$USER>@<$SERVER> tcpdump -s0 -w - -U <$FILTER> | wireshark -k -i -
 ```
 
 ---

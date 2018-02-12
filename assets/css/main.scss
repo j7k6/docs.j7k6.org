@@ -8,6 +8,7 @@ $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
 $code: #333333;
+$var: #EB5A5B;
 
 $defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -309,19 +310,15 @@ footer {
 }
 
 blockquote {
-  border-left: 0.25em solid darken($light, 10%);
+  border-left: 0.25em solid $light;
   margin-left: 0.5em;
-  padding-left: 0.5em;
+  padding-left: 0.75em;
   font-style: italic;
-  color: lighten($black, 30%);
-
-  p {
-    white-space: pre;
-  }
+  color: $code;
 }
 
 p {
-  margin: 0.1em auto 1em auto;
+  margin: 1em auto;
 }
 
 pre, code {
@@ -345,6 +342,7 @@ pre {
     vertical-align: middle;
     color: $code !important;
     background: $light !important;
+    padding: 0.5em;
   }
 }
 
@@ -479,4 +477,8 @@ hr {
 .tags em {
   color: darken($light, 20%);
   padding-left: 0.25em;
+}
+
+.var {
+  color: $var;
 }

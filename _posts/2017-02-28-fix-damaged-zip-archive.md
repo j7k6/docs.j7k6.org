@@ -5,7 +5,7 @@ tags: [fix, zip]
 ---
 
 ```bash
-zip -FF $DAMAGED_FILE.ZIP -O $FIXED_FILE.ZIP
+zip -FF <$DAMAGED_ZIP_FILE> -O <$FIXED_ZIP_FILE>
 ```
 
 ---

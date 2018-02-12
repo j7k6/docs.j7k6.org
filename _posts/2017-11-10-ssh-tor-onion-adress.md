@@ -57,7 +57,7 @@ The SSH service is now available as Tor Hidden Service.
 2. Run `tor`
 3. Connect to SSH Hidden Service over Tor:
    ```bash
-   ssh <USER>@<ONION_ADDRESS>
+   ssh <$SSH_USER>@<$ONION_ADDRESS>
    ```
 
 ## (Optional)
