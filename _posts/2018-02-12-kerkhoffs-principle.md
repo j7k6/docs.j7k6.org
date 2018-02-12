@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kerckhoffs's Principle"
-tags: [quote]
+tags: [quotes]
 ---
 
 > A cryptosystem should be secure even if everything about the system, except the key, is public knowledge.
