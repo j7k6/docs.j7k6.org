@@ -6,7 +6,7 @@ tags: [vmware,esxi,ssh]
 
 1. Add *Public Key* to `authorized_keys` file on ESXi system:
    ```bash
-   echo "<PUB_KEY>" >> /etc/ssh/keys-root/authorized_keys
+   echo "<$PUB_KEY>" >> /etc/ssh/keys-root/authorized_keys
    ```
 2. Set *Sticky Bit* on file:
    ```bash

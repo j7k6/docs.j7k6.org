@@ -19,7 +19,7 @@ gg=G
 5. [esx]
 
 # search & replace
-:%s/OLD/NEW/g
+:%s/<$OLD>/<$NEW>/g
 
 # sort lines alphabetically
 1. [shift+v]

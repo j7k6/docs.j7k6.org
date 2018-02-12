@@ -5,7 +5,7 @@ tags: [macos, network, routing]
 ---
 
 ```bash
-sudo route -n add -net $NETWORK/$NETMASK $GATEWAY_IP
+sudo route -n add -net <$NETWORK>/<$NETMASK> <$GATEWAY_IP>
 ```
 
 ---

@@ -5,8 +5,8 @@ tags: [exchange, owa]
 ---
 
 ```powershell
-Remove-OwaVirtualDirectory -Identity '$SERVER\owa (Default Web Site)'
-New-OwaVirtualDirectory -InternalUrl 'https://$FQDN/owa' -WebSiteName 'Default Web Site'
+Remove-OwaVirtualDirectory -Identity '<$SERVER>\owa (Default Web Site)'
+New-OwaVirtualDirectory -InternalUrl 'https://<$FQDN>/owa' -WebSiteName 'Default Web Site'
 ```
 
 ---

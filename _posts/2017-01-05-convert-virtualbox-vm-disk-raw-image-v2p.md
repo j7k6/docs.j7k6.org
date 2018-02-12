@@ -5,7 +5,7 @@ tags: [virtualbox, virtualization]
 ---
 
 ```bash
-VBoxManage internalcommands converttoraw $VM.vdi $VM.raw
+VBoxManage internalcommands converttoraw <$VM>.vdi <$VM>.raw
 ```
 
 ---

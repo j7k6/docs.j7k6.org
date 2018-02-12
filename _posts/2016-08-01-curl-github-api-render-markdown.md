@@ -8,7 +8,7 @@ tags: [github, markdown, curl]
 curl \
   -H 'Content-Type: application/json' \
   -X POST \
-  -d '{"text": "$TEXT", "mode": "markdown"}' \
+  -d '{"text": "<$TEXT>", "mode": "markdown"}' \
   https://api.github.com/markdown
 ```
 

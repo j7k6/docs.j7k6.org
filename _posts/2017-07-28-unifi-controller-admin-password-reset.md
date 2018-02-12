@@ -10,7 +10,7 @@ tags: [unifi-controller,password-reset,mongodb]
    ```
 2. Reset Password for Admin User:
    ```bash
-   mongo --port 27117 ace --eval 'db.admin.update( { "name" : "<ADMIN_USER>" }, { $set : { "x_shadow" : "'`printf "<NEW_PASSWORD>" | mkpasswd -s -m sha-512`'" } } )'
+   mongo --port 27117 ace --eval 'db.admin.update( { "name" : "<$ADMIN_USER>" }, { $set : { "x_shadow" : "'`printf "<$NEW_PASSWORD>" | mkpasswd -s -m sha-512`'" } } )'
    ```
 
 ---

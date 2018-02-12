@@ -92,13 +92,10 @@ CMD /bin/sh /etc/iptables.sh; echo "nameserver 127.0.0.1" > /etc/resolv.conf; su
 ### Run
 
 ```bash
-docker build -t <IMAGE_NAME> .
-docker run -d --name=<CONTAINER_NAME> --restart=always --cap-add=NET_ADMIN --cap-add=NET_RAW <IMAGE_NAME>
-docker exec -it <CONTAINER_NAME> /bin/bash
+docker build -t <$IMAGE_NAME> .
+docker run -d --name=<$CONTAINER_NAME> --restart=always --cap-add=NET_ADMIN --cap-add=NET_RAW <$IMAGE_NAME>
+docker exec -it <$CONTAINER_NAME> /bin/bash
 ```
-
-> *Example Usage*: [A dockerized environment for using Kali Linux over Tor.](https://github.com/j7k6/kalitor)
-
 
 ---
 1. [https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy](https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy)

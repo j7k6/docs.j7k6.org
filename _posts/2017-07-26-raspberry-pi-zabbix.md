@@ -7,7 +7,7 @@ tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
 1. Install Packages:
    ```bash
    export DEBIAN_FRONTEND=noninteractive
-   export MYSQL_ROOT_PASSWORD="<PASSWORD>"
+   export MYSQL_ROOT_PASSWORD="<$PASSWORD>"
 
    echo mysql-server mysql-server/root_password select $MYSQL_ROOT_PASSWORD | debconf-set-selections
    echo mysql-server mysql-server/root_password_again select $MYSQL_ROOT_PASSWORD | debconf-set-selections

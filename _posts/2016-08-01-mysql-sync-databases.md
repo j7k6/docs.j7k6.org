@@ -5,7 +5,7 @@ tags: [mysql]
 ---
 
 ```bash
-mysqldump -uroot -p $SRC_DB | mysql -uroot -p $DST_DB
+mysqldump -uroot -p <$SRC_DB> | mysql -uroot -p <$DST_DB>
 ```
 
 ---

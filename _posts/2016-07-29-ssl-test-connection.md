@@ -5,7 +5,7 @@ tags: [ssl]
 ---
 
 ```bash
-openssl s_client -connect $SERVER:443
+openssl s_client -connect <$SERVER>:443
 ```
 
 ---

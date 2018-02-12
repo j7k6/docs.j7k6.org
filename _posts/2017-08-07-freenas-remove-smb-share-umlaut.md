@@ -18,7 +18,7 @@ Every attempt to fix this via the FreeNAS UI will fail, it's not possible to rem
    ```
 3. Delete Share:
    ```bash
-   delete from sharing_cifs_share where id=<SHARE_ID>;
+   delete from sharing_cifs_share where id=<$SHARE_ID>;
    ```
 
 ---

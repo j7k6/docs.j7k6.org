@@ -5,7 +5,7 @@ tags: [windows, password, powershell]
 ---
 
 ```powershell
-([adsi]"WinNT://<COMPUTER_NAME>/Administrator,user").SetPassword("NEW_PASSWORD")
+([adsi]"WinNT://<$COMPUTER_NAME>/Administrator,user").SetPassword("$NEW_PASSWORD")
 ```
 
 ---

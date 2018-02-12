@@ -8,6 +8,7 @@ $black: #212121;
 $link: #4DB6AC;
 $light: #F7F8F9;
 $code: #333333;
+$var: #EB5A5B;
 
 $defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -476,4 +477,8 @@ hr {
 .tags em {
   color: darken($light, 20%);
   padding-left: 0.25em;
+}
+
+.var {
+  color: $var;
 }

@@ -5,7 +5,7 @@ tags: [exchange]
 ---
 
 ```powershell
-New-MoveRequest -Identity '$USER' -TargetDatabase '$DATABASE'
+New-MoveRequest -Identity '<$USER>' -TargetDatabase '<$DATABASE>'
 ```
 
 ---

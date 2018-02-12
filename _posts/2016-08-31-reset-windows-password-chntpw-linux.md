@@ -22,7 +22,7 @@ chntpw -l SAM
 ```
 5. Select User:
 ```bash
-chntpw -u $USERNAME SAM 
+chntpw -u <$USERNAME> SAM 
 ```
 6. Select an Option from the Menu.
 7. Unmount Windows Partition & Reboot.

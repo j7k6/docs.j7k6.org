@@ -5,7 +5,7 @@ tags: [angularjs, chrome]
 ---
 
 ```javascript
-var scope = angular.element($('[ng-controller=$CTRLNAME]')).scope();
+var scope = angular.element($('[ng-controller=<$CTRLNAME>]')).scope();
 ```
 
 ---

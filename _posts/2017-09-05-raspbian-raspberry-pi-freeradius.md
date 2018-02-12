@@ -20,8 +20,8 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
 1. Edit `/etc/samba/smb.conf`:
    ```
    [global]
-     netbios name = <COMPUTER_NAME> 
-     workgroup = <NETBIOS_NAME>
+     netbios name = <$COMPUTER_NAME> 
+     workgroup = <$NETBIOS_NAME>
      server string = RADIUS server
      security = ads
      invalid users = root
@@ -32,7 +32,7 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
      winbind max domain connections = 5
      winbind max clients = 1000
      password server = *
-     realm = <WINDOWS_DOMAIN>
+     realm = <$WINDOWS_DOMAIN>
    ```
 3. Restart Service:
    ```bash
@@ -40,7 +40,7 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
    ```
 2. Join Windows Domain:
    ```bash
-   net ads join -U <DOMAIN_ADMIN>
+   net ads join -U <$DOMAIN_ADMIN>
    net ads testjoin
    ```
 
@@ -50,7 +50,7 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
    mschap {
      ...
      winbind_username = "%{mschap:User-Name}"
-     winbind_domain = "<WINDOWS_DOMAIN>"
+     winbind_domain = "<$WINDOWS_DOMAIN>"
      ... 
    }
    ```
@@ -61,7 +61,7 @@ tags: [raspberry-pi,raspbian,freeradius,samba,active-directory,security,linux]
    ```
 4. Test RADIUS with Active Directory Credentials:
    ```bash
-   radtest -t mschap <USERNAME> <PASSWORD> 127.0.0.1 0 <RADIUS_CLIENT_SECRET>
+   radtest -t mschap <$USERNAME> <$PASSWORD> 127.0.0.1 0 <$RADIUS_CLIENT_SECRET>
    ```
 
 ---

@@ -5,7 +5,7 @@ tags: [windows-server, dns]
 ---
 
 ```powershell
-Clear-DnsServerCache –ComputerName $SERVER -Force
+Clear-DnsServerCache –ComputerName <$SERVER> -Force
 ```
 
 ---

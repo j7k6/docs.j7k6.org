@@ -7,7 +7,7 @@ tags: [vmware, esxi, ssh, firewall]
 ### Add Rule
 ```sh
 esxcli network firewall ruleset set --ruleset-id sshServer --allowed-all false
-esxcli network firewall ruleset allowedip add --ruleset-id sshServer --ip-address $NET_IP/$NET_MASK
+esxcli network firewall ruleset allowedip add --ruleset-id sshServer --ip-address <$NET_IP>/<$NET_MASK>
 
 ### List Rules
 ```sh
