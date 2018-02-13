@@ -5,7 +5,7 @@ tags: [bash,shell]
 ---
 
 ```bash
-comm -2 <(sort <$FILE1>) <(sort <$FILE2>) | sed 's/^\s*//' > <$FILE3>
+comm -3 <(sort <$FILE1>) <(sort <$FILE2>) | sed 's/^\s*//' > <$FILE3>
 ```
 
 ---
