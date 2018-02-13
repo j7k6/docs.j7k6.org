@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('#comments').show();
   });
 
-  $('div.post code').each(function() {
+  $('div.post code').not('ul.meta code').each(function() {
     $(this).html($(this).text().replace(/<(\$[A-Z|_|0-9]+)>/g, '<span class="var">$1</span>'));
   });
 
