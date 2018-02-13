@@ -5,7 +5,11 @@ tags: [bash,shell]
 ---
 
 ```bash
-comm -3 <(sort <$FILE1>) <(sort <$FILE2>) | sed 's/^\s*//' > <$FILE3>
+# Lines only in <$FILE1>
+comm -23 <(sort <$FILE1>) <(sort <$FILE2>)
+
+# Lines only in <$FILE2>
+comm -13 <(sort <$FILE1>) <(sort <$FILE2>)
 ```
 
 ---
