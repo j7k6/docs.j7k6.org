@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Use SSH Pubkey with on VMware vCenter Appliance (VCSA)"
+title: "Use SSH Pubkey on VMware vCenter Server Appliance (VCSA)"
 tags: [vmware,vsca,ssh]
 ---
 
