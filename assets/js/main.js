@@ -1,10 +1,27 @@
 $(document).ready(function() {
+  var disqusShortname = 'j7k6';
+  var disqusLoaded = false;
+
+	function loadDisqus() {
+    if (!disqusLoaded) {
+      disqusLoaded = true;
+
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//'+disqusShortname+'.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (document.head || document.body).appendChild(s);
+      $('#comments').show();
+    }
+  }
+
   if(window.location.hash.substring(1).match(/^comment/gi)) {
-    $('#comments').show();
+    loadDisqus();
   }
 
   $('.disqus_count').click(function(e) {
-    $('#comments').show();
+    loadDisqus();
   });
 
   $('div.post code').not('ul.meta code').each(function() {
