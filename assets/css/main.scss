@@ -299,14 +299,6 @@ footer {
   * {
     color: lighten($black, 50%);
   }
-
-  li.donate, li.donate i {
-    color: lighten($black, 75%) !important;
-  }
-
-  li.donate:hover, li.donate:hover i {
-    color: lighten($black, 50%) !important;
-  }
 }
 
 blockquote {
