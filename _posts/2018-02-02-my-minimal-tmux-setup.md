@@ -78,4 +78,4 @@ if-shell 'test "$SSH_CONNECTION"' 'set -g status-bg red'
 ```
 
 ---
-1. [My Dotfiles Repo](https://github.com/j7k6/dotfiles)
+1. [My Dotfiles Repo](https://github.com/johnnyraccoon/dotfiles)

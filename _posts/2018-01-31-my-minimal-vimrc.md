@@ -132,6 +132,6 @@ cnoreabbrev w!! w !sudo tee > /dev/null %|       " write file with sudo
 ## ...
 And that's all the *vim* configuration I need!
 
-Of course I have a [Github](https://github.com/j7k6) repo for my [*dotfiles*](https://github.com/j7k6/dotfiles).
+Of course I have a [Github](https://github.com/johnnyraccoon) repo for my [*dotfiles*](https://github.com/johnnyraccoon/dotfiles).
 
 ---
