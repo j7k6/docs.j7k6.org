@@ -1,6 +1,6 @@
 paginate: 10
 paginate_path: /page/:num/
-name: docs.j7k6.org
+name: "My Sysadmin Cheatsheet"
 base: /
 permalink: /:title/
 encoding: utf-8
