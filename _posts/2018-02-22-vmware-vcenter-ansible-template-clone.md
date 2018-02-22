@@ -4,7 +4,8 @@ title: "Create VM from Template in VMware vCenter with Ansible"
 tags: [vmware,vcenter,ansible]
 ---
 
-> The `vsphere_guest` Ansible module requires the Python package `pysphere`. Install it with `pip install pysphere`.
+> The `vsphere_guest` Ansible module requires the Python package `pysphere`.
+> Install it with `pip install pysphere`.
 
 ```
 ---
