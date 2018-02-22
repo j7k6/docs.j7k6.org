@@ -25,15 +25,15 @@ tags: [vmware,vcenter,ansible]
   - name: "Clone new VM from Template"
     vsphere_guest:
       validate_certs: no
-      vcenter_hostname: "{{vcenter_hostname}}"
-      username: "{{vcenter_username}}"
-      password: "{{vsphere_password}}"
+      vcenter_hostname: "{% raw %}{{vcenter_hostname}}{% endraw %}"
+      username: "{% raw %}{{vcenter_username}}{% endraw %}"
+      password: "{% raw %}{{vsphere_password}}{% endraw %}"
       guest: "<$VM_NAME>"
       from_template: yes
       template_src: "<$TEMPLATE_NAME>"
       esxi:
-        datacenter: "{{vcenter_datacenter}}"
-        hostname: "{{vcenter_esxi_host}}"
+        datacenter: "{% raw %}{{vcenter_datacenter}}{% endraw %}"
+        hostname: "{% raw %}{{vcenter_esxi_host}}{% endraw %}"
 ```
 
 ---
