@@ -4,7 +4,7 @@ title: "Redirect HTTP to HTTPS on a Non-Default Port with Nginx"
 tags: [nginx,https]
 ---
 
-When *Nginx* serves HTTPS on another port than *443*, it returns a 400 error when not requested as `https://<$URL><$CUSTOM_PORT>` explicitly:
+When *Nginx* serves HTTPS on another port than *443*, it returns a 400 error when not requested as **`https://`**`example.com:8888` explicitly:
 > **`400 Bad Request`** `The plain HTTP request was sent to HTTPS port`
 
 To redirect to https on that port automatically, add this `error_page` directive to the *Nginx* server configuration:
