@@ -7,9 +7,8 @@ tags: [vmware,esxi,vnc]
 Instead of using the flakey ESXi HTML5 console viewer to attach to a VM's display, it's possible to use VNC for that.
 Since this is not officially supported by VMWare, the steps to activate VNC are only possible on the command line.
 
-1. Open VNC ports in ESXi firewall:
-   ```bash
-   cat > /etc/vmware/firewall/vncServer.xml << 'EOF'
+1. To open VNC ports in the ESXi firewall, edit `/etc/vmware/firewall/vncServer.xml`:
+   ```
    <ConfigRoot>
      <service>
        <id>vncServer</id>
@@ -26,7 +25,6 @@ Since this is not officially supported by VMWare, the steps to activate VNC are 
        <required>false</required>
      </service>
    </ConfigRoot>
-EOF
    ```
 2. Refresh firewall rules:
    ```bash
