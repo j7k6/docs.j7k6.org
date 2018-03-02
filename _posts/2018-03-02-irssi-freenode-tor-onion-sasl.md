@@ -7,7 +7,10 @@ tags: [tor,irssi,irc,sasl]
 ## Prerequirements
 To connect to Freenode via Tor, a registerd nickname and SASL authentication is required.
 
-Install the required packages first: `apt-get install -y tor irssi`
+Install the required packages first:
+```
+apt-get install -y tor irssi
+```
 
 ### SASL
 1. Generate keypair & certificate:
