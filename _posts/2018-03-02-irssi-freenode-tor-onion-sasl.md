@@ -42,7 +42,10 @@ Install the required packages first: `apt-get install -y tor irssi`
    ```
 
 Now wait for the email to arrive and confirm the nickname registration.
-Enter the command from the confirmation email: `/msg NickServ VERIFY REGISTER <$NICK> <$CONFIRMATION_PASSWORD>` 
+Enter the command from the confirmation email: 
+```
+/msg NickServ VERIFY REGISTER <$NICK> <$CONFIRMATION_PASSWORD>
+``` 
 
 ## Tor
 1. Add this line to `/etc/tor/torrc`:
