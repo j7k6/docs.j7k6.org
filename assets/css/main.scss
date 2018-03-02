@@ -77,15 +77,16 @@ header {
     white-space: nowrap;
     overflow: hidden;
 
-    i {
-      padding-right: 0.25em;
-      font-size: 0.9em;
+    h1 {
+      margin: 0 auto !important;
+      padding: 0 !important;
+      font-size: 1.5em !important;
     }
 
     a {
+      font-size: inherit !important;
       color: lighten($black, 50%);
-      font-family: $headerFont;
-      font-size: 1.25em;
+      font-family: $headerFont !important;
       border-bottom: 1px solid transparent;
     }
 
@@ -93,6 +94,13 @@ header {
       color: inherit;
       text-decoration: none;
       border-bottom: 1px solid $black;
+    }
+
+    p {
+      color: lighten($black, 60%);
+      margin: 0 auto !important;
+      padding: 0 !important;
+      font-size: 0.9em;
     }
   }
 
