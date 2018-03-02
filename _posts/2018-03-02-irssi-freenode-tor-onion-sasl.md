@@ -24,7 +24,7 @@ Install the required packages first: `apt-get install -y tor irssi`
    ```
 
 ### Nickname Registration
-1. Run `irssi`
+1. Run `irssi`:
    ```bash
    irssi -n <$NICK>
    ```
