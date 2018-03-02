@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Connect irrsi to Freenode IRC Onion Address via Tor"
+title: "Connect irssi to Freenode IRC Onion Address via Tor"
 tags: [tor,irssi,irc,sasl]
 ---
 
@@ -10,11 +10,11 @@ To connect to Freenode via Tor, a registerd nickname and SASL authentication is 
 Install the required packages first: `apt-get install -y tor irssi`
 
 ### SASL
-1. Generate keypair:
+1. Generate keypair & certificate:
    ```bash
    openssl req -newkey rsa:2048 -days 3650 -x509 -keyout ~/.irssi/<$NICK>.key -out ~/.irssi/<$NICK>.crt -nodes  -subj "/CN=<$NICK>"
    ```
-2. Create keypair bundle:
+2. Create certificate bundle:
    ```bash
    cat ~/.irssi/<$NICK>.crt ~/.irssi/<$NICK>.key > ~/.irssi/<$NICK>.pem
    ```
