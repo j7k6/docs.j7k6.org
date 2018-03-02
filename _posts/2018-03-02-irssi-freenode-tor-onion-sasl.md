@@ -12,6 +12,17 @@ Install the required packages first:
 apt-get install -y tor irssi
 ```
 
+### Tor
+1. Add this line to `/etc/tor/torrc`:
+   ```
+   mapaddress 10.40.40.40 freenodeok2gncmy.onion
+   ```
+2. Restart the `tor` service:
+   ```
+   systemctl restart tor
+   ```
+
+
 ### SASL
 1. Generate keypair & certificate:
    ```bash
@@ -49,16 +60,6 @@ Enter the command from the confirmation email:
 ```
 /msg NickServ VERIFY REGISTER <$NICK> <$CONFIRMATION_PASSWORD>
 ``` 
-
-## Tor
-1. Add this line to `/etc/tor/torrc`:
-   ```
-   mapaddress 10.40.40.40 freenodeok2gncmy.onion
-   ```
-2. Restart the `tor` service:
-   ```
-   systemctl restart tor
-   ```
 
 ## irssi
 When the nickname registration was succesful, prepare `irssi` for connecting to Freenode's `freenodeok2gncmy.onion` address.
