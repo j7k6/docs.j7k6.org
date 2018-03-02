@@ -15,7 +15,7 @@ apt-get install -y tor irssi
 ### SASL
 1. Generate keypair & certificate:
    ```bash
-   openssl req -newkey rsa:2048 -days 3650 -x509 -keyout ~/.irssi/<$NICK>.key -out ~/.irssi/<$NICK>.crt -nodes  -subj "/CN=<$NICK>"
+   openssl req -newkey rsa:4096 -days 3650 -x509 -keyout ~/.irssi/<$NICK>.key -out ~/.irssi/<$NICK>.crt -nodes  -subj "/CN=<$NICK>"
    ```
 2. Create certificate bundle:
    ```bash
