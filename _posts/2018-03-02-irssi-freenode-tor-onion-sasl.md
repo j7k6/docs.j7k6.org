@@ -24,10 +24,22 @@ Install the required packages first: `apt-get install -y tor irssi`
    ```
 
 ### Nickname Registration
-1. Run `irssi -n <$NICK>`
-2. Connect to Freenode: `/connect irc.freenode.org 6667`
-3. Register Nickname: `/msg NickServ REGISTER <$PASSWORD> <$EMAIL>`
-4. Add the previously generated certifcate's fingerprint: `/msg NickServ CERT ADD <$CERT_FINGERPRINT>`
+1. Run `irssi`
+   ```bash
+   irssi -n <$NICK>
+   ```
+2. Connect to Freenode:
+   ```
+   /connect irc.freenode.org 6667
+   ```
+3. Register Nickname:
+   ```
+   /msg NickServ REGISTER <$PASSWORD> <$EMAIL>
+   ```
+4. Add the previously generated certifcate's fingerprint: 
+   ```
+   /msg NickServ CERT ADD <$CERT_FINGERPRINT>
+   ```
 
 Now wait for the email to arrive and confirm the nickname registration.
 Enter the command from the confirmation email: `/msg NickServ VERIFY REGISTER <$NICK> <$CONFIRMATION_PASSWORD>` 
@@ -45,12 +57,27 @@ Enter the command from the confirmation email: `/msg NickServ VERIFY REGISTER <$
 ## irssi
 When the nickname registration was succesful, prepare `irssi` for connecting to Freenode's `freenodeok2gncmy.onion` address.
 
-1. Add the network: `/network add -sasl_username <$NICK> -sasl_password <$PASSWORD> -sasl_mechanism EXTERNAL Freenode`
-2. Add the server: `/server add -auto -net Freenode -ssl -ssl_cert ~/.irssi/<$NICK>.pem 10.40.40.40 6697`
-3. `/save` to write config to file.
-4. `/quit` to exit `irssi`
+1. Add the network:
+   ```
+   /network add -sasl_username <$NICK> -sasl_password <$PASSWORD> -sasl_mechanism EXTERNAL Freenode
+   ```
+2. Add the server: 
+   ```
+   /server add -auto -net Freenode -ssl -ssl_cert ~/.irssi/<$NICK>.pem 10.40.40.40 6697
+   ```
+3. Write config to file:
+   ```
+   /save
+   ```
+4. Exit `irssi`:
+   ```
+   /quit
+   ```
 
-Now run `torify irssi -n <$NICK>` to use Freenode via Tor.
+Now run `irssi` via Tor:
+```bash
+torify irssi -n <$NICK>
+```
 
 ---
 1. [https://freenode.net/kb/answer/registration](https://freenode.net/kb/answer/registration)
