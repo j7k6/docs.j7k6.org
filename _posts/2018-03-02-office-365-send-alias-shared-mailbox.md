@@ -10,8 +10,8 @@ If you want to send mails from another sender address then your primary mailbox 
 To create a shared mailbox, login to the [*Exchange Admin Center* (**ECP**)](https://outlook.office.com/ecp/).
 Navigate to `recipients` > `shared` and create a **new shared mailbox**:
 
-*Display name:* `whatever...`
-*Email address:* `<$SENDER_ADDRESS>`
-*Users:* add your mailbox to the list of authorized senders (**+**)
+- *Display name:* `whatever...`
+- *Email address:* `<$SENDER_ADDRESS>`
+- *Users:* add your mailbox to the list of authorized senders (**+**)
 
 ---
