@@ -22,7 +22,6 @@ apt-get install -y tor irssi
    systemctl restart tor
    ```
 
-
 ### SASL
 1. Generate keypair & certificate:
    ```bash
