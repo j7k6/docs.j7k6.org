@@ -26,6 +26,10 @@ $(document).ready(function() {
 
   $('div.post code').not('ul.meta code').each(function() {
     $(this).html($(this).text().replace(/<(\$[A-Z|_|0-9]+)>/g, '<span class="var">$1</span>'));
+
+    $(this).find('*').not('span.var').each(function() {
+      console.log($(this).text($(this).html()));
+    });
   });
 
 	$.getJSON("/posts.json", function(data) {
