@@ -31,7 +31,7 @@ apt-get install -y tor irssi
    ```bash
    cat ~/.irssi/<$NICK>.crt ~/.irssi/<$NICK>.key > ~/.irssi/<$NICK>.pem
    ```
-3. Get the certificate's fingerprint (will be needed later):
+3. Get the certificate's fingerprint (`<$CERT_FINGERPRINT>`, will be needed later):
    ```bash
    openssl x509 -in ~/.irssi/<$NICK>.pem -outform der | sha1sum -b | cut -d' ' -f1
    ```
