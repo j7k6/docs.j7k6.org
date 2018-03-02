@@ -36,6 +36,7 @@ apt-get install -y tor irssi
    openssl x509 -in ~/.irssi/<$NICK>.pem -outform der | sha1sum -b | cut -d' ' -f1
    ```
 
+## irssi
 ### Nickname Registration
 1. Run `irssi`:
    ```bash
@@ -60,7 +61,7 @@ Enter the command from the confirmation email:
 /msg NickServ VERIFY REGISTER <$NICK> <$CONFIRMATION_PASSWORD>
 ``` 
 
-## irssi
+### Configuration
 When the nickname registration was succesful, prepare `irssi` for connecting to Freenode's `freenodeok2gncmy.onion` address.
 
 1. Add the network:
