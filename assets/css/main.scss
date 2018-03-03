@@ -298,8 +298,7 @@ ul {
 
 ol {
   li {
-    margin: 1.25em auto 0 auto;
-    padding: 0;
+    margin: 1.25em auto 0 -1.5em;
     list-style-position: inside;
     text-indent: -1.5em;
     padding-left: 3em;
@@ -455,6 +454,7 @@ hr {
     li {
       font-size: 0.85em;
       line-height: 1.5;
+      text-indent: 0 !important;
       margin: 0;
       padding: 0;
       white-space: nowrap;
