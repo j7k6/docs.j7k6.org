@@ -301,10 +301,12 @@ ol {
     margin: 1.25em auto 0 auto;
     padding: 0;
     list-style-position: inside;
+    text-indent: -1.5em;
+    padding-left: 3em;
+  }
 
-    pre {
-      margin-left: 1.25em;
-    }
+  li * {
+    text-indent: 0 !important;
   }
 
   ul li {
@@ -343,7 +345,6 @@ pre, code {
 }
 
 pre {
-  padding: 0.5em;
   margin: 0.5em auto;
   background: $light !important;
   display: block;
