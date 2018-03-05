@@ -30,10 +30,12 @@ RelayBandwidthBurst 500 KBytes
 ```
 
 ### Iptables
+Besides allowing incoming traffic to the floating IP on the Tor ports, those `iptables` rules help the Tor relay to find the right way to the internet, which is through the floating IP:
+
 ```bash
+iptables -A INPUT -d <$ANCHOR_IP>/32 -p tcp -m multiport --dports 9001,9030 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A POSTROUTING -o eth0 -p tcp -m tcp --dport 9030 -j SNAT --to-source <$ANCHOR_IP>
 iptables -A POSTROUTING -o eth0 -p tcp -m tcp --dport 9001 -j SNAT --to-source <$ANCHOR_IP>
-iptables -A INPUT -d <$ANCHOR_IP>/32 -p tcp -m multiport --dports 9001,9030 -m state --state NEW,ESTABLISHED -j ACCEPT
 ```
 
 ---
