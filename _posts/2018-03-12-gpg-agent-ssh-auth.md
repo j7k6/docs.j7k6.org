@@ -57,6 +57,8 @@ First, a subkey for authentication needs to be added to an existing GPG key.
    ssh-add -L
    ```
 
+The SSH client now uses the `gpg-agent` to authenticate.
+
 ---
 1. [https://ryanlue.com/posts/2017-06-29-gpg-for-ssh-auth](https://ryanlue.com/posts/2017-06-29-gpg-for-ssh-auth)
 2. [https://linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/#generating-the-authentication-subkey](https://linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/#generating-the-authentication-subkey)
