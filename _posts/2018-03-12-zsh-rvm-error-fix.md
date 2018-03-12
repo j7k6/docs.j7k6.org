@@ -8,8 +8,8 @@ tags: [zsh,shell,fix,rvm]
 In a new `zsh` session, those errors appear:
 
 ```
-/Users/<USER>/.rvm/scripts/initialize:48: __rvm_cleanse_variables: function definition file not found
-/Users/<USER>/.rvm/scripts/initialize:50: command not found: rvm_error
+/Users/<$USER>/.rvm/scripts/initialize:48: __rvm_cleanse_variables: function definition file not found
+/Users/<$USER>/.rvm/scripts/initialize:50: command not found: rvm_error
 ```
 
 ### Solution
