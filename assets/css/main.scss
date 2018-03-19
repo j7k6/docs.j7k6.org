@@ -82,25 +82,57 @@ header {
       padding: 0 !important;
       font-size: 1.5em !important;
 
-      a::after {
-        content: '_';
-        text-decoration: blink;
-        -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
-                animation: blinker 0.6s infinite ease-in-out alternate;
-      }
 
-      a:hover::after {
-        content: '';
-      }
-    }
+      a {
+        font-size: inherit !important;
+        color: lighten($black, 50%);
+        font-family: $headerFont !important;
+        text-decoration: none !important;
+        overflow: hidden;
+        position: relative;
+        border-bottom: none !important;
 
-    a {
-      font-size: inherit !important;
-      color: lighten($black, 50%);
-      font-family: $headerFont !important;
+        &:hover {
+          color: inherit;
+          text-decoration: none !important;
+          border-bottom: none !important;
+        }
 
-			&:before {
-			  background-color: lighten($black, 50%) !important;
+        &:after {
+          content: '_';
+          text-decoration: blink;
+          -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
+                  animation: blinker 0.6s infinite ease-in-out alternate;
+        }
+
+        &:hover:after {
+          content: '';
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          bottom: 0;
+          left: 0;
+          background-color: $black;
+          visibility: hidden;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          -webkit-transition: all 0.3s ease-in-out 0s;
+          transition: all 0.3s ease-in-out 0s; 
+        }
+
+        &:hover {
+          text-decoration: none !important;
+
+          &:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+          }
+        }
       }
     }
 
@@ -108,6 +140,7 @@ header {
       from {opacity: 1.0;}
       to {opacity: 0.0;}
     }
+
     @keyframes blinker {
       from {opacity: 1.0;}
       to {opacity: 0.0;}
@@ -212,31 +245,11 @@ h1 {
     color: inherit;
     text-decoration: none;
     overflow: hidden;
-    position: relative;
-
-    &:before {
-     content: "";
-		 position: absolute;
-		 width: 100%;
-		 height: 1px;
-		 bottom: 0;
-		 left: 0;
-		 background-color: $black;
-		 visibility: hidden;
-		 -webkit-transform: scaleX(0);
-		 transform: scaleX(0);
-		 -webkit-transition: all 0.3s ease-in-out 0s;
-		 transition: all 0.3s ease-in-out 0s; 
-    }
-
+    border-bottom: 1px solid transparent;
+  
     &:hover {
-      text-decoration: none !important;
-
-      &:before {
-        visibility: visible;
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-      }
+      text-decoration: none;
+      border-bottom: 1px solid $black;
     }
   }
 }
