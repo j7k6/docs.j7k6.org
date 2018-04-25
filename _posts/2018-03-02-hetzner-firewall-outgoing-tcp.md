@@ -14,5 +14,7 @@ When the *Firewall* is enabled in Hetzner Robot, outgoing TCP connections won't 
 - TCP flags: `ack`
 - Action: `accept`
 
+![hetzner-firewall-outgoing-tcp](/files/hetzner-firewall-outgoing-tcp.png)
+
 ---
 1. [https://wiki.hetzner.de/index.php/Robot_Firewall/en#Out-going_TCP_connections](https://wiki.hetzner.de/index.php/Robot_Firewall/en#Out-going_TCP_connections)
