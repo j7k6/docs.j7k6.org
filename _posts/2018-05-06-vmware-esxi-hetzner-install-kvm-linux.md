@@ -24,7 +24,7 @@ VNC will be used to install ESXi, so connect to the server with the SSH local po
     ```
 3. Now connect your local VNC client to `vnc://127.0.0.1:5901` and complete the ESXi installation process.
    ![vmware-esxi-hetzner-install-kvm-linux](/files/vmware-esxi-hetzner-install-kvm-linux.png)
-4. After the ESXi VM rebooted, reset the system configuration and reboot, but be sure to stop the VM before it can boot up again. The server can now be restarted and boot right into the freshly installed ESXi.
+4. After the ESXi VM rebooted, reset the system configuration and reboot, but be sure to stop the VM before it can boot up again(!). The server can now be restarted and boot right into the freshly installed ESXi.
 
 > **Note**: ESXi is now fully resetted, which means that the root password is now empty! So after restarting the server, login to the ESXi webinterface with `root` as user and an empty password and set a new root password immediately! 
 
