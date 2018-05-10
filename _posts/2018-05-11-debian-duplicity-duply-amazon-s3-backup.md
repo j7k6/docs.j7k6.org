@@ -38,15 +38,15 @@ tags: [backup,s3,amazon,linux,debian,duplicity]
    MAX_FULL_BACKUPS=4
    MAX_FULLS_WITH_INCRS=1
    ```
-6. Edit `/etc/duply/backup/exclude`: 
-   ```
-   - /proc/*
-   - /sys/*
-   - /dev/*
-   - /mnt/*
-   - /tmp/*
-   - /var/cache/*
-   ```
+6. Edit `/etc/duply/backup/exclude`:
+   ```yml
+- /proc/*
+- /sys/*
+- /dev/*
+- /mnt/*
+- /tmp/*
+- /var/cache/*
+```
 7. Add cronjobs (`crontab -e`):
    ```
    0 0 * * 7 /usr/bin/duply backup full_verify_purge --force > /var/log/duply.log 2>&1
