@@ -29,7 +29,7 @@ tags: [backup,s3,amazon,linux,debian,duplicity]
 
    TARGET="s3://s3.<$AWS_REGION>.amazonaws.com/<$AWS_BUCKET>/<$BACKUP_NAME>"
 
-   export AWS_ACCESS_KEY_ID="<$AWS_ACCESS_KEY_ID"
+   export AWS_ACCESS_KEY_ID="<$AWS_ACCESS_KEY_ID>"
    export AWS_SECRET_ACCESS_KEY="<$AWS_SECRET_ACCESS_KEY>"
 
    SOURCE="/"
