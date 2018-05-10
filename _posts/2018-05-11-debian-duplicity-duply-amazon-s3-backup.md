@@ -38,7 +38,7 @@ tags: [backup,s3,amazon,linux,debian,duplicity]
    MAX_FULL_BACKUPS=4
    MAX_FULLS_WITH_INCRS=1
    ```
-6. Edit `/etc/duply/backup/exclude`:
+6. Edit `/etc/duply/backup/exclude`: 
    ```
    - /proc/*
    - /sys/*
