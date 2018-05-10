@@ -25,7 +25,7 @@ tags: [backup,s3,amazon,linux,debian,duplicity]
 5. Edit `/etc/duply/backup/conf`:
    ```
    GPG_KEY="<$GPG_KEY_ID>"
-   GPG_PW="<$GPG_KEY_PASSWORD"
+   GPG_PW="<$GPG_KEY_PASSWORD>"
 
    TARGET="s3://s3.<$AWS_REGION>.amazonaws.com/<$AWS_BUCKET>/<$BACKUP_NAME>"
 
