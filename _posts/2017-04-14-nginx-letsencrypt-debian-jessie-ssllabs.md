@@ -38,7 +38,7 @@ Initially, a non-SSL virtual host config has to be created, because the certific
 ## Certbot
 1. Request a certificate from [*Let's Encrypt*](https://letsencrypt.org):
    ```bash
-   certbot certonly --rsa-key-size 4096 --webroot -w /var/www/letsencrypt -d $<DOMAIN> -d www.<$DOMAIN>
+   certbot certonly --rsa-key-size 4096 --webroot -w /var/www/letsencrypt -d <$DOMAIN> -d www.<$DOMAIN>
    ```
 2. Modify Renewal Cronjob in `/etc/cron.d/certbot`, append `--post-hook "service nginx reload"` to `certbot renew` command.
 
