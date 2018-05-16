@@ -32,9 +32,12 @@ Since this is not officially supported by VMWare, the steps to activate VNC are 
    ```
 3. Power-off VM.
 4. Add those lines to the VM's *.vmx* configuration file:
-   > RemoteDisplay.vnc.enabled = "TRUE"
-   > RemoteDisplay.vnc.port = "5901"
-   > RemoteDisplay.vnc.password = "$PASSWORD"
+   ```
+   RemoteDisplay.vnc.enabled = "TRUE"
+   RemoteDisplay.vnc.port = "5901"
+   RemoteDisplay.vnc.password = "<$PASSWORD>"
+   RemoteDisplay.vnc.keyMap = "de"
+   ```
 5. Power-on VM.
 6. Connect to VM display with a VNC client via `<$ESX_HOST>:5901`.
 
