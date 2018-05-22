@@ -4,7 +4,7 @@ title: "Install Debian Packages on Ubiquity EdgeRouter Lite/X"
 tags: [debian,ubiquity,edgerouter,edgeos]
 ---
 
-Since **EdgeOS** is based on *VyOS*, which is based on *Debian*, it's possible to install Debian on *Ubiquity*'s ***EdgeRouter Lite/X***. As always, type `configure` to enter configuration mode.
+Since **EdgeOS** is based on *VyOS*, which is based on *Debian*, it's possible to install Debian packages on *Ubiquity*'s ***EdgeRouter Lite/X***. As always, type `configure` to enter configuration mode.
 
 ```
 set system package repository wheezy components 'main contrib non-free' 
