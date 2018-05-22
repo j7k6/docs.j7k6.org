@@ -5,7 +5,7 @@ tags: [ubiquity,edgerouter-lite,edgerouter-x,openvpn,edgeos]
 ---
 
 When using *OpenVPN* on an *Ubiquity* ***Edgerouter Lite/X***, there is no straight-forward way to reload the OpenVPN daemon when a configuration file is changed.
-To reload the OpenVPN daemon, type `configure` and then reconfigure the `vtunX` interface:
+To reload the OpenVPN daemon after a configuration change, type `configure` and then reconfigure the `vtunX` interface:
 
 ```
 delete interfaces openvpn vtun0
