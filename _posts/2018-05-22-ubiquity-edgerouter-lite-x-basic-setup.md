@@ -1,4 +1,3 @@
-2018-05-22-ubiquity-edgerouter-lite-x-basic-setup.md
 ---
 layout: post
 title: "EdgeRouter Lite/X Basic Setup"
