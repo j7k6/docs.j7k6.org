@@ -15,16 +15,16 @@ chmod 0400 /etc/x11vnc.passwd
    ```
 3. Edit `/lib/systemd/system/x11vnc.service`:
    ```
-[Unit]
-Description=Start x11vnc
-After=multi-user.target
+   [Unit]
+   Description=Start x11vnc
+   After=multi-user.target
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
+   [Service]
+   Type=simple
+   ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
 
-[Install]
-WantedBy=multi-user.target
+   [Install]
+   WantedBy=multi-user.target
    ```
 4. Enable & start `x11vnc` service:
    ```bash
