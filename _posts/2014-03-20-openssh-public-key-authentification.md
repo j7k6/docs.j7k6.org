@@ -11,7 +11,7 @@ tags: [openssh]
    ```
 2. Store public key on remote server
    ```bash
-   ssh-copy-id -i ~/.ssh/id_rsa.pub <USER>@<SERVER>
+   ssh-copy-id -i ~/.ssh/id_rsa.pub <$USER>@<$SERVER>
    ```
 
 ## Server
