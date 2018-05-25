@@ -14,6 +14,7 @@ apt-get update && apt-get install -y nfs-common rsnapshot
    ```
 3. Mount NFS share:
    ```bash
+mkdir -p /mnt/backups
 mount /mnt/backups
    ```
 4. Edit `/etc/rsnapshot.conf`:
