@@ -4,15 +4,15 @@
 @import "normalize";
 
 $white: White;
-$black: #212121;
+$black: #222;
 $link: #4DB6AC;
-$light: #F7F8F9;
-$code: #333333;
-$var: #EB5A5B;
+$light: #f8f8f8;
+$code: #333;
+$var: #d14;
 
 $defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
-$headerFont: Lekton;
+$headerFont: Lekton, Monaco, 'Lucida Console', monospace;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -380,7 +380,7 @@ blockquote {
 }
 
 p {
-  margin: 1em auto;
+  margin: 0 auto 1.5em auto;
 }
 
 pre, code {
@@ -392,7 +392,7 @@ pre {
   margin: 0.5em auto;
   background: $light !important;
   display: block;
-  padding: 0.25em;
+  padding: 0;
   line-height: 1.75 !important;
   border-radius: 0.25em;
   word-wrap: normal;
@@ -405,6 +405,7 @@ pre {
     color: $code !important;
     background: $light !important;
     padding: 0.5em;
+    white-space: pre;
   }
 }
 
