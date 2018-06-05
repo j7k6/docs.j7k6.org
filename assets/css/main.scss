@@ -4,11 +4,11 @@
 @import "normalize";
 
 $white: White;
-$black: #212121;
+$black: #222;
 $link: #4DB6AC;
 $light: #f8f8f8;
-$code: #444444;
-$var: #DD4A68;
+$code: #333;
+$var: #d14;
 
 $defaultFont: 'Open Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -36,7 +36,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
