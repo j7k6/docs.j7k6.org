@@ -37,4 +37,21 @@ ssh -L 5901:127.0.0.1:5900 ...
    ```
 
 ---
-1. [https://www.elektronik-kompendium.de/sites/raspberry-pi/2011121.htm](https://www.elektronik-kompendium.de/sites/raspberry-pi/2011121.htm)
+
+### Ubuntu 18.04 (Bionic Beaver) Fix
+In the latest *Ubuntu* release, some extra steps have to be taken to make `x11vnc` work.
+
+1. Disable the *Wayland* server in favor of the *X.org* display server. Edit `/etc/gdm3/custom.conf`:
+   ```
+   WaylandEnable=false
+   ```
+2. Install *LightDM* and replace *gdm3* as the default display manager with it:
+   ```bash
+   apt-get install lightdm
+   ```
+3. Reboot
+
+---
+1. <https://www.elektronik-kompendium.de/sites/raspberry-pi/2011121.htm>
+2. <https://linuxconfig.org/how-to-disable-wayland-and-enable-xorg-display-server-on-ubuntu-18-04-bionic-beaver-linux>
+3. <http://c-nergy.be/blog/?p=12220>
