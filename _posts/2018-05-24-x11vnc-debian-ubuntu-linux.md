@@ -49,9 +49,14 @@ In the latest *Ubuntu* release, some extra steps have to be taken to make `x11vn
    ```bash
    apt-get install lightdm
    ```
+4. Fix the annoying *.profile ... ioctl ... error* message at login:
+   ```bash
+   sed -i 's/mesg n || true/tty -s && mesg n || true/' ~/.profile
+   ```
 3. Reboot
 
 ---
 1. <https://www.elektronik-kompendium.de/sites/raspberry-pi/2011121.htm>
 2. <https://linuxconfig.org/how-to-disable-wayland-and-enable-xorg-display-server-on-ubuntu-18-04-bionic-beaver-linux>
 3. <http://c-nergy.be/blog/?p=12220>
+4. <https://askubuntu.com/a/918479>
