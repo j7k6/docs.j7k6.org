@@ -19,3 +19,4 @@ tags: [vmware,esxi]
 4. Reboot *ESXi*.
 
 ---
+1. <https://tinkertry.com/easy-update-to-esxi-67>
