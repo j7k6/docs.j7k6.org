@@ -34,7 +34,7 @@ Before sending mail, SMTP port 25 has to be opened in the ESXi firewall for outg
    ```
 
 ### Send Mail
-> **Note**: The mail server needs to support unencrypted SMTP on port 25!
+> **Note**: The mail server needs to support unencrypted SMTP on port 25! Authentication is possible, but not necessary if you control both servers, just whitelist the ESXi's IP for sending unauthenticated mail.
 
 ```bash
 echo -e "\
