@@ -9,19 +9,19 @@ Before sending mail, SMTP port 25 has to be opened in the ESXi firewall for outg
 
 1. Edit `/etc/vmware/firewall/smtp.xml`:
    ```
-<ConfigRoot>
-  <service id='2525'>
-    <id>SMTP_Out</id>
-    <rule id='0000'>
-      <direction>outbound</direction>
-      <protocol>tcp</protocol>
-      <porttype>dst</porttype>
-      <port>25</port>
-    </rule>
-    <enabled>true</enabled>
-    <required>false</required>
-  </service>
-</ConfigRoot>
+   <ConfigRoot>
+     <service id='2525'>
+       <id>SMTP_Out</id>
+       <rule id='0000'>
+         <direction>outbound</direction>
+         <protocol>tcp</protocol>
+         <porttype>dst</porttype>
+         <port>25</port>
+       </rule>
+       <enabled>true</enabled>
+       <required>false</required>
+     </service>
+   </ConfigRoot>
    ```
 2. Reload firewall rules:
    ```bash
