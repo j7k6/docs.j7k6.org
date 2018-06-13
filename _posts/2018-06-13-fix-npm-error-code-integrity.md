@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fix 'npm ERR! code EINTEGRITY'"
+title: "Fix 'npm ERR! code EINTEGRITY' Error in NPM"
 tags: [npm,node,fix]
 ---
 
