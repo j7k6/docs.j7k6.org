@@ -16,7 +16,7 @@ There is no original Mac required for installing the Hackintosh! This guide is w
 
 ### Modifications:
 - Kingston SSDNow V300 (120 GB) instead of 250 GB HDD
-- [Atheros *AR5BHB92*](http://www.amazon.de/Wireless-AR5BHB92-Dual-band-802-11b-Toshiba/dp/B00EECOXE4) instead of Intel Ultimate-N 6300
+- [Atheros *AR5BHB92*](<http://www.amazon.de/Wireless-AR5BHB92-Dual-band-802-11b-Toshiba/dp/B00EECOXE4>) instead of Intel Ultimate-N 6300
 
 In the beginning there needs to be a Windows 7 (x64) running on the laptop for applying a BIOS update & patch.
 Between wiping Windows and installing Lion, there has to be done a temporary Snow Leopard installation, just to create a Lion USB installation thumb drive.
@@ -29,8 +29,8 @@ The AR5BHB92 isn't on the whitelist of the T410's BIOS, so the laptop refuses to
 To circumvent this restriction, the BIOS has to be patched with the whitelist removed.
 
 ### Requirements
-- *6iuj27us.exe* (BIOS Update 1.43, http://support.lenovo.com/en_US/downloads/detail.page?LegacyDocID=MIGR-74268)
-- *T410-1.43-whitelisted-$01BF000_SLIC.ROM* (Whitelist removal patch, http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip))
+- *6iuj27us.exe* (BIOS Update 1.43, <http://support.lenovo.com/en_US/downloads/detail.page?LegacyDocID=MIGR-74268>)
+- *T410-1.43-whitelisted-$01BF000_SLIC.ROM* (Whitelist removal patch, <http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip>)
 - Packing/clear tape
 
 ***The wireless card can only be replaced after the BIOS patch has been applied!***
