@@ -30,7 +30,7 @@ To circumvent this restriction, the BIOS has to be patched with the whitelist re
 
 ### Requirements
 - *6iuj27us.exe* (BIOS Update 1.43, <http://support.lenovo.com/en_US/downloads/detail.page?LegacyDocID=MIGR-74268>)
-- *T410-1.43-whitelisted-$01BF000_SLIC.ROM* (Whitelist removal patch, <http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip))
+- *T410-1.43-whitelisted-$01BF000_SLIC.ROM* (Whitelist removal patch, <http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745>, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip))
 - Packing/clear tape
 
 ***The wireless card can only be replaced after the BIOS patch has been applied!***
