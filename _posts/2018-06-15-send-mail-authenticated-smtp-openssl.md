@@ -13,7 +13,7 @@ tags: [email,smtp,starttls,openssl,shell]
    ```bash
    openssl s_client -starttls smtp -crlf -quiet -connect <$MAIL_SERVER>:587
    ```
-   > **Note**: Mind the **-quiet** option! Without it, openssl will renegotiate the SSL connection when the capital **R** (as in "**R**CPT TO") is pressed, instead of sending the "R" character to the server. [[Source](http://tumbleweed.org.za/2007/07/17/sclients-r-feature)] 
+   > **Note**: Mind the `-quiet` option! Without it, openssl will renegotiate the SSL connection when the capital **R** (as in "`RCPT TO`") is pressed, instead of sending the "R" character to the server. [[Source](http://tumbleweed.org.za/2007/07/17/sclients-r-feature)] 
 3. Send SMTP commands to server:
    ```
    EHLO localhost
