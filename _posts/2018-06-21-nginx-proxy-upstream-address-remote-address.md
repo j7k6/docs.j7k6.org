@@ -6,7 +6,7 @@ tags: [nginx.proxy]
 
 ```
 geo $upstream_addr {
-  $<SPECIAL_IP>/32 127.0.0.1:8090;
+  <$SPECIAL_IP>/32 127.0.0.1:8090;
   default 127.0.0.1:8080;
 }
 
