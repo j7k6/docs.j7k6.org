@@ -1,7 +1,7 @@
 ---
-layout:post
+layout: post
 title: "Set Nginx Proxy Upstream Address based on Requests Originating IP Address"
-tags: [nginx.proxy]
+tags: [nginx,proxy]
 ---
 
 ```
