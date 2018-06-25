@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Serve HTTP Status Code 503 to Googlebot to Temporary Stop it from Crawling a Website"
+title: "Nginx: Serve HTTP Status Code 503 to Googlebot to Temporary Stop it from Crawling a Website"
 tags: [nginx,google]
 ---
 
