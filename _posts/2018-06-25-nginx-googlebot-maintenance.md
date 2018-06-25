@@ -17,3 +17,4 @@ server {
 ```
 
 ---
+1. <https://webmasters.googleblog.com/2011/01/how-to-deal-with-planned-site-downtime.html>
