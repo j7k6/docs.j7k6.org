@@ -5,7 +5,7 @@ tags: [ssl,openssl]
 ---
 
 ```bash
-echo | openssl s_client -servername NAME -connect <$HOST_NAME>:443 2>/dev/null | openssl x509 -noout -dates
+echo | openssl s_client -servername <$HOST_NAME> -connect <$HOST_NAME>:443 2>/dev/null | openssl x509 -noout -dates
 ```
 
 ---
