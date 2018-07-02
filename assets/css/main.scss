@@ -6,13 +6,12 @@
 $white: White;
 $black: #222;
 $link: #4DB6AC;
-$light: #f8f8f8;
-$code: #333;
-$var: #d14;
+$light: #f6f6f6;
+$code: #666;
 
-$defaultFont: 'Open Sans', Helvetica, sans-serif;
+$defaultFont: 'PT Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
-$headerFont: Lekton, Monaco, 'Lucida Console', monospace;
+$headerFont: $codeFont;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -36,7 +35,7 @@ body {
   font-family: $defaultFont;
   line-height: 1.75;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   color: $black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -81,7 +80,6 @@ header {
       margin: 0 auto !important;
       padding: 0 !important;
       font-size: 1.5em !important;
-
 
       a {
         font-size: inherit !important;
@@ -154,10 +152,6 @@ header {
     }
   }
 
-  .meta & {
-    color: $light;
-  }
-
   .search {
     width: 75vw;
     margin: 0.5em auto;
@@ -186,29 +180,17 @@ header {
   }
 }
 
-p, div.post {
-  line-height: 2em;
+p {
+  margin: 1.5em auto;
 }
 
 a {
   color: $link;
   text-decoration: none;
-
-  &.disqus_count {
-    background: $light !important;
-    color: $black !important;
-  }
-
+  
   code {
     background: $link !important;
     color: $code;
-  }
-
-  &.disqus_count {
-    code {
-      background: $light !important;
-      color: $black !important;
-    }
   }
 
   &:hover {
@@ -218,28 +200,21 @@ a {
       background: $light !important;
       color: $link !important;
     }
-
-    &.disqus_count {
-      code {
-        background: $black !important;
-        color: $light !important;
-      }
-    }
   }
 }
 
 h1, h2, h3 {
-  font-family: $headerFont;
   font-weight: 700;
-  margin: 0.5em auto;
+  margin: 1em auto 0 auto;
   line-height: 1.2em;
   white-space: pre-wrap;
 }
 
 h1 {
+  font-family: $headerFont;
   font-size: 2.25em;
-  margin-top: 0;
   font-weight: 300;
+  margin-bottom: 0.5em;
 
   a {
     color: inherit;
@@ -256,22 +231,19 @@ h1 {
 
 h2 {
   font-size: 1.75em;
-  margin-top: 2em;
 }
 
 h3 {
   font-size: 1.25em;
-  margin-top: 1.5em;
-}
 
-h2 + h3 {
-  margin-top: 1em;
-}
-
-.archive {
-  h1 {
-    font-size: 2.0em;
+  i {
+    font-weight: 300;
+    font-style: normal;
   }
+}
+
+h2 + p, h3 + p {
+  margin-top: 0;
 }
 
 ul, ol {
@@ -286,20 +258,6 @@ ul {
     
     footer & {
       padding: 0 1em !important;
-    }
-
-    a {
-      nav & {
-        padding: 0.75em;
-        display: inline-block;
-        background: $light;
-
-        &:hover {
-          background: $link;
-          color: $light;
-          text-decoration: none;
-        } 
-      }
     }
 
     ul {
@@ -324,14 +282,6 @@ ul {
 
   nav & {
     text-align: center;
-  }
-
-  &.meta  {
-    margin: 1em auto;
-  }
-
-  &.archive {
-    margin: 0 auto;
   }
 
   article & {
@@ -373,14 +323,10 @@ footer {
 
 blockquote {
   border-left: 0.25em solid $light;
-  margin-left: 0.5em;
+  margin-left: 1em;
   padding-left: 0.75em;
   font-style: italic;
   color: $code;
-}
-
-p {
-  margin: 0 auto 1.5em auto;
 }
 
 pre, code {
@@ -393,7 +339,7 @@ pre {
   background: $light !important;
   display: block;
   padding: 0;
-  line-height: 1.75 !important;
+  line-height: 1.5 !important;
   border-radius: 0.25em;
   word-wrap: normal;
   overflow-x: auto;
@@ -404,7 +350,7 @@ pre {
     vertical-align: middle;
     color: $code !important;
     background: $light !important;
-    padding: 0.5em;
+    padding: 1em;
     white-space: pre;
   }
 }
@@ -414,17 +360,6 @@ code {
     color: $code;
   }
 
-  .meta & {
-    background: $light;
-    color: $light !important;
-		font-family: $headerFont !important;
-    display: inline-block;
-    line-height: 1;
-    padding: 0.25em;
-    border-radius: 0.25em;
-    vertical-align: middle;
-  }
-
   &.date, &.disqus_count {
     background: $light !important;
     color: $black !important;
@@ -432,7 +367,44 @@ code {
 
 }
 
-.meta, footer {
+.btn {
+  color: lighten($black, 50%);
+  font-family: $codeFont;
+  display: inline-block;
+  line-height: 1;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  vertical-align: middle;
+  
+  &:hover {
+    text-decoration: none;
+    color: $code;
+    background: $light;
+  }
+
+  i {
+    margin-right: 0.25em;
+  }
+}
+
+.btn-div {
+  margin-right: 2em;
+}
+
+nav .btn {
+  font-size: 1.5em;
+
+  &:hover {
+    background: lighten($black, 50%);
+    color: $light;
+  }
+
+  i {
+    margin: 0.25em;
+  }
+}
+
+.meta, hr + ol li, footer, {
   font-size: 0.9em;
 }
 
@@ -440,17 +412,15 @@ article {
   margin: 0 auto 2em auto;
   overflow-x: hidden;
  
-  div.posts & {
-    &:after {
-      content: "~";
-      font-size: 1.75em;
-      display: block;
-      width: 100%;
-      margin: 1em auto 0 auto;
-      text-align: center;
-      vertical-align: center;
-      color: darken($light, 10%);
-    }
+  &:after {
+    content: "~";
+    font-size: 1.75em;
+    display: block;
+    width: 100%;
+    margin: 1em auto 0 auto;
+    text-align: center;
+    vertical-align: center;
+    color: darken($light, 10%);
   }
 }
 
@@ -458,9 +428,20 @@ article {
   *:first-child {
     margin-top: 0 !important;
   }
+
+  &:not(.post):last-child {
+    &:after {
+      display: none;
+    }
+  }
+
+  hr:last-of-type {
+    width: 5em;
+    margin: 2em 0 1em 0;
+  }
 }
 
-div.content, div.home, div.search, div.results  {
+div.box  {
   margin: 0 auto;
   width: 50vw;
 
@@ -487,10 +468,9 @@ img {
   text-align: center;
 }
 
-
 hr {
   display: block;
-  margin: 1.5em auto 0.5em auto;
+  margin: 1.5em auto;
   border: 0;
   height: 0;
   border-top: 0.1em solid $white;
@@ -501,7 +481,7 @@ hr {
     counter-reset: o-counter 0;
     
     li {
-      font-size: 0.85em;
+      color: lighten($black, 50%);
       line-height: 1.5;
       text-indent: 0 !important;
       margin: 0;
@@ -544,10 +524,12 @@ hr {
   em {
     color: darken($light, 20%);
     padding-left: 0.25em;
+    font-family: $codeFont;
   }
 }
 
 .var {
-  color: $var;
+  color: $black;
+  font-style: italic;
 }
 

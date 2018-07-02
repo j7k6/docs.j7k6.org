@@ -24,8 +24,8 @@ $(document).ready(function() {
     loadDisqus();
   });
 
-  $('div.post code').not('ul.meta code').each(function() {
-    $(this).html($(this).text().replace(/<(\$[A-Z|_|0-9]+)>/g, '<span class="var">$1</span>'));
+  $('article code').each(function() {
+    $(this).html($(this).text().replace(/<(\$)([A-Z|_|0-9]+)>/g, '<span class="var">&lt;$2&gt;</span>'));
 
     $(this).find('*').not('span.var').parent().each(function() {
       $(this).text($(this).html());
