@@ -5,7 +5,7 @@ tags: [git,fix]
 ---
 
 ```bash
-git clean  -d  -fx .
+git clean -d -fx .
 ```
 
 ---
