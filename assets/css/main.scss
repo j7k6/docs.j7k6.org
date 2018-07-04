@@ -353,6 +353,7 @@ p {
 pre, code {
   font-family: $codeFont;
   white-space: pre;
+  color: $code;
 }
 
 pre {
@@ -374,18 +375,6 @@ pre {
     padding: 0.5em;
     white-space: pre;
   }
-}
-
-code {
-  .post &, .meta & {
-    color: $code;
-  }
-
-  &.date, &.disqus_count {
-    background: $light !important;
-    color: $black !important;
-  }
-
 }
 
 .btn {
@@ -440,7 +429,7 @@ code {
 }
 
 article {
-  margin: 0 auto 2em auto;
+  margin: 2em auto;
   overflow-x: hidden;
  
   &:after {
@@ -453,9 +442,7 @@ article {
     vertical-align: center;
     color: darken($light, 10%);
   }
-}
 
-article {
   *:first-child {
     margin-top: 0 !important;
   }
