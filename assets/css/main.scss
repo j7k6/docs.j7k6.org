@@ -356,8 +356,7 @@ pre {
 }
 
 .btn {
-  background: $light;
-  color: $code;
+  color: lighten($black, 50%);
   font-family: $codeFont;
   display: inline-block;
   line-height: 1;
@@ -367,8 +366,8 @@ pre {
   
   &:hover {
     text-decoration: none;
-    background: $black;
-    color: $light;
+    color: $code;
+    background: $light;
   }
 
   i {
@@ -395,6 +394,7 @@ pre {
   
   &:hover {
     background: lighten($black, 50%);
+    color: $light;
   }
 
   i {
