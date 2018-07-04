@@ -193,22 +193,10 @@ p, div.post {
 a {
   color: $link;
   text-decoration: none;
-
-  &.disqus_count {
-    background: $light !important;
-    color: $black !important;
-  }
-
+  
   code {
     background: $link !important;
     color: $code;
-  }
-
-  &.disqus_count {
-    code {
-      background: $light !important;
-      color: $black !important;
-    }
   }
 
   &:hover {
@@ -217,13 +205,6 @@ a {
     code {
       background: $light !important;
       color: $link !important;
-    }
-
-    &.disqus_count {
-      code {
-        background: $black !important;
-        color: $light !important;
-      }
     }
   }
 }
@@ -286,20 +267,6 @@ ul {
     
     footer & {
       padding: 0 1em !important;
-    }
-
-    a {
-      nav & {
-        padding: 0.75em;
-        display: inline-block;
-        background: $light;
-
-        &:hover {
-          background: $link;
-          color: $light;
-          text-decoration: none;
-        } 
-      }
     }
 
     ul {
@@ -414,22 +381,58 @@ code {
     color: $code;
   }
 
-  .meta & {
-    background: $light;
-    color: $light !important;
-		font-family: $headerFont !important;
-    display: inline-block;
-    line-height: 1;
-    padding: 0.25em;
-    border-radius: 0.25em;
-    vertical-align: middle;
-  }
-
   &.date, &.disqus_count {
     background: $light !important;
     color: $black !important;
   }
 
+}
+
+.btn {
+  background: $light;
+  color: $code;
+  font-family: $codeFont;
+  display: inline-block;
+  line-height: 1;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  vertical-align: middle;
+  
+  &:hover {
+    text-decoration: none;
+    background: $black;
+    color: $light;
+  }
+
+  i {
+    margin-right: 0.25em;
+  }
+}
+
+.btn-tag, {
+  background: $link;
+  color: $light;
+  
+  &:hover {
+    background: $light;
+    color: $link;
+  }
+}
+
+.btn-xl {
+  font-size: 1.5em;
+}
+
+.btn-nav {
+  color: lighten($black, 50%);
+  
+  &:hover {
+    background: lighten($black, 50%);
+  }
+
+  i {
+    margin: 0.25em;
+  }
 }
 
 .meta, footer {
@@ -440,17 +443,15 @@ article {
   margin: 0 auto 2em auto;
   overflow-x: hidden;
  
-  div.posts & {
-    &:after {
-      content: "~";
-      font-size: 1.75em;
-      display: block;
-      width: 100%;
-      margin: 1em auto 0 auto;
-      text-align: center;
-      vertical-align: center;
-      color: darken($light, 10%);
-    }
+  &:after {
+    content: "~";
+    font-size: 1.75em;
+    display: block;
+    width: 100%;
+    margin: 1em auto 0 auto;
+    text-align: center;
+    vertical-align: center;
+    color: darken($light, 10%);
   }
 }
 
@@ -486,7 +487,6 @@ img {
   margin: 1em auto;
   text-align: center;
 }
-
 
 hr {
   display: block;
