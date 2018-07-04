@@ -82,7 +82,6 @@ header {
       padding: 0 !important;
       font-size: 1.5em !important;
 
-
       a {
         font-size: inherit !important;
         color: lighten($black, 50%);
@@ -154,10 +153,6 @@ header {
     }
   }
 
-  .meta & {
-    color: $light;
-  }
-
   .search {
     width: 75vw;
     margin: 0.5em auto;
@@ -186,6 +181,10 @@ header {
   }
 }
 
+p {
+  margin: 1.5em auto;
+}
+
 p, div.post {
   line-height: 2em;
 }
@@ -211,7 +210,7 @@ a {
 
 h1, h2, h3 {
   font-weight: 700;
-  margin: 0.5em auto;
+  margin: 1em auto 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
 }
@@ -219,7 +218,6 @@ h1, h2, h3 {
 h1 {
   font-family: $headerFont;
   font-size: 2.25em;
-  margin-top: 0;
   font-weight: 300;
 
   a {
@@ -237,22 +235,14 @@ h1 {
 
 h2 {
   font-size: 1.75em;
-  margin-top: 2em;
 }
 
 h3 {
   font-size: 1.25em;
-  margin-top: 1.5em;
 }
 
-h2 + h3 {
-  margin-top: 1em;
-}
-
-.archive {
-  h1 {
-    font-size: 2.0em;
-  }
+h2 + p, h3 + p {
+  margin-top: 0;
 }
 
 ul, ol {
@@ -291,14 +281,6 @@ ul {
 
   nav & {
     text-align: center;
-  }
-
-  &.meta  {
-    margin: 1em auto;
-  }
-
-  &.archive {
-    margin: 0 auto;
   }
 
   article & {
@@ -344,10 +326,6 @@ blockquote {
   padding-left: 0.75em;
   font-style: italic;
   color: $code;
-}
-
-p {
-  margin: 1.5em auto;
 }
 
 pre, code {
@@ -424,7 +402,7 @@ pre {
   }
 }
 
-.meta, footer {
+.meta, hr + ol li, footer, {
   font-size: 0.9em;
 }
 
@@ -448,7 +426,7 @@ article {
   }
 }
 
-div.content, div.home, div.search, div.results  {
+div.box  {
   margin: 0 auto;
   width: 50vw;
 
@@ -477,7 +455,7 @@ img {
 
 hr {
   display: block;
-  margin: 1.5em auto 0.5em auto;
+  margin: 1.5em auto;
   border: 0;
   height: 0;
   border-top: 0.1em solid $white;
@@ -488,7 +466,6 @@ hr {
     counter-reset: o-counter 0;
     
     li {
-      font-size: 0.85em;
       line-height: 1.5;
       text-indent: 0 !important;
       margin: 0;
