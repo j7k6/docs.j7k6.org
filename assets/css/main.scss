@@ -6,8 +6,8 @@
 $white: White;
 $black: #222;
 $link: #4DB6AC;
-$light: #f8f8f8;
-$code: #333;
+$light: #f6f6f6;
+$code: #666;
 $var: #d14;
 
 $defaultFont: 'PT Sans', Helvetica, sans-serif;
@@ -340,7 +340,7 @@ pre {
   background: $light !important;
   display: block;
   padding: 0;
-  line-height: 1.75 !important;
+  line-height: 1.5 !important;
   border-radius: 0.25em;
   word-wrap: normal;
   overflow-x: auto;
@@ -351,7 +351,7 @@ pre {
     vertical-align: middle;
     color: $code !important;
     background: $light !important;
-    padding: 0.5em;
+    padding: 1em;
     white-space: pre;
   }
 }
@@ -516,6 +516,7 @@ hr {
 }
 
 .var {
-  color: $var;
+  color: $black;
+  font-style: italic;
 }
 

@@ -25,7 +25,7 @@ $(document).ready(function() {
   });
 
   $('article code').each(function() {
-    $(this).html($(this).text().replace(/<(\$[A-Z|_|0-9]+)>/g, '<span class="var">$1</span>'));
+    $(this).html($(this).text().replace(/<(\$)([A-Z|_|0-9]+)>/g, '<span class="var">&lt;$2&gt;</span>'));
 
     $(this).find('*').not('span.var').parent().each(function() {
       $(this).text($(this).html());
