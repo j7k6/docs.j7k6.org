@@ -235,6 +235,11 @@ h2 {
 
 h3 {
   font-size: 1.25em;
+
+  i {
+    font-weight: 300;
+    font-style: normal;
+  }
 }
 
 h2 + p, h3 + p {
