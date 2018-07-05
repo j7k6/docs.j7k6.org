@@ -413,6 +413,11 @@ article {
     }
   }
 
+  hr:nth-last-child(2) {
+    width: 5em;
+    margin: 1em 0;
+  }
+
   hr:last-child {
     display: none;
   }
