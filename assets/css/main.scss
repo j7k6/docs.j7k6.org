@@ -372,18 +372,9 @@ pre {
   }
 }
 
-.btn-tag, {
-  &:hover {
-    background: $link;
-    color: $light;
-  }
-}
-
-.btn-xl {
-  font-size: 1.5em;
-}
-
 .btn-nav {
+  font-size: 1.5em;
+
   &:hover {
     background: lighten($black, 50%);
     color: $light;
@@ -418,8 +409,6 @@ article {
   }
 
   &:last-child {
-    margin-top: 0 !important;
-
     &:after {
       display: none;
     }
