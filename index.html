@@ -19,10 +19,10 @@ title: "My Sysadmin Cheatsheet"
 <nav>
   <ul>
     {% if paginator.previous_page %}
-    <li><a href="{{ paginator.previous_page_path }}" class="btn btn-nav"><i class="fa fa-angle-double-left"></i></a></li>
+    <li><a href="{{ paginator.previous_page_path }}" class="btn"><i class="fa fa-angle-double-left"></i></a></li>
     {% endif %}
     {% if paginator.next_page %}
-      <li><a href="{{ paginator.next_page_path }}" class="btn btn-nav"><i class="fa fa-angle-double-right"></i></a></li>
+      <li><a href="{{ paginator.next_page_path }}" class="btn"><i class="fa fa-angle-double-right"></i></a></li>
     {% endif %}
   <ul>
 </nav>
