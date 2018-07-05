@@ -4,12 +4,10 @@ layout: default
 
 {% assign post = page %}
 {% assign disqus_identifier =  post.url | remove: '/' %}
-<article>
+<article class="post">
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <div class="post">
-    {{ content }}
-    {% include meta.html %}
-  </div>
+  {% include meta.html %}
+  {{ content }}
 
   <div id="comments">
     <div id="disqus_thread"></div>

@@ -8,10 +8,8 @@ title: "My Sysadmin Cheatsheet"
     {% assign disqus_identifier = post.url | remove: '/' %}
     <article>
       <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      <div class="post">
-        {{ post.content }}
-        {% include meta.html %}
-      </div>
+      {% include meta.html %}
+      {{ post.content }}
     </article>
   {% endfor %}
 </div>
