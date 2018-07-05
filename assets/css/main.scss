@@ -12,7 +12,7 @@ $var: #d14;
 
 $defaultFont: 'PT Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
-$headerFont: Lekton, Monaco, 'Lucida Console', monospace;
+$headerFont: $codeFont;
 
 $break-small: 640px;
 $break-large: 960px;
@@ -411,6 +411,10 @@ article {
     &:after {
       display: none;
     }
+  }
+
+  hr:last-child {
+    display: none;
   }
 }
 
