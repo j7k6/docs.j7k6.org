@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PHP Mail with SSMTP"
+title: "PHP Mail with sSMTP"
 tags: [php,mail,smtp,ssmtp]
 ---
 
