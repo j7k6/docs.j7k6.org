@@ -28,15 +28,16 @@ $(document).ready(function() {
     $(this).html($(this).text().replace(/<(\$)([A-Z|_|0-9]+)>/g, '<span class="var">&lt;$2&gt;</span>'));
 
     $(this).find('*').not('span.var').parent().each(function() {
-      $(this).text($(this).html());
+      $(this).text($(this).html().replace(/([^a-z])(&gt;)/gi, '$1>').replace(/(&lt;)([^a-z])/gi, '<$2'));
     });
   });
 
-	$.getJSON("/posts.json", function(data) {
+	$.getJSON('/posts.json', function(data) {
     var resultList = $('.results ul li');
 
 		$('#q').keyup(function(e) {
       $('#q').val($('#q').val());
+
       if (e.keyCode === 27) { // ESC
         if ($('#q').val().length === 0) {
           $('#q').blur();
@@ -51,15 +52,13 @@ $(document).ready(function() {
 
         if (q.length > 1) {
           $.each(data, function(key, result) {
-            var queryWords = q.split(" ");
+            var queryWords = q.split(/\s/);
 
             for (var i=0; i<queryWords.length; i++) {
               queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
             }
 
-            var re = new RegExp(queryWords.join("")+'.+', 'i');
-
-            if (result.title.match(re)) {
+            if (result.title.match((new RegExp(queryWords.join('')+'.+', 'i')))) {
               results.push(result);
             }
           });
@@ -73,15 +72,14 @@ $(document).ready(function() {
 
           if (results.length > 0) {
             results.sort(function(a, b) {
-              if (new Date(a.date) < new Date(b.date))
-                return 1;
-              if (new Date(a.date) > new Date(b.date))
-                return -1;
+              return (new Date(a.date) < new Date(b.date)) ? 1 : -1;
               return 0;
             });
 
             $.each(results, function(key, result) {
-              $('.results ul').append('<li><a href="'+result.url+'">'+result.title+'</a> <em>'+result.date_formatted+'</em></li>');
+              var matchTitle = result.title.replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`);
+
+              $('.results ul').append('<li><a href="'+result.url+'">'+matchTitle+'</a> <em>'+result.date_formatted+'</em></li>');
             });
           }
         } else {
