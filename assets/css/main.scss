@@ -412,7 +412,7 @@ article {
     margin-top: 0 !important;
   }
 
-  &:last-child {
+  &:not(.post):last-child {
     &:after {
       display: none;
     }
