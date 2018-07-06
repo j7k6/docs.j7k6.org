@@ -418,13 +418,9 @@ article {
     }
   }
 
-  hr:nth-last-child(2) {
+  hr:last-of-type {
     width: 5em;
     margin: 2em 0 1em 0;
-  }
-
-  hr:last-child {
-    display: none;
   }
 }
 
