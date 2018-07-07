@@ -32,7 +32,7 @@ $(document).ready(function() {
     });
   });
 
-	$.getJSON("/posts.json", function(data) {
+	$.getJSON('/posts.json', function(data) {
     var resultList = $('.results ul li');
 
 		$('#q').keyup(function(e) {
@@ -51,13 +51,13 @@ $(document).ready(function() {
 
         if (q.length > 1) {
           $.each(data, function(key, result) {
-            var queryWords = q.split(" ");
+            var queryWords = q.split(/\s/);
 
             for (var i=0; i<queryWords.length; i++) {
               queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
             }
 
-            var re = new RegExp(queryWords.join("")+'.+', 'i');
+            var re = new RegExp(queryWords.join('')+'.+', 'i');
 
             if (result.title.match(re)) {
               results.push(result);
