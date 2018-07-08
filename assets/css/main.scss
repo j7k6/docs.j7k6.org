@@ -149,6 +149,14 @@ header {
       margin: 0 auto !important;
       padding: 0 !important;
       font-size: 0.9em;
+
+      a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
     }
   }
 
