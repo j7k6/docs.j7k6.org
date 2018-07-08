@@ -275,7 +275,7 @@ ul {
     }
   }
 
-  &.meta, header &, footer &, nav & {
+  .meta &, header &, footer &, nav & {
     li {
       margin: 0;
       padding: 0;
@@ -384,10 +384,6 @@ pre {
   }
 }
 
-.btn-div {
-  margin-right: 2em;
-}
-
 nav .btn {
   font-size: 1.5em;
 
@@ -403,6 +399,22 @@ nav .btn {
 
 .meta, hr + ol li, footer, {
   font-size: 0.9em;
+}
+
+.meta {
+  display: flex;
+  align-items: top;
+  justify-content: top;
+  margin-top: 1em;
+
+  ul {
+    flex: 1;
+    margin: auto !important;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
 }
 
 article {
