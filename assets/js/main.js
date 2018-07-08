@@ -28,7 +28,7 @@ $(document).ready(function() {
     $(this).html($(this).text().replace(/<(\$)([A-Z|_|0-9]+)>/g, '<span class="var">&lt;$2&gt;</span>'));
 
     $(this).find('*').not('span.var').parent().each(function() {
-      $(this).text($(this).html());
+      $(this).text($(this).html().replace(/([^a-z])(&gt;)/gi, '$1>').replace(/(&lt;)([^a-z])/gi, '<$2'));
     });
   });
 
