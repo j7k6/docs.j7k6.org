@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Javascript: Sort Object by Date Property"
+title: "Javascript: Sort Objects by Date Property"
 tags: [javascript,code-snippets]
 ---
 
