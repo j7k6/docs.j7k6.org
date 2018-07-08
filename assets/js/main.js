@@ -37,6 +37,7 @@ $(document).ready(function() {
 
 		$('#q').keyup(function(e) {
       $('#q').val($('#q').val());
+
       if (e.keyCode === 27) { // ESC
         if ($('#q').val().length === 0) {
           $('#q').blur();
