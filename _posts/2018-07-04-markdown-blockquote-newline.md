@@ -13,7 +13,7 @@ The trick is to add **2 spaces** at the end of a line. Like this:
 > sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 ```
 
-The result:
+Result:
 > Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  
 >   
 > sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
