@@ -73,7 +73,6 @@ $(document).ready(function() {
           if (results.length > 0) {
             results.sort(function(a, b) {
               return (new Date(a.date) < new Date(b.date)) ? 1 : -1;
-              return 0;
             });
 
             $.each(results, function(key, result) {
