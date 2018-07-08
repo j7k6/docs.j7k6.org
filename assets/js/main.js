@@ -71,16 +71,11 @@ $(document).ready(function() {
 
           if (results.length > 0) {
             results.sort(function(a, b) {
-              if (new Date(a.date) < new Date(b.date))
-                return 1;
-              if (new Date(a.date) > new Date(b.date))
-                return -1;
-              return 0;
+              return (new Date(a.date) < new Date(b.date)) ? 1 : -1;
             });
 
             $.each(results, function(key, result) {
-              var queryWords = q.split(/\s/).join('|');
-              var matchTitle = result.title.replace(new RegExp(queryWords, 'gi'), match => `<strong>${match}</strong>`);
+              var matchTitle = result.title.replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`);
 
               $('.results ul').append('<li><a href="'+result.url+'">'+matchTitle+'</a> <em>'+result.date_formatted+'</em></li>');
             });
