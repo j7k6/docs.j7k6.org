@@ -57,9 +57,7 @@ $(document).ready(function() {
               queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
             }
 
-            var re = new RegExp(queryWords.join('')+'.+', 'i');
-
-            if (result.title.match(re)) {
+            if (result.title.match((new RegExp(queryWords.join('')+'.+', 'i')))) {
               results.push(result);
             }
           });
@@ -81,7 +79,10 @@ $(document).ready(function() {
             });
 
             $.each(results, function(key, result) {
-              $('.results ul').append('<li><a href="'+result.url+'">'+result.title+'</a> <em>'+result.date_formatted+'</em></li>');
+              var queryWords = q.split(/\s/).join('|');
+              var matchTitle = result.title.replace(new RegExp(queryWords, 'gi'), match => `<strong>${match}</strong>`);
+
+              $('.results ul').append('<li><a href="'+result.url+'">'+matchTitle+'</a> <em>'+result.date_formatted+'</em></li>');
             });
           }
         } else {
