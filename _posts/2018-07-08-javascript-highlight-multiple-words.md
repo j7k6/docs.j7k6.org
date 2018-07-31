@@ -13,7 +13,7 @@ var highlightText = searchResult.replace((new RegExp(searchQuery.split(/\s/).joi
 ```
 
 Result:
-> Lorem **ipsum** dolor sit amet, consetetur sadipscing **elitr**
+> Lorem **ipsum** dolor sit amet, consetetur **sadipscing** elitr
 
 ---
 1. <https://stackoverflow.com/a/48950887/8434893>
