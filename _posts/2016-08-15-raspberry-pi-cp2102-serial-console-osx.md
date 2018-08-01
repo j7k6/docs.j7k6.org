@@ -1,11 +1,19 @@
 ---
 layout: post
 title: "Connect to Raspberry Pi with a CP2102 USB-to-Serial Adapter on OS X"
-tags: [raspberry-pi, usb, console, macos]
+tags: [raspberry-pi, usb, console, macos, uart, cp2102]
 ---
 
 1. Download & install [OS X Driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip).
-2. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
+2. On the *Raspbian* `boot` partition, add these lines to `config.txt` to enable UART:
+   ```
+   enable_uart=1
+   dtoverlay=pi3-disable-bt
+   ```
+
+   > **Note**: To enable the serial console, Bluetooth will be disabled!
+3. In `cmdline.txt` change `console=tty1` to `console=ttyAMA0`.
+4. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
 > ```
 > . . . . . . . . . . . . . . . . . . .
 > . . . . . . . . . . . . . . . . . . .
@@ -14,7 +22,10 @@ tags: [raspberry-pi, usb, console, macos]
 >                            TXD|GND  5V
 >                              RXD
 > ```
-3. Connect to serial console: screen /dev/tty.SLAB_USBtoUART 115200
-4. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
+5. Connect to serial console:
+   ```bash
+   screen /dev/tty.SLAB_USBtoUART 115200
+   ```
+6. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
 
 ---
