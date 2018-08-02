@@ -11,7 +11,8 @@ tags: [raspberry-pi, usb, console, macos, uart, cp2102]
    dtoverlay=pi3-disable-bt
    ```
 
-   In `cmdline.txt` change `console=tty1` to `console=ttyAMA0`.
+   > **Note**: To enable the serial console, Bluetooth will be disabled!
+3. In `cmdline.txt` change `console=tty1` to `console=ttyAMA0`.
 3. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
 > ```
 > . . . . . . . . . . . . . . . . . . .
