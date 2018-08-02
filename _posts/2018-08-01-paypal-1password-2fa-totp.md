@@ -4,7 +4,7 @@ title: "Generate 1Password TOTP Token for PayPal"
 tags: [paypal,2fa,security]
 ---
 
-For some reason *PayPal* doesn't offer "normal" Two Factor Authentication (2FA) usable in **1Password**, instrad they require the [*Symantec VIP*](https://idprotect.vip.symantec.com/) app (which is annyoing).
+For some reason *PayPal* doesn't offer "normal" Two Factor Authentication (2FA) usable in **1Password**, instead they require the [*Symantec VIP*](https://idprotect.vip.symantec.com/) app (which is annyoing).
 Gladfully [someone reverse-engineered](https://www.cyrozap.com/2014/09/29/reversing-the-symantec-vip-access-provisioning-protocol/) the TOTP process done by the Symantec app and created a nice little [command line tool](https://github.com/cyrozap/python-vipaccess) to generate TOTP tokens usable with **1Passwords** (and other 2FA-capable apps).
 
 > **Note**: The original repository seems to be outdated and doesn't work anymore, but there are plenty of forks to use.
