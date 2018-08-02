@@ -5,7 +5,11 @@ tags: [raspberry-pi, usb, console, macos, uart, cp2102]
 ---
 
 1. Download & install [OS X Driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip).
-2. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
+2. On the *Raspbian* `boot` partition, add this line to `config.txt` to enable UART:
+   ```
+   enable_uart=1
+   ```
+3. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
 > ```
 > . . . . . . . . . . . . . . . . . . .
 > . . . . . . . . . . . . . . . . . . .
@@ -14,10 +18,10 @@ tags: [raspberry-pi, usb, console, macos, uart, cp2102]
 >                            TXD|GND  5V
 >                              RXD
 > ```
-3. Connect to serial console:
+4. Connect to serial console:
    ```bash
    screen /dev/tty.SLAB_USBtoUART 115200
    ```
-4. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
+5. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
 
 ---
