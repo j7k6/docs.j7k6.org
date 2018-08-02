@@ -13,7 +13,7 @@ tags: [raspberry-pi, usb, console, macos, uart, cp2102]
 
    > **Note**: To enable the serial console, Bluetooth will be disabled!
 3. In `cmdline.txt` change `console=tty1` to `console=ttyAMA0`.
-3. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
+4. Connect [CP2102](https://www.amazon.de/gp/product/B00AFRXKFU) to Raspberry Pi CPIO pins (bottom right):
 > ```
 > . . . . . . . . . . . . . . . . . . .
 > . . . . . . . . . . . . . . . . . . .
@@ -22,10 +22,10 @@ tags: [raspberry-pi, usb, console, macos, uart, cp2102]
 >                            TXD|GND  5V
 >                              RXD
 > ```
-4. Connect to serial console:
+5. Connect to serial console:
    ```bash
    screen /dev/tty.SLAB_USBtoUART 115200
    ```
-5. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
+6. Press `[ctrl+a]`, `k`, `y` to exit `screen`. 
 
 ---
