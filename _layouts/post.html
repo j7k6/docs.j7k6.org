@@ -3,18 +3,7 @@ layout: default
 ---
 
 {% assign post = page %}
-{% assign disqus_identifier =  post.url | remove: '/' %}
 <article class="post">
   <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
   {{ content }}
-  {% include meta.html %}
-
-  <div id="comments">
-    <div id="disqus_thread"></div>
-  </div>
-	<script>
-  var disqus_config = function () {
-    this.page.identifier = '{{ disqus_identifier }}';
-  };
-  </script>
 </article>

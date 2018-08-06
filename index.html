@@ -3,24 +3,12 @@ layout: default
 title: "My Sysadmin Cheatsheet"
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-    {% assign disqus_identifier = post.url | remove: '/' %}
-    <article>
-      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      {{ post.content }}
-      {% include meta.html %}
-    </article>
-  {% endfor %}
+<div class="search box">
+  <input type="text"  id="q" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" placeholder="&#xF002" autofocus>
 </div>
 
-<nav>
-  <ul>
-    {% if paginator.previous_page %}
-    <li><a href="{{ paginator.previous_page_path }}" class="btn"><i class="fa fa-angle-double-left"></i></a></li>
-    {% endif %}
-    {% if paginator.next_page %}
-      <li><a href="{{ paginator.next_page_path }}" class="btn"><i class="fa fa-angle-double-right"></i></a></li>
-    {% endif %}
-  <ul>
-</nav>
+<ul class="index box">
+  {% for post in site.posts %}
+  <li><i class="fa fa-file-text"></i><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
