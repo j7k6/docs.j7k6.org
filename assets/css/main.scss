@@ -8,6 +8,7 @@ $black: #222;
 $link: #4DB6AC;
 $light: #f6f6f6;
 $code: #666;
+$var: #c7254e;
 
 $defaultFont: 'PT Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -68,11 +69,11 @@ header {
   height: auto;
   vertical-align: middle;
   line-height: 2em;
-  margin: 0 auto 2em auto !important;
-  padding: 2em 0;
+  margin: 2em auto !important;
+  padding: 0;
 
   .home {
-    margin: 0.5em auto;
+    margin: 0.5em auto 0 auto;
     white-space: nowrap;
     overflow: hidden;
 
@@ -159,33 +160,6 @@ header {
       }
     }
   }
-
-  .search {
-    width: 75vw;
-    margin: 0.5em auto;
-    
-    input {
-      display: block;
-      width: calc(100% - 1em);
-      height: auto;
-      font-size: 2em;
-      text-align: left;
-      font-family: $headerFont, FontAwesome;
-      color: lighten($black, 50%);
-      border: 0.025em solid lighten($black, 75%);
-      border-radius: 0.25em;
-      padding: 0.5em;
-      margin: 0.5em auto;
-      transition: all 0.30s ease-in-out;
-      outline: none;
-    }
-
-    input {
-      &:focus, &:hover {
-        border: 0.025em solid lighten($black, 60%);
-      }
-    }
-  }
 }
 
 p {
@@ -213,7 +187,7 @@ a {
 
 h1, h2, h3 {
   font-weight: 700;
-  margin: 1em auto 0 auto;
+  margin: 1em auto 0.25em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
 }
@@ -238,7 +212,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75em;
+  margin: 2em auto 0.25em auto;
+  font-size: 1.5em;
 }
 
 h3 {
@@ -252,6 +227,10 @@ h3 {
 
 h2 + p, h3 + p {
   margin-top: 0;
+}
+
+h3 {
+  font-size: 1em;
 }
 
 ul, ol {
@@ -275,7 +254,7 @@ ul {
     }
   }
 
-  .meta &, header &, footer &, nav & {
+  header &, footer &, nav & {
     li {
       margin: 0;
       padding: 0;
@@ -360,6 +339,7 @@ pre {
   > code {
     display: inline-block;
     width: auto;
+    line-height: inherit !important;
     vertical-align: middle;
     color: $code !important;
     background: $light !important;
@@ -368,57 +348,8 @@ pre {
   }
 }
 
-.btn {
-  color: lighten($black, 50%);
-  font-family: $codeFont;
-  display: inline-block;
-  line-height: 1;
-  padding: 0.25em;
-  border-radius: 0.25em;
-  vertical-align: middle;
-  
-  &:hover {
-    text-decoration: none;
-    color: $code;
-    background: $light;
-  }
-
-  i {
-    margin-right: 0.25em;
-  }
-}
-
-nav .btn {
-  font-size: 1.5em;
-
-  &:hover {
-    background: lighten($black, 50%);
-    color: $light;
-  }
-
-  i {
-    margin: 0.25em;
-  }
-}
-
-.meta, hr + ol li, footer, {
+hr + ol li, footer, {
   font-size: 0.9em;
-}
-
-.meta {
-  display: flex;
-  align-items: top;
-  justify-content: top;
-  margin-top: 1em;
-
-  ul {
-    flex: 1;
-    margin: auto !important;
-
-    &:last-child {
-      text-align: right;
-    }
-  }
 }
 
 article {
@@ -452,6 +383,34 @@ article {
   }
 }
 
+div.content {
+  .search {
+    margin: 0 auto 2em auto;
+    
+    input {
+      display: block;
+      width: calc(100% - 1em);
+      height: auto;
+      font-size: 2em;
+      text-align: left;
+      font-family: $headerFont, FontAwesome;
+      color: lighten($black, 50%);
+      border: 0.025em solid lighten($black, 75%);
+      border-radius: 0.25em;
+      padding: 0.5em;
+      margin: 0.5em auto;
+      transition: all 0.30s ease-in-out;
+      outline: none;
+    }
+
+    input {
+      &:focus, &:hover {
+        border: 0.025em solid lighten($black, 60%);
+      }
+    }
+  }
+}
+
 div.box  {
   margin: 0 auto;
   width: 50vw;
@@ -465,16 +424,10 @@ div.box  {
   }
 }
 
-div.results {
-  margin-bottom: 5em;
-  display: none;
-}
-
-
 img {
   display: block;
   width: auto;
-  max-width: 100%;
+  max-width: 90%;
   margin: 1em auto;
   text-align: center;
 }
@@ -522,25 +475,32 @@ hr {
   }
 }
 
-#comments {
-  margin: 5em auto;
-  display: none;
+ul.index {
+  list-style-type: none;
+  
+  li {
+    margin: 0.75em auto;
 
-  #disqus_thread {
-    height: auto !important;
-  }
-}
+    em {
+      color: darken($light, 20%);
+      padding-left: 0.25em;
+      font-family: $codeFont;
+    }
 
-.tags {
-  em {
-    color: darken($light, 20%);
-    padding-left: 0.25em;
-    font-family: $codeFont;
+    i {
+      opacity: 0.25;
+      margin-right: 0.5em;
+      color: darken($light, 20%);
+    }
+
+    &:hover i {
+      opacity: 1.0;
+    }
   }
 }
 
 .var {
-  color: $black;
+  color: $var;
   font-style: italic;
 }
 
