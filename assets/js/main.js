@@ -38,7 +38,7 @@ $(document).ready(function() {
           return $(this).text().match(new RegExp(queryWords.join('')+'.+', 'i'));
         }).parent().hide();
 
-        $('ul.index li a').each(function() {
+        $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
       }
