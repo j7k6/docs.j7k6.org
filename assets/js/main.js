@@ -40,6 +40,8 @@ $(document).ready(function() {
         $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
+      } else {
+        $('ul.index li').show();
       }
     };
 	});
