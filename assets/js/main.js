@@ -24,19 +24,18 @@ $(document).ready(function() {
       }
     } else {
       var q = $('#q').val();
-
-      $('ul.index li').show();
+      var queryWords = q.split(/\s/);
 
       if (q.length > 1) {
-        var queryWords = q.split(/\s/);
-      
+        $('ul.index li').hide();
+        
         for (var i=0; i<queryWords.length; i++) {
           queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
         }
 
         $('ul.index li a').not(function() {
-          return $(this).text().match(new RegExp(queryWords.join('')+'.+', 'i'));
-        }).parent().hide();
+          return $(this).text().match(new RegExp('^(?!('+queryWords.join('')+'.+))', 'i'));
+        }).parent().show();
 
         $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
