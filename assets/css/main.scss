@@ -187,7 +187,7 @@ a {
 
 h1, h2, h3 {
   font-weight: 700;
-  margin: 1em auto 0 auto;
+  margin: 1em auto 0.25em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
 }
@@ -212,7 +212,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75em;
+  margin: 2em auto 0.25em auto;
+  font-size: 1.25em;
 }
 
 h3 {
@@ -226,6 +227,10 @@ h3 {
 
 h2 + p, h3 + p {
   margin-top: 0;
+}
+
+h3 {
+  font-size: 1em;
 }
 
 ul, ol {
