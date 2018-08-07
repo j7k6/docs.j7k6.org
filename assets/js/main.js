@@ -41,8 +41,9 @@ $(document).ready(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
       } else {
-        $('ul.index li').show();
-        $('ul.index li a strong').contents().unwrap();
+        $('ul.index li a strong').contents().unwrap(function() {
+          $('ul.index li').show();
+        });
       }
     };
 	});
