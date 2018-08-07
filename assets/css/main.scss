@@ -8,6 +8,7 @@ $black: #222;
 $link: #4DB6AC;
 $light: #f6f6f6;
 $code: #666;
+$var: #c7254e;
 
 $defaultFont: 'PT Sans', Helvetica, sans-serif;
 $codeFont: Lekton, Monaco, 'Lucida Console', monospace;
@@ -316,16 +317,6 @@ pre, code {
   color: $code;
 }
 
-code {
-  color: #c7254e;
-  background: #f9f2f4;
-  padding: 4px;
-  line-height: 1em;
-  display: inline-block;
-  white-space: nowrap;
-  border-radius: 3px;
-}
-
 pre {
   margin: 0.5em auto;
   background: $light !important;
@@ -500,7 +491,7 @@ ul.index {
 }
 
 .var {
-  color: #c7254e;
+  color: $var;
   font-style: italic;
 }
 
