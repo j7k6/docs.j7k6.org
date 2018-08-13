@@ -86,7 +86,7 @@ Sixfab's [**Raspberry Pi GSM GPRS Shield**](https://sixfab.com/product/gsmgprs-s
    ```
 
 ## Usage
-1. To power-up the Shield using the GPIO's, use this Python script:
+1. To power-up the Shield using the GPIO pins, use this Python script:
    ```python
    #!/usr/bin/env python
    
