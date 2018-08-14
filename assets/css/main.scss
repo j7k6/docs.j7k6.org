@@ -5,13 +5,14 @@
 
 $white: White;
 $black: #222;
+$text: #666;
 $link: #4DB6AC;
 $light: #f6f6f6;
 $code: #666;
 $var: #c7254e;
 
-$defaultFont: 'PT Sans', Helvetica, sans-serif;
-$codeFont: Lekton, Monaco, 'Lucida Console', monospace;
+$defaultFont: 'Droid Sans', sans-serif;
+$codeFont: Lekton,  monospace;
 $headerFont: $codeFont;
 
 $break-small: 640px;
@@ -37,7 +38,7 @@ body {
   line-height: 1.75;
   font-weight: 400;
   font-size: 16px;
-  color: $black;
+  color: $text;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -186,8 +187,9 @@ a {
 }
 
 h1, h2, h3 {
+  color: $black;
   font-weight: 700;
-  margin: 1em auto 0.25em auto;
+  margin: 2.0em auto 0.5em auto;
   line-height: 1.2em;
   white-space: pre-wrap;
 }
@@ -196,7 +198,7 @@ h1 {
   font-family: $headerFont;
   font-size: 2.25em;
   font-weight: 300;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
 
   a {
     color: inherit;
@@ -212,25 +214,15 @@ h1 {
 }
 
 h2 {
-  margin: 2em auto 0.25em auto;
   font-size: 1.5em;
 }
 
 h3 {
   font-size: 1.25em;
-
-  i {
-    font-weight: 300;
-    font-style: normal;
-  }
 }
 
 h2 + p, h3 + p {
   margin-top: 0;
-}
-
-h3 {
-  font-size: 1em;
 }
 
 ul, ol {
@@ -276,9 +268,20 @@ ul {
   }
 }
 
+ol, ul {
+  li {
+    line-height: 1;
+    margin: 1.5em auto 1.5em auto;
+
+    div {
+      margin-top: .5em !important;
+    }
+  }
+}
+
 ol {
   li {
-    margin: 1.25em auto 0 -1.5em;
+    margin-left: -1.5em !important;
     list-style-position: inside;
     text-indent: -1.5em;
     padding-left: 3em;
@@ -287,15 +290,13 @@ ol {
   li * {
     text-indent: 0 !important;
   }
-
-  ul {
-    li {
-      margin-top: 0;
-      margin-left: 1.75em;
-    }
-  }
 }
 
+ul {
+  li {
+    margin-left: 1.75em !important; 
+  }
+}
 
 footer {
   text-align: center;
@@ -351,7 +352,7 @@ hr + ol li, footer, {
 article {
   margin: 2em auto;
   overflow-x: hidden;
- 
+
   &:after {
     content: "~";
     font-size: 1.75em;
@@ -361,10 +362,6 @@ article {
     text-align: center;
     vertical-align: center;
     color: darken($light, 10%);
-  }
-
-  *:first-child {
-    margin-top: 0 !important;
   }
 
   &:not(.post):last-child {
@@ -475,7 +472,9 @@ ul.index {
   list-style-type: none;
   
   li {
-    margin: 0.75em auto;
+    margin: 1.5em auto;
+    margin-left: 0.25em !important;
+    line-height: 1.25 !important;
 
     em {
       color: darken($light, 20%);
