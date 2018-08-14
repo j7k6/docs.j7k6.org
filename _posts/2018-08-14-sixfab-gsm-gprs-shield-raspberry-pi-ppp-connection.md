@@ -4,7 +4,7 @@ title: "Connect to the Internet via PPP with Sixfab GSM/GPRS Shield on Raspberry
 tags: [raspberry-pi]
 ---
 
-Sixfab's [**Raspberry Pi GSM GPRS Shield**](https://sixfab.com/product/gsmgprs-shield/) is a nice little IoT modem to connect the Pi to the internet in remote locations via a 2G mobile network.
+Sixfab's [Raspberry Pi GSM GPRS Shield](https://sixfab.com/product/gsmgprs-shield/) is a nice little IoT modem to connect the Pi to the internet in remote locations via a 2G mobile network.
 
 ## Serial Port Configuration
 1. In `/boot/cmdline.txt` remove the `console=serial0,115200` part.
