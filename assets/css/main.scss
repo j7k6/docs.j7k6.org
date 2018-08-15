@@ -65,6 +65,13 @@ body {
 	color: lighten($black, 75%);
 }
 
+ul {
+  &, & li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 header {
   text-align: left;
   height: auto;
@@ -210,7 +217,7 @@ article {
   overflow-x: hidden;
 
   &:after {
-    content: "~";
+    content: '~';
     font-size: 1.75em;
     display: block;
     width: 100%;
@@ -221,7 +228,7 @@ article {
   }
 
   & > * {
-    margin: 0 auto 2em auto;
+    margin: 0.5em auto 2em auto;
   }
 
   ol, ul {
@@ -270,10 +277,10 @@ article {
           white-space: nowrap;
 
           &:before {
-            font-family: FontAwesome;
-            content: "\f08e";
+            content: '\2197';
+            font-size: 0.9em;
             display: inline-block;
-            padding-right: 0.5em;
+            padding-right: 0.25em;
             vertical-align: middle;
           }
         }
@@ -299,6 +306,10 @@ article {
 
   h1 + p {
     margin-top: 2em;
+  }
+
+  h2 + h3 {
+    margin-top: 1em;
   }
 
   blockquote {
@@ -348,7 +359,6 @@ article {
     margin: 1em auto;
     text-align: center;
   }
-
 }
 
 footer {
@@ -366,17 +376,12 @@ footer {
     padding: 0 1em !important;
 
     li {
-      margin: 0;
-      padding: 0;
       vertical-align: middle;
       display: inline-block;
-      
-      i {
-        margin-right: 0.25em;
-      }
     }
   }
 }
+
 div.content {
   .search {
     margin: 0 auto 2em auto;
@@ -387,7 +392,7 @@ div.content {
       height: auto;
       font-size: 2em;
       text-align: left;
-      font-family: $headerFont, FontAwesome;
+      font-family: $headerFont;
       color: lighten($black, 50%);
       border: 0.025em solid lighten($black, 75%);
       border-radius: 0.25em;
@@ -425,15 +430,26 @@ ul.index {
   li {
     margin: 1.5em auto;
     line-height: 1.25 !important;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: $link;
 
-    i {
-      opacity: 0.25;
-      margin-right: 0.5em;
-      color: darken($light, 20%);
-    }
+    a {
+      &:before {
+        content: '\266F';
+        opacity: 0.25;
+        margin-right: 0.25em; 
+        color: darken($light, 20%);
+        display: inline-block;
+      }
 
-    &:hover i {
-      opacity: 1.0;
+      &:hover:before {
+        opacity: 1.0;
+      }
     }
   }
 }
