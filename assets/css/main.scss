@@ -217,7 +217,7 @@ article {
   overflow-x: hidden;
 
   &:after {
-    content: "~";
+    content: '~';
     font-size: 1.75em;
     display: block;
     width: 100%;
@@ -277,7 +277,7 @@ article {
           white-space: nowrap;
 
           &:before {
-            content: "\2197";
+            content: '\2197';
             font-size: 0.9em;
             display: inline-block;
             padding-right: 0.25em;
@@ -359,7 +359,6 @@ article {
     margin: 1em auto;
     text-align: center;
   }
-
 }
 
 footer {
@@ -382,6 +381,7 @@ footer {
     }
   }
 }
+
 div.content {
   .search {
     margin: 0 auto 2em auto;
@@ -430,21 +430,26 @@ ul.index {
   li {
     margin: 1.5em auto;
     line-height: 1.25 !important;
-
-    span {
-      opacity: 0.25;
-      margin-right: 0.25em; 
-      color: darken($light, 20%);
-    }
-
-    &:hover span {
-      opacity: 1.0;
-    }
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: $link;
 
     a {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      &:before {
+        content: '\266F';
+        opacity: 0.25;
+        margin-right: 0.25em; 
+        color: darken($light, 20%);
+        display: inline-block;
+      }
+
+      &:hover:before {
+        opacity: 1.0;
+      }
     }
   }
 }
