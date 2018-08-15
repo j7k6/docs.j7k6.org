@@ -277,10 +277,10 @@ article {
           white-space: nowrap;
 
           &:before {
-            font-family: FontAwesome;
-            content: "\f08e";
+            content: "\2197";
+            font-size: 0.9em;
             display: inline-block;
-            padding-right: 0.5em;
+            padding-right: 0.25em;
             vertical-align: middle;
           }
         }
@@ -388,7 +388,7 @@ div.content {
       height: auto;
       font-size: 2em;
       text-align: left;
-      font-family: $headerFont, FontAwesome;
+      font-family: $headerFont;
       color: lighten($black, 50%);
       border: 0.025em solid lighten($black, 75%);
       border-radius: 0.25em;
