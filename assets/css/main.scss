@@ -428,17 +428,20 @@ ul.index {
   padding: 0;
   
   li {
-    margin: 1.5em auto;
-    line-height: 1.25 !important;
+    margin: 0 auto;
     padding: 0;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     color: $link;
 
     a {
+      line-height: 1.25 !important;
+      padding: 1.0em 0;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
       &:before {
         content: '\266F';
         opacity: 0.25;
