@@ -426,8 +426,6 @@ ul.index {
   li {
     margin: 1.5em auto;
     line-height: 1.25 !important;
-    overflow: hidden;
-    width: 100%;
 
     span {
       opacity: 0.25;
@@ -442,6 +440,7 @@ ul.index {
     a {
       text-overflow: ellipsis;
       white-space: nowrap;
+      overflow: hidden;
     }
   }
 }
