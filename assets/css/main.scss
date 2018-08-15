@@ -65,8 +65,51 @@ body {
 	color: lighten($black, 75%);
 }
 
+a {
+  color: $link;
+  text-decoration: none;
+  
+  code {
+    background: $link !important;
+    color: $code;
+  }
+
+  &:hover {
+    text-decoration: underline;
+
+    code {
+      background: $light !important;
+      color: $link !important;
+    }
+  }
+}
+
+h1, h2, h3 {
+  color: $black;
+  white-space: pre-wrap;
+ 	line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.25em;
+  font-family: $headerFont;
+  font-weight: 300;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    border-bottom: 1px solid transparent;
+  
+    &:hover {
+      text-decoration: none;
+      border-bottom: 1px solid $black;
+    }
+  }
+}
+
 ul {
-  &, & li {
+  &, li {
     margin: 0;
     padding: 0;
   }
@@ -117,7 +160,7 @@ header {
         }
 
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           width: 100%;
           height: 1px;
@@ -166,49 +209,6 @@ header {
           text-decoration: underline !important;
         }
       }
-    }
-  }
-}
-
-a {
-  color: $link;
-  text-decoration: none;
-  
-  code {
-    background: $link !important;
-    color: $code;
-  }
-
-  &:hover {
-    text-decoration: underline;
-
-    code {
-      background: $light !important;
-      color: $link !important;
-    }
-  }
-}
-
-h1, h2, h3 {
-  color: $black;
-  white-space: pre-wrap;
- 	line-height: 1.25;
-}
-
-h1 {
-  font-size: 2.25em;
-  font-family: $headerFont;
-  font-weight: 300;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    overflow: hidden;
-    border-bottom: 1px solid transparent;
-  
-    &:hover {
-      text-decoration: none;
-      border-bottom: 1px solid $black;
     }
   }
 }
@@ -277,10 +277,11 @@ article {
           white-space: nowrap;
 
           &:before {
-            content: '\2197';
+            content: '\238B';
+            transform: scale(-1, 1);
             font-size: 0.9em;
             display: inline-block;
-            padding-right: 0.25em;
+            padding-left: 0.25em;
             vertical-align: middle;
           }
         }
@@ -304,7 +305,7 @@ article {
     margin-top: 0;
   }
 
-  h1 + p {
+  h1 + p, h1 + div pre {
     margin-top: 2em;
   }
 
@@ -428,17 +429,20 @@ ul.index {
   padding: 0;
   
   li {
-    margin: 1.5em auto;
-    line-height: 1.25 !important;
+    margin: 0 auto;
     padding: 0;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     color: $link;
 
     a {
+      line-height: 1.25 !important;
+      padding: 1.0em 0;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
       &:before {
         content: '\266F';
         opacity: 0.25;

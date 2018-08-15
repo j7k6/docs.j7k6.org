@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Stream Raspberry Pi Camera over the network with Netcat and Mplayer"
+title: "Stream Raspberry Pi Camera over the Network with Netcat and Mplayer"
 tags: [raspberry-pi,netcat,mplayer]
 ---
 
