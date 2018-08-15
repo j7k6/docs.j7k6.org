@@ -426,6 +426,8 @@ ul.index {
   li {
     margin: 1.5em auto;
     line-height: 1.25 !important;
+    overflow: hidden;
+    width: 100%;
 
     span {
       opacity: 0.25;
@@ -435,6 +437,11 @@ ul.index {
 
     &:hover span {
       opacity: 1.0;
+    }
+
+    a {
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
