@@ -228,7 +228,7 @@ article {
   }
 
   & > * {
-    margin: 0 auto 2em auto;
+    margin: 0.5em auto 2em auto;
   }
 
   ol, ul {
@@ -306,6 +306,10 @@ article {
 
   h1 + p {
     margin-top: 2em;
+  }
+
+  h2 + h3 {
+    margin-top: 1em;
   }
 
   blockquote {
