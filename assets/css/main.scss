@@ -277,10 +277,11 @@ article {
           white-space: nowrap;
 
           &:before {
-            content: '\2197';
+            content: '\238B';
+            transform: scale(-1, 1);
             font-size: 0.9em;
             display: inline-block;
-            padding-right: 0.25em;
+            padding-left: 0.25em;
             vertical-align: middle;
           }
         }
