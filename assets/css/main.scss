@@ -115,6 +115,10 @@ ul {
   }
 }
 
+p {
+  line-height: 2;
+}
+
 header {
   text-align: left;
   height: auto;
@@ -290,11 +294,11 @@ article {
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.75em;
   }
 
   h3 {
-    font-size: 1.25em;
+    font-size: 1.1em;
   }
 
   h1, h2, h3 {
@@ -307,6 +311,10 @@ article {
 
   h1 + p, h1 + div pre {
     margin-top: 2em;
+  }
+
+  p + div pre {
+    margin-top: -1.5em;
   }
 
   h2 + h3 {
