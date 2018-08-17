@@ -108,13 +108,6 @@ h1 {
   }
 }
 
-ul {
-  &, li {
-    margin: 0;
-    padding: 0;
-  }
-}
-
 p {
   line-height: 2;
 }
@@ -309,12 +302,12 @@ article {
     margin-top: 0;
   }
 
-  h1 + p, h1 + div pre {
-    margin-top: 2em;
+  p {
+    margin: 1em auto;
   }
 
-  p + div pre {
-    margin-top: -1.5em;
+  h1 + p, h1 + div pre, h1 + blockquote {
+    margin-top: 2em;
   }
 
   h2 + h3 {
