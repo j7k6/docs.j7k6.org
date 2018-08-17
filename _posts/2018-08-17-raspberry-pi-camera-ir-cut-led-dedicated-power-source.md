@@ -35,8 +35,7 @@ GPIO.output(23, GPIO.LOW) # = Power off
 
 ---
 
-This is how everything is connected:
-
+This is how everything is connected (powered by [asciiflow.com](http://asciiflow.com/)):
 ```
                                    Raspberry Pi Zero
                             +-------------------------------+
@@ -61,7 +60,6 @@ USB    |  -5V| - |    -3.3V| ----+           |          |       |
                                  -----------
                                    IR LED
 ```
-
 
 ---
 1. <https://dordnung.de/raspberrypi-ledstrip/>
