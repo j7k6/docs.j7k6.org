@@ -15,7 +15,7 @@ The camera is connected to the Raspberry Pi with a flex cable and there is no wa
 To get around this limitations, I decided to disconnect it from the the camera and power it with its own power source. The easiest way I thought was to just cut open an unused USB cable and use the red (+5V) and black (-5V) wires as dedicated power source for the LED. But of course it wasn't as easy as that...
 
 ### Problem #2:
-Although the camera itself uses the Pi's 5V output, the LEDs only work with 3.3V. So I used a **DC-DC Step Down Converter** ([Mini360 LM2596](https://www.amazon.de/dp/B01M4NJNTP)) to regulate the 5V power output of the USB cable down to 3.3V. The converter comes with a tiny poti, which needs to be adjusted with a screw-driver (and a multi-meter!) until it outputs exaclty 3.3V.
+Although the camera itself uses the Pi's 5V output, the LEDs only work with 3.3V. So I used a **DC-DC Step Down Converter** ([Mini360 LM2596](https://www.amazon.de/dp/B01M4NJNTP)) to regulate the 5V power output of the USB cable down to 3.3V. The converter comes with a tiny poti, which needs to be adjusted with a screw-driver (and a multi-meter!) until it outputs exactly 3.3V.
 
 ## GPIO Trigger
 ### Hardware (MOSFET)
