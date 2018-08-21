@@ -41,15 +41,15 @@ tags: [irssi,twitter,irc,bitlbee]
    ```
    account twitter set commands strict
    ```
-10. [Since Twitter crippled their API for 3rd-party-apps](https://blog.twitter.com/developer/en_us/topics/tools/2017/announcing-more-functionality-to-improve-customer-engagements-on-twitter.html), it's not possible anymore to use the Stream API. To avoid errors, the stream feature needs to be turned off for Bitlbee:
-   ```
-   account twitter set stream off
-   ```
-10. To connect & identify to the *Bitlbee* server automatically on every start of *Irssi*, run:
+10. **Update**: [Since Twitter crippled their API for 3rd-party-apps](https://blog.twitter.com/developer/en_us/topics/tools/2017/announcing-more-functionality-to-improve-customer-engagements-on-twitter.html), it's not possible anymore to use the Stream API. To avoid errors, the stream feature needs to be turned off for Bitlbee:
+    ```
+    account twitter set stream off
+    ```
+11. To connect & identify to the *Bitlbee* server automatically on every start of *Irssi*, run:
     ``` 
     /network add -autosendcmd "/msg &bitlbee identify <$BITLBEE_PASSWORD>; wait -bitlbee 2000; /window goto &bitlbee; /window close" bitlbee
     ```
-11. Save *Irssi* configuration:
+12. Save *Irssi* configuration:
     ```
     /save
     ```
