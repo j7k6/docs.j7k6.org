@@ -111,6 +111,7 @@ Now load the needed kernel modules:
 mkdir -p /lib/modules/$(uname -r)
 wget -qP /lib/modules/$(uname -r)/ http://mirror.scaleway.com/kernel/$(uname -m)/$(uname -r)/modules/$(uname -r)/kernel/drivers/md/dm-mod.ko
 wget -qP /lib/modules/$(uname -r)/ http://mirror.scaleway.com/kernel/$(uname -m)/$(uname -r)/modules/$(uname -r)/kernel/drivers/md/dm-crypt.ko
+wget -qP /lib/modules/$(uname -r)/ http://mirror.scaleway.com/kernel/$(uname -m)/$(uname -r)/modules/$(uname -r)/kernel/drivers/md/xts.ko # Thanks for the update @Alex / 2018-08-21
 depmod -a
 ```
 
