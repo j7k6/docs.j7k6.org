@@ -44,13 +44,11 @@ Gladfully [someone reverse-engineered](https://www.cyrozap.com/2014/09/29/revers
      oathtool -d6 -b --totp    OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2  # 6-digit code
      oathtool -d6 -b --totp -v OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2  # ... with extra information
    ```
-
-   Insert the Credential ID (`VSST...`) into the *Serial number* field (Step 1) on the PayPal site.
+5. Insert the Credential ID (`VSST...`) into the *Serial number* field (Step 1) on the PayPal site.
    Then generate a token and insert it into Step 2: See `oathtool -d6 -b --totp ...` command above. After ~30 seconds repeat the last command to generate a new token and insert it into the field at Step 3.
-
    ![paypal-1password-2fa-totp-01.png](/files/paypal-1password-2fa-totp-02.png)
-5. Click *Activate*. The security key is now enabled for 2FA.
-6. Now generate a TOTP QR-code with the `otpauth://...` URI (see above) and scan it with **1Password** to add it to your PayPal credentials:
+6. Click *Activate*. The security key is now enabled for 2FA.
+7. Now generate a TOTP QR-code with the `otpauth://...` URI (see above) and scan it with **1Password** to add it to your PayPal credentials:
    ```bash
    qrencode -t ANSI256 "otpauth://totp/VIP%20Access:VSST63283447?digits=6&secret=OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2&period=30&algorithm=sha1&issuer=Symantec"
    ```
