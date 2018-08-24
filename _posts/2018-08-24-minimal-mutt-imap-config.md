@@ -12,8 +12,6 @@ set imap_user = "<$IMAP_USERNAME>"
 set imap_pass = "<$IMAP_PASSWORD>"
 
 set smtp_url = "smtp://$imap_user:$imap_pass@<$IMAP_SERVER>:587/"
-set ssl_starttls = yes
-set ssl_force_tls = yes
 
 set mail_check = 60
 
