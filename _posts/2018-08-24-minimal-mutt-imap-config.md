@@ -26,7 +26,7 @@ set move = no
 set sort = "threads"
 set sort_aux = "reverse-last-date-received"
 
-set header_cache = "~/.mutt/cacheheaders"
+set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 ```
 
