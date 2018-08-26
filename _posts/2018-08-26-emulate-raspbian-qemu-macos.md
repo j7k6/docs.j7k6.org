@@ -26,6 +26,14 @@ tags: [qemu,macos,raspbian,raspberry-pi]
      -drive "file= ./2018-06-27-raspbian-stretch.img,index=0,media=disk,format=raw" \
      -net nic -net user,hostfwd=tcp::22222-:22
    ```
+5. Enable SSH service on Raspbian:
+   ```bash
+   systemctl enable --now ssh
+   ```
+6. SSH into emulated Raspbian from macOS host: 
+   ```bash
+   ssh -p 22222 pi@localhost
+   ```
 
 ---
 1. <https://gist.github.com/MrAndersonMD/d0d1506a91855d7a022b8cc8d0576b79>
