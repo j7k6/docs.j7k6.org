@@ -23,7 +23,7 @@ tags: [qemu,macos,raspbian,raspberry-pi]
      -cpu arm1176 -m 256 \
      -M versatilepb -no-reboot -serial stdio \
      -append "dwc_otg.lpm_enable=0 root=dwc_otg.lpm_enable=0 root=/dev/sda2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait"" \
-     -drive "file= ./2018-06-27-raspbian-stretch.img,index=0,media=disk,format=raw" \
+     -drive "file=./2018-06-27-raspbian-stretch.img,index=0,media=disk,format=raw" \
      -net nic -net user,hostfwd=tcp::22222-:22
    ```
 5. Enable SSH service on Raspbian:
