@@ -4,7 +4,7 @@ title: "Send Mails via SparkPost API with Python"
 tags: [python,sparkpost,email]
 ---
 
-1. Generate API Key at [SparkPost](https://app.sparkpost.com/account/api-keys).
+1. Generate [SparkPost](https://app.sparkpost.com/account/api-keys) API key.
 2. Install `sparkpost` Python package:
    ```bash
    pip install sparkpost
