@@ -16,9 +16,9 @@ tags: [python,sparkpost,email]
    sp = SparkPost(<$SPARKPOST_API_KEY>)
 
    response = sp.transmissions.send(
-     recipients=<$RECIPIENTS_LIST>,
+     recipients=[<$RECIPIENTS_LIST>],
      text=<$MESSAGE>,
-     from=<$SENDER_ADDRESS>,
+     from_email=<$SENDER_ADDRESS>,
      subject=<$SUBJECT>,
      attachments=[
        {
