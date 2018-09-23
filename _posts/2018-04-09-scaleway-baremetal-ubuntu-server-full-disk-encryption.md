@@ -2,6 +2,7 @@
 layout: post
 title: "Scaleway Baremetal Ubuntu Server with Full Disk Encryption"
 tags: [scaleway,encryption,security,luks,linux,ubuntu]
+fav: 1
 ---
 
 [**Scaleway**](https://www.scaleway.com/) offers some cheap baremetal x86 servers (*C2S*, *C2M*, *C2L*). Since this servers are not virtualized, there is no way an encryption key can be leaked to a hypervisor. So unlike normal (virtualized) cloud VPS's, *Full Disk Encryption* is much more secure on a baremetal server, because you "own" the hardware (yes, only theoretically, direct access to the hardware is still an attack surface, but the desired level of security depends on the threat model).

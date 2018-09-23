@@ -2,6 +2,7 @@
 layout: post
 title: "Thinkpad T410 Hackintosh"
 tags: [hackintosh, lenovo, t410]
+fav: 1
 ---
 
 The *Lenovo Thinkpad T410* is available on eBay for ~400€ and makes a very good Hackintosh.
