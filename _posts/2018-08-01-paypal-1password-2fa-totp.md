@@ -2,6 +2,7 @@
 layout: post
 title: "Generate 1Password TOTP Token for PayPal"
 tags: [paypal,2fa,security]
+fav: 1
 ---
 
 For some reason *PayPal* doesn't offer "normal" Two Factor Authentication (2FA) usable in **1Password**, instead they require the [*Symantec VIP*](https://idprotect.vip.symantec.com/) app (which is annyoing).

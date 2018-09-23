@@ -2,6 +2,7 @@
 layout: post
 title: "Install VMware ESXi on a Hetzner Root Server in Rescue System with KVM Virtualization"
 tags: [hetzner,vmware,esxi,kvm]
+fav: 1
 ---
 
 [Another](/hetzner-root-server-esxi-without-iso/) method to install *VMware ESXi* on a Hetzner root server without having access to the terrible *LARA console* (Remote KVM) is to use **KVM** virtualization in the Hetzner Linux rescue  system.
