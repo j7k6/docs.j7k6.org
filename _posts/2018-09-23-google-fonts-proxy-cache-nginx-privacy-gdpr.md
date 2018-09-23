@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Proxy and Cache Google Fonts with Nginx to Protect Privacy of Users and GDPR Compliance"
+fav: 1
 ---
 
 1. Add this `proxy_cache_path` definition on the `http` level in the Nginx configuration:
