@@ -2,6 +2,7 @@
 layout: post
 title: "Use Raspberry Pi Camera IR-CUT LED with Dedicated Power Source and Trigger via GPIO"
 tags: [raspberry-pi]
+fav: 1
 ---
 
 I baught a night-vision IR Camera for the Raspberry Pi by [Electreeks](https://www.amazon.de/gp/product/B0763Q5ZBS) (I suspect it to be similar to the [Waveshare IR-CUT Camera](https://www.waveshare.com/rpi-ir-cut-camera.htm)). Although it's a nice and cheap option for a night-vision camera, it comes with some annoying drawbacks.
