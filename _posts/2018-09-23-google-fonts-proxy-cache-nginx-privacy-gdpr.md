@@ -50,7 +50,7 @@ title: "Proxy and Cache Google Fonts with Nginx to Protect Privacy of Users and 
    sub_filter "//fonts.googleapis.com" "/assets/vendor/googleapis";
    sub_filter "https://fonts.googleapis.com" "/assets/vendor/googleapis";
    ```
-4. Edit the site's configuration to include `googlefonts.conf`.
+4. Edit the site's configuration to include `googlefonts.conf`:
    ```
    server {
      ...
