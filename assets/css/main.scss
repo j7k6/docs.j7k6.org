@@ -459,6 +459,10 @@ ul.index {
         display: inline-block;
       }
 
+      &.fav:before {
+        content: '\2605';
+      }
+
       &:hover:before {
         opacity: 1.0;
       }
