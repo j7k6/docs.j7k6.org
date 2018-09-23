@@ -39,7 +39,7 @@ title: "Proxy and Cache Google Fonts with Nginx to Protect Privacy of Users and 
    location /assets/vendor/gstatic {
      rewrite ^/assets/vendor/gstatic/(.+)$ /$1 break;
      
-     include conf.d/googlefonts.conf;
+     include conf.d/assetproxy.conf;
      proxy_pass https://fonts.gstatic.com:443;
      proxy_set_header Host "fonts.gstatic.com";
      expires 1y;
