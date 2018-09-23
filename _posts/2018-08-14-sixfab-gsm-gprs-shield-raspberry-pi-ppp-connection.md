@@ -2,6 +2,7 @@
 layout: post
 title: "Connect to the Internet via PPP with Sixfab GSM/GPRS Shield on Raspberry Pi"
 tags: [raspberry-pi]
+fav: 1
 ---
 
 Sixfab's [Raspberry Pi GSM/GPRS Shield](https://sixfab.com/product/gsmgprs-shield/) is a nice little IoT modem to connect the Pi to the internet in remote locations via a 2G mobile network.
