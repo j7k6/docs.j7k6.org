@@ -66,7 +66,7 @@ $(document).ready(function() {
         $('ul.index li').hide();
         $('ul.index li.fav').show();
 
-        showAll = (showAllState ? false : true)
+        showAll = (showAllState ? false : true);
         $('.search span').click();
       }
     };
