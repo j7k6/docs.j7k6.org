@@ -2,6 +2,7 @@
 layout: post
 title: "Install VMware ESXi to a USB Flash Drive on a Hetzner PX121 Root Server without a Virtual CD/Mounted ISO"
 tags: [vmware,esxi,hetzner]
+fav: 1
 ---
 
 I recently had a problem with a new Hetzner Root Server from the *PX121* product line, where I tried to install *VMware ESXi* from a mounted ISO on the Hetzner *Lantronix* KVM console.

@@ -42,7 +42,8 @@ $(document).ready(function() {
         });
       } else {
         $('ul.index li a strong').contents().unwrap();
-        $('ul.index li').show();
+        $('ul.index li').hide();
+        $('ul.index li.fav').show();
       }
     };
 	});

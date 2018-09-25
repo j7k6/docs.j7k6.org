@@ -2,6 +2,7 @@
 layout: post
 title: "Let's Encrypt Wildcard Certificates for HAProxy with Cloudflare DNS Challenge"
 tags: [cloudflare,dns,letsencrypt,certbot,haproxy,ssl,security]
+fav: 1
 ---
 
 1. Install `certbot` with Cloudflare support:

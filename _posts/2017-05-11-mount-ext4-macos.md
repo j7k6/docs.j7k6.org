@@ -2,6 +2,7 @@
 layout: post
 title: "Mount Ext4 Filesystem on MacOS"
 tags: [macos, ext4]
+fav: 1
 ---
 
 ## Fuse-ext2

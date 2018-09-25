@@ -2,6 +2,7 @@
 layout: post
 title: "Set-up Nginx with Let's Encrypt Certificate on Debian Jessie for a perfect SSL Labs Rating"
 tags: [letsencrypt, nginx, debian, linux, ssllabs, ssl]
+fav: 1
 ---
 
 ## Prerequirements

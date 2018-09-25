@@ -2,6 +2,7 @@
 layout: post
 title: "EdgeRouter Lite/X L2TP VPN with RADIUS Authentication"
 tags: [vpn,l2tp,edgerouter,radius]
+fav: 1
 ---
 
 1. Get terminal on EdgeRouter (SSH or Web-CLI).

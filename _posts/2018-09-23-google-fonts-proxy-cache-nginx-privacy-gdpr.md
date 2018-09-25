@@ -8,7 +8,7 @@ fav: 1
    ```
    proxy_cache_path /tmp/nginx/assets levels=1:2 keys_zone=assets:64m inactive=1d;
    ```
-2. Add `/etc/nginx/conf.d/assetproxy.conf`:
+2. Create `/etc/nginx/conf.d/assetproxy.conf`:
    ```
    proxy_cache assets;
    proxy_cache_valid 200 1d;
@@ -21,7 +21,7 @@ fav: 1
 
    add_header Cache-Control "public";
    ```
-3. Add `/etc/nginx/conf.d/googlefonts.conf`:
+3. Create `/etc/nginx/conf.d/googlefonts.conf`:
    ```
    location /assets/vendor/googleapis {
      rewrite ^/assets/vendor/googleapis/(.+)$ /$1 break;
