@@ -2,6 +2,7 @@
 layout: post
 title: "Crossflash Avago MegaRAID SAS 9341-4i RAID Controller with an IT-mode firmware on a Dell Poweredge T30"
 tags: [raid, firmware, uefi]
+fav: 1
 ---
 
 > **Disclaimer:** This can kill RAID controllers!

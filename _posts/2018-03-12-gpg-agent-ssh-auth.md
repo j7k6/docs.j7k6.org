@@ -2,6 +2,7 @@
 layout: post
 title: "Use GPG Key for SSH Authentication with GnuPG Agent"
 tags: [gpg,ssh,macos,zsh,security]
+fav: 1
 ---
 
 *(only tested on macOS)*

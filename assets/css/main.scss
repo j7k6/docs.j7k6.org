@@ -440,6 +440,7 @@ ul.index {
     margin: 0 auto;
     padding: 0;
     color: $link;
+    display: none;
 
     a {
       line-height: 1.25 !important;
@@ -459,12 +460,16 @@ ul.index {
         display: inline-block;
       }
 
-      &.fav:before {
-        content: '\2605';
-      }
-
       &:hover:before {
         opacity: 1.0;
+      }
+    }
+
+    &.fav {
+      display: block;
+
+      a:before {
+        content: '\2605';
       }
     }
   }

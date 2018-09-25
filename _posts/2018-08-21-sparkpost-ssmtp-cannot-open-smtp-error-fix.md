@@ -14,7 +14,7 @@ The debug-log showed that the connection was closed after the `STARTTLS` command
 I found out that only compiling `ssmtp` from source helped to make it work with *Sparkpost*'s new transport encryption policy:
 ```bash
 curl -fsSL http://http.debian.net/debian/pool/main/s/ssmtp/ssmtp_2.64.orig.tar.bz2 | tar jxvf -
-ssmtp-2.64
+cd ssmtp-2.64
 ./configure --prefix=/
 make && cp ./ssmtp /usr/sbin/
 ```

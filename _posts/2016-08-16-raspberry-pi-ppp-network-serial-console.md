@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Establish PPP Network Connection to Raspberry Pi via Serial Console"
+title: "Establish PPP Network Connection on Raspberry Pi via Serial Console"
 tags: [raspberry-pi, network, console, ppp, linux]
 ---
 
@@ -8,8 +8,8 @@ tags: [raspberry-pi, network, console, ppp, linux]
 
 1. Download [*Raspbian*](https://www.raspberrypi.org/downloads/raspbian/) and install to SD card.
 2. Download Debian packages:
-    - [`libpcap0.8_1.7.4-2_armhf.deb`](http://mirrordirector.raspbian.org/raspbian/pool/main/libp/libpcap/libpcap0.8_1.7.4-2_armhf.deb)
-    - [`ppp_2.4.7-1+2_armhf.deb`](http://mirrordirector.raspbian.org/raspbian/pool/main/p/ppp/ppp_2.4.7-1+2_armhf.deb)
+    - [libpcap0.8_1.7.4-2_armhf.deb](http://mirrordirector.raspbian.org/raspbian/pool/main/libp/libpcap/libpcap0.8_1.7.4-2_armhf.deb)
+    - [ppp_2.4.7-1+2_armhf.deb](http://mirrordirector.raspbian.org/raspbian/pool/main/p/ppp/ppp_2.4.7-1+2_armhf.deb)
 3. Copy `*.deb` to SD cards boot partition.
 4. Boot Raspberry Pi and connect to console: `screen /dev/ttyUSB0 115200`
 

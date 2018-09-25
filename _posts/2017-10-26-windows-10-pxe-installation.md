@@ -2,6 +2,7 @@
 layout: post
 title: "PXE Boot & Install Windows 10 from a Samba Share"
 tags: [windows,pxe,samba,linux]
+fav: 1
 ---
 
 ## Prerequirements
