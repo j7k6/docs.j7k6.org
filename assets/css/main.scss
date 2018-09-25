@@ -3,6 +3,61 @@
 
 @import "normalize";
 
+/* lekton-regular - latin */
+@font-face {
+  font-family: 'Lekton';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lekton'), local('Lekton-Regular'),
+       url('/assets/fonts/lekton/lekton-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/lekton/lekton-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lekton-700 - latin */
+@font-face {
+  font-family: 'Lekton';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lekton-Bold'),
+       url('/assets/fonts/lekton/lekton-v8-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/lekton/lekton-v8-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-regular - latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'),
+       url('/assets/fonts/noto/noto-sans-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/noto/noto-sans-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-italic - latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Noto Sans Italic'), local('NotoSans-Italic'),
+       url('/assets/fonts/noto/noto-sans-v7-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/noto/noto-sans-v7-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-700 - latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'),
+       url('/assets/fonts/noto/noto-sans-v7-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/noto/noto-sans-v7-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* noto-sans-700italic - latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'),
+       url('/assets/fonts/noto/noto-sans-v7-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/noto/noto-sans-v7-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 $white: White;
 $black: #222;
 $text: #666;
@@ -11,7 +66,7 @@ $light: #f5f5f5;
 $code: #4a4a4a;
 $var: #c7254e;
 
-$defaultFont: 'Droid Sans', sans-serif;
+$defaultFont: 'Noto Sans', sans-serif;
 $codeFont: Lekton,  monospace;
 $headerFont: $codeFont;
 
@@ -394,26 +449,82 @@ footer {
 div.content {
   .search {
     margin: 0 auto 2em auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-end;
+
+    span, input {
+      height: 1em;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid lighten($black, 75%);
+      border-radius: 0.25em;
+      padding: 0.5em;
+      line-height: 1;
+      font-size: 1.75em;
+    }
+
+    span {
+      align-self: center;
+      flex: 0 1 1.5em;
+      background: $light;
+      border: 1px solid $light;
+      color: lighten($black, 50%);
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($black, 75%);
+        border-color: lighten($black, 75%);
+        color: White;
+
+        &::before {
+          content: '\266F';
+        }
+      }
+
+      &::before {
+        content: '\2605';
+      }
+
+      &.all, &.count {
+        background-color: $link;
+        border-color: $link;
+        color: $light;
+
+        &::before {
+          content: '\266F';
+        }
+      }
+
+      &.count {
+        &::before {
+          font-family: $codeFont;
+          content: attr(data-count);
+        }
+      }
+    }
     
     input {
-      display: block;
-      width: calc(100% - 1em);
-      height: auto;
-      font-size: 2em;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      flex: 1 0 auto;
+      align-self: flex-start;
       text-align: left;
       font-family: $headerFont;
       color: lighten($black, 50%);
-      border: 0.025em solid lighten($black, 75%);
-      border-radius: 0.25em;
-      padding: 0.5em;
-      margin: 0.5em auto;
       transition: all 0.30s ease-in-out;
       outline: none;
-    }
 
-    input {
       &:focus, &:hover {
-        border: 0.025em solid lighten($black, 60%);
+        border: 1px solid lighten($black, 60%);
       }
     }
   }

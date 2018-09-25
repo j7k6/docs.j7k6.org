@@ -2,6 +2,7 @@
 layout: post
 title: "Install Zabbix on Raspberry Pi"
 tags: [zabbix,raspberry-pi,raspbian,linux,monitoring]
+fav: 1
 ---
 
 1. Install Packages:

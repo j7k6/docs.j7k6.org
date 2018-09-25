@@ -11,8 +11,27 @@ $(document).ready(function() {
   // ----------
 
 
+  var showAll = false;
+
+  $('.search span').click(function() {
+    if (showAll === false) {
+      $(this).addClass('all');
+      $('ul.index li').show();
+      showAll = true;
+    } else {
+      $(this).removeClass('all');
+      $('ul.index li:not(.fav)').hide();
+      showAll = false;
+    }
+  });
+
+
+  // ----------
+
+
   $('#q').keyup(function(e) {
     $('#q').val($('#q').val());
+    showAllState = showAll;
 
     if (e.keyCode === 27) { // ESC
       if ($('#q').val().length === 0) {
@@ -27,6 +46,8 @@ $(document).ready(function() {
       var queryWords = q.split(/\s/);
 
       if (q.length > 1) {
+        showAll = false;
+        $('.search span').click();
         $('ul.index li').hide();
         
         for (var i=0; i<queryWords.length; i++) {
@@ -40,10 +61,17 @@ $(document).ready(function() {
         $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
+
+        $('.search span').addClass('count');
+        $('.search span').attr('data-count', $('ul.index li:visible').length);
       } else {
         $('ul.index li a strong').contents().unwrap();
         $('ul.index li').hide();
         $('ul.index li.fav').show();
+
+        $('.search span').removeClass('count');
+        showAll = (showAllState ? false : true);
+        $('.search span').click();
       }
     };
 	});
