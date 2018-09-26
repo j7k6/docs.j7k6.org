@@ -406,7 +406,7 @@ div.content {
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      vertical-align: center;
+      vertical-align: middle;
       border: 1px solid lighten($black, 75%);
       border-radius: 0.25em;
       padding: 0.5em;
@@ -415,8 +415,8 @@ div.content {
     }
 
     span {
-      align-self: flex-start;
-      flex: 0 1 auto;
+      align-self: center;
+      flex: 0 1 1.5em;
       background: $light;
       border: 1px solid $light;
       color: lighten($black, 50%);
@@ -435,18 +435,25 @@ div.content {
         }
       }
 
-      &.all {
-        background-color: $link;
-        border-color: $link;
-        color: $light;
-      }
-
       &::before {
         content: '\2605';
       }
 
-      &.all::before {
-        content: '\266F';
+      &.all, &.count {
+        background-color: $link;
+        border-color: $link;
+        color: $light;
+
+        &::before {
+          content: '\266F';
+        }
+      }
+
+      &.count {
+        &::before {
+          font-family: $codeFont;
+          content: attr(data-count);
+        }
       }
     }
     

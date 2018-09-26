@@ -61,11 +61,15 @@ $(document).ready(function() {
         $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
+
+        $('.search span').addClass('count');
+        $('.search span').attr('data-count', $('ul.index li:visible').length);
       } else {
         $('ul.index li a strong').contents().unwrap();
         $('ul.index li').hide();
         $('ul.index li.fav').show();
 
+        $('.search span').removeClass('count');
         showAll = (showAllState ? false : true);
         $('.search span').click();
       }
