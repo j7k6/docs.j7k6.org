@@ -1,0 +1,26 @@
+---
+layout: post
+title: "Let's Encrypt Wildcard Certificates with Certbot and Cloudflare DNS"
+fav: 1
+---
+
+1. Install *Certbot* and *Cloudflare DNS Plugin*:
+   ```bash
+   pip install certbot certbot-dns-cloudflare
+   ```
+2. Create `/etc/letsencrypt/cli.ini`:
+   ```
+   dns-cloudflare-credentials = /etc/letsencrypt/cloudflare.ini
+   server = https://acme-staging-v02.api.letsencrypt.org/directory
+   ```
+3. Create `/etc/letsencrypt/cloudflare.ini`:
+   ```
+   dns_cloudflare_api_key = <$CLOUDFLARE_API_KEY>
+   dns_cloudflare_email = <$CLOUDFLARE_EMAIL>
+   ```
+4. Get wildcard certificate from *Let's Encrypt*:
+   ```bash
+   certbot certonly --agree-tos --email <$EMAIL> --dns-cloudflare -d *.<$DOMAIN>
+   ```
+
+---
