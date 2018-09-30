@@ -24,7 +24,7 @@ fav: 1
    ```
 5. Get wildcard certificate from *Let's Encrypt*:
    ```bash
-   certbot certonly --agree-tos --email <$EMAIL> --dns-cloudflare -d *.<$DOMAIN>
+   certbot certonly --agree-tos --email <$EMAIL> --rsa-key-size 4096 --dns-cloudflare -d *.<$DOMAIN>
    ```
 
 ---
