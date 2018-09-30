@@ -8,17 +8,21 @@ fav: 1
    ```bash
    pip install certbot certbot-dns-cloudflare
    ```
-2. Create `/etc/letsencrypt/cli.ini`:
-   ```
-   dns-cloudflare-credentials = /etc/letsencrypt/cloudflare.ini
-   server = https://acme-staging-v02.api.letsencrypt.org/directory
-   ```
-3. Create `/etc/letsencrypt/cloudflare.ini`:
+2. Create `/etc/letsencrypt/cloudflare.ini`:
    ```
    dns_cloudflare_api_key = <$CLOUDFLARE_API_KEY>
    dns_cloudflare_email = <$CLOUDFLARE_EMAIL>
    ```
-4. Get wildcard certificate from *Let's Encrypt*:
+3. Restrict access to `cloudflare.ini`:
+   ```bash
+   chmod 0400 /etc/letsencrypt/cloudflare.ini
+   ```
+4. Create `/etc/letsencrypt/cli.ini`:
+   ```
+   dns-cloudflare-credentials = /etc/letsencrypt/cloudflare.ini
+   server = https://acme-staging-v02.api.letsencrypt.org/directory
+   ```
+5. Get wildcard certificate from *Let's Encrypt*:
    ```bash
    certbot certonly --agree-tos --email <$EMAIL> --dns-cloudflare -d *.<$DOMAIN>
    ```
