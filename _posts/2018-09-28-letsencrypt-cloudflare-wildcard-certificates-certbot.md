@@ -20,7 +20,7 @@ fav: 1
 4. Create `/etc/letsencrypt/cli.ini`:
    ```
    dns-cloudflare-credentials = /etc/letsencrypt/cloudflare.ini
-   server = https://acme-staging-v02.api.letsencrypt.org/directory
+   server = https://acme-v02.api.letsencrypt.org/directory
    ```
 5. Get wildcard certificate from *Let's Encrypt*:
    ```bash
