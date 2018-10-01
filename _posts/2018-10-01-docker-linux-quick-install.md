@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker Installation on Linux One-Liner"
+title: "Docker Installation on Linux (One-Liner)"
 ---
 
 
