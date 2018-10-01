@@ -7,16 +7,10 @@ title: "Default SSL Site in Nginx"
    ```bash
    openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -days 3650 -subj "/CN=<$PUBLIC_IP_ADDRESS>"
    ```
-2. Edit `/etc/nginx/sites-enabled/000-default.conf`:
+2. Create `/etc/nginx/sites-enabled/000-default.conf`:
    ```
    server {
      listen 80 default_server;
-     server_name _;
-
-     return 444;
-   }
-
-   server {
      listen 443 ssl default_server;
      server_name _;
 
