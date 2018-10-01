@@ -5,7 +5,7 @@ title: "Default SSL Site in Nginx"
 
 1. Generate [*Snakeoil SSL Certificate*](/debian-ssl-snakeoil-certificate/) – or:
    ```bash
-   openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -days 3650 -subj "/CN=<$IP_ADDRESS>"
+   openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -days 3650 -subj "/CN=<$PUBLIC_IP_ADDRESS>"
    ```
 2. Edit `/etc/nginx/sites-enabled/000-default.conf`:
    ```
