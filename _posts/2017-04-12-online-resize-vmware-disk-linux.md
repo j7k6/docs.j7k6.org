@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Online-Resize of VMWare Disk in a Linux VM"
+title: "Online-Resize of VMware Disk in a Linux VM"
 tags: [vmware, esxi, linux]
 fav: 1
 ---
