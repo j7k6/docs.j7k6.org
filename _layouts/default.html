@@ -6,8 +6,6 @@
     <title>{{ page.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/css/main.css?{{ site.time | date: '%s'}}">
-    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/assets/js/main.js?{{ site.time | date: '%s'}}"></script>
   </head>
 
   <body>
@@ -27,5 +25,8 @@
         <li>&hearts; 2013-{{ 'now' | date: "%Y" }} &mdash; <a href="mailto:docs@j7k6.org">docs@j7k6.org</a></li>
       </ul>
     </footer>
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/main.js?{{ site.time | date: '%s'}}"></script>
   </body>
 </html>

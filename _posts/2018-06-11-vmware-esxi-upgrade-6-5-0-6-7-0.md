@@ -16,6 +16,7 @@ tags: [vmware,esxi]
    ```bash
    esxcli software profile update -f -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml -p ESXi-6.7.0-8169922-standard
    ```
+   > **Note**: If the installation fails with a 'no space left on device' error, don't panic, [here](/vmware-esxi-upgrade-error-no-space-left-on-device-fix/) is the solution.
 4. Reboot *ESXi*.
 
 ---
