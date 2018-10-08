@@ -116,7 +116,7 @@ EOF
    mkdir -p /var/www/html/zabbix
    cp -r frontends/php/* /var/www/html/zabbix/
    ```
-10. Configure Nginx.
+10. [Configure Nginx](/install-lemp-stack-ubuntu/).
 
 ### Updates
 For installing Zabbix updates, just repeat steps *3.* and *9.* & restart services.
