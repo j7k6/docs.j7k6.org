@@ -11,6 +11,10 @@ title: "Repair Corrupted MySQL/MariaDB InnoDB Database"
    ```
    innodb_force_recovery=4
    ```
+3. Fix permissions (optional):
+   ```bash
+   chown -R mysql:mysql /var/lib/mysql
+   ```
 3. Start MySQL service:
    ```bash
    systemctl start mysql
@@ -41,3 +45,4 @@ title: "Repair Corrupted MySQL/MariaDB InnoDB Database"
    ```
 
 ---
+1. <https://www.linet-services.de/was-tun-wenns-brennt-innodb-corruption-und-recovery/>
