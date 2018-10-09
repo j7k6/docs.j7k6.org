@@ -15,34 +15,34 @@ title: "Repair Corrupted MySQL/MariaDB InnoDB Database"
    ```bash
    chown -R mysql:mysql /var/lib/mysql
    ```
-3. Start MySQL service:
+4. Start MySQL service:
    ```bash
    systemctl start mysql
    ```
-4. Export all existing databases:
+5. Export all existing databases:
    ```bash
    mysqldump -A > all_databases.sql
    ```
-5. Stop MySQL service:
+6. Stop MySQL service:
    ```bash
    systemctl stop mysql
    ```
-6. Remove `ib*` files:
+7. Remove `ib*` files:
    ```bash
    rm /var/lib/mysql/ib*
    ```
-7. Remove/comment this line from `/etc/mysql/my.cf`:
+8. Remove/comment this line from `/etc/mysql/my.cf`:
    ```
    #innodb_force_recovery=4
    ```
-8. Start MySQL service:
+9. Start MySQL service:
    ```bash
    systemctl start mysql
    ```
-9. Re-import previously exported databases:
-   ```bash
-   mysql < all_databases.sql
-   ```
+10. Re-import previously exported databases:
+    ```bash
+    mysql < all_databases.sql
+    ```
 
 ---
 1. <https://www.linet-services.de/was-tun-wenns-brennt-innodb-corruption-und-recovery/>
