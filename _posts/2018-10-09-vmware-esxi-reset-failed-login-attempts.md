@@ -7,9 +7,9 @@ title: "Reset Failed Login Attempts/Account Logout on VMware ESXi"
 
 **Workaround**: The account lock can be bypassed on SSH by logging in via private-key auth. To remove the account lock run:
 
-  ```bash
-  pam_tally2 --user root --reset
-  ```
+```bash
+pam_tally2 --user root --reset
+```
 
 ---
 1. <https://discoposse.com/2017/10/09/resetting-vsphere-6-x-esxi-account-lockouts-via-ssh/>
