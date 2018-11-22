@@ -3,7 +3,7 @@ layout: post
 title: "Query DNS-over-HTTP-over-Tor with Cloudflare Hidden DNS Resolver"
 ---
 
-1. Install `cloudflared` (https://developers.cloudflare.com/argo-tunnel/downloads/):
+1. Install `cloudflared` ([all downloads](https://developers.cloudflare.com/argo-tunnel/downloads/)):
    ```bash
    wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
    dpkg -i cloudflared-stable-linux-amd64.deb
