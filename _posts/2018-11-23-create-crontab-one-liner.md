@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Add Cronjob non-interactively on the Command Line (One-Liner)"
+title: "Add Cronjob on the Command Line (non-interactive)"
 ---
 
 ```bash
