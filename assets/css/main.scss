@@ -139,7 +139,7 @@ a {
   }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   color: $black;
   white-space: pre-wrap;
  	line-height: 1.25;
@@ -346,11 +346,16 @@ article {
   }
 
   h3 {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     margin: 2em auto 0 auto;
+  }
+
+  h4 {
+    margin: 1em auto 0 auto;
+    font-size: 1.0em;
   }
 
   h1 {
