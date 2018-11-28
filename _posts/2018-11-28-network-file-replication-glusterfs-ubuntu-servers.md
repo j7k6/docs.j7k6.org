@@ -19,6 +19,7 @@ Follow those steps on both servers.
    <$NODE1_IP> node1
    <$NODE2_IP> node2
    EOF
+   ```
 3. Create Mountpoints:
    ```bash
    mkdir -p /data /mnt/glusterfs
