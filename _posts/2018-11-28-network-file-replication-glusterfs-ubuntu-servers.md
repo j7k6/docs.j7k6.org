@@ -4,7 +4,7 @@ title: "Setup Network File Replication with GlusterFS Between 2 Ubuntu Servers"
 fav: 1
 ---
 
-## Prerequirements
+### Prerequirements
 Follow those steps on both servers.
 
 1. Install GlusterFS packages:
@@ -28,7 +28,7 @@ Follow those steps on both servers.
    EOF
    ```
 
-## Create GlusterFS volume:
+### Create GlusterFS volume:
 Run these commands on `node1` only:
 ```bash
 gluster peer probe node2
