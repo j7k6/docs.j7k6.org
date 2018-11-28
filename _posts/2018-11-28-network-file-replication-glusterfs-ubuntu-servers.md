@@ -5,7 +5,7 @@ fav: 1
 ---
 
 ### Prerequirements
-Follow those steps on both servers.
+Follow those steps on both servers:
 
 1. Install GlusterFS packages:
    ```bash
@@ -30,7 +30,7 @@ Follow those steps on both servers.
    ```
 
 ### GlusterFS
-Run these commands on `node1` only.
+Run these commands on the first server only:
 
 1. Add peer:
    ```bash
