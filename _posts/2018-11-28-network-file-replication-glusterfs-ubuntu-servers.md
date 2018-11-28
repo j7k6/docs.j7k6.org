@@ -29,12 +29,22 @@ Follow those steps on both servers.
    EOF
    ```
 
-### Create GlusterFS volume:
-Run these commands on `node1` only:
-```bash
-gluster peer probe node2
-gluster volume create gv0 replica 2 transport tcp node1:/data node2:/data force
-gluster volume start gv0
+### GlusterFS
+Run these commands on `node1` only.
 
-mount /mnt/glusterfs
-```
+1. Add peer:
+   ```bash
+   gluster peer probe node2
+   ```
+2. Create volume:
+   ```bash
+   gluster volume create gv0 replica 2 transport tcp node1:/data node2:/data force
+   ```
+3. Start volume:
+   ```bash
+   gluster volume start gv0
+   ```
+
+To mount The volumes run `mount /mnt/glusterfs` on each server.
+
+---
