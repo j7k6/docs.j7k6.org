@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Setup Network File Replication with GlusterFS Between 2 Ubuntu Servers"
+title: "Network File Replication with GlusterFS Between 2 Ubuntu Servers"
 fav: 1
 ---
 
