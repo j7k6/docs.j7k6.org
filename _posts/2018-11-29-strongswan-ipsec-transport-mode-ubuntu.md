@@ -35,4 +35,4 @@ The configuration is exactly the same on both servers.
    ```
 
 ---
-1. <https://serverfault.com/questions/556885/using-strongswan-whats-the-difference-between-auto-add-and-auto-start>
+1. <https://blog.sprinternet.at/2016/03/ipsec-transport-mode-with-strongswan-on-debian-jessie/>
