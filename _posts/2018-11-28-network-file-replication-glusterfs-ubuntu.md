@@ -36,6 +36,6 @@ Run these commands on the first server only:
    gluster volume start gv0
    ```
 
-To mount The volumes run `mount /mnt/glusterfs` on each server.
+To mount the volumes run `mount /mnt/glusterfs` on each server.
 
 ---
