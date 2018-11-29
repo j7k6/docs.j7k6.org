@@ -16,7 +16,6 @@ Follow those steps on both servers:
 2. Create Mountpoints:
    ```bash
    mkdir -p /data /mnt/glusterfs
-   
    echo "<$NODE_IP>:/gv0 /mnt/glusterfs glusterfs defaults,_netdev 0 0" >> /etc/fstab
    ```
 
