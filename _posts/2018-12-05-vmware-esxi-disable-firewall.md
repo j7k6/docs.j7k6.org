@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Disable Firewall on VMware-ESXi"
+title: "Disable Firewall on VMware ESXi"
 ---
 
 ```bash
