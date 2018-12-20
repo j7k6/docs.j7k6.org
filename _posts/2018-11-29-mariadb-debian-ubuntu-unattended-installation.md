@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MariadDB Installation on Debian/Ubuntu"
+title: "MariaDB Installation on Debian/Ubuntu"
 ---
 
 ```bash 

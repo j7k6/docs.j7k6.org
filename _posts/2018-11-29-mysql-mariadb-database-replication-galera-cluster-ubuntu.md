@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MySQL/MariaDB Database Replication with Galera Cluster between 2 Ubuntu Servers"
+title: "MariaDB Database Replication with Galera Cluster between 2 Ubuntu Servers"
 fav: 1
 ---
 
