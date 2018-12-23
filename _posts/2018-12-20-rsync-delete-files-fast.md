@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fast Delete Big Folder with Many Files Recursively with Rsync"
+title: "Use Rsync to Recursively Delete Folder with Many Files Faster"
 ---
 
 1. Create empty folder:
@@ -10,6 +10,7 @@ title: "Fast Delete Big Folder with Many Files Recursively with Rsync"
 2. Delete files and folders recursively:
    ```bash
    rsync -a --delete empty/ <$FOLDER_TO_DELETE>
+   rm -rf <$FOLDER_TO_DELETE> empty
    ```
 
 ---
