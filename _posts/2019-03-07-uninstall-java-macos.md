@@ -4,7 +4,9 @@ title: "Uninstall Java on macOS"
 ---
 
 ```bash
-sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin" "/Library/PreferencePanes/JavaControlPanel.prefPane" "~/Library/Application Support/Oracle/Java"
+sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin" \
+  "/Library/PreferencePanes/JavaControlPanel.prefPane" \
+  "~/Library/Application Support/Oracle/Java"
 ```
 
 ---
