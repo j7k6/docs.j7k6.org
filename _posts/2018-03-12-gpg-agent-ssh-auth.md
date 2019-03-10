@@ -14,7 +14,7 @@ First, a subkey for authentication needs to be added to an existing GPG key.
 ### Add Subkey
 1. Edit existing key in *expert* mode:
    ```bash
-   gpg --export --edit-key <$KEY_ID>
+   gpg --expert --edit-key <$KEY_ID>
    ```
 2. Type `addkey`...
    - `8`  to edit capabilities
@@ -27,17 +27,17 @@ First, a subkey for authentication needs to be added to an existing GPG key.
    - `save` and `quit`
 
 ### Configure zsh/bash
-1. Enable SSH support for `gpg-agent`:
-   ```
-   echo "enable-ssh-support" >> ~/.gnupg/gpg-agent.conf
-   ```
-2. Add this lines to `~/.zshrc` or `~/.bashrc`:
+1. Add this lines to `~/.zshrc` or `~/.bashrc`:
    ```
    gpg-connect-agent --quiet /bye >/dev/null 2>/dev/null
-   eval $(gpg-agent --daemon --quiet --enable-ssh-support >/dev/null 2>&1)
+   gpg-agent --daemon --quiet --enable-ssh-support >/dev/null 2>&1
 
-   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
    export GPG_TTY=$(tty)
+   ```
+2. Kill running `gpg-agent` processes:
+   ```bash
+   killall -9 gpg-agent
    ```
 3. Reload shell configuration:
    ```bash
