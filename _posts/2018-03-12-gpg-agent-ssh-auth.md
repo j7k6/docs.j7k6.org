@@ -14,7 +14,7 @@ First, a subkey for authentication needs to be added to an existing GPG key.
 ### Add Subkey
 1. Edit existing key in *expert* mode:
    ```bash
-   gpg --export --edit-key <$KEY_ID>
+   gpg --expert --edit-key <$KEY_ID>
    ```
 2. Type `addkey`...
    - `8`  to edit capabilities
