@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Use Rsync to Recursively Delete Folder with Many Files Faster"
+title: "Use Rsync to Faster Delete Folder with Many Files Recursively"
 ---
 
 1. Create empty folder:
