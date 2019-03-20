@@ -29,6 +29,6 @@ That's it! Every push to the GitHub repository will now trigger a new Jekyll bui
 ![github-deployment](/files/jekyll-static-site-github-pages-cloudflare-https/ghpages-04.png)
 
 ## Purge Cloudflare Cache (optional)
-Cloudflare's cache prevents an update to the site to be shown immediately after the push has been made. To purge the cache on every push to the GitHub repository, follow [this steps](/github-pages-cloudflare-cache-reset/).
+Cloudflare's cache prevents an update to the site to be shown immediately after a push to *orign/master* has been made. To purge the cache on every push to the GitHub repository, follow [this steps](/github-pages-cloudflare-cache-reset/).
 
 ---
