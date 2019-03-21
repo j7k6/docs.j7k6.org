@@ -79,5 +79,7 @@ fav: 1
     ```
 17. `reboot`
 
+![alpine-zfs-luks](/files/alpine-zfs-luks.png)
+
 ---
 1. <https://wiki.alpinelinux.org/wiki/Setting_up_ZFS_on_LUKS>
