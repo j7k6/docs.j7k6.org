@@ -50,13 +50,13 @@ fav: 1
    MAX_FULLS_WITH_INCRS=1
    ```
 8. Create `/root/.duply/b2/excludes`:
-   ```
-   - /proc/*
-   - /sys/*
-   - /dev/*
-   - /mnt/*
-   - /tmp/*
-   - /var/cache/*
+   ```yml
+- /proc/*
+- /sys/*
+- /dev/*
+- /mnt/*
+- /tmp/*
+- /var/cache/*
    ```
 9. Create backup cronjobs:
    ```bash
