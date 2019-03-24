@@ -55,14 +55,14 @@ fav: 1
    ```
 8. Create `/root/.duply/b2/excludes`:
    ```bash
-   cat > /root/.duply/b2/excludes << EOF
-   - /proc/*
-   - /sys/*
-   - /dev/*
-   - /mnt/*
-   - /tmp/*
-   - /var/cache/*
-   EOF
+ cat > /root/.duply/b2/excludes << EOF
+ - /proc/*
+ - /sys/*
+ - /dev/*
+ - /mnt/*
+ - /tmp/*
+ - /var/cache/*
+ EOF
    ```
 9. Create backup cronjobs:
    ```bash
