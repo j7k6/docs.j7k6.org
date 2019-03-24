@@ -23,10 +23,11 @@ fav: 1
    Name-Real: backup-$(hostname)
    Name-Email: backup@$(hostname)
    Expire-Date: 0
+   Passphrase: ''
    ```
 4. Generate GPG key pair:
    ```bash
-   gpg --pinentry-mode=loopback --passphrase="" --batch --gen-key /tmp/gpg-key-gen.txt
+   gpg --batch --gen-key /tmp/gpg-key-gen.txt
    rm /tmp/gpg-key-gen.txt
    ```
 5. Show genereated key ID:
