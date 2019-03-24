@@ -60,8 +60,8 @@ fav: 1
    ```
 9. Create backup cronjobs:
    ```bash
-   (crontab -l; echo "0 0 * * 7 /usr/bin/duply backup full_verify_purge --force > /var/log/duply.log 2>&1") | crontab -
-   (crontab -l; echo "0 0 * * 1-6 /usr/bin/duply backup incr > /var/log/duply.log 2>&1") | crontab -
+   (crontab -l; echo "0 0 * * 6 /usr/bin/duply b2 full_verify_purge --force >/var/log/duply.log 2>&1") | crontab -
+   (crontab -l; echo "0 0 * * 0-5 /usr/bin/duply b2 incr >/var/log/duply.log 2>&1") | crontab -
    ```
 10. Run initial backup:
     ```bash
