@@ -16,7 +16,6 @@ fav: 1
    ```
 3. Create template for non-interactive GPG key generation:
    ```
-   cat > /tmp/gpg-key-gen.txt << EOF
    Key-Type: 1
    Key-Length: 4096
    Subkey-Type: 1
@@ -24,7 +23,6 @@ fav: 1
    Name-Real: backup-$(hostname)
    Name-Email: backup@$(hostname)
    Expire-Date: 0
-   EOF
    ```
 4. Generate GPG key pair:
    ```bash
@@ -40,8 +38,7 @@ fav: 1
    duply b2 create
    ```
 7. Edit `/root/.duply/b2/conf`:
-   ```bash
-   cat > /root/.duply/b2/conf << EOF
+   ```
    GPG_KEY="<$GPG_KEY_ID>"
    GPG_PW=""
 
@@ -51,18 +48,15 @@ fav: 1
    MAX_AGE=1M
    MAX_FULL_BACKUPS=4
    MAX_FULLS_WITH_INCRS=1
-   EOF
    ```
 8. Create `/root/.duply/b2/excludes`:
-   ```bash
- cat > /root/.duply/b2/excludes << EOF
- - /proc/*
- - /sys/*
- - /dev/*
- - /mnt/*
- - /tmp/*
- - /var/cache/*
- EOF
+   ```
+   - /proc/*
+   - /sys/*
+   - /dev/*
+   - /mnt/*
+   - /tmp/*
+   - /var/cache/*
    ```
 9. Create backup cronjobs:
    ```bash
