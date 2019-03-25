@@ -5,7 +5,7 @@ title: "Scan Network for NFS Shares with Metasploit"
 
 ```
 use auxiliary/scanner/nfs/nfsmount
-set RHOSTS <$NETWORK_ADDRESS>/24
+set RHOSTS 192.168.1.0/24
 run
 ```
 
