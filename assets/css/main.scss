@@ -140,12 +140,14 @@ a {
 }
 
 h1, h2, h3, h4 {
+  font-family: $codeFont;
   color: $black;
   white-space: pre-wrap;
  	line-height: 1.25;
 }
 
 h1 {
+  color: inherit !important;
   font-size: 2.25em;
   font-family: $headerFont;
   font-weight: 300;
@@ -342,11 +344,11 @@ article {
   }
 
   h2 {
-    font-size: 1.75em;
+    font-size: 1.5em;
   }
 
   h3 {
-    font-size: 1.2em;
+    font-size: 1.25em;
   }
 
   h1, h2, h3, h4 {
