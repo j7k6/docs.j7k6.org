@@ -3,9 +3,8 @@ layout: post
 title: "Allow Sudo User Passwordless Command Execution"
 ---
 
-**Example:** Allow *deploy* user to restart *Nginx* service without having to enter a password:
+**Example:** Allow *deploy* user to restart *Nginx* service without having to enter a password. Create `/etc/sudoers.d/nginx`:
 
-Create */etc/sudoers.d/nginx*:
 ```
 Cmnd_Alias NGINX_RESTART = /bin/systemctl restart nginx
 Cmnd_Alias NGINX_RELOAD  = /bin/systemctl reload nginx
