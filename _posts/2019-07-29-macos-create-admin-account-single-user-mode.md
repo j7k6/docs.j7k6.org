@@ -13,4 +13,4 @@ title: "Create MacOS Admin Account without Admin User in Single User Mode"
 4. Finish the setup wizard to create a new admin user.
 
 ---
-1. https://apple.stackexchange.com/a/164333
+1. <https://apple.stackexchange.com/a/164333>
