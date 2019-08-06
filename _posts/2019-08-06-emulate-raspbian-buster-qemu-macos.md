@@ -10,7 +10,7 @@ fav: 1
    ```
 2. Download *qemu-rpi-kernel*:
    ```bash
-   https://raw.githubusercontent.com/dhruvvyas90/qemu-rpi-kernel/master/kernel-qemu-4.19.50-buster
+   wget https://raw.githubusercontent.com/dhruvvyas90/qemu-rpi-kernel/master/kernel-qemu-4.19.50-buster
    ```
 3. Download *versatile-pb.dtb*:
    ```bash
