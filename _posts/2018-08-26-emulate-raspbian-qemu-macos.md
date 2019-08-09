@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Emulate Raspbian (Jessie) with QEMU on macOS"
+title: "Emulate Raspbian (Stretch) with QEMU on macOS"
 tags: [qemu,macos,raspbian,raspberry-pi]
 ---
 
