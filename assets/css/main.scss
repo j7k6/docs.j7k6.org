@@ -59,7 +59,7 @@
 }
 
 $white: White;
-$black: #222;
+$black: #444;
 $text: #666;
 $link: #009688;
 $light: #f5f5f5;
@@ -293,6 +293,12 @@ article {
     }
   }
 
+  div.date {
+    text-align: right;
+    font-family: $codeFont;
+    color: lighten($black, 50%);
+  }
+
   hr {
     display: block;
     border: 0;
@@ -344,6 +350,8 @@ article {
 
   h2 {
     font-size: 1.5em;
+    line-height: 2em;
+    border-bottom: 1px solid $light;
   }
 
   h3 {
