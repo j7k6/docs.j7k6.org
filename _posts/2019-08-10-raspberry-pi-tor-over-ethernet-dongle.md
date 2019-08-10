@@ -102,4 +102,6 @@ This is where the magic happens:
    iptables-save > /etc/iptables/rules.v4
    ```
 
+![pi-dongle](/files/raspberry-pi-tor-over-ethernet-dongle.jpg)
+
 ---
