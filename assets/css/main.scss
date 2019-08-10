@@ -293,6 +293,12 @@ article {
     }
   }
 
+  div.date {
+    text-align: right;
+    font-family: $codeFont;
+    color: lighten($black, 50%);
+  }
+
   hr {
     display: block;
     border: 0;
