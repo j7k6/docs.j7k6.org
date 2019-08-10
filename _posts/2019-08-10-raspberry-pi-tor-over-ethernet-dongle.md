@@ -4,12 +4,16 @@ title: "Raspberry Pi Tor-over-Ethernet Dongle"
 fav: 1
 ---
 
-Usually, this kind of Transparent-Tor-Proxy setup is used as a [wireless access point](transparent-tor-wlan-proxy-debian) with the ethernet port of the Raspberry Pi being the gateway interface and the WLAN being the client-facing side. This is the exact opposite: the Raspberry Pi connects to the client computer with an ethernet cable and connects to the Tor network via WLAN. So it works like a wired dongle which automagically proxies all traffic through the Tor network.
+Usually, this kind of Transparent-Tor-Proxy setup is used as a [wireless access point](/transparent-tor-wlan-proxy-debian/) with the ethernet port of the Raspberry Pi being the gateway interface and the WLAN being the client-facing side. This is the exact opposite: the Raspberry Pi connects to the client computer with an ethernet cable and connects to the Tor network via WLAN. So it works like a wired dongle which automagically proxies all traffic through the Tor network.
+
+![pi-dongle](/files/raspberry-pi-tor-over-ethernet-dongle.jpg)
+
 Why? Because it's more secure: all the wireless traffic is encrypted Tor packets, the unencrypted packets are on the wire.
 
-### Basic Setup
+
+## Basic Setup
 1. Download [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/) and `dd` it to a SD-card.
-2. Configure the wireless connection and enable SSH (see [here](raspberry-pi-zero-w-headless-setup)).
+2. Configure the wireless connection and enable SSH (see [here](/raspberry-pi-zero-w-headless-setup/)).
 3. Connect to the Raspberry Pi via SSH.
 4. Install required packages:
    ```bash
@@ -20,7 +24,7 @@ Why? Because it's more secure: all the wireless traffic is encrypted Tor packets
    apt install -y vim curl apt-transport-https iptables-persistent udhcpd
    ```
 
-### Network
+## Network
 1. Edit `/etc/dhcpcd.conf` to disable *dhcpcd* on *eth0*:
    ```
    denyinterfaces eth0
@@ -37,7 +41,7 @@ Why? Because it's more secure: all the wireless traffic is encrypted Tor packets
    systemctl restart networking
    ```
 
-### DHCP
+## DHCP
 The client setup should be zero-config, so the Raspberry Pi needs to provide DHCP to the client.
 
 1. Edit `/etc/udhcpd.conf`:
@@ -57,7 +61,7 @@ The client setup should be zero-config, so the Raspberry Pi needs to provide DHC
    systemctl enable --now udhcpd
    ```
 
-### Tor
+## Tor
 1. Add `/etc/apt/source.list.d/tor.list`:
    ```
    deb https://deb.torproject.org/torproject.org buster main
@@ -86,7 +90,7 @@ The client setup should be zero-config, so the Raspberry Pi needs to provide DHC
    systemctl restart tor
    ```
 
-### NAT
+## NAT / iptables
 This is where the magic happens:
 
 1. All TCP traffic should be routed transparently through the Tor network:
