@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Allow Mobile Shell (mosh) in IPTables"
-tags: [mosh, iptables, linux]
 ---
 
 ```bash

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Transparent Tor WLAN Proxy on Debian"
-tags: [tor, wlan, proxy, debian]
+fav: 1
 ---
 
 1. Install packages:
@@ -69,14 +69,11 @@ tags: [tor, wlan, proxy, debian]
     iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 22 -j REDIRECT --to-ports 22
     iptables -t nat -A PREROUTING -i wlan0 -p udp --dport 53 -j REDIRECT --to-ports 5353
     iptables -t nat -A PREROUTING -i wlan0 -p tcp --syn -j REDIRECT --to-ports 9040
-   
+    
     iptables-save > /etc/iptables/rules.v4
     ```
-
-    ```bash
-    reboot
-    ```
+11. Reboot
 
 ---
-1. [https://learn.adafruit.com/onion-pi/](https://learn.adafruit.com/onion-pi/)
-2. [http://elinux.org/RPI-Wireless-Hotspot](http://elinux.org/RPI-Wireless-Hotspot)
+1. <https://learn.adafruit.com/onion-pi/>
+2. <http://elinux.org/RPI-Wireless-Hotspot>

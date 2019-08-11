@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NAT Port Forwarding with Iptables"
-tags: [nat, network, iptables, linux]
 ---
 
 ```bash

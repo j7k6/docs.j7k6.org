@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Disable AppArmor on Ubuntu Server"
-tags: [ubuntu, linux, apparmor]
 ---
 
 ```bash

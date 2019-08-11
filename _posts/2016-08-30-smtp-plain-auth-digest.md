@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Generate SMTP PLAIN AUTH Digest"
-tags: [smtp, perl]
 ---
 
 ```bash

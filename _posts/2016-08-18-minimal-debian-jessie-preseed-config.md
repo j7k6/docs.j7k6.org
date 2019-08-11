@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Minimal Debian Jessie Preseed Config"
-tags: [debian, linux]
 ---
 
-`preseed.cfg`:
+## preseed.cfg
 ```
 # language / locales
 d-i debian-installer/language string en

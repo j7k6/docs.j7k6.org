@@ -6,9 +6,9 @@ tags: [php,typo3,apache,fix]
 
 Add this line to `php.ini`:
 
-  ```
-  pcre.jit=0
-  ```
+```
+pcre.jit=0
+```
 
 ---
 1. [https://stackoverflow.com/a/39535288/8434893](https://stackoverflow.com/a/39535288/8434893)

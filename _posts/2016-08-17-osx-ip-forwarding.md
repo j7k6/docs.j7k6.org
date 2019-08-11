@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Enable IP Forwarding on OS X"
-tags: [macos, network, routing]
 ---
 
 ```bash

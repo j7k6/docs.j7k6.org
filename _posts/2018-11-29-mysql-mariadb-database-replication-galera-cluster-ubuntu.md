@@ -4,7 +4,7 @@ title: "MariaDB Database Replication with Galera Cluster between 2 Ubuntu Server
 fav: 1
 ---
 
-### Primary Server
+## Primary Server
 1. Install **MariaDB** package:
    ```bash 
    apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
@@ -40,7 +40,7 @@ fav: 1
    galera_new_cluster
    ```
 
-### Secondary Server
+## Secondary Server
 1. Repeat steps **1.** to **3.** from above.
 2. Copy the content from the first servers `/etc/mysql/debian.cnf` file to the second server.
 3. Start MariaDB service:

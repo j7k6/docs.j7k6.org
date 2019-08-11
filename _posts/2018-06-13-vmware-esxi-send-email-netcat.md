@@ -4,7 +4,7 @@ title: "Send Mail with Netcat on VMware ESXi"
 tags: [vmware,esxi,netcat,email]
 ---
 
-### Firewall
+## Firewall
 Before sending mail, SMTP port 25 has to be opened in the ESXi firewall for outgoing connections.
 
 1. Edit `/etc/vmware/firewall/smtp.xml`:
@@ -33,7 +33,7 @@ Before sending mail, SMTP port 25 has to be opened in the ESXi firewall for outg
    /bin/auto-backup.sh
    ```
 
-### Send Mail
+## Send Mail
 > **Note**: The mail server needs to support unencrypted SMTP on port 25! Authentication is possible, but not necessary if you control both servers, just whitelist the ESXi's IP for sending unauthenticated mail.
 
 ```bash

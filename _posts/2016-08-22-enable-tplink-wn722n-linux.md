@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Enable TPLink WN722N on Linux"
-tags: [tplink, linux, kernel]
 ---
 
 ```bash

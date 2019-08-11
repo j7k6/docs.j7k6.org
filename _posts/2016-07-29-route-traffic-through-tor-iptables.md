@@ -1,17 +1,17 @@
 ---
 layout: post
 title: "Route all Traffic through Tor for specific User on Linux with IPTables"
-tags: [linux, iptables, tor]
+fav: 1
 ---
 
-### Tor
+## Tor
 Add those lines to `/etc/tor/torrc`:
 ```
 Transport 9040
 DNSPort 5353
 ```
 
-### IPTables
+## IPTables
 ```bash
 iptables -A OUTPUT -p icmp -j REJECT
 iptables -t nat -A OUTPUT ! -o lo -p tcp -m owner --uid-owner $USER -m tcp -j REDIRECT --to-ports 9040

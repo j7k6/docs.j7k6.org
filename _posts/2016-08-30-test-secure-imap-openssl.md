@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Test Secure IMAP with OpenSSL"
-tags: [imap, ssl]
 ---
 
 ```bash

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Linux Persistent Modprobe"
-tags: [linux, kernel]
 ---
 
 ```bash

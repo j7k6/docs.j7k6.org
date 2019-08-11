@@ -4,7 +4,7 @@ title: "Route everything through Tor with Iptables inside Docker Container"
 tags: [tor, docker, security, linux, iptables]
 ---
 
-### Dockerfile
+## Dockerfile
 ```
 FROM debian:jessie
 
@@ -30,8 +30,7 @@ COPY config/iptables.sh /etc/iptables.sh
 CMD /bin/sh /etc/iptables.sh; echo "nameserver 127.0.0.1" > /etc/resolv.conf; sudo -u debian-tor bash -c tor
 ```
 
-### Config files
-
+## Config files
 - `config/torrc`:
   ```
   VirtualAddrNetworkIPv4 10.192.0.0/10
@@ -89,8 +88,7 @@ CMD /bin/sh /etc/iptables.sh; echo "nameserver 127.0.0.1" > /etc/resolv.conf; su
   iptables -P OUTPUT DROP
   ```
 
-### Run
-
+## Run
 ```bash
 docker build -t <$IMAGE_NAME> .
 docker run -d --name=<$CONTAINER_NAME> --restart=always --cap-add=NET_ADMIN --cap-add=NET_RAW <$IMAGE_NAME>

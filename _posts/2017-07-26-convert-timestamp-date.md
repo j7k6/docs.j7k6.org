@@ -4,12 +4,12 @@ title: "Convert Timestamp to Date"
 tags: [unix,date]
 ---
 
-### GNU/Linux
+## GNU/Linux
 ```bash
 date -d @<$TIMESTAMP>
 ```
 
-### MacOS
+## MacOS
 ```bash
 date -r <$TIMESTAMP>
 ```

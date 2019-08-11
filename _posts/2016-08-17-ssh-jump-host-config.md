@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "SSH Jump Host Config"
-tags: [ssh]
 ---
 
-`~/.ssh/config`:
+Edit `~/.ssh/config`:
 ```
 Host <$JUMP_HOST_NAME>
   HostName <$JUMP_HOST_IP>

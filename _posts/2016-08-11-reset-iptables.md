@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reset IPTables"
-tags: [iptables, linux, network]
+fav: 1
 ---
 
 ```bash

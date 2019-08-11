@@ -4,13 +4,13 @@ title: "Clear HSTS Cache in Browsers"
 tags: [hsts,chrome,firefox,safari]
 ---
 
-### Chrome:
+## Chrome
 [chrome://net-internals/#hsts](chrome://net-internals/#hsts)
 
-### Firefox:
+## Firefox
 Browse History, search for site & click *Forget About This Site*.
 
-### Safari:
+## Safari
 Delete `~/Library/Cookies/HSTS.plist`.
 
 ---

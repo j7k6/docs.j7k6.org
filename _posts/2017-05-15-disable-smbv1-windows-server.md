@@ -4,12 +4,12 @@ title: "Disable SMBv1 on Windows (Server)"
 tags: [windows, windows-server, smb, security]
 ---
 
-### Windows 8/Server 2012
+## Windows 8/Server 2012
 ```powershell
 Set-SmbServerConfiguration -EnableSMB1Protocol $false
 ```
 
-### Windows 7/Server 2008R2
+## Windows 7/Server 2008R2
 ```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 -Force
 ```

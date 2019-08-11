@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "DNS Zone Transfer with dig"
-tags: [dns, dig]
 ---
 
 ```bash

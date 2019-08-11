@@ -3,7 +3,7 @@ layout: post
 title: "Proxy/FastCGI Microcaching in Nginx"
 ---
 
-### Proxy
+## Proxy
 ```
 ...
 
@@ -19,7 +19,7 @@ location / {
 ...
 ```
 
-### FastCGI (PHP-FPM)
+## FastCGI (PHP-FPM)
 ```
 ...
 

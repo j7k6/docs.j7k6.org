@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Active Directory Proxy Cache with OpenLDAP"
-fav: 1
 ---
 
-### OpenLDAP Configuration
+## OpenLDAP Configuration
 
 Edit `/etc/ldap/slapd.conf`:
 ```
@@ -44,7 +43,7 @@ pcacheAttrset 0 *
 pcacheTemplate (&(uid=)(memberOf=)) 0 3600
 ```
 
-### Query AD through Proxy
+## Query AD through Proxy
 
 ```bash
 ldapsearch -vvv -h localhost -p 389 -D "CN=<$DOMAIN_ADMIN_USERNAME>,CN=Users,DC=example,DC=com" -b "DC=example,DC=com" -w "<$DOMAIN_ADMIN_PASSWORD>" "(&(uid=<$SAMACCOUNTNAME_TO_QUERY>)(memberOf=CN=Users,DC=example,DC=com))"

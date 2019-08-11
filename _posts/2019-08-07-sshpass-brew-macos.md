@@ -10,10 +10,6 @@ When running `brew install sshpass` it's failing with an over-protective error m
 Thanks, but I will decide that myself!
 
 
-#### Solution:
-
-```bash
-brew install http://git.io/sshpass.rb
-```
+**Solution:** `brew install http://git.io/sshpass.rb`
 
 ---

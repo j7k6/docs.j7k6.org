@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Vim Cheat Sheet"
-tags: [vim]
 ---
 
 ```

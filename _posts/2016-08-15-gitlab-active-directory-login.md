@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Gitlab Active Directory Login"
-tags: [gitlab, active-directory, ldap]
 ---
 
-`config/gitlab.rb`:
+Edit `config/gitlab.rb`:
 ```yaml
 ...
 gitlab_rails['ldap_enabled'] = true

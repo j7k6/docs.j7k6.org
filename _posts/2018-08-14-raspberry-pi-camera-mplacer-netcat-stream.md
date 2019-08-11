@@ -6,12 +6,12 @@ tags: [raspberry-pi,netcat,mplayer]
 
 This is useful to preview the camera on a headless *Raspberry Pi (Zero W)* over the network.
 
-### Client:
+## Client
 ```bash
 nc -l 5001 | mplayer -fps 40 -cache 1024 -
 ```
 
-### Raspberry Pi:
+## Raspberry Pi
 ```bash
 raspivid -n -hf -vf -fps 25 -w 640 -h 480 -fl -t 0 -o - | nc <$CLIENT_IP> 5001
 ```

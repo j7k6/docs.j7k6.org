@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Fix Slow Samba Shares on OS X Clients"
-tags: [fix, samba, macos]
 ---
 
 Edit `smb.conf` on Server:

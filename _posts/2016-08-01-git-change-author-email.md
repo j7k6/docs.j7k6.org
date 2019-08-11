@@ -4,7 +4,7 @@ title: "Change Author/Email in Git Repo for all Commits"
 tags: [git]
 ---
 
-### Change Specific Author
+## Change Specific Author
 ```bash
 export NEW_EMAIL="<$NEW_EMAIL>"
 export NEW_NAME="<$NEW_NAME>"
@@ -16,7 +16,7 @@ git filter-branch --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]; then
   GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"; fi' -- --all
 ```
 
-### Change All
+## Change All
 ```bash
 export NEW_EMAIL="<$NEW_EMAIL>"
 export NEW_NAME="<$NEW_NAME>"

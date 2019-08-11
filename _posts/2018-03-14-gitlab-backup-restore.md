@@ -4,12 +4,12 @@ title: "Backup/Restore Gitlab"
 tags: [gitlab,backup]
 ---
 
-### Backup
+## Backup
 ```bash
 gitlab-rake gitlab:backup:create
 ```
 
-### Restore
+## Restore
 ```bash
 gitlab-ctl stop unicorn
 gitlab-ctl stop sidekiq

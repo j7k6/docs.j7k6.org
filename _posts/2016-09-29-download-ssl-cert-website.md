@@ -1,15 +1,14 @@
 ---
 layout: post
 title: "Download SSL Certificate from Website"
-tags: [openssl, ssl]
 ---
 
-### Alternative 1:
+## Option 1
 ```bash
 openssl s_client -connect <$HOST>:443 -showcerts < /dev/null 2> /dev/null | openssl x509 -outform PEM > cert.pem
 ```
 
-### Alternative 2:
+## Option 2
 ```bash
 echo "GET" | openssl s_client -connect <$HOST>:443 -showcerts | sed -n '/BEGIN CERTIFICATE/,/END CERTIFICATE/p'
 ```

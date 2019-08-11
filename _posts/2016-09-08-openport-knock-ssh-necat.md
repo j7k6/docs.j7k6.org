@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Open Port Knock Guarded SSH Port with Netcat"
-tags: [ssh, port-knocking, netcat, network]
 ---
 
 ```bash

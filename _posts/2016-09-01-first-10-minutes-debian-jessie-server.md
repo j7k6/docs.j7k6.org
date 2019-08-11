@@ -185,7 +185,7 @@ tags: [debian, server, linux, iptables]
    ```bash
    iptables-save > /etc/iptables/rules.v4
    ```
-4. `reboot`
+4. Reboot
 
 ---
 1. [http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/](http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/)

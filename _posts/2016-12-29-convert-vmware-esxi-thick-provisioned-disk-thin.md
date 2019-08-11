@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Convert VMWare ESXi Thick Provisioned Disk to Thin"
-tags: [vmware, esxi]
 ---
 
 1. Power-off VM

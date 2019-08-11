@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Connect to Raspberry Pi with a CP2102 USB-to-Serial Adapter on OS X"
-tags: [raspberry-pi, usb, console, macos, uart, cp2102]
+fav: 1
 ---
 
 1. Download & install [OS X Driver](https://www.silabs.com/Support%20Documents/Software/Mac_OSX_VCP_Driver.zip).

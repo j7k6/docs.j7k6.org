@@ -4,10 +4,10 @@ title: "Fix Transfer Rate Drops when Transferring Data from FreeNAS 11.2 to macO
 fav: 1
 ---
 
-### Problem: 
+## Problem
 Somewhere between **FreeNAS** 11.1 U6 and 11.2 U1, a change merged from *FreeBSD* (some kind of network throttling) results in *macOS* clients having problems with a significant drop in tranfer rates.
 
-### Solution:
+## Solution
 Run `sysctl net.inet.tcp.reass.maxqueuelen=4096` in a FreeNAS shell.
 
 To make the change permanent, go to *System* -> *Tunables* in the FreeNAS WebUI.

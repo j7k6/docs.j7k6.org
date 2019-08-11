@@ -4,7 +4,7 @@ title: "Fix rvm Startup Error in zsh"
 tags: [zsh,shell,fix,rvm]
 ---
 
-### Problem
+## Problem
 In a new `zsh` session, those errors appear:
 
 ```
@@ -12,7 +12,7 @@ In a new `zsh` session, those errors appear:
 /Users/<$USER>/.rvm/scripts/initialize:50: command not found: rvm_error
 ```
 
-### Solution
+## Solution
 ```bash
 rm ~/.zcomp*
 ```

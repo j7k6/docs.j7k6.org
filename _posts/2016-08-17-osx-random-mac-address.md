@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Set Random MAC Adress on OS X"
-tags: [macos, network]
 ---
 
 ```bash

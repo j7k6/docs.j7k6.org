@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Generate MD5 Hash in Node.js"
-tags: [nodejs]
 ---
 
 ```javascript

@@ -13,4 +13,4 @@ echo "/swapfile   none    swap    sw    0   0" >> /etc/fstab
 ```
 
 ---
-1. [https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04)
+1. <https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04>

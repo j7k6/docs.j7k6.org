@@ -1,14 +1,13 @@
 ---
 layout: post
 title: "Save IPTables Rules Permanent"
-tags: [linux, iptables]
 ---
 
+1. Save `iptables` rules:
 ```bash
 iptables-save > /etc/iptables.conf
 ```
-
-`/etc/network/interfaces`
+2. Edit `/etc/network/interfaces`:
 ```
 ...
 iface eth0 inet dhcp

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Live-View TCPdump-Captured Network Traffic from Remote Server in Wireshark through SSH"
-tags: [tcpdump, wireshark, ssh, network]
 ---
 
 ```bash
