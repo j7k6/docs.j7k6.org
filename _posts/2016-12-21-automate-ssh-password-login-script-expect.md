@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Automate SSH Password Login in Scripts with Expect"
-tags: [ssh, except, password]
 ---
 
 1. Create `ssh_wrapper.exp`:

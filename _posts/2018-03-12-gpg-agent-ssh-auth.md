@@ -11,7 +11,7 @@ Besides managing the GPG keychain, **GnuPG** is also able to handle SSH key auth
 
 First, a subkey for authentication needs to be added to an existing GPG key.
 
-### Add Subkey
+## Add Subkey
 1. Edit existing key in *expert* mode:
    ```bash
    gpg --expert --edit-key <$KEY_ID>
@@ -26,7 +26,7 @@ First, a subkey for authentication needs to be added to an existing GPG key.
    - `0` for 'never expire'
    - `save` and `quit`
 
-### Configure zsh/bash
+## Configure zsh/bash
 1. Add this lines to `~/.zshrc` or `~/.bashrc`:
    ```
    gpg-connect-agent --quiet /bye >/dev/null 2>/dev/null
@@ -44,7 +44,7 @@ First, a subkey for authentication needs to be added to an existing GPG key.
    source ~/.zshrc
    ```
 
-### Add Subkey to GPG Agent
+## Add Subkey to GPG Agent
 1. Find the *keygrip* (identified by `[A]` for *authentication*):
    ```bash
    gpg --list-secret-keys --with-keygrip

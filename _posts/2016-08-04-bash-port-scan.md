@@ -17,4 +17,4 @@ done
 ```
 
 ---
-[https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/](https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/)
+1. <https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/>

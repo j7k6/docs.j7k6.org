@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Build Docker Image without Dockerfile"
-tags: [docker]
 ---
 
 ```

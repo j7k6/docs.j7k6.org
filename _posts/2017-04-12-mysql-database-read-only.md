@@ -4,13 +4,13 @@ title: "Put MySQL Database in Read-Only Mode"
 tags: [mysql]
 ---
 
-### Enable Read-Only Mode
+## Enable Read-Only Mode
 ```sql
 FLUSH TABLES WITH READ LOCK;
 SET GLOBAL read_only = 1;
 ```
 
-### Disable Read-Only Mode
+## Disable Read-Only Mode
 ```sql
 SET GLOBAL read_only = 0;
 UNLOCK TABLES;

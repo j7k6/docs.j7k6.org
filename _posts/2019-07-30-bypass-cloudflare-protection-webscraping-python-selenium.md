@@ -3,7 +3,7 @@ layout: post
 title: "Bypass Cloudflare Protection with Selenium when Scraping Website with Python"
 ---
 
-### Dependencies
+## Dependencies
 1. Install Packages
    ```bash
    apt update
@@ -16,7 +16,7 @@ title: "Bypass Cloudflare Protection with Selenium when Scraping Website with Py
    curl -fsSL https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz | sudo tar zxvf - -C /usr/local/bin/
    ```
 
-### Code
+## Code
 ```python
 import time
 from selenium import webdriver

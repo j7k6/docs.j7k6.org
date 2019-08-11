@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Force Sector 63 Boundary in fdisk"
-tags: [linux, fdisk, fix]
 ---
 
 ```bash

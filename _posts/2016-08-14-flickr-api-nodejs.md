@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Obtain Flickr API Token for Authorized Read Access with Node.js"
-tags: [nodejs, flickr, api]
 ---
 
 ```

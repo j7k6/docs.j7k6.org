@@ -4,17 +4,17 @@ title: "Check MTU with Ping / Manual Path MTU Discovery"
 tags: [network, mtu, ping]
 ---
 
-### Linux
+## Linux
 ```bash
 ping -M do -s 1500 -c 1 <$HOST>
 ```
 
-### macOS
+## macOS
 ```bash
 ping -c 1 -D -s 1500 <$HOST>
 ```
 
-### Windows
+## Windows
 ```bash
 ping -n 1 -l 1500 -f <$HOST>
 ```

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Disable System Integrity Protection (SIP) on OS X >=10.11"
-tags: [macos]
 ---
 
 1. Boot into *Recovery Mode*: Hold `[cmd + r]`

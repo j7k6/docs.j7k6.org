@@ -6,19 +6,19 @@ fav: 1
 
 Navigate to **Jira Administration** (the gear icon) → **User Management** → **User Directories** → **Add Directory**:
 
-### Server Settings
+## Server Settings
 - Directory Type: `Microsoft Active Directory`
 - Hostname: `<$DOMAIN_CONTROLLER>`
 - Username: `<$UNPRIVILEGED_AD_ACCOUNT_USERNAME>`
 - Password: `<$UNPRIVILEGED_AD_ACCOUNT_PASSWORD>`
 
-### LDAP Schema
+## LDAP Schema
 - Base DN: `dc=example,dc=com`
 
-### LDAP Permissions
+## LDAP Permissions
 *Read Only, with Local Groups*
 
-### User Schema Settings
+## User Schema Settings
 - User Object Filter:
   ```
   (&(objectCategory=Person)(sAMAccountName=*)(memberOf:1.2.840.113556.1.4.1941:=CN=Jira,OU=Users,DC=example,DC=com))

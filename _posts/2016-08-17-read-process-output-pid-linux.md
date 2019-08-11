@@ -4,12 +4,12 @@ title: "Read Output from Process on Linux"
 tags: [linux]
 ---
 
-# stdout
+## Stdout
 ```bash
 tail -f /proc/<$PID>/fd/1
 ```
 
-### stderr
+## Stderr
 ```bash
 tail -f /proc/<$PID>/fd/2
 ```

@@ -4,11 +4,13 @@ title: "Install Ubuntu VM in KVM"
 tags: [ubuntu, linux, kvm]
 ---
 
+## Create qcow2 disk image
 ```bash
-# Create qcow2 disk image
 qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu.qcow2 16G
+```
 
-# Install VM
+## Install VM
+```bash
 virt-install --name ubuntu \
   --ram 1024 \
   --disk path=/var/lib/libvirt/images/ubuntu.qcow2,format=qcow2 \

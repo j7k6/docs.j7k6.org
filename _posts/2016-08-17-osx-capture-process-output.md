@@ -1,25 +1,25 @@
 ---
 layout: post
 title: "Capture Output of Running Processes on OS X"
-tags: [macos]
+fav: 1
 ---
 
-### Capture stdout:
+> **Note**: The `dtrace`security restrcition needs to be disabled on *El Capitan*: Boot into recovery mode -> `csrutil enable --without dtrace`.
+
+## Capture stdout
 ```bash
 sudo dtrace -p <$PID> -qn 'syscall::write*:entry /pid == $target && arg0 == 1/ { printf("%s", copyinstr(arg1, arg2)); }'
 ```
 
-### Capture stderr:
+## Capture stderr
 ```bash
 sudo dtrace -p <$PID> -qn 'syscall::write*:entry /pid == $target && arg0 == 2/ { printf("%s", copyinstr(arg1, arg2)); }'
 ```
 
-### Capture both:
+## Capture both
 ```bash
 sudo dtrace -p <$PID> -qn 'syscall::write*:entry /pid == $target && (arg0 == 1 || arg0 == 2)/ { printf("%s", copyinstr(arg1, arg2)); }'
 ```
 
-The `dtrace`security restrcition needs to be disabled on *El Capitan*: Boot in recovery mode -> `csrutil enable --without dtrace`.
-
 ---
-1. [https://github.com/mivok/squirrelpouch/wiki/dtrace](https://github.com/mivok/squirrelpouch/wiki/dtrace)
+1. <https://github.com/mivok/squirrelpouch/wiki/dtrace>

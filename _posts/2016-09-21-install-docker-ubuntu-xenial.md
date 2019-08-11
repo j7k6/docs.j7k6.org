@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Install Docker on Ubuntu Server 16.04 LTS"
-tags: [ubuntu, docker]
 ---
 
 ```bash

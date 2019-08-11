@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Get Own Public IP from DNS with dig"
-tags: [dns, dig]
 ---
 
 ```bash

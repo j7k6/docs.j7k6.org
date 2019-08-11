@@ -7,7 +7,7 @@ tags: [nginx, proxy, wordpress, fix, docker]
 Appearantly *Wordpress* isn't suppose to be hosted in a subdirectory, especially when reverse-proxied to a Docker container via *Nginx*.
 The biggest problem is getting `wp-admin` to play along... here is some kind of solution:
 
-### Nginx
+## Nginx
 ```
 location /blog/ {
   proxy_set_header  Host               $host;
@@ -18,7 +18,7 @@ location /blog/ {
 }
 ```
 
-### wp-config.php
+## wp-config.php
 ```
 define('WP_HOME', 'https://<$DOMAIN>/blog');
 define('WP_SITEURL', 'https://<$DOMAIN>/blog');

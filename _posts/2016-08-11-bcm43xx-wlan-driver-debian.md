@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Install bcm43xx WLAN Driver in Debian"
-tags: [debian, wlan, driver, linux]
 ---
 
 ```bash

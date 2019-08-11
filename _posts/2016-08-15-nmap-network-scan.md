@@ -1,7 +1,6 @@
 ---
 layout: post
-title: "Scan Hosts on Network with Nmap"
-tags: [network, nmap]
+title: "Scan All Hosts on Network with Nmap"
 ---
 
 ```bash

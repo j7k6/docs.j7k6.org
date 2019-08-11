@@ -1,15 +1,14 @@
 ---
 layout: post
 title: "Disable Linux PC Speaker Beep"
-tags: [linux, kernel, speaker]
 ---
 
-### disable temporarily
+## Disable Temporarily
 ```bash
 rmmod pcspkr
 ```
 
-### disable permanent
+## Disable Permanently
 ```bash
 echo "blacklist pcspkr" > sudo tee /etc/modprobe.d/nobeep.conf
 ```

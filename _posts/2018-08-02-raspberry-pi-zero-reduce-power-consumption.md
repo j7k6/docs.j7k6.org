@@ -4,12 +4,12 @@ title: "Reduce Power Consumption on Raspberry Pi Zero"
 tags: [raspberry-pi]
 ---
 
-### Disable HDMI
+## Disable HDMI
 > This will reduce the power consumption by ~30mA.
 
 Add `/usr/bin/tvservice -o` to */etc/rc.local* (right before the `exit 0` line).
 
-### Disable the ACT LED
+## Disable the ACT LED
 > The *ACT* LED indicates network and disk activity, turning it off will reduce the overall power consumption a tiny bit more.
 
 Add these lines to */boot/config.txt*:

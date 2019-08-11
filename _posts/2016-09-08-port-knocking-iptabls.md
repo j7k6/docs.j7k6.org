@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Port Knocking with IPTables"
-tags: [iptables, port-knocking]
 ---
 
 ```bash

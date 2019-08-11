@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Power-on VM on VMWare ESXi manually"
-tags: [vmware, esxi, virtualization]
 ---
 
 1. List VMs to get `<$VM_ID>`:

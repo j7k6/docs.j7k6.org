@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Enable NAT Masquerading on OS X"
-tags: [nat, network, macos]
 ---
 
 ```bash

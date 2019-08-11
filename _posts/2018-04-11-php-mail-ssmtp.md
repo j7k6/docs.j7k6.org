@@ -4,13 +4,13 @@ title: "PHP Mail with sSMTP"
 tags: [php,mail,smtp,ssmtp]
 ---
 
-### PHP
+## PHP
 Add this line to `php.ini`:
 ```
 sendmail_path = "/usr/sbin/ssmtp -t"
 ```
 
-### SSMTP
+## SSMTP
 1. Edit `/etc/ssmt/ssmtp.conf`:
    ```
    root=<$SENDER_ADDRESS>

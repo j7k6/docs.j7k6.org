@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "IPTables Live-Stats"
-tags: [iptables, stats]
 ---
 
 ```bash

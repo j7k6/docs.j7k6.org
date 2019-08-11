@@ -1,13 +1,11 @@
 ---
 layout: post
 title: "Secure Mailserver with Postfix, Dovecot and Let's Encrypt on Debian Jessie"
-tags: [mail, server, postfix, dovecot, letsencrypt, debian, linux]
 ---
 
 ## Prerequirements
 
 ### Config Options
-
 ```bash
 export FQDN="<$FQDN>"
 export DOMAIN="<$DOMAIN>"
@@ -17,7 +15,6 @@ export A_RECORD=$(curl -fsSL https://icanhazip.com)
 ```
 
 ### DNS
-
 With *Digital Ocean* API:
 
 ```bash
@@ -45,7 +42,6 @@ _dmarc.$DOMAIN. 1800 IN TXT v=DMARC1; p=none
 ```
 
 ### Misc
-
 ```bash
 cat > /etc/mailname << EOF
 ${FQDN}
@@ -53,7 +49,6 @@ EOF
 ```
 
 ### Install packages
-
 ```bash
 echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
 apt-get update
@@ -62,20 +57,17 @@ apt-get install -y certbot -t jessie-backports
 ```
 
 ### SSL / Let's Encrypt
-
-Generate SSL certificate with the *Let's Encrypt* client:
-```bash
-certbot certonly --register-unsafely-without-email --agree-tos --standalone -d "${FQDN}"
-```
-
-Generate *Diffie Hellman* Keys:
-```bash
-openssl gendh -out /etc/postfix/dh_512.pem -2 512
-openssl gendh -out /etc/postfix/dh_2048.pem -2 2048
-```
+1. Generate SSL certificate with the *Let's Encrypt* client:
+   ```bash
+   certbot certonly --register-unsafely-without-email --agree-tos --standalone -d "${FQDN}"
+   ```
+2. Generate *Diffie Hellman* Keys:
+   ```bash
+   openssl gendh -out /etc/postfix/dh_512.pem -2 512
+   openssl gendh -out /etc/postfix/dh_2048.pem -2 2048
+   ```
 
 ## Postfix
-
 ```bash
 cat > /etc/postfix/main.cf << EOF
 alias_maps = hash:/etc/aliases
@@ -133,7 +125,6 @@ EOF
 ```
 
 ## Dovecot
-
 ```bash
 cat > /etc/dovecot/dovecot.conf << EOF
 listen = *
@@ -195,7 +186,6 @@ EOF
 ## Anti-Spam Measures
 
 ### Amavis
-
 ```bash
 cat >> /etc/amavis/conf.d/20-debian_defaults << EOF
 \$inet_socket_bind = '127.0.0.1';
@@ -203,13 +193,11 @@ EOF
 ```
 
 ### Postgrey
-
 ```bash
 sed -i 's/inet=10023/inet=10023 --delay=30/' /etc/default/postgrey
 ```
 
 ### OpenDKIM
-
 ```bash
 cat >> /etc/opendkim.conf << EOF
 AutoRestart             Yes
@@ -260,7 +248,6 @@ EOF
 ```
 
 ### DNS Records
-
 With *Digital Ocean* API:
 ```bash
 export DKIM_RECORD=$(cat /etc/opendkim/keys/${DOMAIN}/mail.txt | awk -F'"' '{print $2}' | tr -d '\n')
@@ -277,14 +264,12 @@ cat /etc/opendkim/keys/${DOMAIN}/mail.txt
 ## Mailbox Configs
 
 ### New User
-
 ```bash
 adduser --disabled-password --gecos "" ${MAILBOX}
 passwd ${MAILBOX}
 ```
 
 ### New Alias
-
 ```bash
 cat >> /etc/aliases << EOF
 root: ${MAILBOX}

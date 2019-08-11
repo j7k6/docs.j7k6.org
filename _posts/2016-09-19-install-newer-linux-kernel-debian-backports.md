@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Install Newer Linux Kernel on Debian from Backports"
-tags: [debian, linux, kernel]
 ---
 
 ```bash
