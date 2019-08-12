@@ -4,7 +4,7 @@ title: "Capture Output of Running Processes on OS X"
 fav: 1
 ---
 
-> **Note**: The `dtrace`security restrcition needs to be disabled on *El Capitan*: Boot into recovery mode -> `csrutil enable --without dtrace`.
+> **Note**: The `dtrace` security restrcition needs to be disabled on *El Capitan*. Boot into recovery mode → `csrutil enable --without dtrace`.
 
 ## Capture stdout
 ```bash
