@@ -46,17 +46,17 @@ fav: 1
 3. Create VM & Install Kali Linux:
    ```bash
    virt-install --name kali \
-   --ram 2048 \
-   --disk "bus=virtio,path=/var/lib/libvirt/images/kali.qcow2,format=qcow2" \
-   --vcpus 2 \
-   --accelerate \
-   --os-type "linux" \
-   --noautoconsole \
-   --network "bridge=virbr0" \
-   --location "http://http.kali.org/kali/dists/sana/main/installer-amd64/" \
-   --graphics "vnc,port=5911,password=secret,keymap=de" \
-   --initrd-inject "preseed.cfg" \
-   --extra-args "keymap=de"
+     --ram 2048 \
+     --disk "bus=virtio,path=/var/lib/libvirt/images/kali.qcow2,format=qcow2" \
+     --vcpus 2 \
+     --accelerate \
+     --os-type "linux" \
+     --noautoconsole \
+     --network "bridge=virbr0" \
+     --location "http://http.kali.org/kali/dists/sana/main/installer-amd64/" \
+     --graphics "vnc,port=5911,password=secret,keymap=de" \
+     --initrd-inject "preseed.cfg" \
+     --extra-args "keymap=de"
    ```
 4. Start Kali:
    ```bash
