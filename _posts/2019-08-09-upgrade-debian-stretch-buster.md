@@ -13,7 +13,7 @@ apt dist-upgrade -y
 sed -i 's/stretch/buster/g' /etc/apt/sources.list
 
 apt update
-apt update -y
+apt upgrade -y
 apt dist-upgrade -y
 
 reboot
