@@ -1,41 +1,35 @@
 ---
 layout: post
 title: "Arch Linux Post-Installation Steps"
-tags: [arch-linux,linux]
 ---
 
-## Enable DHCP
-```bash
-systemctl enable dhcpcd systemctl start dhcpcd
-```
-
-## Connect to Wireless Network
-```bash
-wifi-menu
-```
-
-## Add User
-```bash
-useradd -m -g users -s /bin/bash <$USER>
-passwd <$USER>
-```
-
-## Sudo
-```bash
-visudo
-```
-	%wheel ALL=(ALL) ALL: ALL
-
-```bash
-gpasswd -a <$USER> wheel
-```
-
-## NTP
-```bash
-systemctl enable ntpd.service
-systemctl start ntpd.service
-ntpd -gq
-hwclock -w
-```
+1. Enable DHCP:
+   ```bash
+   systemctl enable dhcpcd systemctl start dhcpcd
+   ```
+2. Connect to wireless network:
+   ```bash
+   wifi-menu
+   ```
+3. Add user:
+   ```bash
+   useradd -m -g users -s /bin/bash <$USER>
+   passwd <$USER>
+   ```
+4. Configure Sudo with `visudo`:
+   ```
+   %wheel ALL=(ALL) ALL: ALL
+   ```
+5. Add User to *wheel* group:
+   ```bash
+   gpasswd -a <$USER> wheel
+   ```
+6. Setup NTP:
+   ```bash
+   systemctl enable ntpd.service
+   systemctl start ntpd.service
+   ntpd -gq
+   hwclock -w
+   ```
 
 ---

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Generate SSH Key"
-tags: [ssh]
 ---
 
 ```bash

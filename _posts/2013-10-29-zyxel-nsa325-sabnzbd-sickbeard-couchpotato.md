@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "ZyXEL NSA325: SABnzbd & SickBeard & CouchPotato"
-tags: [zyxel-nsa325,sabnzbd,sickbeard,couchpotate]
 ---
 
 ## Install FFP

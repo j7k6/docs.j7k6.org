@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Create MySQL Database and User"
-tags: [mysql]
 ---
 
 ```sql

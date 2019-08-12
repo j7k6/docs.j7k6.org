@@ -1,40 +1,32 @@
 ---
 layout: post
 title: "Arch Linux: Mount Encrypted LVM Volumes"
-tags: [arch-linux,linux,lvm,luks]
 ---
 
-## Boot...
-...from the Arch Linux installer CD.
-
-## Show Available Drives
-```bash
-fdisk -l
-```
-
-## Decrypt & Open LUKS
-```bash
-cryptsetup luksOpen /dev/sda<$N> <$MAPPER>
-```
-
-## Find Volume Groups
-```bash
-vgscan
-```
-
-## Activate Volume Group
-```bash
-vgchange -ay <$VOLGROUP>
-```
-
-## Show Available Volumes
-```bash
-lvs
-```
-
-## Mount Volume
-```bash
-mount /dev/<$VOLGROUP>/<$VOLUME> /mnt
-```
+1. Boot from the Arch Linux installer CD.
+2. Show available drives:
+   ```bash
+   fdisk -l
+   ```
+3. Decrypt & open LUKS:
+   ```bash
+   cryptsetup luksOpen /dev/sda<$N> <$MAPPER>
+   ```
+4. Find volume groups:
+   ```bash
+   vgscan
+   ```
+5. Activate volume group:
+   ```bash
+   vgchange -ay <$VOLGROUP>
+   ```
+6. Show available volumes:
+   ```bash
+   lvs
+   ```
+7. Mount volume
+   ```bash
+   mount /dev/<$VOLGROUP>/<$VOLUME> /mnt
+   ```
 
 ---

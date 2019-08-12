@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Download Files recursively from FTP with wget"
-tags: [wget, ftp]
 ---
 
 ```bash

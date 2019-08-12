@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Export .pst in Exchange"
-tags: [exchange]
 ---
 
 1. Create request:

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Basic IPTables Rules"
-tags: [iptables, network, linux]
 ---
 
 ```bash
