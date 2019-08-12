@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Move Mailbox to other Exchange Database"
-tags: [exchange]
 ---
 
 ```powershell

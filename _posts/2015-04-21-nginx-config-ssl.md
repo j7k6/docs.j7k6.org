@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Nginx SSL Configuration"
-tags: [nginx, ssl]
 ---
 
 ```nginx

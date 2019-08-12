@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "SSL Certificates"
-tags: [ssl,openssl]
 ---
 
 ## Private key and CSR

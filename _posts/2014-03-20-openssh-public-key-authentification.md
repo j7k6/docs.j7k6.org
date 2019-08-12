@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "OpenSSH Public Key Authentification"
-tags: [openssh]
 ---
 
-## Client:
+## Client
 1. Generate SSH key pair
    ```bash
    ssh-keygen -t rsa
@@ -15,13 +14,13 @@ tags: [openssh]
    ```
 
 ## Server
-Edit `/etc/ssh/sshd_config`:
-```
-PasswordAuthentication no
-```
-
-```bash
-service ssh restart
-```
+1. Edit `/etc/ssh/sshd_config`:
+   ```
+   PasswordAuthentication no
+   ```
+2. Restart SSH Service
+   ```bash
+   service ssh restart
+   ```
 
 ---

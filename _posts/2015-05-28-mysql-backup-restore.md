@@ -1,14 +1,15 @@
 ---
 layout: post
-title: "Backup &  Restore MySQL Databases"
-tags: [mysql]
+title: "Backup & Restore MySQL Databases"
 ---
 
+## Backup
 ```bash
-# Backup
 mysqldump -u root -p --all-databases | gzip > dump.sql.gz
+```
 
-# Restore
+## Restore
+```bash
 gzip -d dump.sql.gz | mysql -u root -p
 ```
 

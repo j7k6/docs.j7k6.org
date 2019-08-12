@@ -21,7 +21,7 @@ fav: 1
 4. Wait until airodump says '*WPA handshake: ...*' in the upper right of the terminal, then press `Ctrl+c` to stop scanning.
 5. Bruteforce the WPA2 handshake with aircrack-ng and a wordlist:
    ```bash
-   aircrack-ng <$CAPTURE_FILE-01>.cap  -w <$WORDLIST_FILE>
+   aircrack-ng <$CAPTURE_FILE>-01.cap  -w <$WORDLIST_FILE>
    ```
 
 ---
