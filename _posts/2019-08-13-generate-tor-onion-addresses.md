@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Generate Onion Addresses for Tor Hidden Services"
+title: "Generate .onion Addresses for Tor Hidden Services"
 ---
 
  > **Note**: Don't use more than 6-7 characters for `<$SERVICE_NAME>`. 8 character words might take several days to generate, even on a modern CPU. If you have some GPU power, you can use [*Scallion*](https://github.com/lachesis/scallion) to speed things up.
