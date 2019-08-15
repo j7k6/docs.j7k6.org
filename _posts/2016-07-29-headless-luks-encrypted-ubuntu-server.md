@@ -67,7 +67,7 @@ title: "Headless LUKS encrypted Ubuntu Server on Hetzner"
     mount /dev/ubuntu-vg/var /mnt/var
     swapon /dev/ubuntu-vg/swap
     ```
-13. Install `debootstrap`:
+13. Install *debootstrap*:
     ```bash
     wget http://ftp.de.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.75_all.deb
     ar -xf debootstrap_1.0.75_all.deb
