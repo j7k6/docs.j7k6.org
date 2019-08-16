@@ -202,7 +202,9 @@ header {
         }
 
         &:after {
-          content: '_';
+          content: '\25AE';
+          font-size: 2em;
+          vertical-align: -15%;
           text-decoration: blink;
           -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
                   animation: blinker 0.6s infinite ease-in-out alternate;
@@ -268,17 +270,6 @@ header {
 
 article {
   overflow-x: hidden;
-
-  &:after {
-    content: '~';
-    font-size: 1.75em;
-    display: block;
-    width: 100%;
-    margin: 1em auto 0 auto;
-    text-align: center;
-    vertical-align: center;
-    color: darken($light, 10%);
-  }
 
   & > * {
     margin: 0.5em auto 2em auto;
