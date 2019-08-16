@@ -134,7 +134,7 @@ title: "Arch Linux Installation: LVM & LUKS Disk Encryption"
    ```
 
 ### Finalize
-1. Umount everything:
+1. Unmount everything:
    ```bash
    exit
    umount /dev/{sda1,main/home,main/root}
