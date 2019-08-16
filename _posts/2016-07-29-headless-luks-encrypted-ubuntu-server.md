@@ -83,9 +83,9 @@ title: "Headless LUKS encrypted Ubuntu Server on Hetzner"
     echo "test" > /mnt/etc/hostname
     ```
 16. Create *crypttab*:
-   ```bash
-   echo "ubuntu UUID=$(blkid -s UUID -o value /dev/md1) none luks" > /mnt/etc/crypttab
-   ```
+    ```bash
+    echo "ubuntu UUID=$(blkid -s UUID -o value /dev/md1) none luks" > /mnt/etc/crypttab
+    ```
 17. Create *fstab*:
     ```bash
     cat > /mnt/etc/fstab << EOF
