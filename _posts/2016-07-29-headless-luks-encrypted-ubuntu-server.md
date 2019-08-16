@@ -190,7 +190,7 @@ title: "Headless LUKS encrypted Ubuntu Server on Hetzner"
     grub-install /dev/sdb
     update-grub -y
     ```
-# Exit & unmount all:
+34. Exit & unmount all:
     ```bash
     exit
     umount /mnt/{boot,var}
