@@ -41,6 +41,7 @@ fav: 1
 2. Create *EFI* partition:
    ```bash
    parted /dev/sdb -s mkpart primary fat32 1MiB 257MiB
+   parted /dev/sdb -s set 1 esp on
    ```
 3. Create encrypted boot partition:
    ```bash
@@ -104,7 +105,7 @@ fav: 1
    lvcreate -n root -l 100%FREE kali
    ```
 
-### Filesystem Setup
+### Filesystem
 1. Format *swap* partition:
    ```bash
    mkswap /dev/kali/swap
@@ -150,10 +151,11 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```bash
    chroot /target apt install -y grub-efi-amd64
    ```
-2. Add this lines to `/mnt/etc/default/grub`:
+2. Add this lines to `/target/etc/default/grub`:
    ```
    GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
    GRUB_ENABLE_CRYPTODISK=y
+   GRUB_DISABLE_LINUX_UUID=true
    ```
 3. Write bootloader to USB drive:
    ```bash
@@ -165,41 +167,45 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
 
 ### Ramdisk (initramfs)
-1. Edit `/target/etc/crypttab`:
+1. Move LUKS header and key files:
+   ```bash
+   mv /tmp/root_header /tmp/root_key /target/boot/
+   ```
+2. Edit `/target/etc/crypttab`:
    ```
    crypt_root /dev/sda /boot/root_key luks,discard,noearly,header=/boot/root_header,keyscript=/lib/cryptsetup/scripts/unlock
    ```
-2. Create `/target/lib/cryptsetup/scripts/unlock`:
+3. Create `/target/lib/cryptsetup/scripts/unlock`:
    ```
    cat "$1"
    ```
-3. ...and make it executable:
+4. ...and make it executable:
    ```bash
    chmod +x /target/lib/cryptsetup/scripts/unlock
    ```
-4. Create `/target/etc/initramfs-tools/hooks/luks`:
+5. Create `/target/etc/initramfs-tools/hooks/luks`:
    ```
-   mkdir -p ${DESTDIR}/boot/
-   cp /boot/root_* ${DESTDIR}/boot/
+   mkdir -p $DESTDIR/boot/
+   cp /boot/root_header /boot/root_key $DESTDIR/boot/
    ```
-5. ...and make it executable:
+6. ...and make it executable:
    ```bash
    chmod +x /target/etc/initramfs-tools/hooks/luks
    ```
-6. Create ramdisk (*initramfs*):
+7. Create ramdisk (*initramfs*):
    ```bash
-   update-initramfs -c -k all
+   chroot /target update-initramfs -c -k all
    ```
 
-### Finalize
-1. The *Kali* installer would mess te previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
+### Workarounds
+1. The *Kali* installer would mess the previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
    ```bash
    umount /target/boot/efi
    umount /target/boot
    ```
-2. Comment out (or delete) the */boot* partition line in `/target/etc/fstab`! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted *boot* partition, which will fail.
+2. Comment out (or delete) the */boot* and */boot/efi* partition lines in `/target/etc/fstab`! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted *boot* partition, which will fail.
 
-## The End
+## Finalize
 > Switch back to the main installer screen by pressing `alt`+`F5`.
 
 The *GRUB* installation step will fail, of course (the boot partitions are unmounted):
