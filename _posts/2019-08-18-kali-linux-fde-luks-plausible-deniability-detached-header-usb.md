@@ -165,28 +165,32 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
 
 ### Ramdisk (initramfs)
-1. Edit `/target/etc/crypttab`:
+1. Move LUKS header and key files:
+   ```bash
+   mv /tmp/root_header /tmp/root_key /target/boot/
+   ```
+2. Edit `/target/etc/crypttab`:
    ```
    crypt_root /dev/sda /boot/root_key luks,discard,noearly,header=/boot/root_header,keyscript=/lib/cryptsetup/scripts/unlock
    ```
-2. Create `/target/lib/cryptsetup/scripts/unlock`:
+3. Create `/target/lib/cryptsetup/scripts/unlock`:
    ```
    cat "$1"
    ```
-3. ...and make it executable:
+4. ...and make it executable:
    ```bash
    chmod +x /target/lib/cryptsetup/scripts/unlock
    ```
-4. Create `/target/etc/initramfs-tools/hooks/luks`:
+5. Create `/target/etc/initramfs-tools/hooks/luks`:
    ```
    mkdir -p ${DESTDIR}/boot/
    cp /boot/root_* ${DESTDIR}/boot/
    ```
-5. ...and make it executable:
+6. ...and make it executable:
    ```bash
    chmod +x /target/etc/initramfs-tools/hooks/luks
    ```
-6. Create ramdisk (*initramfs*):
+7. Create ramdisk (*initramfs*):
    ```bash
    update-initramfs -c -k all
    ```
