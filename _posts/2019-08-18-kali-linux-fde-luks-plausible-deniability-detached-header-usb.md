@@ -150,7 +150,7 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```bash
    chroot /target apt install -y grub-efi-amd64
    ```
-2. Add this lines to `/mnt/etc/default/grub`:
+2. Add this lines to `/target/etc/default/grub`:
    ```
    GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
    GRUB_ENABLE_CRYPTODISK=y
