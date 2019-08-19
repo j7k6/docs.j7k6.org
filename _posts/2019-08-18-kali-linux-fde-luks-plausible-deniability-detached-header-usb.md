@@ -4,7 +4,7 @@ title: "Kali Linux: Full Disk Encryption with Plausible Deniability and Detached
 fav: 1
 ---
 
-> **Full Disk Encryption** of a Kali Linux installation is nice, but Full Disk Encryption with **Plausible Deniability** is nicer.
+> **Full Disk Encryption** of a Kali Linux installation is nice, but Full Disk Encryption with [**Plausible Deniability**](https://en.wikipedia.org/wiki/Plausible_deniability) is nicer.
 >
 > – Me.
 
