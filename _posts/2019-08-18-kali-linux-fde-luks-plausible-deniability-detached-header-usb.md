@@ -4,40 +4,59 @@ title: "Kali Linux: Full Disk Encryption with Plausible Deniability and Detached
 fav: 1
 ---
 
+> **Full Disk Encryption** of a Kali Linux installation is nice, but Full Disk Encryption with **Plausible Deniability** is nicer.
+>
+> – Me.
+
 ## First Steps
-1. Boot *Kali Linux* live system from [install disk](https://www.kali.org/downloads/).
-2. Run *Terminal* app.
-3. Securely erase data on system disk and USB drive (optional, but *recommended*!):
+1. Enable **UEFI boot**.
+2. Boot *Kali Linux* [*Installer*](https://www.kali.org/downloads/).
+3. After *keyboard layout* setup, switch to the *virtual terminal* by pressing `alt`+`F2`:
+   ![kali-fde-01.png](/files/kali-fde-01.png)
+4. Securely erase all existing data on the system disk and USB drive (optional, but *recommended*!):
    ```bash
-   shred /dev/sda
-   shred /dev/sdb
+   dd if=/dev/urandom of=/dev/sda bs=16M
+   dd if=/dev/urandom of=/dev/sdb bs=16M
+   ```
+5. Install required packages:
+   ```bash
+   anna-install crypto-dm-modules cryptsetup-udeb lvm2-udeb parted-udeb
+   ```
+6. Load required kernel module:
+   ```bash
+   depmod
+   modprobe dm_crypt
+   ```
+7. Unmount existing USB drive mounts:
+   ```bash
+   umount /media
    ```
 
 ## USB Boot Drive
 ### Partition Layout
 1. Create *GPT* partition layout:
    ```bash
-   sgdisk -og /dev/sdb
+   parted /dev/sdb -s mklabel gpt
    ```
 2. Create *EFI* partition:
    ```bash
-   sgdisk -n 1:2048:+256M -t 1:ef00 /dev/sdb
+   parted /dev/sdb -s mkpart primary fat32 1MiB 257MiB
    ```
 3. Create encrypted boot partition:
    ```bash
-   sgdisk -n 2:0:0 -t 2:8300 /dev/sdb
+   parted /dev/sdb -s mkpart primary ext2 257MiB 513MiB
    ```
 
 ### EFI Boot Partition
 1. Format *EFI* partition:
    ```bash
-   mkfs.vfat /dev/sdb1
+   mkfs.fat -F 32 /dev/sdb1
    ```
 
 ### Encrypted Boot Partition
 1. Encrypt boot partition:
    ```
-   cryptsetup luksFormat -y -h sha512 -s 512 -c aes-xts-plain64 --type luks1 /dev/sdb2
+   cryptsetup luksFormat -y -h sha512 -s 512 --type luks1 /dev/sdb2
    ```
 2. Open encrypted boot partition:
    ```bash
@@ -47,28 +66,24 @@ fav: 1
    ```bash
    mkfs.ext2 /dev/mapper/crypt_boot
    ```
-4. Mount boot partition:
-   ```bash
-   mount /dev/mapper/crypt_boot /mnt
-   ```
 
 ## System Drive
 ### Encryption
 1. Create empty header file:
    ```bash
-   truncate -s 4M /mnt/root_header
+   dd if=/dev/zero of=/tmp/root_header bs=4M count=1
    ```
 2. Generate encryption key for the system drive:
    ```bash
-   dd if=/dev/urandom of=/mnt/root_key bs=64 count=8
+   dd if=/dev/urandom of=/tmp/root_key bs=512 count=1
    ```
 3. Encrypt system drive with detached header and keyfile:
    ```bash
-   cryptsetup luksFormat -y -h sha512 -s 512 -c aes-xts-plain64 --header /mnt/root_header --offset=0 --align-payload 0 --type luks2 /dev/sda /mnt/root_key
+   cryptsetup luksFormat -y -h sha512 -s 512 --header /tmp/root_header -o 0 --type luks2 /dev/sda /tmp/root_key
    ```
 4. Open encrypted system drive:
    ```bash
-   cryptsetup luksOpen --header /mnt/root_header --key-file /mnt/root_key /dev/sda crypt_root
+   cryptsetup luksOpen --header /tmp/root_header -d /tmp/root_key /dev/sda crypt_root
    ```
 
 ### LVM
@@ -96,136 +111,113 @@ fav: 1
    ```
 2. Format *root* partition:
    ```bash
-   mkfs.ext4 -m 0 /dev/kali/root
+   mkfs.ext4 /dev/kali/root
    ```
-
 
 ## Kali Linux Installation
-### Mounts
-1. Unmount *boot* partition:
+### Partition Disks
+> Switch back to the main installer screen by pressing `alt`+`F5`.
+
+Follow all the installation steps until the *Partition disks* screen appears. Choose *Manual* and assign all the mount points to the previously created partitions as shown here:
+    
+![kali-fde-02.png](/files/kali-fde-02.png)
+
+### Install System
+Installing the system to disk takes some time:
+![kali-fde-03.png](/files/kali-fde-03.png)
+
+Wait until the next screen (*Network Mirror*) arrives. **Don't click *Continue* yet!**
+
+## Doin' Magic
+The bootloader will be written to the USB drive. The boot partition itself is encrypted, so it has to be unlocked with the previously set boot partition's *LUKS* passphrase first. This is rather complicated and cannot be accomplished with the default *Kali* installer, so it has to be done manually:
+
+> Switch back to the *virtual terminal* screen by pressing `alt`+`F2`.
+
+### Bind Mounts
+1. Create mountpoint for `/run/udev`:
    ```bash
-   umount /mnt
+   mkdir -p /target/run/udev
    ```
-2. Mount *root* partition:
+2. *Bind Mount*:
    ```bash
-   mount /dev/kali/root /mnt
-   ```
-3. Create mountpoint for *boot* partition:
-   ```bash
-   mkdir -p /mnt/boot
-   ```
-4. Mount *boot* partition:
-   ```bash
-   mount /dev/mapper/crypt_boot /mnt/boot/
-   ```
-5. Create mountpoint for *EFI* partition:
-   ```bash
-   mkdir -p /mnt/boot/efi
-   ```
-6. Mount *EFI* partition:
-   ```bash
-   mount /dev/sdb1 /mnt/boot/efi
-   ```
-7. Enable *swap*:
-   ```bash
-   swapon /dev/kali/swap
+   mount --bind /run/udev /target/run/udev
+   mount --bind /sys /target/sys
+   mount --bind /dev/pts /target/dev/pts
    ```
 
-### Base Install
-1. Install `debootstrap`:
+### GRUB
+1. Install *GRUB* in chroot:
    ```bash
-   apt update
-   apt install -y debootstrap
+   chroot /target apt install -y grub-efi-amd64
    ```
-2. Bootstrap *Kali* base system:
+2. Add this lines to `/mnt/etc/default/grub`:
+   ```
+   GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
+   GRUB_ENABLE_CRYPTODISK=y
+   ```
+3. Write bootloader to USB drive:
    ```bash
-   debootstrap --include=gpg,grub2,grub-efi-amd64,cryptsetup,lvm2,initramfs-tools,linux-image-amd64 kali-rolling /mnt
+   chroot /target grub-install --target=x86_64-efi --uefi-secure-boot --efi-directory=/boot/efi --bootloader=kali --boot-directory=/boot/efi/EFI/kali --recheck /dev/sdb
    ```
-3. Copy system config files:
+4. Generate *GRUB* config:
    ```bash
-   cp /etc/apt/sources.list /mnt/etc/apt/
-   cp /etc/{passwd,group,shadow,hostname,resolv.conf} /mnt/etc/
-   ```
-4. Create `/mnt/etc/fstab`:
-   ```
-   /dev/kali/root / ext4  defaults  0 1
-   /dev/kali/swap none  swap  defaults  0 0
+   chroot /target grub-mkconfig -o /boot/efi/EFI/kali/grub/grub.cfg
    ```
 
-### Boot Unlock Setup
-1. Create `/mnt/etc/crypttab`:
+### Ramdisk (initramfs)
+1. Edit `/target/etc/crypttab`:
    ```
-   crypt_root /dev/sda /boot/root_key luks,discard,noearly,header=/boot/root_header,keyscript=/lib/cryptsetup/scripts/getinitramfskey
+   crypt_root /dev/sda /boot/root_key luks,discard,noearly,header=/boot/root_header,keyscript=/lib/cryptsetup/scripts/unlock
    ```
-2. Create `/mnt/lib/cryptsetup/scripts/getinitramfskey`:
+2. Create `/target/lib/cryptsetup/scripts/unlock`:
    ```
-   if [[ -f "${1}" ]]; then
-     cat "${1}"
-   else
-     PASS="$(/lib/cryptsetup/askpass 'unlock: ')"
-     echo "${PASS}"
-   fi
+   cat "$1"
    ```
 3. ...and make it executable:
    ```bash
-   chmod +x /mnt/lib/cryptsetup/scripts/getinitramfskey
+   chmod +x /target/lib/cryptsetup/scripts/unlock
    ```
-4. Create `/mnt/etc/initramfs-tools/hooks/loadinitramfskey`:
+4. Create `/target/etc/initramfs-tools/hooks/luks`:
    ```
-   . ${CONFDIR}/initramfs.conf
-   . /usr/share/initramfs-tools/hook-functions
-   
    mkdir -p ${DESTDIR}/boot/
    cp /boot/root_* ${DESTDIR}/boot/
    ```
 5. ...and make it executable:
    ```bash
-   chmod +x /mnt/etc/initramfs-tools/hooks/loadinitramfskey
+   chmod +x /target/etc/initramfs-tools/hooks/luks
    ```
-6. Edit `/mnt/etc/default/grub`:
-   ```
-   GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
-   GRUB_ENABLE_CRYPTODISK=y
-   ```
-
-### Bootloader
-1. Create bind-mounts:
-   ```bash
-   for d in dev dev/pts sys proc run/udev; do mkdir -p /mnt/$d; mount -o bind /$d /mnt/$d; done
-   ```
-2. Enter *chroot*:
-   ```bash
-   chroot /mnt
-   ```
-3. Install *GRUB* on USB drive:
-   ```
-   grub-install --target=x86_64-efi --uefi-secure-boot --efi-directory=/boot/efi --bootloader=kali --boot-directory=/boot/efi/EFI/kali --recheck /dev/sdb
-   ```
-4. Generate *GRUB* config:
-   ```bash
-   grub-mkconfig -o /boot/efi/EFI/kali/grub/grub.cfg
-   ```
-5. Create ramdisk (*initramfs*):
+6. Create ramdisk (*initramfs*):
    ```bash
    update-initramfs -c -k all
    ```
-6. Exit *chroot*:
-   ```bash
-   exit
-   ```
 
 ### Finalize
-1. Unmount *everything*:
+1. The *Kali* installer would mess te previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
    ```bash
-   for d in dev/pts dev sys proc run/udev boot/efi boot; umount /mnt/$d; done
-   umount /mnt
-   swapoff /dev/kali/swap
-   lvchange -an
-   vgchange -an
-   cryptsetup luksClose crypt_boot
-   cryptsetup luksClose crypt_root
+   umount /target/boot/efi
+   umount /target/boot
    ```
-2. Reboot.
+2. Comment out (or delete) the */boot* partition line in `/target/etc/fstab`! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted *boot* partition, which will fail.
+
+## The End
+> Switch back to the main installer screen by pressing `alt`+`F5`.
+
+The *GRUB* installation step will fail, of course (the boot partitions are unmounted):
+![kali-fde-04.png](/files/kali-fde-04.png)
+
+Ignore that and ***Continue without boot loader*** to finish the installation:
+![kali-fde-05.png](/files/kali-fde-05.png)
+
+This is what unlocking the enrypted boot partition will look like:
+![kali-fde-06.png](/files/kali-fde-06.png)
+
+
+
+
+
+
+
+
 
 ---
 1. <http://and1equals1.blogspot.com/2009/10/encrypting-your-hdd-with-plausible.html>
