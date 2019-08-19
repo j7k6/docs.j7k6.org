@@ -114,10 +114,10 @@ body {
 }
 
 ::-webkit-input-placeholder {
-	color: lighten($black, 75%);
+	color: lighten($black, 50%);
 }
 ::-moz-placeholder {
-	color: lighten($black, 75%);
+	color: lighten($black, 50%);
 }
 
 a {
@@ -188,7 +188,7 @@ header {
 
       a {
         font-size: inherit !important;
-        color: lighten($black, 50%);
+        color: lighten($black, 25%);
         font-family: $headerFont !important;
         text-decoration: none !important;
         overflow: hidden;
@@ -252,7 +252,7 @@ header {
     }
 
     p {
-      color: lighten($black, 60%);
+      color: lighten($black, 40%);
       margin: -1em auto 0 auto !important;
       padding: 0 !important;
       font-size: 0.9em;
@@ -288,7 +288,7 @@ article {
     font-size: 0.9em;
     text-align: right;
     font-family: $codeFont;
-    color: lighten($black, 50%);
+    color: lighten($black, 25%);
   }
 
   hr {
@@ -312,7 +312,6 @@ article {
         font-size: 0.9em;
         font-family: $headerFont;
         color: lighten($black, 50%);
-        line-height: 1.5;
         text-indent: 0 !important;
         margin: 0;
         white-space: nowrap;
@@ -440,7 +439,7 @@ footer {
   width: 100%;
 
   * {
-    color: lighten($black, 50%);
+    color: lighten($black, 25%);
   }
 
   ul {
@@ -469,7 +468,7 @@ div.content {
       flex-direction: column;
       text-align: center;
       vertical-align: middle;
-      border: 1px solid lighten($black, 75%);
+      border: 1px solid lighten($black, 50%);
       border-radius: 0.25em;
       padding: 0.5em;
       line-height: 1;
@@ -481,15 +480,15 @@ div.content {
       flex: 0 1 1.5em;
       background: $light;
       border: 1px solid $light;
-      color: lighten($black, 50%);
+      color: lighten($black, 25%);
       border-right: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       cursor: pointer;
 
       &:hover {
-        background-color: lighten($black, 75%);
-        border-color: lighten($black, 75%);
+        background-color: lighten($black, 50%);
+        border-color: lighten($black, 50%);
         color: White;
 
         &::before {
@@ -526,12 +525,12 @@ div.content {
       align-self: flex-start;
       text-align: left;
       font-family: $headerFont;
-      color: lighten($black, 50%);
+      color: lighten($black, 25%);
       transition: all 0.30s ease-in-out;
       outline: none;
 
       &:focus, &:hover {
-        border: 1px solid lighten($black, 60%);
+        border: 1px solid lighten($black, 40%);
       }
     }
   }
