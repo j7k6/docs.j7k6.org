@@ -211,13 +211,14 @@ Ignore that and ***Continue without boot loader*** to finish the installation:
 This is what unlocking the enrypted boot partition will look like:
 ![kali-fde-06.png](/files/kali-fde-06.png)
 
+## Kernel Updates
+Every time a new kernel is going to be installed, the encrypted boot partition needs to be decrypted and mounted first:
 
-
-
-
-
-
-
+```bash
+cryptsetup luksOpen /dev/sdb2 crypt_boot
+mount /dev/mapper/crypt_boot /boot
+mount /dev/sdb1 /boot/efi
+```
 
 ---
 1. <http://and1equals1.blogspot.com/2009/10/encrypting-your-hdd-with-plausible.html>
