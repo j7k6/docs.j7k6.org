@@ -41,6 +41,7 @@ fav: 1
 2. Create *EFI* partition:
    ```bash
    parted /dev/sdb -s mkpart primary fat32 1MiB 257MiB
+   parted /dev/sdb -s set 1 esp on
    ```
 3. Create encrypted boot partition:
    ```bash
@@ -154,6 +155,7 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
    GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
    GRUB_ENABLE_CRYPTODISK=y
+   GRUB_DISABLE_LINUX_UUID=true
    ```
 3. Write bootloader to USB drive:
    ```bash
@@ -192,18 +194,18 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
 7. Create ramdisk (*initramfs*):
    ```bash
-   update-initramfs -c -k all
+   chroot /target update-initramfs -c -k all
    ```
 
-### Finalize
+### Workarounds
 1. The *Kali* installer would mess te previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
    ```bash
    umount /target/boot/efi
    umount /target/boot
    ```
-2. Comment out (or delete) the */boot* partition line in `/target/etc/fstab`! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted *boot* partition, which will fail.
+2. Comment out (or delete) the */boot* and */boot/efi* partition lines in `/target/etc/fstab`! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted *boot* partition, which will fail.
 
-## The End
+## Finalize
 > Switch back to the main installer screen by pressing `alt`+`F5`.
 
 The *GRUB* installation step will fail, of course (the boot partitions are unmounted):
