@@ -105,7 +105,7 @@ fav: 1
    lvcreate -n root -l 100%FREE kali
    ```
 
-### Filesystem Setup
+### Filesystem
 1. Format *swap* partition:
    ```bash
    mkswap /dev/kali/swap
