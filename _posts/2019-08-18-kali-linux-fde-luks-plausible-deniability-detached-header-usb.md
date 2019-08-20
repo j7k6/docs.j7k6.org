@@ -198,7 +198,7 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
 
 ### Workarounds
-1. The *Kali* installer would mess te previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
+1. The *Kali* installer would mess the previous steps up when installing the *GRUB* bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
    ```bash
    umount /target/boot/efi
    umount /target/boot
