@@ -185,8 +185,8 @@ The bootloader will be written to the USB drive. The boot partition itself is en
    ```
 5. Create `/target/etc/initramfs-tools/hooks/luks`:
    ```
-   mkdir -p ${DESTDIR}/boot/
-   cp /boot/root_* ${DESTDIR}/boot/
+   mkdir -p $DESTDIR/boot/
+   cp /boot/root_header /boot/root_key $DESTDIR/boot/
    ```
 6. ...and make it executable:
    ```bash
