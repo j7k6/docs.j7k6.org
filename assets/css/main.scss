@@ -570,6 +570,7 @@ ul.index {
       overflow: hidden;
 
       &:before {
+        font-family: $codeFont;
         content: '\266F';
         opacity: 0.25;
         margin-right: 0.25em; 
@@ -586,6 +587,7 @@ ul.index {
       display: block;
 
       a:before {
+        font-family: $codeFont;
         content: '\2605';
       }
     }
