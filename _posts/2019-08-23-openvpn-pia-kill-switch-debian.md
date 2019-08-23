@@ -34,7 +34,7 @@ title: "Private Internet Access OpenVPN Kill Switch on Debian Buster"
    ```
 8. Make *iptables* rules permanent:
    ```bash
-   iptables-save  > /etc/iptables/rules.v4
+   iptables-save > /etc/iptables/rules.v4
    ```
 9. Restart *OpenVPN* service:
    ```bash
