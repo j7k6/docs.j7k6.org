@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Private Internet Acces OpenVPN on Linux (Debian/Raspbian/Ubuntu)"
+title: "Private Internet Access OpenVPN on Linux (Debian/Raspbian/Ubuntu)"
 ---
 
 1. Install packages:
@@ -10,7 +10,7 @@ title: "Private Internet Acces OpenVPN on Linux (Debian/Raspbian/Ubuntu)"
    ```
 2. Download *PIA* OpenVPN configs:
    ```bash
-    wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
+   wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
    ```
 3. Extract *PIA* OpenVPN configs:
    ```bash
