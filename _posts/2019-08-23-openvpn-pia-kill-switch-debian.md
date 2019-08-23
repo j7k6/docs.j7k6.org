@@ -4,7 +4,7 @@ title: "Private Internet Access OpenVPN Kill Switch on Debian Buster"
 ---
 
 1. Setup OpenVPN for *PIA*, see [here](/debian-raspbian-openvpn-pia/).
-2. Disable *IPv6*, see [here](disable-ipv6-debian-ubuntu).
+2. Disable *IPv6*, see [here](/disable-ipv6-debian-ubuntu/).
 3. Edit `/etv/resolv.conf`:
    ```
    nameserver 209.222.18.222
