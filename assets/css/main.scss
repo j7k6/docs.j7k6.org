@@ -113,15 +113,6 @@ body {
   color: $light;
 }
 
-code::selection {
-  background: $link;
-  color: $light;
-}
-code::-moz-selection {
-  background: $link;
-  color: $light;
-}
-
 ::-webkit-input-placeholder {
 	color: lighten($black, 50%);
 }
