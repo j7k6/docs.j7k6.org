@@ -28,6 +28,7 @@ title: "Secure & Anonymous DNS Resolver with DNSCrypt-Proxy over Tor on Kali Lin
 6. Enable and start the service:
    ```bash
    systemctl daemon-reload
+   systemctl enable --now dnscrypt-proxy.service
    ```
 
 ---
