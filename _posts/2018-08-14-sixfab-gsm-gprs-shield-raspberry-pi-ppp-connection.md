@@ -53,11 +53,12 @@ Sixfab's [Raspberry Pi GSM/GPRS Shield](https://sixfab.com/product/gsmgprs-shiel
    ```
    ABORT "ERROR"
    ABORT "NO DIALTONE"
-   SAY "\nhangup...\n"
-   +++
-   +++
-   +++
-   SAY "\n...goodbye!\n"
+   SAY "\nSending break to the modem\n"
+   "" +++
+   "" +++
+   "" +++
+   SAY "\nGoodbye!\n"
+   
    ```
 5. Create `/etc/ppp/peers/gprs`
    ```
