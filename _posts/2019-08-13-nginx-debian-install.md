@@ -3,7 +3,7 @@ layout: post
 title: "Install Nginx on Debian"
 ---
 
-1. Add `/etc/apt/source.list.d/tor.list`:
+1. Add `/etc/apt/source.list.d/nginx.list`:
    ```
    deb http://nginx.org/packages/debian buster nginx
    ```
