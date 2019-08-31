@@ -344,7 +344,7 @@ CREATE TABLE `aliases` (
 
    if header :contains "X-Spam-Flag" "YES" {
      setflag "\\Seen";
-     fileinto "Spam";
+     fileinto "Junk";
      stop;
    }
    ```
