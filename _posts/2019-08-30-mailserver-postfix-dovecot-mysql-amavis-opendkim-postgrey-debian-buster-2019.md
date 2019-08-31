@@ -162,7 +162,7 @@ CREATE TABLE `aliases` (
    smtp_tls_security_level = may
    smtp_use_tls = yes
    tls_preempt_cipherlist = yes
-   virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+   virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_email.cf, mysql:/etc/postfix/mysql_virtual_alias_maps.cf
    virtual_gid_maps = static:5000
    virtual_mailbox_base = /var/vmail
    virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_mailbox_domains.cf
@@ -194,6 +194,14 @@ CREATE TABLE `aliases` (
    hosts = 127.0.0.1
    dbname = postfix
    query = SELECT destination FROM aliases WHERE source='%s'
+   ```
+2. Edit: `/etc/postfix/mysql_virtual_alias_emails.cf`:
+   ```
+   user = postfix
+   password = postfix
+   hosts = 127.0.0.1
+   dbname = postfix
+   query = SELECT email FROM users WHERE email='%s'
    ```
 
 ### Header Checks
