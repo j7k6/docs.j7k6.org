@@ -11,16 +11,12 @@ fav: 1
    <$DOMAIN>          IN  MX   0  <$FQDN>
    <$FQDN>            IN  A       <$IP>
    <$DOMAIN>          IN  TXT     v=spf1 mx ~all
-   _dmarc.<$DOMAIN>.  IN  TXT     v=DMARC1; p=none
+   _dmarc.<$DOMAIN>  IN  TXT     v=DMARC1; p=none
    ```
-2. Set-up a *Reverse-DNS* record for the Server.
+2. Set-up a *Reverse-DNS* record for the server.
 
 ### Basic System Setup
-1. Set *mailname* (FQDN) in `/etc/mailname`:
-   ```
-   <$FQDN>
-   ```
-2. Install required packages:
+1. Install required packages:
    ```bash
    export DEBIAN_FRONTEND=noninteractive
 
@@ -44,16 +40,16 @@ fav: 1
      postgrey \
      spamassassin
    ```
-3. Generate `dhparam` file:
+2. Generate `dhparam` file:
    ```bash
    openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
    ```
-4. Create required `vmail` user and group:
+3. Create required `vmail` user and group:
    ```bash
    groupadd -g 5000 vmail
    useradd -g vmail -u 5000 vmail -d /var/vmail
    ```
-5. Create mailbox directory:
+4. Create mailbox directory:
    ```bash
    mkdir -p /var/vmail
    chown -R vmail:vmail /var/vmail
@@ -123,35 +119,6 @@ CREATE TABLE `aliases` (
    certbot certonly --agree-tos -m postmaster@<$DOMAIN> --no-eff-email --rsa-key-size 4096 --webroot -w /var/www/letsencrypt -d <$FQDN>
    ```
 
-### Nginx SSL Site Setup
-3. Create `/etc/nginx/sites-available/<$FQDN>.conf`:
-   ```
-   server {
-     server_name <$FQDN>;
-
-     include conf.d/common.conf;
-     include conf.d/ssl.conf;
-     include conf.d/sslmodern.conf;
-
-     ssl_certificate /etc/letsencrypt/live/<$FQDN>/fullchain.pem;
-     ssl_certificate_key /etc/letsencrypt/live/<$FQDN>/privkey.pem;
-     ssl_trusted_certificate /etc/letsencrypt/live/<$FQDN>/chain.pem;
-
-     location / {
-       include conf.d/proxy.conf;
-       proxy_pass http://127.0.0.1:8080;
-     }
-   }
-   ```
-4. Symlink site config:
-   ```bash
-   ln -s /etc/nginx/sites-available/<$FQDN>.conf /etc/nginx/sites-enabled/
-   ```
-5. Restart *Nginx* service:
-   ```bash
-   systemctl restart nginx
-   ```
-
 ## Postfix
 ### Basic Configuration
 1. Add to `/etc/postfix/master.cf`:
@@ -173,10 +140,7 @@ CREATE TABLE `aliases` (
    inet_protocols = ipv4
    mailbox_size_limit = 0
    message_size_limit = 20480000
-   mydestination = localhost, localhost.localdomain
    myhostname = <$FQDN>
-   mynetworks = 127.0.0.0/8
-   myorigin = /etc/mailname
    non_smtpd_milters = inet:[127.0.0.1]:12301
    recipient_delimiter = +
    smtpd_banner = $myhostname ESMTP
@@ -191,6 +155,7 @@ CREATE TABLE `aliases` (
    smtpd_tls_key_file = /etc/letsencrypt/live/<$FQDN>/privkey.pem
    smtpd_tls_security_level = may
    smtp_header_checks = regexp:/etc/postfix/header_checks
+   smtp_mime_header_checks = regexp:/etc/postfix/header_checks
    smtp_tls_CApath = /etc/ssl/certs
    smtp_tls_cert_file = $smtpd_tls_cert_file
    smtp_tls_key_file = $smtpd_tls_key_file
@@ -263,8 +228,8 @@ CREATE TABLE `aliases` (
    mail_location = maildir:/var/vmail/%d/%n/
    protocols = imap lmtp
    ssl = required
-   ssl_cert = `<`/etc/letsencrypt/live/<$FQDN>/fullchain.pem
-   ssl_key = `<`/etc/letsencrypt/live/<$FQDN>/privkey.pem
+   ssl_cert = < /etc/letsencrypt/live/<$FQDN>/fullchain.pem
+   ssl_key = < /etc/letsencrypt/live/<$FQDN>/privkey.pem
    ssl_prefer_server_ciphers = yes
 
    namespace inbox {
@@ -549,22 +514,89 @@ To create a *Catch-All* alias, add this alias entry to the *MySQL* database:
 INSERT INTO `postfix`.`aliases` (`id`, `domain`, `source`, `destination`) VALUES ('1', '1', '@<$DOMAIN>', 'admin@<$DOMAIN>');
 ```
 
-## Tests
+## Roundcubemail
+**Roundcubemail** is used for webmail. To keep the PHP stuff isolated from the mail server, it will be installed in a *Docker* container.
+
+### Docker Installation
+1. Run this one-liner (or do it all by hand, see [here](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-engine---community-1)):
+   ```bash
+   curl -fsSL https://get.docker.com | sudo sh -
+   ```
+2. Install *Docker Compose*:
+   ```bash
+   apt install -y python3-pip
+   pip3 install docker-compose
+   ```
+
+### Container Setup
+1. Download `docker-compose.yml` (see [here](https://github.com/j7k6/dockerized)):
+   ```bash
+   wget https://raw.githubusercontent.com/j7k6/dockerized/master/roundcubemail/docker-compose.yml
+   ```
+2. Start container:
+   ```
+   export IMAP_SERVER="ssl://$(hostname --fqdn)"
+   export SMTP_SERVER="tls://$(hostname --fqdn)"
+
+   docker-compose up -d
+          
+   ```
+
+### Nginx SSL Site Setup
+1. Create `/etc/nginx/sites-available/<$FQDN>.conf`:
+   ```
+   server {
+     server_name <$FQDN>;
+
+     include conf.d/common.conf;
+     include conf.d/ssl.conf;
+     include conf.d/sslmodern.conf;
+
+     ssl_certificate /etc/letsencrypt/live/<$FQDN>/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/<$FQDN>/privkey.pem;
+     ssl_trusted_certificate /etc/letsencrypt/live/<$FQDN>/chain.pem;
+
+     location / {
+       include conf.d/proxy.conf;
+       proxy_pass http://127.0.0.1:8080;
+     }
+   }
+   ```
+2. Symlink site config:
+   ```bash
+   ln -s /etc/nginx/sites-available/<$FQDN>.conf /etc/nginx/sites-enabled/
+   ```
+3. Restart *Nginx* service:
+   ```bash
+   systemctl restart nginx
+   ```
+
+## Extras
+### Client Configuration
+- **IMAP**:
+  > Server: `<$FQDN>`  
+  > Port: `993`  
+  > Encryption: `SSL/TLS`  
+
+- **SMTP**:
+  > Server: `<$FQDN>`  
+  > Port: `587`  
+  > Encryption: `STARTTLS`  
+
+### Tests
 There are some useful online tools to test if outgoing mails are considered as spam by other mail servers or if the spam filter is detecting incoming spam mails correctly.
 
-### Incoming Mails
-See <https://www.emailsecuritycheck.net>.
+- **Incoming Mails:**
+  See <https://www.emailsecuritycheck.net>.
 
-### Outgoing Mails
-See <https://www.mail-tester.com>:
+- **Outgoing Mails:**
+  See <https://www.mail-tester.com>:
 
-![mail-tester.com](/files/mail-test-01.png)
-
-## TODO
-- Webmail (Roundcubemail)
+  ![mail-tester.com](/files/mail-test-01.png)
 
 ---
 1. <https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/>
 2. <https://blogging.dragon.org.uk/mail-server-on-ubuntu-18-04-part-3/>
 3. <https://www.syn-flut.de/spamassassin-erkennungsrate-deutlich-verbessern>
 4. <https://www.df.eu/de/support/df-faq/cloudserver/anleitungen/spam-und-virenschutz-mit-postfix-debian/>
+5. <https://major.io/2013/04/14/remove-sensitive-information-from-email-headers-with-postfix/>

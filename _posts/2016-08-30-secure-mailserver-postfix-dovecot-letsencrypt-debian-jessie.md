@@ -3,6 +3,8 @@ layout: post
 title: "Secure Mailserver with Postfix, Dovecot and Let's Encrypt on Debian Jessie"
 ---
 
+> **Note**: This guide is outdated and should not be used! An updated and better version can be found [here](/mailserver-postfix-dovecot-mysql-amavis-opendkim-postgrey-debian-buster-2019/).
+
 ## Prerequirements
 
 ### Config Options
