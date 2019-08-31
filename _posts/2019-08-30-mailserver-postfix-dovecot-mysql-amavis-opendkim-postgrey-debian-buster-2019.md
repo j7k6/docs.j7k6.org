@@ -156,14 +156,14 @@ CREATE TABLE `aliases` (
 ### Basic Configuration
 1. Add to `/etc/postfix/master.cf`:
    ```
-submission inet n       -       y      -       -       smtpd
-  -o smtpd_tls_security_level=encrypt
-  -o header_checks=regexp:/etc/postfix/header_checks
-amavis           unix    -       -       n       -       2       smtp
-  -o smtp_send_xforward_command=yes
-  -o smtp_tls_security_level=none
-127.0.0.1:10025  inet    n       -       n       -       -       smtpd
-  -o content_filter=
+   submission inet n       -       y      -       -       smtpd
+     -o smtpd_tls_security_level=encrypt
+     -o content_filter=
+   amavis           unix    -       -       n       -       2       smtp
+     -o smtp_send_xforward_command=yes
+     -o smtp_tls_security_level=none
+   127.0.0.1:10025  inet    n       -       n       -       -       smtpd
+     -o content_filter=
    ```
 2. Edit `/etc/postfix/main.cf`:
    ```
@@ -180,7 +180,7 @@ amavis           unix    -       -       n       -       2       smtp
    non_smtpd_milters = inet:[127.0.0.1]:12301
    recipient_delimiter = +
    smtpd_banner = $myhostname ESMTP
-   smtpd_milters = inet:[127.0.0.1]:12301
+   smtpd_milters=inet:[127.0.0.1]:12301
    smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_invalid_hostname, reject_non_fqdn_hostname, reject_non_fqdn_sender, reject_non_fqdn_recipient, reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_destination, check_policy_service inet:[127.0.0.1]:10023
    smtpd_sasl_auth_enable = yes
    smtpd_sasl_path = private/auth
@@ -190,6 +190,7 @@ amavis           unix    -       -       n       -       2       smtp
    smtpd_tls_eecdh_grade = strong
    smtpd_tls_key_file = /etc/letsencrypt/live/<$FQDN>/privkey.pem
    smtpd_tls_security_level = may
+   smtp_header_checks = regexp:/etc/postfix/header_checks
    smtp_tls_CApath = /etc/ssl/certs
    smtp_tls_cert_file = $smtpd_tls_cert_file
    smtp_tls_key_file = $smtpd_tls_key_file
@@ -548,19 +549,22 @@ To create a *Catch-All* alias, add this alias entry to the *MySQL* database:
 INSERT INTO `postfix`.`aliases` (`id`, `domain`, `source`, `destination`) VALUES ('1', '1', '@<$DOMAIN>', 'admin@<$DOMAIN>');
 ```
 
+## Tests
+There are some useful online tools to test if outgoing mails are considered as spam by other mail servers or if the spam filter is detecting incoming spam mails correctly.
+
+### Incoming Mails
+See <https://www.emailsecuritycheck.net>.
+
+### Outgoing Mails
+See <https://www.mail-tester.com>:
+
+![mail-tester.com](/files/mail-test-01.png)
 
 ## TODO
-- Spam Tests
-- Roundcubemail
-- Postfixadmin
+- Webmail (Roundcubemail)
 
 ---
 1. <https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/>
 2. <https://blogging.dragon.org.uk/mail-server-on-ubuntu-18-04-part-3/>
 3. <https://www.syn-flut.de/spamassassin-erkennungsrate-deutlich-verbessern>
 4. <https://www.df.eu/de/support/df-faq/cloudserver/anleitungen/spam-und-virenschutz-mit-postfix-debian/>
-
-
-
-
-
