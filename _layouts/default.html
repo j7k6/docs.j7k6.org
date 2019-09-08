@@ -5,27 +5,29 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ page.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lekton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/main.css?{{ site.time | date: '%s'}}">
   </head>
 
   <body>
-    <header>
-      <div class="home box">
-        <h1><a href="/">My Sysadmin Cheatsheet</a></h1>
-        <p><em>&laquo;Who were you, DenverCoder9? &mdash; What did you see?&raquo;</em> (<a href="https://xkcd.com/979/">xkcd/979</a>)</p>
+    <div class="wrapper">
+      <header>
+          <h1><a href="/">My Sysadmin Cheatsheet</a></h1>
+          <h5><em>&laquo;Who were you, DenverCoder9? &mdash; What did you see?&raquo;</em> (<a href="https://xkcd.com/979/">xkcd/979</a>)</h5>
+      </header>
+
+      <div class="content">
+        {{ content }}
       </div>
-    </header>
 
-    <div class="content box">
-      {{ content }}
+      <footer>
+        <ul><!--
+           --><li>&copy;2013–{{ 'now' | date: "%Y" }}</li><!--
+           --><li title="GitHub"><a href="https://github.com/j7k6">GitHub</a></li><!--
+           --><li title="About"><a href="/about/">About</a></li><!--
+           --></ul>
+      </footer>
     </div>
-
-    <footer>
-      <ul>
-        <li><strong>&copy;</strong>2013&mdash;{{ 'now' | date: "%Y" }} &middot; <strong>@</strong><a href="https://github.com/j7k6" title="GitHub">j7k6</a> &middot; <a href="http://sysadminjqrx33v4.onion" title="Tor Hidden Service">sysadminjqrx33v4.onion</a> &middot; <span title="Donate"><strong>&#8383;</strong>1GFbYmSLZAz6ibyQ7jkLYvMB7biQeJaC1s</span></li>
-      </ul>
-    </footer>
-
     <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="/assets/js/main.js?{{ site.time | date: '%s'}}"></script>
   </body>
