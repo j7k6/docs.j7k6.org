@@ -8,70 +8,77 @@
   font-family: 'Lekton';
   font-style: normal;
   font-weight: 400;
+  src: url('/assets/fonts/lekton/lekton-v10-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Lekton'), local('Lekton-Regular'),
-       url('/assets/fonts/lekton/lekton-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/lekton/lekton-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('/assets/fonts/lekton/lekton-v10-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/lekton/lekton-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/lekton/lekton-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/lekton/lekton-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/lekton/lekton-v10-latin-regular.svg#Lekton') format('svg'); /* Legacy iOS */
 }
-/* lekton-700 - latin */
+
+/* lato-300 - latin */
 @font-face {
-  font-family: 'Lekton';
+  font-family: 'Lato';
   font-style: normal;
-  font-weight: 700;
-  src: local('Lekton-Bold'),
-       url('/assets/fonts/lekton/lekton-v8-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/lekton/lekton-v8-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: 300;
+  src: url('/assets/fonts/lato/lato-v16-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Lato Light'), local('Lato-Light'),
+       url('/assets/fonts/lato/lato-v16-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/lato/lato-v16-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/lato/lato-v16-latin-300.svg#Lato') format('svg'); /* Legacy iOS */
 }
-/* noto-sans-regular - latin */
+/* lato-regular - latin */
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Noto Sans'), local('NotoSans'),
-       url('/assets/fonts/noto/noto-sans-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/noto/noto-sans-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('/assets/fonts/lato/lato-v16-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Lato Regular'), local('Lato-Regular'),
+       url('/assets/fonts/lato/lato-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/lato/lato-v16-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/lato/lato-v16-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
 }
-/* noto-sans-italic - latin */
+/* lato-700 - latin */
 @font-face {
-  font-family: 'Noto Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Noto Sans Italic'), local('NotoSans-Italic'),
-       url('/assets/fonts/noto/noto-sans-v7-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/noto/noto-sans-v7-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* noto-sans-700 - latin */
-@font-face {
-  font-family: 'Noto Sans';
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: local('Noto Sans Bold'), local('NotoSans-Bold'),
-       url('/assets/fonts/noto/noto-sans-v7-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/noto/noto-sans-v7-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('/assets/fonts/lato/lato-v16-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Lato Bold'), local('Lato-Bold'),
+       url('/assets/fonts/lato/lato-v16-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/lato/lato-v16-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/lato/lato-v16-latin-700.svg#Lato') format('svg'); /* Legacy iOS */
 }
-/* noto-sans-700italic - latin */
+/* lato-700italic - latin */
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'),
-       url('/assets/fonts/noto/noto-sans-v7-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/noto/noto-sans-v7-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: url('/assets/fonts/lato/lato-v16-latin-700italic.eot'); /* IE9 Compat Modes */
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'),
+       url('/assets/fonts/lato/lato-v16-latin-700italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/lato/lato-v16-latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-700italic.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/lato/lato-v16-latin-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/lato/lato-v16-latin-700italic.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
-$white: White;
-$black: #444;
-$text: #666;
-$link: #009688;
-$light: #f5f5f5;
-$code: #4a4a4a;
-$var: #c7254e;
 
-$defaultFont: 'Noto Sans', sans-serif;
-$codeFont: Lekton,  monospace;
-$headerFont: $codeFont;
+$bgColor: #fcfcfc;
+$textColor: #333;
+$linkColor: #009688;
 
-$break-small: 640px;
-$break-large: 960px;
+$defaultFont: "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+$headerFont: $defaultFont;
+$codeFont: "Lekton", "Lucida Console", Monaco, monospace;
+
 
 html {
   overflow: auto;
@@ -85,185 +92,182 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: $white;
+  background: $bgColor;
 }
 
 body {
   font-family: $defaultFont;
-  line-height: 1.75;
-  font-weight: 400;
-  font-size: 16px;
-  color: $text;
+  color: $textColor;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border-top: 0.25em solid $link;
 }
 
 *:focus {
   outline: none;
 }
 
-::selection {
-  background: $black;
-  color: $light;
-}
-::-moz-selection {
-  background: $black;
-  color: $light;
-}
-
-::-webkit-input-placeholder {
-	color: lighten($black, 50%);
-}
-::-moz-placeholder {
-	color: lighten($black, 50%);
-}
-
 a {
-  color: $link;
+  color: $linkColor;
   text-decoration: none;
-  
-  code {
-    background: $link !important;
-    color: $code;
-  }
 
   &:hover {
     text-decoration: underline;
-
-    code {
-      background: $light !important;
-      color: $link !important;
-    }
   }
 }
 
-h1, h2, h3, h4 {
-  color: $black;
-  white-space: pre-wrap;
- 	line-height: 1.25;
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headerFont;
+  margin: 1em auto !important;
+}
+
+h2 {
+  margin-top: 2em !important;
 }
 
 h1 {
-  color: inherit !important;
-  font-size: 2.25em;
-  font-family: $headerFont;
-  font-weight: 300;
-
   a {
-    color: inherit;
-    text-decoration: none;
-    overflow: hidden;
+    color: $textColor;
     border-bottom: 1px solid transparent;
-  
+
     &:hover {
       text-decoration: none;
-      border-bottom: 1px solid $black;
+      border-color: $textColor;
     }
   }
 }
 
-p {
-  line-height: 1.75em;
+.content {
+  width: 100%;
+  margin: 2em auto;
+
+  & > h1 {
+    margin: 2em auto .5em auto !important;
+  }
 }
 
 header {
-  text-align: left;
-  height: auto;
-  vertical-align: middle;
-  line-height: 2em;
-  margin: 3em auto !important;
+  margin: 2em auto 4em auto;
+  color: lighten($textColor, 25%);
+  text-align: center;
+
+  a {
+    color: lighten($textColor, 25%);
+
+    &:hover {
+      border-color: lighten($textColor, 25%);
+    }
+  }
+
+  h1, h5 {
+    margin: .5em auto !important;
+    font-weight: normal;
+  }
+
+  h1 {
+    font-family: $codeFont;
+    line-height: 1;
+  }
+}
+
+h1 {
+  font-weight: 300;
+}
+
+
+img {
+  max-width: 90% !important;
+  display: block;
+  margin: 1em auto;
+}
+
+p {
+  line-height: 1.6;
+}
+
+blockquote {
+  font-style: italic;
+  margin: 1em auto;
+  margin: 1em 0 1em 1em;
+  padding-left: 1em;
+  border-left: 5px solid darken($bgColor, 5%);
+}
+
+pre, code {
+  background: darken($bgColor, 5%);
+  border-radius: 3px;
+}
+
+pre {
+  overflow-x: scroll;
+  padding: 1em !important;
+}
+
+code {
+  font-family: $codeFont;
+  padding: 3px;
+
+  pre & {
+    padding: 0;
+  }
+
+  .var {
+    background: $textColor;
+    color: $bgColor;
+  }
+}
+
+
+
+ul, ol {
+  margin: 1em 0 1em 1.5em;
   padding: 0;
+}
 
-  .home {
-    margin: 0.5em auto 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
+li > ul, li > ol {
+  margin: 0 0 0 1.5em;
+}
 
-    h1 {
-      margin: 0 auto !important;
-      padding: 0 !important;
-      font-size: 1.5em !important;
+li {
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
 
-      a {
-        font-size: inherit !important;
-        color: lighten($black, 25%);
-        font-family: $headerFont !important;
-        text-decoration: none !important;
-        overflow: hidden;
-        position: relative;
-        border-bottom: none !important;
+div.wrapper {
+  width: 600px;
+  max-width: 95vw;
+  margin: 0 auto;
+}
 
-        &:hover {
-          color: inherit;
-          text-decoration: none !important;
-          border-bottom: none !important;
-        }
+footer {
+  dispaly: table;
+  margin: 2em auto;
+  width: 100%;
+  text-align: center;
+  color: lighten($textColor, 50%);
 
-        &:after {
-          content: ' ';
-          margin-left: 0.1em;
-          background: lighten($black, 25%);
-          text-decoration: blink;
-          -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
-                  animation: blinker 0.6s infinite ease-in-out alternate;
-        }
+  a {
+    color: lighten($textColor, 50%);
+    
+    &:hover {
+      border-color: lighten($textColor, 50%);
+    }
+  }
 
-        &:hover:after {
-          content: '';
-        }
+  ul {
+    font-size: 0.8em;
+    list-style: none;
+    text-align: center;
 
-        &:before {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 1px;
-          bottom: 0;
-          left: 0;
-          background-color: $black;
-          visibility: hidden;
-          -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-          -webkit-transition: all 0.3s ease-in-out 0s;
-          transition: all 0.3s ease-in-out 0s; 
-        }
-
-        &:hover {
-          text-decoration: none !important;
-
-          &:before {
-            visibility: visible;
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-          }
-        }
-      }
+    & > li {
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    @-webkit-keyframes blinker {
-      from {opacity: 1.0;}
-      to {opacity: 0.0;}
-    }
-
-    @keyframes blinker {
-      from {opacity: 1.0;}
-      to {opacity: 0.0;}
-    }
-
-    p {
-      color: lighten($black, 40%);
-      margin: 0 auto !important;
-      padding: 0 !important;
-      font-size: 0.9em;
-
-      a {
-        color: inherit;
-
-        &:hover {
-          text-decoration: underline !important;
-        }
-      }
+    & > li:not(:last-child)::after {
+      content: '~';
+      margin: 0 1em;
     }
   }
 }
@@ -271,324 +275,124 @@ header {
 article {
   overflow-x: hidden;
 
-  & > * {
-    margin: 0.5em auto 2em auto;
-  }
-
-  ol, ul {
-    padding-left: -0.5em;
-
-    li {
-      margin: 1.5em auto;
-      line-height: 1.5;
-    }
-  }
-
-  div.date {
-    font-size: 0.9em;
-    text-align: right;
-    font-family: $codeFont;
-    color: lighten($black, 25%);
-  }
-
   hr {
-    display: block;
-    border: 0;
+    margin: 1em auto;
     height: 0;
-    border-top: 0.1em solid $white;
-    border-bottom: 0.1em solid $light;
-
-    &:last-of-type {
-      width: 5em;
-      margin: 2em 0 1em 0;
-    }
-
-    + ol {
-      list-style-type: none;
-      counter-reset: o-counter 0;
-      padding: 0;
-      
-      li {
-        font-size: 0.9em;
-        font-family: $headerFont;
-        color: lighten($black, 50%);
-        text-indent: 0 !important;
-        margin: 0;
-        white-space: nowrap;
-
-        &:before {
-          content: '[' counter(o-counter) '] ';
-          counter-increment: o-counter;
-        }
-
-        a {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-
-          &:before {
-            content: '\238B';
-            transform: scale(-1, 1);
-            font-size: 0.9em;
-            display: inline-block;
-            padding-left: 0.25em;
-            vertical-align: middle;
-          }
-        }
-      }
-    }
+    border-top: none;
+    border-bottom: 1px solid darken($bgColor, 5%);
   }
 
-  h2 {
-    font-size: 1.5em;
-    line-height: 2em;
-    border-bottom: 1px solid $light;
-  }
-
-  h3 {
-    font-size: 1.25em;
-  }
-
-  h1, h2, h3, h4 {
-    margin: 2em auto 0 auto;
-  }
-
-  h4 {
-    margin: 1em auto 0 auto;
-    font-size: 1.0em;
-  }
-
-  h1 {
-    margin-top: 0;
-  }
-
-  p {
-    margin: 1em auto;
-  }
-
-  h1 + p, h1 + div pre, h1 + blockquote {
-    margin-top: 2em;
-  }
-
-  h2 + h3, h1 + h2, h1 + h3 {
-    margin-top: 1em;
-  }
-
-  blockquote {
-    border-left: 0.25em solid $light;
-    padding-left: 1em;
-    font-style: italic;
-    color: $code;
-  }
-
-  pre, code {
-    font-family: $codeFont;
-    white-space: pre;
-    color: $code;
-  }
-
-  pre {
-    margin: 0.5em auto;
-    background: $light !important;
-    display: block;
-    padding: 0;
-    line-height: 1.5 !important;
-    border-radius: 0.25em;
-    border-left: 0.1em solid $link;
-    word-wrap: normal;
-    overflow-x: auto;
-
-    > code {
-      display: inline-block;
-      width: auto;
-      line-height: inherit !important;
-      vertical-align: middle;
-      color: $code !important;
-      background: $light !important;
-      padding: 1em;
-      white-space: pre;
-
-      .var {
-        color: $var;
-        font-style: italic;
-      }
-    }
-  }
-
-  li > code, p > code {
-    background: lighten($var, 50%);
-    color: $var;
-    border-radius: 3px;
-    padding: 3px;
-  }
-
-  img {
-    display: block;
-    width: auto;
-    max-width: 90%;
-    margin: 1em auto;
-    text-align: center;
-  }
-}
-
-footer {
-  text-align: center;
-  font-family: $headerFont;
-  margin: 2em auto;
-  font-size: 0.9em;
-  width: 100%;
-
-  * {
-    color: lighten($black, 25%);
-  }
-
-  ul {
-    padding: 0 1em !important;
+  & > hr:last-of-type + ol {
+    font-size: 0.8em;
+    list-style-type: none;
+    counter-reset: o-counter 0;
+    margin: 1em 0 1em .5em;
 
     li {
-      vertical-align: middle;
-      display: inline-block;
-    }
-  }
-}
+      text-indent: 0 !important;
+      color: lighten($textColor, 50%);
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-div.content {
-  .search {
-    margin: 0 auto 2em auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-end;
-
-    span, input {
-      height: 1em;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      vertical-align: middle;
-      border: 1px solid lighten($black, 50%);
-      border-radius: 0.25em;
-      padding: 0.5em;
-      line-height: 1;
-      font-size: 1.75em;
-    }
-
-    span {
-      align-self: center;
-      flex: 0 1 1.5em;
-      background: $light;
-      border: 1px solid $light;
-      color: lighten($black, 25%);
-      border-right: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      cursor: pointer;
-
-      &:hover {
-        background-color: lighten($black, 50%);
-        border-color: lighten($black, 50%);
-        color: White;
-
-        &::before {
-          content: '\266F';
-        }
-      }
-
-      &::before {
-        content: '\2605';
-      }
-
-      &.all, &.count {
-        background-color: $link;
-        border-color: $link;
-        color: $light;
-
-        &::before {
-          content: '\266F';
-        }
-      }
-
-      &.count {
-        &::before {
-          font-family: $codeFont;
-          content: attr(data-count);
-        }
-      }
-    }
-    
-    input {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      flex: 1 0 auto;
-      align-self: flex-start;
-      text-align: left;
-      font-family: $headerFont;
-      color: lighten($black, 25%);
-      transition: all 0.30s ease-in-out;
-      outline: none;
-
-      &:focus, &:hover {
-        border: 1px solid lighten($black, 40%);
+      &:before {
+        content: '[' counter(o-counter) '] ';
+        counter-increment: o-counter;
       }
     }
   }
-}
 
-div.box  {
-  margin: 0 auto;
-  width: 50vw;
+  & > * {
+    margin-bottom: 2em;
 
-  @media screen and (max-width: $break-large) {
-    width: 75vw;
-  }
-
-  @media screen and (max-width: $break-small) {
-    width: 90vw;
+    &:first-child {
+      margin-top: 0 !important;
+    }
   }
 }
 
 ul.index {
-  list-style-type: none;
-  padding: 0;
-  
+  list-style: none;
+  font-family: $headerFont;
+  margin: 2em auto;
+
   li {
-    margin: 0 auto;
-    padding: 0;
-    color: $link;
-    display: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: lighten($textColor, 50%);
 
     a {
-      line-height: 1.25 !important;
-      padding: 1.0em 0;
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      padding: .5em 0;
+      display: inline-block;
 
-      &:before {
-        font-family: $codeFont;
-        content: '\266F';
-        opacity: 0.25;
-        margin-right: 0.25em; 
-        color: darken($light, 20%);
-        display: inline-block;
-      }
-
-      &:hover:before {
-        opacity: 1.0;
+      strong {
+        background: Yellow;
       }
     }
 
-    &.fav {
-      display: block;
+    &::after {
+      content: '~ ' attr(data-date);
+      margin-left: .5em;
+      font-size: .8em;
+      font-weight: normal !important;
+    }
 
-      a:before {
-        font-family: $codeFont;
-        content: '\2605';
+    &:not(.fav) {
+      display: none;
+    }
+  }
+}
+
+.date {
+  text-align: right;
+  font-size: .8em;
+  color: lighten($textColor, 50%);
+}
+
+.search {
+  margin: 0 auto 2em auto;
+
+  input {
+    display: block;
+    width: calc(100% - .5em);
+    vertical-align: middle;
+    border: 1px solid lighten($textColor, 75%);
+    border-radius: 3px;
+    padding: .5em;
+    line-height: 1;
+    font-size: 1.75em;
+    font-family: $codeFont;
+    color: lighten($textColor, 50%);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    background: White;
+
+    &:focus, &:hover {
+      border: 1px solid lighten($textColor, 33%);
+    }
+  }
+
+  ::placeholder {
+    color: lighten($textColor, 66%);
+  }
+}
+
+table {
+  tr {
+    td {
+      width: auto;
+      padding: .5em 1em .5em 0;
+      line-height: 1;
+
+      &:first-child {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        
       }
     }
   }

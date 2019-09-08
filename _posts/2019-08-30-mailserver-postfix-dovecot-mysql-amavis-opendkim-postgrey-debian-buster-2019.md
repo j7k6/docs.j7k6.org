@@ -11,7 +11,7 @@ fav: 1
    <$DOMAIN>          IN  MX   0  <$FQDN>
    <$FQDN>            IN  A       <$IP>
    <$DOMAIN>          IN  TXT     v=spf1 mx ~all
-   _dmarc.<$DOMAIN>  IN  TXT     v=DMARC1; p=none
+   _dmarc.<$DOMAIN>   IN  TXT     v=DMARC1; p=none
    ```
 2. Set-up a *Reverse-DNS* record for the server.
 
@@ -170,6 +170,7 @@ CREATE TABLE `aliases` (
    virtual_transport = lmtp:unix:private/dovecot-lmtp
    virtual_uid_maps = static:5000
    ```
+
 ### MySQL Configuration
 1. Edit `/etc/postfix/mysql_virtual_mailbox_domains.cf`:
    ```
