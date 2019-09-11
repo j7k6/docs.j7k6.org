@@ -58,7 +58,7 @@
 
 $bgColor: #fcfcfc;
 $textColor: #333;
-$linkColor: #009688;
+$linkColor: #009999;
 
 $defaultFont: "Lato", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 $headerFont: $defaultFont;
@@ -197,8 +197,8 @@ code {
   }
 
   .var {
-    background: $textColor;
-    color: $bgColor;
+    color: Crimson;
+    font-style: italic;
   }
 }
 
@@ -231,6 +231,15 @@ footer {
   width: 100%;
   text-align: center;
   color: lighten($textColor, 50%);
+
+  &::before {
+    display: block;
+    color: lighten($textColor, 50%);
+    content: '\2665';
+    text-align: center;
+    line-height: 1;
+    margin: 2em auto;
+  }
 
   a {
     color: lighten($textColor, 50%);
@@ -314,7 +323,7 @@ ul.index {
       display: inline-block;
 
       strong {
-        background: Yellow;
+        background: #fff44f;
       }
     }
 
@@ -356,7 +365,7 @@ ul.index {
     background: White;
 
     &:focus, &:hover {
-      border: 1px solid lighten($textColor, 33%);
+      border: 1px solid lighten($textColor, 66%);
     }
   }
 
