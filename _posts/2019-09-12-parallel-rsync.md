@@ -4,10 +4,9 @@ title: "Parallel Rsync"
 ---
 
 ```bash
-cd <$SRC_DIR>
-find . ! -type d -print0 | \
+find <$SRC_DIR> ! -type d -print0 | \
   xargs -0 -P<$THREADS> -n1 -I% \
-  rsync -av % <$DEST_DIR>
+  rsync -Rav % <$DEST_DIR>/
 cd -
 ```
 
