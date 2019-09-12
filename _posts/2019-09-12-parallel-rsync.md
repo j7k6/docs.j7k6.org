@@ -7,7 +7,6 @@ title: "Parallel Rsync"
 find <$SRC_DIR> ! -type d -print0 | \
   xargs -0 -P<$THREADS> -n1 -I% \
   rsync -Rav % <$DEST_DIR>/
-cd -
 ```
 
 ---
