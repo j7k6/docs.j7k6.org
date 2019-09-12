@@ -232,6 +232,15 @@ footer {
   text-align: center;
   color: lighten($textColor, 50%);
 
+  &::before {
+    display: block;
+    color: lighten($textColor, 50%);
+    content: '\2665';
+    text-align: center;
+    line-height: 1;
+    margin: 2em auto;
+  }
+
   a {
     color: lighten($textColor, 50%);
     
