@@ -9,7 +9,7 @@ title: "Create Windows 10 USB Installer on macOS"
    ```
 2. Format USB disk:
    ```bash
-   sudo diskutil eraseDisk ExFAT "WIN10USB" MBRFormat <$USB_DISK>
+   sudo diskutil eraseDisk FAT32 "WIN10USB" MBRFormat <$USB_DISK>
    ```
 3. This command mounts the Windows 10 ISO file and copies its contents to the USB disk:
    ```bash
