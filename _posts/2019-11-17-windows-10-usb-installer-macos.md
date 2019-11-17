@@ -13,7 +13,7 @@ title: "Create Windows 10 USB Installer on macOS"
    ```
 3. This command mounts the Windows 10 ISO file and copies its contents to the USB disk:
    ```bash
-   sudo rsync -av $(hdiutil mount <$WINDOWS_ISO_FILE> | awk '{print $2}')/. /Volumes/WIN10USB/
+   sudo cp -rp $(hdiutil mount <$WINDOWS_ISO_FILE> | awk '{print $2}')/. /Volumes/WIN10USB/
    ```
 4. Eject USB disk:
    ```
