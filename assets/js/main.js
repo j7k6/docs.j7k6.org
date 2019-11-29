@@ -8,46 +8,41 @@ $(document).ready(function() {
   });
 
 
-  // ----------
+  if ($('.index')[0]) {
+    var q = '';
 
+    $(document).keydown(function(e) {
+      switch(e.keyCode) {
+        case 8:
+          e.preventDefault();
 
-  var showAll = false;
+          if (q.length > 0) {
+            q = q.substring(0, (q.length - 1));
+          }
 
-  $('.search span').click(function() {
-    if (showAll === false) {
-      $(this).addClass('all');
-      $('ul.index li').show();
-      showAll = true;
-    } else {
-      $(this).removeClass('all');
-      $('ul.index li:not(.fav)').hide();
-      showAll = false;
-    }
-  });
+          $('header h1 span').text(q);
 
-
-  // ----------
-
-
-  $('#q').keyup(function(e) {
-    $('#q').val($('#q').val());
-    showAllState = showAll;
-
-    if (e.keyCode === 27) { // ESC
-      if ($('#q').val().length === 0) {
-        $('#q').blur();
-      } else {
-        delete currentFocus;
-        $('#q').val('');
-        $('#q').keyup();
+          break;
+        case 32:
+          e.preventDefault();
+          break;
       }
-    } else {
-      var q = $('#q').val();
-      var queryWords = q.split(/\s/);
+    });
 
-      if (q.length > 1) {
-        showAll = false;
+
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) {
+          q = '';
+      }
+
+      if (e.key.length === 1) {
+        q = q.replace(/  /g, ' ') + e.key;  
+      }
+
+      if (q.length > 1) { 
         $('ul.index li').hide();
+
+        var queryWords = q.split(/\s/);
         
         for (var i=0; i<queryWords.length; i++) {
           queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
@@ -60,14 +55,20 @@ $(document).ready(function() {
         $('ul.index li:visible a').each(function() {
           $(this).html($(this).text().replace((new RegExp(q.split(/\s/).join('|'), 'gi')), match => `<strong>${match}</strong>`));
         });
-
       } else {
         $('ul.index li a strong').contents().unwrap();
         $('ul.index li').hide();
         $('ul.index li.fav').show();
-
-        showAll = (showAllState ? false : true);
       }
-    };
-	});
+
+      if ($('ul.index li:visible').length === 0) {
+        $('ul.index li a strong').contents().unwrap();
+        $('ul.index li').show();
+      }
+
+      $('header h1 span').text(q);
+
+      console.log(q);
+    });
+  }
 });
