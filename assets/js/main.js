@@ -61,14 +61,7 @@ $(document).ready(function() {
         $('ul.index li.fav').show();
       }
 
-      if ($('ul.index li:visible').length === 0) {
-        $('ul.index li a strong').contents().unwrap();
-        $('ul.index li').show();
-      }
-
       $('header h1 span').text(q);
-
-      console.log(q);
     });
   }
 });
