@@ -67,8 +67,6 @@ $(document).ready(function() {
       }
 
       $('header h1 span').text(q);
-
-      console.log(q);
     });
   }
 });
