@@ -3,10 +3,6 @@ layout: default
 title: "My Sysadmin Cheatsheet"
 ---
 
-<div class="search">
-  <input type="text"  id="q" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="1" placeholder="..." autofocus>
-</div>
-
 <ul class="index">
   {% for post in site.posts %}
   <li data-date="{{post.date | date_to_string }}"{% if post.fav %} class="fav"{% endif %}><a href="{{ post.url }}">{{ post.title }}</a></li>
