@@ -203,7 +203,7 @@ header {
       }
 
       &:hover:after {
-        content: '←';
+        content: '\2190';
         font-weight: 300;
         color: $textColor3;
         background: $bgColor;
