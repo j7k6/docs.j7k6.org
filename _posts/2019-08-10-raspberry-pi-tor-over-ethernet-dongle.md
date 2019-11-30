@@ -6,8 +6,6 @@ fav: 1
 
 Usually, this kind of Transparent-Tor-Proxy setup is used as a [wireless access point](/transparent-tor-wlan-proxy-debian/) with the ethernet port of the Raspberry Pi being the gateway interface and the WLAN being the client-facing side. This is the exact opposite: the Raspberry Pi connects to the client computer with an ethernet cable and connects to the Tor network via WLAN. So it works like a wired dongle which automagically proxies all traffic through the Tor network.
 
-![pi-dongle](/files/raspberry-pi-tor-over-ethernet-dongle.jpg)
-
 Why? Because it's more secure: all the wireless traffic is encrypted Tor packets, the unencrypted packets are on the wire.
 
 
