@@ -182,6 +182,18 @@ h2 {
   & > h1 {
     margin: 2em auto 0 auto !important;
   }
+
+  .xkcd {
+    margin: 2em auto;
+    color: $textColor2;
+    text-align: center;
+    font-style: italic;
+
+    a {
+      color: inherit;
+    font-style: normal;
+    }
+  }
 }
 
 header {
