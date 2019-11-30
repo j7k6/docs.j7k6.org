@@ -30,23 +30,23 @@ The AR5BHB92 isn't on the whitelist of the T410's BIOS, so the laptop refuses to
 To circumvent this restriction, the BIOS has to be patched with the whitelist removed.
 
 ### Requirements
-- *6iuj27us.exe* (BIOS Update 1.43, <http://support.lenovo.com/en_US/downloads/detail.page?LegacyDocID=MIGR-74268>)
-- *T410-1.43-whitelisted-$01BF000_SLIC.ROM* (Whitelist removal patch, <http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745>, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip))
+- `6iuj27us.exe` (BIOS Update 1.43, <http://support.lenovo.com/en_US/downloads/detail.page?LegacyDocID=MIGR-74268>)
+- `T410-1.43-whitelisted-$01BF000_SLIC.ROM` (Whitelist removal patch, <http://applelife.ru/threads/remove-whitelist-for-bios-lenovo.39745>, [Mirror](/files/thinkpad-t410-hackintosh/Lenovo-bios-t410-1.43-whitelist-removed.zip))
 - Packing/clear tape
 
-***The wireless card can only be replaced after the BIOS patch has been applied!***
+> **Note**: The wireless card can only be replaced after the BIOS patch has been applied!
 
 ### BIOS update & whitelist removal
 1. Download BIOS Update 1.43
 2. Install & Run
 3. Update BIOS & Reboot
-4. Run ***C:\DRIVERS\FLASH\6iuj17us\64bit\WinPhlash64.exe***
+4. Run `C:\DRIVERS\FLASH\6iuj17us\64bit\WinPhlash64.exe`
 5. Select *Backup BIOS and Flash BIOS with new settings*
-    - Specify new BIOS file: ***T410-1.43-whitelisted-$01BF000_SLIC.ROM***
-    - *Flash BIOS*  
+   - Specify new BIOS file: `T410-1.43-whitelisted-$01BF000_SLIC.ROM`
+   - *Flash BIOS*:
+     ![bios-flash](/files/thinkpad-t410-hackintosh/01-bios-flash.png)  
 6. Reboot
 
-![bios-flash](/files/thinkpad-t410-hackintosh/01-bios-flash.png)  
 ### "5 beeps, pause, 5 beeps"
 The laptop will make 5 beeps, a pause, 5 beeps and then start up normally. The beeping is caused by the security chip, which recognized the whitelist removal patch.
 
@@ -72,9 +72,9 @@ OS X will now recognize the wireless card without any further modifications.
 2. Boot iBoot CD
 3. Insert Snow Leopard DVD, hit F5 & select Snow Leopard Installation DVD
 4. Open *Utilities > Disk Utilities*
-    - Select HDD/SSD
-    - Erase
-    - Format: *Mac OS Extended (Journaled)*
+   - Select HDD/SSD
+   - Erase
+   - Format: *Mac OS Extended (Journaled)*
 5. Close Disk Utils
 6. Install
 7. Restart
@@ -98,35 +98,33 @@ OS X will now recognize the wireless card without any further modifications.
 1. Plug in USB thumb drive
 2. Open *Disk Utility*
 3. Select USB thumb drive
-    - Partition  
-        - Volume Scheme: *1 Partition*
-        - Option: *GUID Partition Table*
-        - Format: *Mac OS Extended (Journaled)*
+   - Partition  
+     - Volume Scheme: *1 Partition*
+     - Option: *GUID Partition Table*
+     - Format: *Mac OS Extended (Journaled)*
 4. Mount *InstallESD.dmg* (double click)
 5. Open *Terminal*:  
-    ```
-    defaults write com.apple.Finder AppleShowAllFiles True
-    ```  
-    ```
-    killall Finder
-    ```
+   ```bash
+   defaults write com.apple.Finder AppleShowAllFiles True
+   killall Finder
+   ```
 6. Mount ***BaseSystem.dmg*** from *Mac OS X Install ESD*
 7. Select USB drive in Disk Utility again
-    - Restore  
-        - Drag *Mac OS X Base System* (from BaseSystem.dmg) to the Source field
-        - Drag partition from USB drive to the Destination field
-        - *Restore*
+   - Restore  
+     - Drag *Mac OS X Base System* (from BaseSystem.dmg) to the Source field
+     - Drag partition from USB drive to the Destination field
+     - *Restore*
 8. *Eject Disk Image* from BaseSystem.dmg 
 9. Replace the the symlink *Packages* in /System/Installation in *Mac OS X Base System* with the *Packages* folder from *Mac OS X Install ESD*
-10. Copy ***mach_kernel*** from *Mac OS X Install ESD* to *Mac OS X Base System*
+10. Copy `mach_kernel` from *Mac OS X Install ESD* to *Mac OS X Base System*
 11. Run *Kext Wizard*:
-    - Intallation
-        - Browse for kext's (or drag&drop)
-        - Destination: System/Library/Extensions
-        - Target Disk: *Mac OS X Base System*
-    - Maintenance
-        - Select *System/Library/Extensions*
-        - Target disk: *Mac OS X Base System*  
+   - Intallation
+     - Browse for kext's (or drag&drop)
+     - Destination: System/Library/Extensions
+     - Target Disk: *Mac OS X Base System*
+   - Maintenance
+     - Select *System/Library/Extensions*
+     - Target disk: *Mac OS X Base System*  
 
 ### Bootloader
 
@@ -134,58 +132,50 @@ OS X will now recognize the wireless card without any further modifications.
   
 1. Create folder ***Extra*** on *Mac OS X Base System*
 2. Run Chameleon Installer:
-    - Change Install Location: *Mac OS X Base System*  
+   - Change Install Location: *Mac OS X Base System*  
 3. Run Chameleon Wizard:
-    - org.chameleon.Boot (*see above*)
-        - Save to ***/Extra/org.chameleon.Boot.plist*** on *Mac OS X Base System*
-    - SMBios
-        - Edit
-          - Premade SMBioses
-          - Select *MacBook Pro (6,1) - Core i5/i7*
-          - Save to ***/Extra/SMBIOS.plist*** on *Mac OS X Base System*  
-4. Copy ***DSDT.aml*** to */Extra* on *Mac OS X Base System*
+   - org.chameleon.Boot (*see above*)
+     - Save to `/Extra/org.chameleon.Boot.plist` on *Mac OS X Base System*
+   - SMBios
+     - Edit
+       - Premade SMBioses
+       - Select *MacBook Pro (6,1) - Core i5/i7*
+       - Save to `/Extra/SMBIOS.plist` on *Mac OS X Base System*  
+4. Copy `DSDT.aml` to */Extra* on *Mac OS X Base System*
 5. Copy kext folder to */Extra*  on *Mac OS X Base System*
 6. Restart
 
 ### Installation
 1. Boot from USB thumb drive 
-    - Select *Mac OS X Base System*
+   - Select *Mac OS X Base System*
 2. Run *Disk Utility*
-    - Select HDD/SSD
-        - Erase
-          - Format: *Mac OS Extended (Journaled)*
+   - Select HDD/SSD
+     - Erase
+     - Format: *Mac OS Extended (Journaled)*
 3. Install
 4. Restart
 5. Boot from USB thumb drive into the installer again
 6. Open *Terminal*:
-    ```
-    cp -R /Extra /Volumes/<OSX>/
-    ```  
-    ```
-    cp -R /Volumes/<OSX>/Extra/kexts/* /Volumes/<OSX>/System/Libraries/Extensions
-    ```  
-    ```
-    chmod -R 755 /Volumes/<OSX>/System/Libraries/Extensions
-    ```  
-    ```
-    chown -R root:wheel /Volumes/<OSX>/System/Libraries/Extensions
-    ```  
-    ```
-    reboot
-    ```  
+   ```bash
+   cp -R /Extra /Volumes/<$OSX>/
+   cp -R /Volumes/<$OSX>/Extra/kexts/* /Volumes/<$OSX>/System/Libraries/Extensions
+   chmod -R 755 /Volumes/<$OSX>/System/Libraries/Extensions
+   chown -R root:wheel /Volumes/<$OSX>/System/Libraries/Extensions
+   reboot
+   ```  
 7. Boot from USB thumb drive into freshly installed Lion
 8. Connect USB keyboard (only required for configuration after first boot)
-8. Configure System
+9. Configure System
 
 ### Post-Installation Steps
 1. Run Chameleon Installer
-    - Set OS X system volume as destination
-2. Run Updates
-3. Restart
+2. Set OS X system volume as destination
+3. Run Updates
+4. Restart
 
 ### Optional: RAM Update to 8 GB
-*Note:* The T410 doesn't support more than 1066 MHz clock speed!
-To be sure it will work, just take Apple certified Memory ([*CMSA8GX3M2A1066C7*](http://www.amazon.de/dp/B00505EZYW/ref=pe_386171_38075861_TE_item))
+> **Note:** The T410 doesn't support more than 1066 MHz clock speed!
+> To be sure it will work, just take Apple certified Memory ([*CMSA8GX3M2A1066C7*](http://www.amazon.de/dp/B00505EZYW/ref=pe_386171_38075861_TE_item)).
 
 ### Done! :)
 ![lion-info](/files/thinkpad-t410-hackintosh/04-lion.png)
@@ -194,7 +184,7 @@ To be sure it will work, just take Apple certified Memory ([*CMSA8GX3M2A1066C7*]
 It is possible to install ***OS X 10.8.5 Mountain Lion*** over *Lion* without losing any data.
 
 Repeat the steps from the Lion installation, ***BUT*** skip step 3.2.2 (Disk Utility)! Just select the Lion system volume as target for the installation.
-After the installation, audio will not work, so replace the **AppleHDA.kext** with ***[this one](/files/thinkpad-t410-hackintosh/AppleHDA.zip)*** (using *Kext Wizard* and repairing permissions).
+After the installation, audio will not work, so replace the `AppleHDA.kext` with *[this one](/files/thinkpad-t410-hackintosh/AppleHDA.zip)* (using *Kext Wizard* and repairing permissions).
 
 ![mountain-lion-info](/files/thinkpad-t410-hackintosh/05-mountain-lion-info.png)
 
