@@ -310,28 +310,13 @@ footer {
   text-align: center;
   color: $textColor2;
   font-weight: 300;
+  font-size: 0.8em;
 
   a {
     color: $textColor2;
     
     &:hover {
       border-color: $textColor2;
-    }
-  }
-
-  ul {
-    font-size: 0.8em;
-    list-style: none;
-    text-align: center;
-
-    & > li {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    & > li:not(:last-child)::after {
-      content: '~';
-      margin: 0 1em;
     }
   }
 }
