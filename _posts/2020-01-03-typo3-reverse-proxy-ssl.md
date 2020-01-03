@@ -5,7 +5,8 @@ title: "Typo3 behind SSL Reverse Proxy"
 
 
 Edit `AdditionalConfiguration.php`:
-```
+
+```php
 <?php
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxySSL'] = '*';
