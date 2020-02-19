@@ -16,4 +16,4 @@ openssl pkcs12 -in <$P12_FILE> -nokeys -nodes 2>/dev/null \
 ```
 
 ---
-1. https://wiki.cac.washington.edu/display/infra/Extracting+Certificate+and+Private+Key+Files+from+a+.pfx+File
+1. <https://wiki.cac.washington.edu/display/infra/Extracting+Certificate+and+Private+Key+Files+from+a+.pfx+File>

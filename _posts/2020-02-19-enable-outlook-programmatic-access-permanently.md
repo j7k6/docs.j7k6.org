@@ -12,4 +12,4 @@ reg add "HKCU\Software\Policies\Microsoft\Office\16.0\outlook\security" /f /v "p
 ```
 
 ---
-1. https://www.slipstick.com/developer/change-programmatic-access-options/
+1. <https://www.slipstick.com/developer/change-programmatic-access-options/>
