@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  /*
   $('article code').each(function() {
     $(this).html($(this).text().replace(/<(\$)([A-Z|_|0-9]+)>/g, '<span class="var">&lt;$2&gt;</span>'));
 
@@ -6,7 +7,7 @@ $(document).ready(function() {
       $(this).text($(this).html().replace(/([^a-z])(&gt;)/gi, '$1>').replace(/(&lt;)([^a-z])/gi, '<$2'));
     });
   });
-
+  */
 
   if ($('.index')[0]) {
     var q = '';
