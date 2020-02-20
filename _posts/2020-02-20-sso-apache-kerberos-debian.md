@@ -19,6 +19,7 @@ Apache needs to be configured and running before setting up Kerberos.
 ```powershell
 ktpass -princ HTTP/test.example.org@EXAMPLE.ORG -mapuser <$BIND_USER>@EXAMPLE.ORG -pass "<$BIND_PASSWORD>" -crypto ALL -ptype KRB5_NT_PRINCIPAL -out c:\krb5.keytab
 ```
+3. Transfer the keytab file to `/etc/krb5.keytab` on the Debian server.
 
 ### Packages
 Install the reuqired packages on the Debian server:
