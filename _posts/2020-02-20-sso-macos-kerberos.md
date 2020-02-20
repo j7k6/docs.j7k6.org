@@ -32,3 +32,4 @@ Go to `about:config` and apply the following settings:
 Safari doesn't need any further configruation.
 
 ---
+1. <https://www.jeffgeerling.com/blogs/jeff-geerling/kerberos-authentication-mac-os>
