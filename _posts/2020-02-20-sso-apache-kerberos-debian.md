@@ -48,6 +48,7 @@ example.org = EXAMPLE.ORG
 
 ### Apache
 Edit the virtual host's config:
+
 ```
 <VirtualHost *:443>
   ServerName test.example.org
@@ -55,7 +56,7 @@ Edit the virtual host's config:
 
   <Location />
     AuthType Kerberos
-    AuthName "Kerberos Authorization"
+    AuthName "Kerberos Authentication"
     KrbMethodNegotiate on
     KrbMethodK5Passwd on
     KrbAuthoritative on
