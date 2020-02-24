@@ -1,0 +1,27 @@
+I"Þ<ol>
+  <li>Install <em>Certbot</em> and <em>Cloudflare DNS Plugin</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>certbot certbot-dns-cloudflare
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/etc/letsencrypt/cloudflare.ini</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns_cloudflare_api_key = &lt;$CLOUDFLARE_API_KEY&gt;
+dns_cloudflare_email = &lt;$CLOUDFLARE_EMAIL&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Restrict access to <code class="highlighter-rouge">cloudflare.ini</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>0400 /etc/letsencrypt/cloudflare.ini
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/etc/letsencrypt/cli.ini</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns-cloudflare-credentials = /etc/letsencrypt/cloudflare.ini
+server = https://acme-v02.api.letsencrypt.org/directory
+</code></pre></div>    </div>
+  </li>
+  <li>Get wildcard certificate from <em>Letâ€™s Encrypt</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>certbot certonly <span class="nt">--agree-tos</span> <span class="nt">--email</span> &lt;<span class="nv">$EMAIL</span><span class="o">&gt;</span> <span class="nt">--rsa-key-size</span> 4096 <span class="nt">--dns-cloudflare</span> <span class="nt">-d</span> <span class="k">*</span>.&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

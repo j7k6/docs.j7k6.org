@@ -1,0 +1,30 @@
+I"â<ol>
+  <li>Boot from the Arch Linux installer CD.</li>
+  <li>Show available drives:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Decrypt &amp; open LUKS:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksOpen /dev/sda&lt;<span class="nv">$N</span><span class="o">&gt;</span> &lt;<span class="nv">$MAPPER</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Find volume groups:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgscan
+</code></pre></div>    </div>
+  </li>
+  <li>Activate volume group:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgchange <span class="nt">-ay</span> &lt;<span class="nv">$VOLGROUP</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Show available volumes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvs
+</code></pre></div>    </div>
+  </li>
+  <li>Mount volume
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount /dev/&lt;<span class="nv">$VOLGROUP</span><span class="o">&gt;</span>/&lt;<span class="nv">$VOLUME</span><span class="o">&gt;</span> /mnt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

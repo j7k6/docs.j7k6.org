@@ -1,0 +1,20 @@
+I"•<ol>
+  <li>Enable RDP:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">set-ItemProperty</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="s1">'HKLM:\System\CurrentControlSet\Control\Terminal Server'</span><span class="nt">-name</span><span class="w"> </span><span class="s2">"fDenyTSConnections"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="nx">0</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Allow RDP in firewall:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">RemoteDesktop-UserMode-In-TCP</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">true</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Enable secure RDP authentication:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">set-ItemProperty</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="s1">'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'</span><span class="w"> </span><span class="nt">-name</span><span class="w"> </span><span class="s2">"UserAuthentication"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="nx">1</span><span class="w">   
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://networkerslog.blogspot.de/2013/09/how-to-enable-remote-desktop-remotely.html">https://networkerslog.blogspot.de/2013/09/how-to-enable-remote-desktop-remotely.html</a></li>
+</ol>
+:ET

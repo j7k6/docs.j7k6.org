@@ -1,0 +1,20 @@
+I"š<h2 id="backup">Backup</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitlab-rake gitlab:backup:create
+</code></pre></div></div>
+
+<h2 id="restore">Restore</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+gitlab-rake gitlab:backup:restore <span class="nv">BACKUP</span><span class="o">=</span>&lt;<span class="nv">$TIMESTAMP</span><span class="o">&gt;</span>
+gitlab-ctl reconfigure
+gitlab-ctl start
+gitlab-rake gitlab:check <span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div></div>
+
+<p><em>Note</em>: The <code class="highlighter-rouge">&lt;$TIMESTAMP&gt;</code> variable does not only mean the unix timestamp in the beginning of the filename, but all the date/time information, <strong>except</strong> <code class="highlighter-rouge">_gitlab_backup.tar</code>.</p>
+
+<hr />
+<ol>
+  <li><a href="https://www.fabian-keller.de/blog/migrating-a-gitlab-instance-to-another-server">https://www.fabian-keller.de/blog/migrating-a-gitlab-instance-to-another-server</a></li>
+</ol>
+:ET

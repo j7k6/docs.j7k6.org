@@ -1,0 +1,9 @@
+I"©<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Get-Service</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="nf">name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"MSExchange*"</span><span class="w"> </span><span class="o">-and</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="nf">Status</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="s2">"Running"</span><span class="p">}</span><span class="w">
+</span><span class="kr">foreach</span><span class="w"> </span><span class="p">(</span><span class="nv">$service</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">$services</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="nf">Restart-Service</span><span class="w"> </span><span class="nv">$service</span><span class="o">.</span><span class="nf">name</span><span class="w"> </span><span class="nt">-Force</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://www.zerohoursleep.com/2010/09/quick-tip-restarting-all-microsoft-exchange-services/">http://www.zerohoursleep.com/2010/09/quick-tip-restarting-all-microsoft-exchange-services/</a></li>
+</ol>
+:ET

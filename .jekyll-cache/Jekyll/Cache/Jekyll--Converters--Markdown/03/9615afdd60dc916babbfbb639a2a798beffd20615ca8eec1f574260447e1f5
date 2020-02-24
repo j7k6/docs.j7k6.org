@@ -1,0 +1,10 @@
+I"<h2 id="option-1">Option 1</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-t</span> mangle <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> TTL <span class="nt">--ttl-set</span> <span class="sb">`</span><span class="nb">cat</span> /proc/sys/net/ipv4/ip_default_ttl<span class="sb">`</span>
+</code></pre></div></div>
+
+<h2 id="option-2">Option 2</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-t</span> mangle <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> TTL <span class="nt">--ttl-inc</span> 1
+</code></pre></div></div>
+
+<hr />
+:ET

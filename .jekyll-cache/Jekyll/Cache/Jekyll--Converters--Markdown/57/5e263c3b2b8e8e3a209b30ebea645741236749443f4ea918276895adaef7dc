@@ -1,0 +1,60 @@
+I"�<p>For some reason <em>PayPal</em> doesn’t offer “normal” Two Factor Authentication (2FA) usable in <strong>1Password</strong>, instead they require the <a href="https://idprotect.vip.symantec.com/"><em>Symantec VIP</em></a> app (which is annyoing).
+Gladfully <a href="https://www.cyrozap.com/2014/09/29/reversing-the-symantec-vip-access-provisioning-protocol/">someone reverse-engineered</a> the TOTP process done by the Symantec app and created a nice little <a href="https://github.com/cyrozap/python-vipaccess">command line tool</a> to generate TOTP tokens usable with <strong>1Passwords</strong> (and other 2FA-capable apps).</p>
+
+<blockquote>
+  <p><strong>Note</strong>: The original repository seems to be outdated and doesn’t work anymore, but there are plenty of forks to use.</p>
+</blockquote>
+
+<ol>
+  <li>Install prerequirements:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>qrencode oath-toolkit
+pip <span class="nb">install </span>lxml oath pycryptodome requests
+</code></pre></div>    </div>
+  </li>
+  <li>Install <code class="highlighter-rouge">vipaccess</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/dlenski/python-vipaccess
+<span class="nb">cd </span>python-vipaccess
+pip <span class="nb">install</span> <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Open the <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_setup-security-key"><em>PayPal Security Key Page</em></a> and click on “<strong>Activate</strong> Security Key”
+<img src="/files/paypal-1password-2fa-totp-01.png" alt="paypal-1password-2fa-totp-01.png" /></li>
+  <li>
+    <p>Run <code class="highlighter-rouge">vipaccess provision -p</code>.
+This will generate the following output:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Generating request...
+Fetching provisioning response...
+Getting token from response...
+Decrypting token...
+Checking token...
+Credential created successfully:
+  otpauth://totp/VIP%20Access:VSST63283447?digits=6&amp;secret=OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2&amp;period=30&amp;algorithm=sha1&amp;issuer=Symantec
+This credential expires on this date: 2021-07-31T20:50:02.807Z
+
+You will need the ID to register this credential: VSST63283447
+
+You can use oathtool to generate the same OTP codes
+as would be produced by the official VIP Access apps:
+
+  oathtool -d6 -b --totp    OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2  # 6-digit code
+  oathtool -d6 -b --totp -v OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2  # ... with extra information
+</code></pre></div>    </div>
+  </li>
+  <li>Insert the Credential ID (<code class="highlighter-rouge">VSST...</code>) into the <em>Serial number</em> field (Step 1) on the PayPal site.
+Then generate a token and insert it into Step 2: See <code class="highlighter-rouge">oathtool -d6 -b --totp ...</code> command above. After ~30 seconds repeat the last command to generate a new token and insert it into the field at Step 3.
+<img src="/files/paypal-1password-2fa-totp-02.png" alt="paypal-1password-2fa-totp-01.png" /></li>
+  <li>Click <em>Activate</em>. The security key is now enabled for 2FA.</li>
+  <li>Now generate a TOTP QR-code with the <code class="highlighter-rouge">otpauth://...</code> URI (see above) and scan it with <strong>1Password</strong> to add it to your PayPal credentials:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qrencode <span class="nt">-t</span> ANSI256 <span class="s2">"otpauth://totp/VIP%20Access:VSST63283447?digits=6&amp;secret=OHRJ4OEQOLY3IVES6FN6OPEN2B2E7PE2&amp;period=30&amp;algorithm=sha1&amp;issuer=Symantec"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://www.cyrozap.com/2014/09/29/reversing-the-symantec-vip-access-provisioning-protocol/">https://www.cyrozap.com/2014/09/29/reversing-the-symantec-vip-access-provisioning-protocol/</a></li>
+  <li><a href="https://github.com/cyrozap/python-vipaccess">https://github.com/cyrozap/python-vipaccess</a></li>
+  <li><a href="https://github.com/dlenski/python-vipaccess">https://github.com/dlenski/python-vipaccess</a></li>
+</ol>
+:ET

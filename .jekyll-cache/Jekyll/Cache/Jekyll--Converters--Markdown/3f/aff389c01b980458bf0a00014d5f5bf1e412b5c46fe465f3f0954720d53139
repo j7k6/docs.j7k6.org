@@ -1,0 +1,66 @@
+I"e<p><a href="https://www.startssl.com"><strong>StartSSL</strong></a> offers free <a href="https://en.wikipedia.org/wiki/Public_key_certificate#Vendor_defined_classes">Class 1</a> SSL certificate verification, which is accepted by every modern web browser.</p>
+
+<h2 id="sign-up">Sign Up</h2>
+<p><img src="/files/startssl-certificate-validation/startssl01.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl02.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl03.png" alt="startssl" /></p>
+
+<p>After submitting the registration form, an authentication code will be sent by e-mail:</p>
+
+<p><img src="/files/startssl-certificate-validation/startssl04.png" alt="startssl" /></p>
+
+<h2 id="generate-private-key">Generate Private Key</h2>
+<p>StartSSL requires a client certificate for login, which will be embedded in the browser. For that reason it has to generate a private key first:
+<img src="/files/startssl-certificate-validation/startssl05.png" alt="startssl" /></p>
+
+<p>Next, install the certificate in the browser…
+<img src="/files/startssl-certificate-validation/startssl06.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl07.png" alt="startssl" /></p>
+
+<p>…the client certificate authenticates the user at login, so that no username/password combination is needed.
+<img src="/files/startssl-certificate-validation/startssl08.png" alt="startssl" /></p>
+
+<h2 id="backup-client-certificate">Backup Client Certificate</h2>
+<p><img src="/files/startssl-certificate-validation/startssl09.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl10.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl11.png" alt="startssl" /></p>
+
+<h2 id="validation-wizard">Validation Wizard</h2>
+<p><strong>Important</strong>: For verification of a domain name, an existing email account has to exist for that domain (<em>webmaster@</em>, <em>hostmaster@</em> or <em>postmaster@</em>)!
+<img src="/files/startssl-certificate-validation/startssl12.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl13.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl14.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl15.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl16.png" alt="startssl" /></p>
+
+<h2 id="certificates-wizard">Certificates Wizard</h2>
+<p><img src="/files/startssl-certificate-validation/startssl17.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl18.png" alt="startssl" /></p>
+
+<p>Generate a SSL key and a CSR as described <a href="/ssl-certificates"><em>here</em></a> and enter the CSR into the next form:
+<img src="/files/startssl-certificate-validation/startssl19.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl20.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl21.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl22.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl23.png" alt="startssl" /></p>
+
+<p>Now wait for the verification e-mail…</p>
+
+<h2 id="save-certificate">Save Certificate</h2>
+<p><img src="/files/startssl-certificate-validation/startssl24.png" alt="startssl" />
+<img src="/files/startssl-certificate-validation/startssl25.png" alt="startssl" /></p>
+
+<p>Save the certificate on the server (e.g. as <em>&lt;DOMAIN&gt;.crt</em>).</p>
+
+<h2 id="root-ca--class-1-intermediate-server-ca">Root CA &amp; Class 1 Intermediate Server CA</h2>
+<h3 id="download">Download</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://www.startssl.com/certs/ca.pem
+wget http://www.startssl.com/certs/sub.class1.server.ca.pem
+</code></pre></div></div>
+
+<h3 id="chain-the-new-certificate-with-the-root-ca-and-intermediate-server-ca-files">Chain the new certificate with the Root CA and Intermediate Server CA files:</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.crt sub.class1.server.ca.pem ca.pem <span class="o">&gt;</span> /etc/ssl/certs/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.pem
+</code></pre></div></div>
+
+<hr />
+:ET

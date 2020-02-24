@@ -1,0 +1,16 @@
+I"ÿ<p>Since the <strong>Raspberry Pi Zero W</strong> doesnâ€™t has an ethernet port to automatically get an IP via DHCP, it needs to be preconfigured to join a wireless network.
+After <code class="highlighter-rouge">dd</code>-ing the <em>Raspbian</em> Image to the SD-card, create a <code class="highlighter-rouge">wpa_supplicant.conf</code> file on the the <em>boot</em> partition:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+  ssid="&lt;$WLAN_NAME&gt;"
+  psk="&lt;$WLAN_PASSWORD&gt;"
+}
+</code></pre></div></div>
+
+<p>To enable SSH, create the empty  <code class="highlighter-rouge">ssh</code> file on the <em>boot</em> partition.</p>
+
+<hr />
+:ET

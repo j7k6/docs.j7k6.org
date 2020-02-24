@@ -1,0 +1,10 @@
+I"ë<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>mem <span class="k">in </span><span class="nb">ls</span> /sys/devices/system/memory/memory<span class="k">*</span>/state<span class="p">;</span> 
+  <span class="k">do </span><span class="nb">echo</span> <span class="s2">"online"</span> <span class="o">&gt;</span> <span class="nv">$mem</span><span class="p">;</span> 
+<span class="k">done </span>2&gt;/dev/null<span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://blog.teamix.de/2014/12/06/vmware-vsphere-hot-add-does-not-work-tips-tricks/">https://blog.teamix.de/2014/12/06/vmware-vsphere-hot-add-does-not-work-tips-tricks/</a></li>
+</ol>
+:ET

@@ -1,0 +1,29 @@
+I"T<ol>
+  <li>Install <code class="highlighter-rouge">cloudflared</code> (<a href="https://developers.cloudflare.com/argo-tunnel/downloads/">all downloads</a>):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+dpkg <span class="nt">-i</span> cloudflared-stable-linux-amd64.deb
+</code></pre></div>    </div>
+  </li>
+  <li>Add hidden service address to <code class="highlighter-rouge">/etc/hosts</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion"</span> <span class="o">&gt;&gt;</span> /etc/hosts
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">socat</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport<span class="o">=</span>9050
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">cloudflared</code> (DNS over UDP daemon):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
+</code></pre></div>    </div>
+  </li>
+  <li>Query DNS-over-HTTP-over-Tor:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig MX gmail.com @127.0.0.1
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://blog.cloudflare.com/welcome-hidden-resolver/">https://blog.cloudflare.com/welcome-hidden-resolver/</a></li>
+</ol>
+:ET

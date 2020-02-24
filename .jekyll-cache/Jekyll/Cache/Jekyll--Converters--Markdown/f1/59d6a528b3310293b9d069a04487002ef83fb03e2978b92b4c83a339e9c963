@@ -1,0 +1,13 @@
+I"Ø<ol>
+  <li>Install <code class="highlighter-rouge">brew upgrade gitlab-ci-multi-runner</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>gitlab-ci-multi-runner
+</code></pre></div>    </div>
+  </li>
+  <li>Run task (<code class="highlighter-rouge">&lt;$EXECUTOR&gt;</code>: <em>docker</em>, <em>shell</em>,â€¦):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitlab-runner <span class="nb">exec</span> &lt;<span class="nv">$EXECUTOR</span><span class="o">&gt;</span> &lt;<span class="nv">$TASK</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

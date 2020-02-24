@@ -1,0 +1,46 @@
+I"–<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// required modules, install with npm
+var https = require('https');
+var crypto = require('crypto');
+var sleep = require('sleep');
+
+// api key &amp; secret
+var apiKey = '&lt;$API_KEY&gt;';
+var secret = '&lt;$API_SECRET&gt;';
+
+// get frob
+var frobApiSig = secret+'api_key'+apiKey+'formatjsonmethodflickr.auth.getFrobnojsoncallback1';
+var frobApiSigHash = crypto.createHash('md5').update(frobApiSig).digest('hex');
+var frobApiUrl = 'https://api.flickr.com/services/rest/?method=flickr.auth.getFrob&amp;api_key='+apiKey+'&amp;format=json&amp;nojsoncallback=1&amp;api_sig='+frobApiSigHash;
+
+https.get(frobApiUrl, function(res) {
+  res.on('data', function(data) {
+    var apiFrob = JSON.parse(data).frob._content;
+    
+    // generate auth url
+    var authApiSig = secret+'api_key'+apiKey+'frob'+apiFrob+'permsread';
+    var authApiSigHash = crypto.createHash('md5').update(authApiSig).digest('hex');
+    var authApiUrl = 'https://flickr.com/services/auth/?api_key='+apiKey+'&amp;perms=read&amp;frob='+apiFrob+'&amp;api_sig='+authApiSigHash;
+    
+    // open url in browser and authorize in less then 30 seconds
+    console.log('Auth URL: '+authApiUrl);
+    
+    // ...
+    sleep.sleep(30);
+
+    // obtain api token
+    var tokenApiSig = secret+'api_key'+apiKey+'formatjsonfrob'+apiFrob+'methodflickr.auth.getTokennojsoncallback1';
+    var tokenApiSigHash = crypto.createHash('md5').update(tokenApiSig).digest('hex');
+    var tokenApiUrl = 'https://api.flickr.com/services/rest/?api_key='+apiKey+'&amp;method=flickr.auth.getToken&amp;frob='+apiFrob+'&amp;format=json&amp;nojsoncallback=1&amp;api_sig='+tokenApiSigHash;
+
+    https.get(tokenApiUrl, function(res) {
+      res.on('data', function(data) {
+        var apiToken = JSON.parse(data).auth.token._content;
+        console.log('Token: '+apiToken);
+      });
+    });
+  });
+});
+</code></pre></div></div>
+
+<hr />
+:ET

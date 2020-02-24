@@ -1,0 +1,28 @@
+I"m<blockquote>
+  <p><strong>Disclaimer</strong>: This might be illegal in some countries.</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>python-m2crypto libgcrypt11-dev libnl-3-dev libnl-genl-3-dev
+curl <span class="nt">-sSL</span> https://www.kernel.org/pub/software/network/crda/crda-3.18.tar.xz | <span class="nb">tar </span>xJf -
+curl <span class="nt">-sSL</span> https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2016.06.10.tar.xz | <span class="nb">tar </span>xJf -
+<span class="nb">cd </span>wireless-regdb-2016.06.10
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'/country CN/{n;s/20/30/}'</span> db.txt
+make
+<span class="nb">mv</span> /lib/crda/regulatory.bin /lib/crda/regulatory.bin.old
+<span class="nb">cp </span>regulatory.bin /lib/crda/
+<span class="nb">chmod</span> +x /lib/crda/regulatory.bin
+<span class="nb">cp </span>root.key.pub.pem ../crda-3.18/pubkeys/
+<span class="nb">cp</span> /lib/crda/pubkeys/<span class="k">*</span>.pem ../crda-3.18/pubkeys/
+<span class="nb">cd</span> ../crda-3.18
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/\/usr//'</span> Makefile
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/-Werror//'</span> Makefile
+make
+make <span class="nb">install
+</span>reboot
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://askubuntu.com/questions/597546/iwconfig-wlan0-txpower-30mw-not-working">http://askubuntu.com/questions/597546/iwconfig-wlan0-txpower-30mw-not-working</a></li>
+</ol>
+:ET

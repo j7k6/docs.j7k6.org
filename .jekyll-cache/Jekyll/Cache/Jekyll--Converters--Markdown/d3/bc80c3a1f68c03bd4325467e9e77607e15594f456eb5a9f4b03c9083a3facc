@@ -1,0 +1,8 @@
+I"V<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">New-ManagementRoleAssignment</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"Import Export PST"</span><span class="w"> </span><span class="nt">-SecurityGroup</span><span class="w"> </span><span class="s2">"Organization Management"</span><span class="w"> </span><span class="nt">-Role</span><span class="w"> </span><span class="s2">"Mailbox Import Export"</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://dave.harris.uno/new-mailboximportrequest-is-not-recognized-as-the-name-of-a-cmdlet-in-exchange-2010-sp1/">https://dave.harris.uno/new-mailboximportrequest-is-not-recognized-as-the-name-of-a-cmdlet-in-exchange-2010-sp1/</a></li>
+</ol>
+:ET

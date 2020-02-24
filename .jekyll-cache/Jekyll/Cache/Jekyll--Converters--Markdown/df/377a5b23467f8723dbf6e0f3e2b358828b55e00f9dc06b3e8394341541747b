@@ -1,0 +1,35 @@
+I"ƒ<blockquote>
+  <p>The <code class="highlighter-rouge">vsphere_guest</code> Ansible module requires the Python package <code class="highlighter-rouge">pysphere</code>.
+Install it with <code class="highlighter-rouge">pip install pysphere</code>.</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- name: "Clone VM Template"
+  hosts: "localhost"
+  gather_facts: false
+  become: false
+
+  vars:
+    vcenter_hostname: "&lt;$VCENTER_HOSTNAME&gt;"
+    vcenter_username: "&lt;$VCENTER_USERNAME&gt;"
+    vcenter_password: "&lt;$VCENTER_PASSWORD&gt;"
+    vcenter_datacenter: "&lt;$VCENTER_DATACENTER&gt;"
+    vcenter_esxi_host: "&lt;$VCENTER_ESXI_HOST&gt;"
+
+  tasks:
+  - name: "Clone new VM from Template"
+    vsphere_guest:
+      validate_certs: no
+      vcenter_hostname: "{{vcenter_hostname}}"
+      username: "{{vcenter_username}}"
+      password: "{{vsphere_password}}"
+      guest: "&lt;$VM_NAME&gt;"
+      from_template: yes
+      template_src: "&lt;$TEMPLATE_NAME&gt;"
+      esxi:
+        datacenter: "{{vcenter_datacenter}}"
+        hostname: "{{vcenter_esxi_host}}"
+</code></pre></div></div>
+
+<hr />
+:ET

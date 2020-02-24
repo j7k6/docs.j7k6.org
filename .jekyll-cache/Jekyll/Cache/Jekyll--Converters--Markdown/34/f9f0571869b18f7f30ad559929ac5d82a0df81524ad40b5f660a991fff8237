@@ -1,0 +1,41 @@
+I"]<ol>
+  <li>Create <code class="highlighter-rouge">/etc/nginx/conf.d/map.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>map $sent_http_content_type $expires {
+  default                    off;
+  ~(image|font|audio|video)/ max;
+  ~application/              7d;
+  ~text/                     7d;
+  text/html                  off;
+}
+
+map $sent_http_content_type $logging {
+  default 0;
+  text/html 1;
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Include <code class="highlighter-rouge">map.conf</code> in <code class="highlighter-rouge">/etc/nginx/nginx.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http {
+  ...
+
+  include conf.d/map.conf;
+
+  ...
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Add this lines to every site configuration:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  ...
+
+  access_log /var/log/nginx/access.log combined if=$logging;
+
+  add_header Cache-Control "public";
+  expires $expires;
+}
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

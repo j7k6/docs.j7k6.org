@@ -1,0 +1,8 @@
+I"Œ<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span> <span class="nb">printf</span> <span class="s2">"</span><span class="se">\x</span><span class="s2">1f</span><span class="se">\x</span><span class="s2">8b</span><span class="se">\x</span><span class="s2">08</span><span class="se">\x</span><span class="s2">00</span><span class="se">\x</span><span class="s2">00</span><span class="se">\x</span><span class="s2">00</span><span class="se">\x</span><span class="s2">00</span><span class="se">\x</span><span class="s2">00"</span> <span class="p">;</span> <span class="nb">tail</span> <span class="nt">-c</span> +25 backup.ab <span class="o">)</span> |  <span class="nb">tar </span>xfvz -
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://android.stackexchange.com/a/78183">https://android.stackexchange.com/a/78183</a></li>
+</ol>
+:ET

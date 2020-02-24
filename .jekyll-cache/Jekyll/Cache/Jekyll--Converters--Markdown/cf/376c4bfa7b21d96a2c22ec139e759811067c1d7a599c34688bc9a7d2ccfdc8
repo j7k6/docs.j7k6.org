@@ -1,0 +1,111 @@
+I"S<p>Usually, this kind of Transparent-Tor-Proxy setup is used as a <a href="/transparent-tor-wlan-proxy-debian/">wireless access point</a> with the ethernet port of the Raspberry Pi being the gateway interface and the WLAN being the client-facing side. This is the exact opposite: the Raspberry Pi connects to the client computer with an ethernet cable and connects to the Tor network via WLAN. So it works like a wired dongle which automagically proxies all traffic through the Tor network.</p>
+
+<p>Why? Because it’s more secure: all the wireless traffic is encrypted Tor packets, the unencrypted packets are on the wire.</p>
+
+<h2 id="basic-setup">Basic Setup</h2>
+<ol>
+  <li>Download <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> and <code class="highlighter-rouge">dd</code> it to a SD-card.</li>
+  <li>Configure the wireless connection and enable SSH (see <a href="/raspberry-pi-zero-w-headless-setup/">here</a>).</li>
+  <li>Connect to the Raspberry Pi via SSH.</li>
+  <li>Install required packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+
+apt update
+apt upgrade <span class="nt">-y</span>
+apt <span class="nb">install</span> <span class="nt">-y</span> vim curl apt-transport-https iptables-persistent udhcpd
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="network">Network</h2>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/dhcpcd.conf</code> to disable <em>dhcpcd</em> on <em>eth0</em>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>denyinterfaces eth0
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/network/interfaces.d/eth0</code> to setup a static IP for <em>eth0</em>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>auto eth0
+iface eth0 inet static
+  address 10.0.0.254
+  netmask 255.255.255.0
+</code></pre></div>    </div>
+  </li>
+  <li>Restart the networking service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart networking
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="dhcp">DHCP</h2>
+<p>The client setup should be zero-config, so the Raspberry Pi needs to provide DHCP to the client.</p>
+
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/udhcpd.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface eth0
+start 10.0.0.100
+end 10.0.0.200
+remaining yes
+opt dns 10.0.0.254
+opt subnet 255.255.255.0
+opt router 10.0.0.254
+opt lease 7200
+</code></pre></div>    </div>
+  </li>
+  <li>Enable <code class="highlighter-rouge">udhcpd</code> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/^DHCPD_ENABLED/#DHCPD_ENABLED/'</span> /etc/default/udhcpd
+systemctl <span class="nb">enable</span> <span class="nt">--now</span> udhcpd
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="tor">Tor</h2>
+<ol>
+  <li>Add <code class="highlighter-rouge">/etc/apt/source.list.d/tor.list</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb https://deb.torproject.org/torproject.org buster main
+deb-src https://deb.torproject.org/torproject.org buster main
+</code></pre></div>    </div>
+  </li>
+  <li>Import signing key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg <span class="nt">--import</span>
+gpg <span class="nt">--export</span> A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
+</code></pre></div>    </div>
+  </li>
+  <li>Install the <code class="highlighter-rouge">tor</code> package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update
+apt <span class="nb">install</span> <span class="nt">-y</span> tor deb.torproject.org-keyring
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/tor/torrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VirtualAddrNetworkIPv4 10.192.0.0/10
+AutomapHostsSuffixes .onion
+AutomapHostsOnResolve 1
+TransPort 10.0.0.254:9040
+DNSPort 10.0.0.254:5353
+</code></pre></div>    </div>
+  </li>
+  <li>Restart service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart tor
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="nat--iptables">NAT / iptables</h2>
+<p>This is where the magic happens:</p>
+
+<ol>
+  <li>All TCP traffic should be routed transparently through the Tor network:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> PREROUTING <span class="nt">-i</span> eth0 <span class="nt">-p</span> tcp <span class="nt">--syn</span> <span class="nt">-j</span> REDIRECT <span class="nt">--to-ports</span> 9040
+</code></pre></div>    </div>
+  </li>
+  <li>DNS is going to be answered by the local Tor DNS resolver:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> PREROUTING <span class="nt">-i</span> eth0 <span class="nt">-p</span> udp <span class="nt">--dport</span> 53 <span class="nt">-j</span> REDIRECT <span class="nt">--to-ports</span> 5353
+</code></pre></div>    </div>
+  </li>
+  <li>Save rules:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables-save &gt; /etc/iptables/rules.v4
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

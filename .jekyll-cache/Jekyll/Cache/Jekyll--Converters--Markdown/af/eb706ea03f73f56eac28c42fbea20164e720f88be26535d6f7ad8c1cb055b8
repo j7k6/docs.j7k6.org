@@ -1,0 +1,8 @@
+I"Ö<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-c</span><span class="o">=</span>dos <span class="nt">-u</span><span class="o">=</span>cylinders /dev/sdb
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://confluence.wartungsfenster.de/display/Adminspace/fdisk+Force+sector+63+boundary">http://confluence.wartungsfenster.de/display/Adminspace/fdisk+Force+sector+63+boundary</a></li>
+</ol>
+:ET

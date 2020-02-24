@@ -1,0 +1,5 @@
+I"Ò<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-p</span> <span class="nt">-f</span> ~/.ssh/id_rsa
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,54 @@
+I"5<p>Since <em>Debian Jessie</em> is currently lacking support for <em>OpenSSL 1.1.0</em>, <em>Nginx</em> has to be build against it manually.</p>
+
+<ol>
+  <li>Download Sources:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>nginx
+<span class="nb">cd </span>nginx
+curl <span class="nt">-fsSL</span> https://nginx.org/download/nginx-1.12.0.tar.gz | <span class="nb">tar </span>zxvf -
+curl <span class="nt">-fsSL</span> https://www.openssl.org/source/openssl-1.1.0e.tar.gz | <span class="nb">tar </span>zxvf -
+curl <span class="nt">-fsSL</span> https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.gz | <span class="nb">tar </span>zxvf -
+curl <span class="nt">-fsSL</span> http://zlib.net/zlib-1.2.11.tar.gz | <span class="nb">tar </span>zxvf -
+<span class="nb">cd </span>nginx-1.12.0
+</code></pre></div>    </div>
+  </li>
+  <li>Configure, Build, Install:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./configure <span class="se">\</span>
+  <span class="nt">--sbin-path</span><span class="o">=</span>/usr/sbin/nginx <span class="se">\</span>
+  <span class="nt">--conf-path</span><span class="o">=</span>/etc/nginx/nginx.conf <span class="se">\</span>
+  <span class="nt">--with-http_v2_module</span> <span class="se">\</span>
+  <span class="nt">--with-http_ssl_module</span> <span class="se">\</span>
+  <span class="nt">--with-http_stub_status_module</span> <span class="se">\</span>
+  <span class="nt">--with-openssl</span><span class="o">=</span>../openssl-1.1.0e <span class="se">\</span>
+  <span class="nt">--with-pcre</span><span class="o">=</span>../pcre-8.40a <span class="se">\</span>
+  <span class="nt">--with_zlib</span><span class="o">=</span>../zlib-1.2.11
+
+make <span class="nt">-j</span><span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span> <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create Systemd Service <code class="highlighter-rouge">/lib/systemd/system/nginx.service</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div>    </div>
+  </li>
+  <li>Enable &amp; Start Systemd Service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>nginx
+systemctl start nginx
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

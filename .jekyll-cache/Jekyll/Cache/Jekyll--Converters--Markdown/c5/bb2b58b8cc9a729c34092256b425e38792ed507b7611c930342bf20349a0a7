@@ -1,0 +1,8 @@
+I"G<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> <span class="nt">-o</span> /dev/null <span class="nt">-w</span> <span class="s2">"%{time_starttransfer}</span><span class="se">\n</span><span class="s2">"</span> &lt;<span class="nv">$URL</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://www.jonefox.com/blog/2011/10/10/find-the-time-to-first-byte-using-curl/">https://www.jonefox.com/blog/2011/10/10/find-the-time-to-first-byte-using-curl/</a></li>
+</ol>
+:ET

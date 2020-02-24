@@ -1,0 +1,18 @@
+I"‰<ol>
+  <li>Create request:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">New-MailboxExportRequest</span><span class="w"> </span><span class="nt">-Mailbox</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$ALIAS</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-FilePath</span><span class="w"> </span><span class="nx">\\</span><span class="err">&lt;</span><span class="nv">$PATH_TO_PST</span><span class="err">&gt;`</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Check request status:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Get-MailboxExportRequest</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Wait for <code class="highlighter-rouge">Status=Completed</code></li>
+  <li>Remove request:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Get-MailboxExportRequest</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">where</span><span class="w"> </span><span class="p">{</span><span class="bp">$_</span><span class="o">.</span><span class="nf">status</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Remove-MailboxExportRequest</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

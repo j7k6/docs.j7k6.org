@@ -1,0 +1,34 @@
+I"1
+<p><a href="/hetzner-root-server-esxi-without-iso/">Another</a> method to install <em>VMware ESXi</em> on a Hetzner root server without having access to the terrible <em>LARA console</em> (Remote KVM) is to use <strong>KVM</strong> virtualization in the Hetzner Linux rescue  system.</p>
+
+<p>VNC will be used to install ESXi, so connect to the server with the SSH local port forwarding option <code class="highlighter-rouge">-L 5901:localhost:5901</code>. This will make the VNC port available on your local machine.</p>
+
+<ol>
+  <li>First download the <em>ESXi</em> ISO from Hetzner’s mirror server:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://mirror.hetzner.de/bootimages/vmware/VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso
+</code></pre></div>    </div>
+  </li>
+  <li>Then invoke a VM with the servers pyhsical harddrive as virtual disk and the ESXi ISO as CDRom.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kvm <span class="nt">-machine</span> pc-i440fx-2.1 <span class="se">\</span>
+  <span class="nt">-cpu</span> host <span class="se">\</span>
+  <span class="nt">-smp</span> <span class="nv">cpus</span><span class="o">=</span>2 <span class="se">\</span>
+  <span class="nt">-m</span> 4096 <span class="se">\</span>
+  <span class="nt">-hda</span> /dev/sda<span class="se">\</span>
+  <span class="nt">-cdrom</span> VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso <span class="se">\</span>
+  <span class="nt">-vnc</span> :1
+</code></pre></div>    </div>
+  </li>
+  <li>Now connect your local VNC client to <code class="highlighter-rouge">vnc://127.0.0.1:5901</code> and complete the ESXi installation process.
+<img src="/files/vmware-esxi-hetzner-install-kvm-linux.png" alt="vmware-esxi-hetzner-install-kvm-linux" /></li>
+  <li>After the ESXi VM rebooted, reset the system configuration and reboot, but be sure to stop the VM before it can boot up again(!). The server can now be restarted and boot right into the freshly installed ESXi.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Note</strong>: ESXi is now fully resetted, which means that the root password is now empty! So after restarting the server, login to the ESXi webinterface with <code class="highlighter-rouge">root</code> as user and an empty password and set a new root password immediately!</p>
+</blockquote>
+
+<hr />
+<ol>
+  <li><a href="https://virtuallyfun.com/wordpress/2017/03/07/running-vmware-esxi-6-5-linuxkvm/">https://virtuallyfun.com/wordpress/2017/03/07/running-vmware-esxi-6-5-linuxkvm/</a></li>
+</ol>
+:ET

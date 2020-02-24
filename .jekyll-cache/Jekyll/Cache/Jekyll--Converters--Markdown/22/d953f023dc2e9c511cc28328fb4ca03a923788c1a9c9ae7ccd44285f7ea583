@@ -1,0 +1,12 @@
+I"7<p><em>Example:</em> Remap <code class="highlighter-rouge">[CAPSLOCK]</code> to <code class="highlighter-rouge">[ESCAPE]</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hidutil property <span class="nt">--set</span> <span class="s1">'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'</span>
+</code></pre></div></div>
+
+<p>Apple Keyboard Mapping Codes: <a href="https://developer.apple.com/library/archive/technotes/tn2450/_index.html">https://developer.apple.com/library/archive/technotes/tn2450/_index.html</a></p>
+
+<hr />
+<ol>
+  <li><a href="http://homeowmorphism.com/articles/17/Remap-CapsLock-Backspace-Sierra">http://homeowmorphism.com/articles/17/Remap-CapsLock-Backspace-Sierra</a></li>
+</ol>
+:ET

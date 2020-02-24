@@ -1,0 +1,17 @@
+I"ê<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://download3.vmware.com/software/SCATEST/Avago_17/megaraid_sas-6.612.07.00-4692712.zip
+unzip megaraid_sas-6.612.07.00-4692712.zip
+esxcli software vib <span class="nb">install</span> <span class="nt">-v</span><span class="o">=</span><span class="s2">"/tmp/scsi-megaraid-sas_6.612.07.00-1OEM.600.0.0.2494585.vib"</span> <span class="nt">--no-sig-check</span>
+esxcfg-module <span class="nt">-d</span> lsi_mr3
+reboot
+
+<span class="c"># Check if megaraid_sas driver is loaded after reboot:</span>
+esxcli storage core adapter list
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://www.thevirtualist.org/replacing-driver-for-megaraid-sas-9361-8i-on-esxi-6/">http://www.thevirtualist.org/replacing-driver-for-megaraid-sas-9361-8i-on-esxi-6/</a></li>
+  <li><a href="https://my.vmware.com/group/vmware/details?downloadGroup=DT-ESXI60-AVAGO-SCSI-MEGARAID-SAS-66120700-1OEM&amp;productId=491">https://my.vmware.com/group/vmware/details?downloadGroup=DT-ESXI60-AVAGO-SCSI-MEGARAID-SAS-66120700-1OEM&amp;productId=491</a></li>
+</ol>
+:ET

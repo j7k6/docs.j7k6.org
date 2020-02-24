@@ -1,0 +1,5 @@
+I"D<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Move-ADDirectoryServerOperationMasterRole</span><span class="w"> </span><span class="nt">-Identity</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$DC</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-OperationMasterRole</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="nx">1</span><span class="p">,</span><span class="nx">2</span><span class="p">,</span><span class="nx">3</span><span class="p">,</span><span class="nx">4</span><span class="w"> </span><span class="nt">-Force</span><span class="w"> </span><span class="nt">-Credential</span><span class="w"> </span><span class="p">(</span><span class="nf">Get-Credential</span><span class="p">)</span><span class="w"> </span><span class="nt">-server</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$DC</span><span class="err">&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

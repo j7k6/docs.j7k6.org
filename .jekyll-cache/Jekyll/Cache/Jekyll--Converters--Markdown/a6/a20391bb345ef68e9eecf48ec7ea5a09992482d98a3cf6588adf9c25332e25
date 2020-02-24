@@ -1,0 +1,8 @@
+I"î<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>security unlock-keychain <span class="nt">-p</span> <span class="s2">"&lt;</span><span class="nv">$PASSWORD</span><span class="s2">&gt;"</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Library/Keychains/login.keychain"</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://stackoverflow.com/a/9678612">http://stackoverflow.com/a/9678612</a></li>
+</ol>
+:ET

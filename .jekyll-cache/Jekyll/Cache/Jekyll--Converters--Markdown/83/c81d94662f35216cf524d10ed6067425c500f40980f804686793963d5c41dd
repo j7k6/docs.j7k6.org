@@ -1,0 +1,8 @@
+I"j<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;&gt;</span> ~/.zshrc <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<hr />
+:ET

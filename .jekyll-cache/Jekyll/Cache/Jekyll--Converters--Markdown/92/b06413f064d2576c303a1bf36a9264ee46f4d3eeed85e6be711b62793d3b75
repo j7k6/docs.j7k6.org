@@ -1,0 +1,14 @@
+I"å<p>When using multiple Exchange/Office 365 accounts in Outlook 2016, the <em>Sent Items</em> folder is shared by all accounts by default. To use separate <em>Sent Items</em> folders for every account, a registry entry has to be created.</p>
+
+<ol>
+  <li>Open <code class="highlighter-rouge">regedit.exe</code> (as user)</li>
+  <li>Navigate to <code class="highlighter-rouge">HKEY_CURRENT_USER</code> &gt; <code class="highlighter-rouge">Software</code> &gt; <code class="highlighter-rouge">Microsoft</code> &gt; <code class="highlighter-rouge">Office</code> &gt; <code class="highlighter-rouge">16</code> &gt; <code class="highlighter-rouge">Outlook</code> &gt; <code class="highlighter-rouge">Preferences</code></li>
+  <li>Create new <strong>DWORD</strong> entry <code class="highlighter-rouge">DelegateSentItemsStyle</code> with value <code class="highlighter-rouge">1</code></li>
+  <li>Restart Outlook</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="http://www.ugg.li/e-mails-die-in-outlook-von-einem-gemeinsamen-postfach-aus-versendet-werden-landen-nicht-im-gemeinsamen-gesendete-objekte-ordner/">http://www.ugg.li/e-mails-die-in-outlook-von-einem-gemeinsamen-postfach-aus-versendet-werden-landen-nicht-im-gemeinsamen-gesendete-objekte-ordner/</a></li>
+</ol>
+:ET

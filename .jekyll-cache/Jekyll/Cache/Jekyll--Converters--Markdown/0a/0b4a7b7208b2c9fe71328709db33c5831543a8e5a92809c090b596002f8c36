@@ -1,0 +1,5 @@
+I"Õ<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -q -F "&lt;$NEW_LINE&gt;" &lt;$FILE&gt; || echo "&lt;$NEW_LINE&gt;" &gt;&gt; &lt;$FILE&gt;
+</code></pre></div></div>
+
+<hr />
+:ET

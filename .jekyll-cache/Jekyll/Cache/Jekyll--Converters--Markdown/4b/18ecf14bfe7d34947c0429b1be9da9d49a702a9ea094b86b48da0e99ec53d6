@@ -1,0 +1,7 @@
+I"˜<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> python-pip libffi-dev libssl-dev
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip certbot ndg-httpsclient pyasn1 <span class="nv">idna</span><span class="o">==</span>2.5
+</code></pre></div></div>
+
+<hr />
+:ET

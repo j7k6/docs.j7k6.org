@@ -1,0 +1,20 @@
+I"µ	<h2 id="method-1">Method 1</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump <span class="nt">-u</span>&lt;<span class="nv">$USER</span><span class="o">&gt;</span> <span class="nt">-p</span>&lt;<span class="nv">$PASSWORD</span><span class="o">&gt;</span> <span class="nt">-c</span> <span class="nt">-e</span> <span class="nt">--default-character-set</span><span class="o">=</span>utf8 <span class="nt">--single-transaction</span> <span class="nt">--skip-set-charset</span> <span class="nt">--add-drop-database</span> <span class="nt">-B</span> <span class="nv">$DATABASE</span> | <span class="se">\</span>
+  <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/DEFAULT CHARACTER SET latin1/DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci/'</span> <span class="nt">-e</span> <span class="s1">'s/DEFAULT CHARSET=latin1/DEFAULT CHARSET=utf8/'</span> | <span class="se">\</span>
+  mysql <span class="nt">-u</span>&lt;<span class="nv">$USER</span><span class="o">&gt;</span> <span class="nt">-p</span>&lt;<span class="nv">$PASSOWRD</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="method-2">Method 2</h2>
+<ol>
+  <li>Generate SQL statements
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s1">'ALTER TABLE `'</span><span class="p">,</span> <span class="n">tbl</span><span class="p">.</span><span class="nv">`TABLE_SCHEMA`</span><span class="p">,</span> <span class="s1">'`.`'</span><span class="p">,</span> <span class="n">tbl</span><span class="p">.</span><span class="nv">`TABLE_NAME`</span><span class="p">,</span> <span class="s1">'` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;'</span><span class="p">)</span> <span class="k">FROM</span> <span class="nv">`information_schema`</span><span class="p">.</span><span class="nv">`TABLES`</span> <span class="n">tbl</span> <span class="k">WHERE</span> <span class="n">tbl</span><span class="p">.</span><span class="nv">`TABLE_SCHEMA`</span> <span class="o">=</span> <span class="s1">'&lt;$DATABASE&gt;'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Query generated SQL statements</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://docs.moodle.org/23/en/Converting_your_MySQL_database_to_UTF8">https://docs.moodle.org/23/en/Converting_your_MySQL_database_to_UTF8</a></li>
+</ol>
+:ET

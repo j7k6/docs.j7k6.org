@@ -1,0 +1,12 @@
+I"�<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">STOP</span> <span class="n">SLAVE</span><span class="p">;</span>
+<span class="k">SHOW</span> <span class="n">SLAVE</span> <span class="n">STATUS</span><span class="err">\</span><span class="k">G</span><span class="p">;</span>
+<span class="k">RESET</span> <span class="n">SLAVE</span><span class="p">;</span>
+<span class="n">CHANGE</span> <span class="n">MASTER</span> <span class="k">TO</span> <span class="n">MASTER_LOG_FILE</span><span class="o">=</span><span class="err">’</span><span class="o">&lt;</span><span class="err">$</span><span class="n">RELAY_MATER_LOG_FILE</span><span class="o">&gt;</span><span class="err">′</span><span class="p">,</span> <span class="n">MASTER_LOG_POS</span><span class="o">=&lt;</span><span class="err">$</span><span class="n">EXEC_MASTER_LOG_POS</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">START</span> <span class="n">SLAVE</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://www.my-it-brain.de/wordpress/mysql-relay-log-read-failure-beheben/">http://www.my-it-brain.de/wordpress/mysql-relay-log-read-failure-beheben/</a></li>
+</ol>
+:ET

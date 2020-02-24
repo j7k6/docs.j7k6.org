@@ -1,0 +1,5 @@
+I"Ì<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip <span class="nt">-s</span> <span class="nt">-s</span> neigh flush all
+</code></pre></div></div>
+
+<hr />
+:ET

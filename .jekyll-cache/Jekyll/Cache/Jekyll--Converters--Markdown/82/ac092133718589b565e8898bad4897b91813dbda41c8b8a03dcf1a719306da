@@ -1,0 +1,121 @@
+I"%<p>When I started using Linux actively 5 years ago, I challenged myself to get comfortable with <em>vim</em> and despite the usual initial difficulties, I learned to love the editor. As presumably every <em>vim</em> novice, I started to get my hands on the mystical <em>.vimrc</em> file.</p>
+
+<p>I discovered the <a href="https://reddit.com/r/unixporn">/r/unixporn</a> subreddit and got lots of inspiration from the lovely crafted terminal setups posted there.</p>
+
+<p>Obviously, in the beginning I just copied and pasted blocks of <em>.vimrc</em> configs from other dotfile repos and tutorials, without understanding what the lines I pasted mean. Of course I used all kind of seemingly “cool” and useful plugins, added a plugin-manager (<em>Pathogen</em>, <em>Vundler</em>, …) and got fancy with the <em>Powerline</em> plugin.</p>
+
+<p>My <em>.vimrc</em> fastly grow to a big, bulky mess of mindless configuration blocks. Thanks to blog posts like <a href="https://web.archive.org/web/20180106045128/https://dougblack.io/words/a-good-vimrc.html">Doug Black’s <em>‘A Good Vimrc’</em></a>, I started trying to understand what the <em>.vimrc</em> configuration options do.</p>
+
+<p>I liked Doug Black’s approach of “<em>Don’t put any lines in your vimrc that you don’t understand.</em>” and later came to the conclusion that I don’t need most of the stuff in my <em>.vimrc</em>. So I started from scratch, read a lot about <em>vim</em>’s configuration possibilities and tried to only use an option if I fully understand it’s purpose.</p>
+
+<p>By doing that and working with <em>vim</em> on a daily basis, I also learned that I don’t need any plugins at all. I know that this might seem very drastic for most people (no autocomplete plugin!), but as a Linux Sysadmin it totally fulfills all my needs.</p>
+
+<p>I set myself a goal to reduce my <em>.vimrc</em> to a maximum of <strong>50 SLOC</strong>! That means that my <em>vim</em> configuration most likely doesn’t fit anybody else’s needs, but it works great for me and I understand every single line in it.</p>
+
+<p>Enough of the introduction, here it is:</p>
+
+<h2 id="basic-settings">Basic Settings</h2>
+<p>This first lines cover the very basic of <em>vim</em>’s behaviour, most of it self-explanatory:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set autoread                                     " reload on external file changes
+set backspace=indent,eol,start                   " backspace behaviour
+set clipboard=unnamed,unnamedplus                " enable clipboard
+set encoding=utf8                                " enable utf8 support
+set hidden                                       " hide buffers, don't close
+set mouse=a                                      " enable mouse support
+set nowrap                                       " disable wrapping
+set number                                       " show line numbers
+set term=xterm-256color                          " terminal type
+set wildmenu wildmode=longest:full,full          " wildmode settings
+</code></pre></div></div>
+
+<h2 id="ui-settings">UI Settings</h2>
+<p>Some UI settings, like whitespace characters, syntax highlighting and a little hack (<em>scrollback</em>), which always keeps the current line vertically centered on the screen:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on                        " enable filetype detection
+set listchars=eol:¶,trail:•,tab:▸\               " whitespace characters
+set scrolloff=999                                " center cursor position vertically
+set showbreak=¬\                                 " Wrapping character
+set showmatch                                    " show matching brackets
+syntax on                                        " enable syntax highlightning
+</code></pre></div></div>
+
+<h2 id="colors">Colors</h2>
+<p>I really liked <em>Atom</em>’s default colorscheme <strong>Onedark</strong>, so I ditched <em>Solarized Dark</em> for this one at some point. <a href="https://github.com/joshdick/onedark.vim">Josh Dick recreated it for <em>vim</em></a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colorscheme onedark                              " set colorscheme
+hi Normal guibg=NONE ctermbg=NONE|               " transparency fix
+let g:onedark_termcolors=256                     " enable 256 colors support
+</code></pre></div></div>
+
+<h2 id="statusline">Statusline</h2>
+<p>This is propably the most minimalistic (and weirdest) part of my <em>.vimrc</em>. I don’t use the statusline at all, just the ruler. Besides of it’s minimalistic nature, I really like to have only one fixed line on the bottom for everything, I have no need for more fancy information except the cursor position, the current filesize and the modified status:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set laststatus=0                                 " disable statusline
+set ruler rulerformat=%40(%=%&lt;%F%m\ \
+                      \›\ %{getfsize(@%)}B\ \
+                      \›\ %l/%L:%v%)
+</code></pre></div></div>
+
+<h2 id="tabs--indentation">Tabs &amp; Indentation</h2>
+<p><a href="https://www.youtube.com/watch?v=SsoOG6ZeyUI"><em>Spaces</em> over <em>Tabs</em>! (and <em>vim</em> over <em>emacs</em>!)</a>, it’s the law! Or for me: <em>2 spaces equal 1 tabstop</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set autoindent expandtab                         " autoindentation &amp; tabbing
+set shiftwidth=2 softtabstop=2 tabstop=2         " 1 tab = 2 spaces
+</code></pre></div></div>
+
+<h2 id="search-settings">Search Settings</h2>
+<p>Plain and simple: highlight search results, ignore case, icremental search, use case if at least one character is upper-case and the other isn’t:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set hlsearch ignorecase incsearch smartcase      " search options
+</code></pre></div></div>
+
+<h2 id="undo--backup">Undo &amp; Backup</h2>
+<p>Very useful feature, which isn’t configured properly in default <em>vim</em> configs. This one uses <em>undo</em> files to make the undo-history persistent on disk. Also it disables the annoying <em>.swp</em> files, which tend to pollute directories and git repos (if <em>.gitignore</em> is not configured properly):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set nobackup noswapfile nowritebackup            " disable backup/swap files
+set undofile undodir=~/.vim/undo undolevels=9999 " undo options
+</code></pre></div></div>
+
+<h2 id="performace-tuning">Performace Tuning</h2>
+<p>I don’t remember the blog post where this was discussed, but it’s a real performance booster:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set lazyredraw                                   " enable lazyredraw
+set nocursorline                                 " disable cursorline
+set ttyfast                                      " enable fast terminal connection
+</code></pre></div></div>
+
+<h2 id="key-mappings">Key Mappings</h2>
+<p>A very useful <em>vim</em> feature, which I only learned to use recently, is the <em>leader</em> key. This feature alone gave my <em>vim</em> experience a powerful boost:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let mapleader=','                                " leader key
+</code></pre></div></div>
+
+<p>I only use a dozen custom <em>leader key</em> commands, because who can remember more than that?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nnoremap &lt;leader&gt;, :let @/=''&lt;CR&gt;:noh&lt;CR&gt;|       " clear search
+nnoremap &lt;leader&gt;# :g/\v^(#\|$)/d_&lt;CR&gt;|          " delete commented/blank lines
+nnoremap &lt;leader&gt;b :ls&lt;CR&gt;:buffer&lt;space&gt;|        " show/select buffer
+nnoremap &lt;leader&gt;d :w !diff % -&lt;CR&gt;|             " show diff
+nnoremap &lt;silent&gt; &lt;leader&gt;i gg=G``&lt;CR&gt;|          " fix indentation
+nnoremap &lt;leader&gt;l :set list! list?&lt;CR&gt;|         " toggle list (special chars)
+nnoremap &lt;leader&gt;n :set invnumber number?&lt;CR&gt;|   " toggle line numbers
+nnoremap &lt;leader&gt;p :set invpaste paste?&lt;CR&gt;|     " toggle paste mode
+nnoremap &lt;leader&gt;r :retab&lt;CR&gt;|                   " convert tabs to spaces
+nnoremap &lt;leader&gt;s :source $MYVIMRC&lt;CR&gt;|         " reload .vimrc
+nnoremap &lt;silent&gt; &lt;leader&gt;t :%s/\s\+$//e&lt;CR&gt;|    " trim whitespace
+nnoremap &lt;leader&gt;w :set wrap! wrap?&lt;CR&gt;|         " toggle wrapping
+</code></pre></div></div>
+
+<p>One last command can save lives if you forgot to run <em>vim</em> as root before editing a file: <code class="highlighter-rouge">:w!!</code> calls <code class="highlighter-rouge">sudo</code> to write the buffer to the file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cnoreabbrev w!! w !sudo tee &gt; /dev/null %|       " write file with sudo
+</code></pre></div></div>
+
+<h2>…</h2>
+<p>And that’s all the <em>vim</em> configuration I need!</p>
+
+<p>Of course I have a <a href="https://github.com/j7k6">Github</a> repo for my <a href="https://github.com/j7k6/dotfiles"><em>dotfiles</em></a>.</p>
+
+<hr />
+:ET

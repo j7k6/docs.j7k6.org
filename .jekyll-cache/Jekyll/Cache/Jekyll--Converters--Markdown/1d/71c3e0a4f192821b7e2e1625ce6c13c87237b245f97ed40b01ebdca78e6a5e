@@ -1,0 +1,17 @@
+I"Š<ol>
+  <li>Download the <strong>maxView Storage Manager</strong> from <a href="https://storage.microsemi.com/de-de/speed/raid/storage_manager/msm_vmware_v1_08_21375_zip.php">Microsemi</a>.</li>
+  <li><code class="highlighter-rouge">unzip msm_vmware_v1_08_21375.zip</code></li>
+  <li>SCP the <code class="highlighter-rouge">cim/esxi6_0/cim/vmware-esx-provider-arc*.vib</code> files to the ESXi system.</li>
+  <li>On ESXi, install the driver bundle:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli software acceptance <span class="nb">set</span> <span class="nt">--level</span><span class="o">=</span>CommunitySupported
+esxcli software vib <span class="nb">install</span> <span class="nt">-v</span><span class="o">=</span><span class="s2">"/tmp/vmware-esx-provider-arcconf.vib"</span> <span class="nt">--no-sig-check</span>
+esxcli software vib <span class="nb">install</span> <span class="nt">-v</span><span class="o">=</span><span class="s2">"/tmp/vmware-esx-provider-arc-cim-provider.vib"</span> <span class="nt">--no-sig-check</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Reboot ESXi.</li>
+  <li>In <em>vSphere</em>, navigate to <em>Monitor</em> &gt; <em>Hardware</em> &gt; <em>Storage</em> to view the RAID Controllerâ€™s status:
+<img src="/files/vmware-esxi-adaptec-raid-monitor.png" alt="vmware-esxi-adaptec-raid-monitor.png" /></li>
+</ol>
+
+<hr />
+:ET

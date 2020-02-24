@@ -1,0 +1,56 @@
+I"<ol>
+  <li>Install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> duplicity duply python-boto
+</code></pre></div>    </div>
+  </li>
+  <li>Generate <em>GPG</em> keypair:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--gen-key</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Export secret key (optional)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--list-keys</span> <span class="c"># to get &lt;$GPG_KEY_ID&gt;</span>
+gpg <span class="nt">--export-secret-keys</span> <span class="nt">-a</span> &lt;<span class="nv">$GPG_KEY_ID</span><span class="o">&gt;</span> <span class="o">&gt;</span> backupkey.asc
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">duply</code> backup profile:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>duply backup create
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/duply/backup/conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GPG_KEY="&lt;$GPG_KEY_ID&gt;"
+GPG_PW="&lt;$GPG_KEY_PASSWORD&gt;"
+
+TARGET="s3://s3.&lt;$AWS_REGION&gt;.amazonaws.com/&lt;$AWS_BUCKET&gt;/&lt;$BACKUP_NAME&gt;"
+
+export AWS_ACCESS_KEY_ID="&lt;$AWS_ACCESS_KEY_ID&gt;"
+export AWS_SECRET_ACCESS_KEY="&lt;$AWS_SECRET_ACCESS_KEY&gt;"
+
+SOURCE="/"
+
+MAX_AGE=1M
+MAX_FULL_BACKUPS=4
+MAX_FULLS_WITH_INCRS=1
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/duply/backup/exclude</code>:
+    <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="s">/proc/*</span>
+<span class="pi">-</span> <span class="s">/sys/*</span>
+<span class="pi">-</span> <span class="s">/dev/*</span>
+<span class="pi">-</span> <span class="s">/mnt/*</span>
+<span class="pi">-</span> <span class="s">/tmp/*</span>
+<span class="pi">-</span> <span class="s">/var/cache/*</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add cronjobs (<code class="highlighter-rouge">crontab -e</code>):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 0 * * 7 /usr/bin/duply backup full_verify_purge --force &gt; /var/log/duply.log 2&gt;&amp;1
+0 0 * * 1-6 /usr/bin/duply backup incr &gt; /var/log/duply.log 2&gt;&amp;1
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://www.tech-island.com/tutorials/backup-s3-storage-duplicity-duply">https://www.tech-island.com/tutorials/backup-s3-storage-duplicity-duply</a></li>
+</ol>
+:ET

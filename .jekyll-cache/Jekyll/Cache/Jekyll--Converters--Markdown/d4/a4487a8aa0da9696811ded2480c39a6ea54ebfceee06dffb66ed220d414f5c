@@ -1,0 +1,24 @@
+I"~<ol>
+  <li>Create <code class="highlighter-rouge">genkey</code> file for <em>RSA</em>-type, <em>4096</em> bit key:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key-Type: 1
+Key-Length: 4096
+Subkey-Type: 1
+Subkey-Length: 4096
+Name-Real: &lt;$NAME&gt;
+Name-Email: &lt;$EMAIL&gt;
+Expire-Date: 0
+Passphrase: &lt;$PASSPHRASE&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Generate key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--gen-key</span> <span class="nt">--batch</span> genkey
+</code></pre></div>    </div>
+  </li>
+  <li>Destroy <code class="highlighter-rouge">genkey</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gshred <span class="nt">-u</span> genkey
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

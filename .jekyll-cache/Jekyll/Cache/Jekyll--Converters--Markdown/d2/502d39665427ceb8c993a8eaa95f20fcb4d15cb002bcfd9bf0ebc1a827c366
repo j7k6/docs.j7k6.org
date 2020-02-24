@@ -1,0 +1,83 @@
+I"‡<ol>
+  <li>Generate a download link <a href="http://www.truecrypt.org/downloads2">here</a>.</li>
+  <li>Download:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://www.truecrypt.org/download/transient/&lt;DOWNLOADLINK&gt;/TrueCrypt%207.1a%20Source.tar.gz
+wget http://prdownloads.sourceforge.net/wxwindows/wxWidgets-2.8.12.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>Install dependencies:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>libfuse-dev pkg-config
+<span class="nb">mkdir</span> ~/pkcs-header-dir
+<span class="nb">cd</span> ~/pkcs-header-dir
+wget ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-11/v2-20/<span class="k">*</span>.h
+<span class="nb">cd</span> ..
+</code></pre></div>    </div>
+  </li>
+  <li>Build <strong>TrueCrypt</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar </span>zxvf TrueCrypt<span class="se">\ </span>7.1a<span class="se">\ </span>Source.tar.gz
+<span class="nb">tar </span>zxvf wxWidgets-2.8.12.tar.gz
+<span class="nb">export </span><span class="nv">PKCS11_INC</span><span class="o">=</span>/home/pi/pkcs-header-dir/
+<span class="nb">cd </span>truecrypt-7.1a-source/
+make <span class="nv">NOGUI</span><span class="o">=</span>1 <span class="nv">WX_ROOT</span><span class="o">=</span>/home/pi/wxWidgets-2.8.12 wxbuild
+make <span class="nv">NOGUI</span><span class="o">=</span>1 <span class="nv">WXSTATIC</span><span class="o">=</span>1
+<span class="nb">sudo cp </span>Main/truecrypt /usr/local/bin/
+</code></pre></div>    </div>
+  </li>
+  <li>Create mount point:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> /media/truecrypt1
+<span class="nb">sudo chmod </span>777 /media/truecrypt1
+<span class="nb">sudo chown </span>pi:root /media/truecrypt1
+</code></pre></div>    </div>
+  </li>
+  <li>Add init script <code class="highlighter-rouge">/etc/init.d/truecrypt</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          truecrypt</span>
+<span class="c"># Required-Start:    $remote_fs $syslog</span>
+<span class="c"># Required-Stop:     </span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Short-Description: start truecrypt volume at boot time</span>
+<span class="c"># Description:       start truecrypt volume at boot time</span>
+<span class="c">### END INIT INFO</span>
+   
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/bin:/sbin:/bin:/usr/local/bin"</span>
+   
+start<span class="o">()</span>
+<span class="o">{</span>
+  <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">" * mounting truecrypt ... "</span>
+  truecrypt <span class="nt">-t</span> <span class="nt">-k</span> <span class="s2">"/home/pi/.tckey"</span> /dev/sda1 /media/truecrypt1/ <span class="nt">-v</span> <span class="nt">-p</span> <span class="s2">""</span> <span class="nt">--protect-hidden</span><span class="o">=</span>no <span class="nt">-m</span><span class="o">=</span>nokernelcrypto <span class="nt">--fs-options</span><span class="o">=</span><span class="s2">"umask=0000"</span>
+<span class="o">}</span>
+
+stop<span class="o">()</span>
+<span class="o">{</span>
+  <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">" * umounting truecrypt ..."</span>
+  truecrypt <span class="nt">-d</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+  </span>start<span class="p">)</span>
+    start
+    <span class="p">;;</span>
+  stop<span class="p">)</span>
+    stop
+    <span class="p">;;</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"You should try those ones: /etc/init.d/truecrypt {start|stop}"</span> 
+    <span class="nb">exit </span>1
+    <span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="nb">exit </span>0
+</code></pre></div>    </div>
+  </li>
+  <li>Start TrueCrypt service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chmod</span> +x /etc/init.d/truecrypt
+<span class="nb">sudo </span>update-rc.d truecrypt defaults
+/etc/init.d/truecrypt start
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

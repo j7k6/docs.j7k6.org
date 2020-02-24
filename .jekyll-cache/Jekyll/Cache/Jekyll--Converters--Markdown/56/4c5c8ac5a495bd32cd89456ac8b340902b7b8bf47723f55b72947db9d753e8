@@ -1,0 +1,17 @@
+I"a<p>This snippet is useful for highlighting multiple keywords in search results:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">searchResult</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span><span class="dl">"</span>
+<span class="kd">var</span> <span class="nx">searchQuery</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ipsum sadipscing</span><span class="dl">"</span>
+
+<span class="kd">var</span> <span class="nx">highlightText</span> <span class="o">=</span> <span class="nx">searchResult</span><span class="p">.</span><span class="nx">replace</span><span class="p">((</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">searchQuery</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">/</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">|</span><span class="dl">'</span><span class="p">),</span> <span class="dl">'</span><span class="s1">gi</span><span class="dl">'</span><span class="p">)),</span> <span class="nx">match</span> <span class="o">=&gt;</span> <span class="s2">`&lt;strong&gt;</span><span class="p">${</span><span class="nx">match</span><span class="p">}</span><span class="s2">&lt;/strong&gt;`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Result:</p>
+<blockquote>
+  <p>Lorem <strong>ipsum</strong> dolor sit amet, consetetur <strong>sadipscing</strong> elitr</p>
+</blockquote>
+
+<hr />
+<ol>
+  <li><a href="https://stackoverflow.com/a/48950887/8434893">https://stackoverflow.com/a/48950887/8434893</a></li>
+</ol>
+:ET

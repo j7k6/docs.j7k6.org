@@ -1,0 +1,9 @@
+I"|<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s3cmd <span class="se">\</span>
+  <span class="nt">--access_key</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$AWS_ACCESS_KEY_ID</span><span class="s2">&gt;"</span> <span class="se">\</span>
+  <span class="nt">--secret_key</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$AWS_SECRET_ACCESS_KEY</span><span class="s2">&gt;"</span> <span class="se">\</span>
+  modify <span class="nt">--add-header</span> <span class="s2">"x-amz-website-redirect-location:/&lt;</span><span class="nv">$REDIRECT_LOCATION</span><span class="s2">&gt;/"</span> <span class="se">\</span>
+  s3://&lt;<span class="nv">$AWS_S3_BUCKET</span><span class="o">&gt;</span>/&lt;<span class="nv">$OBJECT</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

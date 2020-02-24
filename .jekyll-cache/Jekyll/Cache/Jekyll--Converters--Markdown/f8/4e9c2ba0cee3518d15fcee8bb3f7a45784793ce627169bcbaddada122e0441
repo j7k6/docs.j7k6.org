@@ -1,0 +1,12 @@
+I"÷<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Encrypt file with password</span>
+gpg <span class="nt">-c</span> <span class="nt">-a</span> <span class="nt">--cipher-algo</span> AES256 &lt;<span class="nv">$FILE</span><span class="o">&gt;</span>
+
+<span class="c"># Decrypt file with password</span>
+gpg <span class="nt">-o</span> &lt;<span class="nv">$FILE</span><span class="o">&gt;</span> <span class="nt">-d</span> &lt;<span class="nv">$FILE</span><span class="o">&gt;</span>.asc
+
+<span class="c"># Export public key</span>
+gpg <span class="nt">--armor</span> <span class="nt">--export</span> &lt;<span class="nv">$EMAIL</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

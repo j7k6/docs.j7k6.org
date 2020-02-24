@@ -1,0 +1,16 @@
+I"(
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> &lt;<span class="nv">$PORT1</span><span class="o">&gt;</span> <span class="nt">-m</span> recent <span class="nt">--set</span> <span class="nt">--rsource</span> <span class="nt">--name</span> KNOCK1
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> &lt;<span class="nv">$PORT2</span><span class="o">&gt;</span> <span class="nt">-m</span> recent <span class="nt">--rcheck</span> <span class="nt">--rsource</span> <span class="nt">--seconds</span> 10 <span class="nt">--name</span> KNOCK1 <span class="nt">-m</span> recent <span class="nt">--set</span> <span class="nt">--rsource</span> <span class="nt">--name</span> KNOCK2
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> &lt;<span class="nv">$PORT3</span><span class="o">&gt;</span> <span class="nt">-m</span> recent <span class="nt">--rcheck</span> <span class="nt">--rsource</span> <span class="nt">--seconds</span> 10 <span class="nt">--name</span> KNOCK2 <span class="nt">-m</span> recent <span class="nt">--set</span> <span class="nt">--rsource</span> <span class="nt">--name</span> PASSED
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 22 <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-m</span> recent <span class="nt">--rcheck</span> <span class="nt">--rsource</span> <span class="nt">--seconds</span> 10 <span class="nt">--name</span> PASSED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> multiport <span class="nt">--dports</span> &lt;<span class="nv">$PORT1</span><span class="o">&gt;</span>,&lt;<span class="nv">$PORT2</span><span class="o">&gt;</span>,&lt;<span class="nv">$PORT3</span><span class="o">&gt;</span> <span class="nt">-j</span> ACCEPT
+
+iptables <span class="nt">-A</span> INPUT <span class="nt">-m</span> conntrack <span class="nt">--ctstate</span> ESTABLISHED,RELATED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 22 <span class="nt">-j</span> DROP
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://googlecodejammer.blogspot.de/p/iptables-only.html">http://googlecodejammer.blogspot.de/p/iptables-only.html</a></li>
+</ol>
+:ET

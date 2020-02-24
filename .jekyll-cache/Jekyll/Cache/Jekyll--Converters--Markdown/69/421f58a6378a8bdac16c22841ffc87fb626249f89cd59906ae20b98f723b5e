@@ -1,0 +1,5 @@
+I"N<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip <span class="nt">-FF</span> &lt;<span class="nv">$DAMAGED_ZIP_FILE</span><span class="o">&gt;</span> <span class="nt">-O</span> &lt;<span class="nv">$FIXED_ZIP_FILE</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

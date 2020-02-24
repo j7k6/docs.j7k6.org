@@ -1,0 +1,16 @@
+I"ó<ol>
+  <li>Open <code class="highlighter-rouge">cmd</code> as Administrator.</li>
+  <li>Run  <code class="highlighter-rouge">diskpart</code></li>
+  <li><code class="highlighter-rouge">list disk</code></li>
+  <li><code class="highlighter-rouge">select disk &lt;$DISK_ID&gt;</code></li>
+  <li><code class="highlighter-rouge">clean</code></li>
+  <li><code class="highlighter-rouge">create partition primary</code></li>
+  <li><code class="highlighter-rouge">select partition 1</code></li>
+  <li><code class="highlighter-rouge">active</code></li>
+  <li><code class="highlighter-rouge">format fs=fat32 quick</code></li>
+  <li><code class="highlighter-rouge">exit</code></li>
+  <li>Copy Windows ISO image content to newly formatted USB drive.</li>
+</ol>
+
+<hr />
+:ET

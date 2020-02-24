@@ -1,0 +1,29 @@
+I"<ol>
+  <li>Connect to VM:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
+</code></pre></div>    </div>
+  </li>
+  <li><em>Zero</em> free disk space:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/var/tempfile
+</code></pre></div>    </div>
+  </li>
+  <li>Close the terminal window and kill the <em>Docker</em> process.</li>
+  <li>Install <code class="highlighter-rouge">qemu</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>qemu
+</code></pre></div>    </div>
+  </li>
+  <li>Compress VM disk image:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux
+<span class="nb">mv </span>Docker.qcow2 Docker.qcow2.orig
+qemu-img convert <span class="nt">-O</span> qcow2 Docker.qcow2.orig Docker.qcow2
+<span class="nb">rm </span>Docker.qcow2.orig
+</code></pre></div>    </div>
+  </li>
+  <li>Start <em>Docker</em></li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://github.com/docker/for-mac/issues/371#issuecomment-242047368">https://github.com/docker/for-mac/issues/371#issuecomment-242047368</a></li>
+</ol>
+:ET

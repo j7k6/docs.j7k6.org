@@ -1,0 +1,27 @@
+I"á<ol>
+  <li>Install required Packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>chntpw ntfs-3g
+</code></pre></div>    </div>
+  </li>
+  <li>Mount Windows Partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">-t</span> ntfs /dev/sda2 /mnt
+</code></pre></div>    </div>
+  </li>
+  <li>Change Directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /mnt/WINDOWS/system32/config
+</code></pre></div>    </div>
+  </li>
+  <li>List available Users:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chntpw <span class="nt">-l</span> SAM
+</code></pre></div>    </div>
+  </li>
+  <li>Select User:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chntpw <span class="nt">-u</span> &lt;<span class="nv">$USERNAME</span><span class="o">&gt;</span> SAM 
+</code></pre></div>    </div>
+  </li>
+  <li>Select an Option from the Menu.</li>
+  <li>Unmount Windows Partition &amp; Reboot.</li>
+</ol>
+
+<hr />
+:ET

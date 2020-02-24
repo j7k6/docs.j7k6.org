@@ -1,0 +1,19 @@
+I"Ú<ol>
+  <li>Remove the <code class="highlighter-rouge">certbot</code> system package, because itâ€™s most likely not <em>ACMEv2</em> compatible yet:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get remove <span class="nt">-y</span> certbot
+</code></pre></div>    </div>
+  </li>
+  <li>Install <code class="highlighter-rouge">certbot</code> (<em>&gt;= v0.22.0</em>) with pip:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--upgrade</span> certbot
+</code></pre></div>    </div>
+  </li>
+  <li>Obtain wildcard certificate:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>certbot certonly <span class="nt">--rsa-key-size</span> 4096 <span class="nt">--manual</span> <span class="nt">--agree-tos</span> <span class="nt">--manual-public-ip-logging-ok</span> <span class="nt">--email</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$EMAIL</span><span class="s2">&gt;"</span> <span class="nt">--server</span><span class="o">=</span>https://acme-v02.api.letsencrypt.org/directory <span class="nt">--preferred-challenges</span><span class="o">=</span>dns <span class="nt">--domain</span><span class="o">=</span><span class="s2">"*.&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><code class="highlighter-rouge">certbot</code> will ask you to create a new <code class="highlighter-rouge">TXT</code> DNS record for the Domain. Create the record and continue in <code class="highlighter-rouge">certbot</code> by pressing <em>enter</em>.</p>
+
+<hr />
+:ET

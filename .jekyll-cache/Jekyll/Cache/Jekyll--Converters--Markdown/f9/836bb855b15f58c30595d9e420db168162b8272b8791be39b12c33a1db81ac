@@ -1,0 +1,17 @@
+I"³<ol>
+  <li>Add <em>Public Key</em> to <code class="highlighter-rouge">authorized_keys</code> file on ESXi system:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"&lt;</span><span class="nv">$PUB_KEY</span><span class="s2">&gt;"</span> <span class="o">&gt;&gt;</span> /etc/ssh/keys-root/authorized_keys
+</code></pre></div>    </div>
+  </li>
+  <li>Set <em>Sticky Bit</em> on file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +t /etc/ssh/keys-root/authorized_keys
+</code></pre></div>    </div>
+  </li>
+  <li>Make the <code class="highlighter-rouge">authorized_keys</code> file persistent:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/sbin/auto-backup.sh
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

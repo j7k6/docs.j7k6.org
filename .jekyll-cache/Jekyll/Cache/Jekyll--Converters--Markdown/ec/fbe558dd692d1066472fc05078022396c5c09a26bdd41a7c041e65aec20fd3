@@ -1,0 +1,5 @@
+I"ó<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 <span class="nt">-req</span> <span class="nt">-days</span> 3650 <span class="nt">-in</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.csr <span class="nt">-signkey</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.key <span class="nt">-out</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.crt
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,11 @@
+I"¦<blockquote>
+  <p><em>Manage &gt; System &gt; Advanced settings</em></p>
+</blockquote>
+
+<p>Set <code class="highlighter-rouge">VMkernel.Boot.disableACSCheck</code> to <code class="highlighter-rouge">True</code>.</p>
+
+<hr />
+<ol>
+  <li><a href="https://vmwarehints.blogspot.de/2012/10/pci-passthrough-direct-io-or-sr-iov.html">https://vmwarehints.blogspot.de/2012/10/pci-passthrough-direct-io-or-sr-iov.html</a></li>
+</ol>
+:ET

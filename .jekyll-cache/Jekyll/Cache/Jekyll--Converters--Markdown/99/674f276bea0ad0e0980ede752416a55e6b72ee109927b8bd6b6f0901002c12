@@ -1,0 +1,5 @@
+I"¤<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-C</span> &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$REMOTE_HOST</span><span class="o">&gt;</span> <span class="s2">"dd if=/dev/sda"</span> | <span class="nb">dd </span><span class="nv">of</span><span class="o">=</span>/dev/sda
+</code></pre></div></div>
+
+<hr />
+:ET

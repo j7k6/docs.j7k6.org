@@ -1,0 +1,21 @@
+I"Ï<h2 id="linux">Linux</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping <span class="nt">-M</span> <span class="k">do</span> <span class="nt">-s</span> 1500 <span class="nt">-c</span> 1 &lt;<span class="nv">$HOST</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="macos">macOS</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping <span class="nt">-c</span> 1 <span class="nt">-D</span> <span class="nt">-s</span> 1500 &lt;<span class="nv">$HOST</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="windows">Windows</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping <span class="nt">-n</span> 1 <span class="nt">-l</span> 1500 <span class="nt">-f</span> &lt;<span class="nv">$HOST</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Decrease MTU on error (<code class="highlighter-rouge">Message too long</code>) to get the correct value.</p>
+
+<hr />
+<ol>
+  <li><a href="https://www.sonassi.com/help/magestack/setting-correct-mtu-for-openvpn">https://www.sonassi.com/help/magestack/setting-correct-mtu-for-openvpn</a></li>
+  <li><a href="http://michael.stapelberg.de/Artikel/mtu_openvpn">http://michael.stapelberg.de/Artikel/mtu_openvpn</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery">https://en.wikipedia.org/wiki/Path_MTU_Discovery</a></li>
+</ol>
+:ET

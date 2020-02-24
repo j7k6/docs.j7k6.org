@@ -1,0 +1,7 @@
+I"m<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">NTDSUtil.exe</span><span class="w">
+</span><span class="nf">set</span><span class="w"> </span><span class="nx">dsrm</span><span class="w"> </span><span class="nx">password</span><span class="w">
+</span><span class="nf">reset</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="nx">null</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

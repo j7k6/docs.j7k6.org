@@ -1,0 +1,21 @@
+I"><ol>
+  <li>List available disks to get <code class="highlighter-rouge">&lt;$USB_DISK&gt;</code> (e.g. <em>disk4</em>).
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>diskutil list
+</code></pre></div>    </div>
+  </li>
+  <li>Format USB disk:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>diskutil eraseDisk FAT32 <span class="s2">"WIN10USB"</span> MBRFormat &lt;<span class="nv">$USB_DISK</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>This command mounts the Windows 10 ISO file and copies its contents to the USB disk:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo cp</span> <span class="nt">-rp</span> <span class="si">$(</span>hdiutil mount &lt;<span class="nv">$WINDOWS_ISO_FILE</span><span class="o">&gt;</span> | <span class="nb">awk</span> <span class="s1">'{print $2}'</span><span class="si">)</span>/. /Volumes/WIN10USB/
+</code></pre></div>    </div>
+  </li>
+  <li>Eject USB disk:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo diskutil eject &lt;$USB_DISK&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

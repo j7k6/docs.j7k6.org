@@ -1,0 +1,23 @@
+I"¥<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># fix mixed indentation
+gg=G
+
+# set indentation to use 2 spaces
+:set tabstop=2 shiftwidth=2 expandtab
+
+# comment multiple lines
+1. [ctrl+v]
+2. select lines with cursor
+3. [shift+i]
+4. [#]
+5. [esx]
+
+# search &amp; replace
+:%s/&lt;$OLD&gt;/&lt;$NEW&gt;/g
+
+# sort lines alphabetically
+1. [shift+v]
+2. :sort
+</code></pre></div></div>
+
+<hr />
+:ET

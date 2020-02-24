@@ -1,0 +1,5 @@
+I"å<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find &lt;<span class="nv">$PATH</span><span class="o">&gt;</span>/<span class="k">*</span> <span class="nt">-type</span> d <span class="nt">-ctime</span> +&lt;<span class="nv">$DAYS</span><span class="o">&gt;</span> <span class="nt">-exec</span> <span class="nb">rm</span> <span class="nt">-rf</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

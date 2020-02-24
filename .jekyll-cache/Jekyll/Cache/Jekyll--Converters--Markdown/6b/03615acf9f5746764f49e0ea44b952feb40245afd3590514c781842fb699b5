@@ -1,0 +1,84 @@
+I"°<h2 id="installation">Installation</h2>
+<h3 id="add-repository">Add Repository</h3>
+<p>Edit <code class="highlighter-rouge">/etc/apt/sources.list</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb http://packages.dotdeb.org wheezy all
+deb-src http://packages.dotdeb.org wheezy all
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-O</span> - http://www.dotdeb.org/dotdeb.gpg | <span class="nb">sudo </span>apt-key add -
+</code></pre></div></div>
+
+<h3 id="install-packages">Install Packages</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install </span>nginx mysql-server php5-curl php5-dev php5-fpm php5-gd php5-imap php5-intl php5-mcrypt php5-mysql php5-xmlrpc
+</code></pre></div></div>
+
+<h2 id="configuration">Configuration</h2>
+<h3 id="php-fpm">PHP-FPM</h3>
+<p>Edit <code class="highlighter-rouge">/etc/php5/fpm/pool.d/www .conf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>listen = 127.0.0.1:9000
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service php5-fpm restart
+</code></pre></div></div>
+
+<h3 id="nginx">Nginx</h3>
+<p>Edit <code class="highlighter-rouge">/etc/nginx/nginx.conf</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server_names_hash_bucket_size 64;
+</code></pre></div></div>
+
+<p>Edit <code class="highlighter-rouge">/etc/nginx/php.conf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>index index.php index.html index.htm; 
+
+location ~ \.php$ { 
+  try_files $uri =404; 
+
+  fastcgi_split_path_info ^(.+\.php)(/.+)$; 
+  include /etc/nginx/fastcgi_params; 
+
+  fastcgi_param PATH_INFO       $fastcgi_path_info; 
+  fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info; 
+  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; 
+
+  fastcgi_connect_timeout        60; 
+  fastcgi_send_timeout          180; 
+  fastcgi_read_timeout          180; 
+  fastcgi_buffer_size          128k; 
+  fastcgi_buffers            4 256k; 
+  fastcgi_busy_buffers_size    256k; 
+  fastcgi_temp_file_write_size 256k; 
+
+  fastcgi_intercept_errors    on; 
+  fastcgi_ignore_client_abort off; 
+
+  fastcgi_pass 127.0.0.1:9000; 
+}
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service nginx restart
+</code></pre></div></div>
+
+<h2 id="virtual-host">Virtual Host</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/www/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>
+<span class="nb">chown </span>www-data:www-data <span class="nt">-R</span> /var/www
+</code></pre></div></div>
+
+<p>Edit <code class="highlighter-rouge">/etc/nginx/sites-available/&lt;$DOMAIN&gt;</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  listen       80;
+  server_name  &lt;$DOMAIN&gt;;
+  include /etc/nginx/php.conf;
+  charset utf-8;
+
+  root /var/www/&lt;$DOMAIN&gt;/;
+}
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /etc/nginx/sites-available/&lt;DOMAIN&gt; /etc/nginx/sites-enabled
+service nginx restart
+</code></pre></div></div>
+
+<p>More on <a href="/nginx-virtual-hosts-ssl"><em>Virtual Hosts &amp; SSL</em></a>.</p>
+
+<hr />
+:ET

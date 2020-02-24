@@ -1,0 +1,20 @@
+I"@<ol>
+  <li>Create new Policy:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">New-Throttlingpolicy</span><span class="w"> </span><span class="s2">"Increased ActiveSync Devices"</span><span class="w"> </span><span class="nt">-EasMaxDevices</span><span class="w"> </span><span class="nx">20</span><span class="w"> </span><span class="nt">-EasMaxConcurrency</span><span class="w"> </span><span class="nx">20</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Apply Policy to Mailbox:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Set-Mailbox</span><span class="w"> </span><span class="nv">$MAILBOX</span><span class="w"> </span><span class="nt">-ThrottlingPolicy</span><span class="w"> </span><span class="s2">"Increased ActiveSync Devices"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Increase Values
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Set-Throttlingpolicy</span><span class="w"> </span><span class="s2">"Increased ActiveSync Devices"</span><span class="w"> </span><span class="nt">-EasMaxDevices</span><span class="w"> </span><span class="nx">25</span><span class="w"> </span><span class="nt">-EasMaxConcurrency</span><span class="w"> </span><span class="nx">25</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="http://www.msexchange.org/kbase/ExchangeServerTips/ExchangeServer2010/Mobility/HowtoincreasethemaximumnumberofActiveSyncDevicesforaUser.html">http://www.msexchange.org/kbase/ExchangeServerTips/ExchangeServer2010/Mobility/HowtoincreasethemaximumnumberofActiveSyncDevicesforaUser.html</a></li>
+</ol>
+:ET

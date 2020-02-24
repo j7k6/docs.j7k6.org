@@ -1,0 +1,9 @@
+I"Q<ol>
+  <li><code class="highlighter-rouge">vi /etc/vmware/esx.conf</code></li>
+  <li>Find <code class="highlighter-rouge">/device/&lt;$PCI_ID&gt;/owner = "passthru"</code>.</li>
+  <li>Replace <code class="highlighter-rouge">passthru</code> with <code class="highlighter-rouge">vmkernel</code>.</li>
+  <li>Reboot ESXi.</li>
+</ol>
+
+<hr />
+:ET

@@ -1,0 +1,24 @@
+I"<ol>
+  <li>Shutdown all VM’s:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim-cmd vmsvc/power.shutdown <span class="sb">`</span>vim-cmd vmsvc/getallvms | <span class="nb">awk</span> <span class="s1">'NR&gt;1 {print $1}'</span><span class="sb">`</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Get release list:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli software sources profile list <span class="nt">--depot</span><span class="o">=</span>https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml | <span class="nb">grep</span> <span class="s2">"6.7.0"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Install release:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli software profile update <span class="nt">-f</span> <span class="nt">-d</span> https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml <span class="nt">-p</span> ESXi-6.7.0-8169922-standard
+</code></pre></div>    </div>
+    <blockquote>
+      <p><strong>Note</strong>: If the installation fails with a ‘no space left on device’ error, don’t panic, <a href="/vmware-esxi-upgrade-error-no-space-left-on-device-fix/">here</a> is the solution.</p>
+    </blockquote>
+  </li>
+  <li>Reboot <em>ESXi</em>.</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://tinkertry.com/easy-update-to-esxi-67">https://tinkertry.com/easy-update-to-esxi-67</a></li>
+</ol>
+:ET

@@ -1,0 +1,5 @@
+I"L<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli system module <span class="nb">set</span> <span class="nt">--enabled</span><span class="o">=</span><span class="nb">false</span> <span class="nt">--module</span><span class="o">=</span>vmw_ahci
+</code></pre></div></div>
+
+<hr />
+:ET

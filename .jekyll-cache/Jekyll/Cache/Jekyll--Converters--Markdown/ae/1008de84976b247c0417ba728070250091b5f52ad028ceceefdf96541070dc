@@ -1,0 +1,40 @@
+I"
+<ol>
+  <li>Install <em>qemu</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>qemu
+</code></pre></div>    </div>
+  </li>
+  <li>Download <em>qemu-rpi-kernel</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.4.34-jessie
+</code></pre></div>    </div>
+  </li>
+  <li>Download <em>Raspbian</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://director.downloads.raspberrypi.org/raspbian/images/raspbian-2018-06-29/2018-06-27-raspbian-stretch.zip
+unzip 2018-06-27-raspbian-stretch.zip
+</code></pre></div>    </div>
+  </li>
+  <li>Run emulator:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>qemu-system-arm <span class="nt">-kernel</span> ./kernel-qemu-4.4.34-jessie <span class="se">\</span>
+  <span class="nt">-cpu</span> arm1176 <span class="nt">-m</span> 256 <span class="se">\</span>
+  <span class="nt">-M</span> versatilepb <span class="nt">-no-reboot</span> <span class="nt">-serial</span> stdio <span class="se">\</span>
+  <span class="nt">-append</span> <span class="s2">"dwc_otg.lpm_enable=0 root=/dev/sda2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait"</span> <span class="se">\</span>
+  <span class="nt">-drive</span> <span class="s2">"file=./2018-06-27-raspbian-stretch.img,index=0,media=disk,format=raw"</span> <span class="se">\</span>
+  <span class="nt">-net</span> nic <span class="nt">-net</span> user,hostfwd<span class="o">=</span>tcp::22222-:22
+</code></pre></div>    </div>
+    <p><img src="/files/emulate-raspbian-qemu-macos.png" alt="emulate-raspbian-qemu-macos" /></p>
+  </li>
+  <li>Enable SSH service on Raspbian:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="nt">--now</span> ssh
+</code></pre></div>    </div>
+  </li>
+  <li>SSH into emulated Raspbian from macOS host:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-p</span> 22222 pi@localhost
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://gist.github.com/MrAndersonMD/d0d1506a91855d7a022b8cc8d0576b79">https://gist.github.com/MrAndersonMD/d0d1506a91855d7a022b8cc8d0576b79</a></li>
+</ol>
+:ET

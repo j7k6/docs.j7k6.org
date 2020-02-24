@@ -1,0 +1,14 @@
+I" <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># $LOCAL_IP: 'localhost' or machine from local network</span>
+<span class="c"># $LOCAL_PORT: open port on local machine</span>
+<span class="c"># $REMOTE_IP: remote localhost or IP from remote network</span>
+<span class="c"># $REMOTE_PORT: open port on remote site</span>
+
+<span class="c"># Forward Tunnel: map port from remote machine/network on local machine</span>
+ssh <span class="nt">-L</span> &lt;<span class="nv">$LOCAL_PORT</span><span class="o">&gt;</span>:&lt;<span class="nv">$REMOTE_IP</span><span class="o">&gt;</span>:&lt;<span class="nv">$REMOTE_PORT</span><span class="o">&gt;</span> &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>
+
+<span class="c"># Reverse Tunnel: make local port accessable to remote machine</span>
+ssh <span class="nt">-R</span> &lt;<span class="nv">$REMOTE_PORT</span><span class="o">&gt;</span>:&lt;<span class="nv">$LOCAL_IP</span><span class="o">&gt;</span>:&lt;<span class="nv">$LOCAL_PORT</span><span class="o">&gt;</span> &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

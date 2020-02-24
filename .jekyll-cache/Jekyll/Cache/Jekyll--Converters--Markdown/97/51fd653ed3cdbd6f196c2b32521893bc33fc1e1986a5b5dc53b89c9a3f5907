@@ -1,0 +1,15 @@
+I"5<p>This is useful to preview the camera on a headless <em>Raspberry Pi (Zero W)</em> over the network.</p>
+
+<h2 id="client">Client</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-l</span> 5001 | mplayer <span class="nt">-fps</span> 40 <span class="nt">-cache</span> 1024 -
+</code></pre></div></div>
+
+<h2 id="raspberry-pi">Raspberry Pi</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>raspivid <span class="nt">-n</span> <span class="nt">-hf</span> <span class="nt">-vf</span> <span class="nt">-fps</span> 25 <span class="nt">-w</span> 640 <span class="nt">-h</span> 480 <span class="nt">-fl</span> <span class="nt">-t</span> 0 <span class="nt">-o</span> - | nc &lt;<span class="nv">$CLIENT_IP</span><span class="o">&gt;</span> 5001
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://myrobotlab.org/content/testing-streaming-rpi-camera-mplayer-my-pc">http://myrobotlab.org/content/testing-streaming-rpi-camera-mplayer-my-pc</a></li>
+</ol>
+:ET

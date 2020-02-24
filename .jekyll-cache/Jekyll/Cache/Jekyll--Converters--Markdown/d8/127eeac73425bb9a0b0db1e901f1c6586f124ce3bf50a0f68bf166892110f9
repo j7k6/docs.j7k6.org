@@ -1,0 +1,15 @@
+I"&<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postconf <span class="nt">-e</span> <span class="s2">"smtpd_client_restrictions = check_client_access regexp:/etc/postfix/client_restrictions"</span>
+
+<span class="nb">cat</span> <span class="o">&gt;</span> /etc/postfix/client_restrictions <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+/^(dhcp|dialup|ppp|adsl|pool)[^.]*[0-9]/  550 S25R6 check
+</span><span class="no">EOF
+
+</span>postfix reload
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://calomel.org/postfix.html">https://calomel.org/postfix.html</a></li>
+  <li><a href="http://www.gabacho-net.jp/en/anti-spam/anti-spam-system.html">http://www.gabacho-net.jp/en/anti-spam/anti-spam-system.html</a></li>
+</ol>
+:ET

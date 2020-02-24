@@ -1,0 +1,42 @@
+I"
+<h2 id="prerequirements">Prerequirements</h2>
+<ol>
+  <li>Set up <a href="https://www.cloudflare.com"><strong>Cloudflare</strong></a> to answer DNS requests for your domain.</li>
+  <li>Build a static site with <a href="https://jekyllrb.com/"><strong>Jekyll</strong></a> (obviously.)</li>
+  <li>Create a <code class="highlighter-rouge">CNAME</code> file inside the local repository:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"docs.j7k6.org"</span> <span class="o">&gt;</span> CNAME
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="github">GitHub</h2>
+<ol>
+  <li>Create a GitHub repository and push the contents of the local Jekyll repository to it.</li>
+  <li>Navigate to the GitHub repositories’ <em>Settings</em> page and scroll down the the <em>GitHub Pages</em> section to active the hosting by selecting the master branch as <em>Source</em>:
+<img src="/files/jekyll-static-site-github-pages-cloudflare-https/ghpages-01.png" alt="github-ghpages" /></li>
+</ol>
+
+<h2 id="cloudflare">Cloudflare</h2>
+<ol>
+  <li>Create a new <em>CNAME</em> DNS record for the desired domain in the <em>DNS</em> settings panel:
+<img src="/files/jekyll-static-site-github-pages-cloudflare-https/ghpages-02.png" alt="cloudflare-dns" />
+    <blockquote>
+      <p>The <em>Name</em> field is either the subdomain part or <code class="highlighter-rouge">@</code> if the site will not be served as a subdomain. The <em>Domain name</em> field is <code class="highlighter-rouge">&lt;$GITHUB_USERNAME&gt;</code><em>.github.io</em>.</p>
+    </blockquote>
+  </li>
+  <li>Navigate to the <em>Page Rules</em> section and create a new page rule:
+<img src="/files/jekyll-static-site-github-pages-cloudflare-https/ghpages-03.png" alt="cloudflare-https" />
+    <blockquote>
+      <p>This rule will redirect any page request to HTTPS, so it’s always served encrypted.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>That’s it! Every push to the GitHub repository will now trigger a new Jekyll build and update your static site automatically.
+<img src="/files/jekyll-static-site-github-pages-cloudflare-https/ghpages-04.png" alt="github-deployment" /></p>
+
+<h2 id="purge-cloudflare-cache-optional">Purge Cloudflare Cache (optional)</h2>
+<p>Cloudflare’s cache prevents an update to the site to be shown immediately after a push to <em>origin/master</em> has been made. To purge the cache on every push to the GitHub repository, follow <a href="/github-pages-cloudflare-cache-reset/">this steps</a>.</p>
+
+<hr />
+:ET

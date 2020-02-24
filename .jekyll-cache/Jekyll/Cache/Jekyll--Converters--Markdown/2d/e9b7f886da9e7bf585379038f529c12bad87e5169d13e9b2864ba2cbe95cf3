@@ -1,0 +1,25 @@
+I"¿<h2 id="private-key-and-csr">Private key and CSR</h2>
+<p>First, the private key and a <em>Certificate Sign Request</em> (CSR) have to be generated.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-out</span> &lt;DOMAIN&gt;.csr <span class="nt">-newkey</span> rsa:4096 <span class="nt">-nodes</span> <span class="nt">-keyout</span> &lt;DOMAIN&gt;.key
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> All fields can be empty, except Common Name! It needs to be the exact domain name for which the certificate is intended for.</p>
+</blockquote>
+
+<h2 id="sign-csr">Sign CSR</h2>
+<blockquote>
+  <p><strong>Note:</strong> There are two options here:</p>
+</blockquote>
+
+<ol>
+  <li>The CSR could be signed by an <strong>official CA</strong> (like <a href="https://www.startssl.com">StartSSL</a>, see <a href="/startssl-certificate-validation"><em>here</em></a>), or</li>
+  <li><strong>Self-signed</strong>. The self-signed certificate will cause a warning in the browser. To self-sign a CSR, execute:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 <span class="nt">-req</span> <span class="nt">-days</span> 365 <span class="nt">-in</span> &lt;DOMAIN&gt;.csr <span class="nt">-signkey</span> &lt;DOMAIN&gt;.key <span class="nt">-out</span> &lt;DOMAIN&gt;.crt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

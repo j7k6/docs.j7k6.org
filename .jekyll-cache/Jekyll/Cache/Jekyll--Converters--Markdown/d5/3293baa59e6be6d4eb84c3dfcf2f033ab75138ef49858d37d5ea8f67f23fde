@@ -1,0 +1,5 @@
+I"ç<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">route</span><span class="w"> </span><span class="p">[</span><span class="nt">-p</span><span class="p">]</span><span class="w"> </span><span class="nx">ADD</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$NETWORK_IP</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">MASK</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SUBNET_MASK</span><span class="err">&gt;</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$GATEWAY_IP</span><span class="err">&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

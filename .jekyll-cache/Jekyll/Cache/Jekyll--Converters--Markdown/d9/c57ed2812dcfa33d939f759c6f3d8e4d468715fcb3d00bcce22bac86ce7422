@@ -1,0 +1,261 @@
+I"=<blockquote>
+  <p><strong>Full Disk Encryption</strong> of a Kali Linux installation is nice, but Full Disk Encryption with <a href="https://en.wikipedia.org/wiki/Plausible_deniability"><strong>Plausible Deniability</strong></a> is nicer.</p>
+
+  <p>– Me.</p>
+</blockquote>
+
+<h2 id="first-steps">First Steps</h2>
+<ol>
+  <li>Enable <strong>UEFI boot</strong>.</li>
+  <li>Boot <em>Kali Linux</em> <a href="https://www.kali.org/downloads/"><em>Installer</em></a>.</li>
+  <li>After <em>keyboard layout</em> setup, switch to the <em>virtual terminal</em> by pressing <code class="highlighter-rouge">alt</code>+<code class="highlighter-rouge">F2</code>:
+<img src="/files/kali-fde-01.png" alt="kali-fde-01.png" /></li>
+  <li>Securely erase all existing data on the system disk and USB drive (optional, but <em>recommended</em>!):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/dev/sda <span class="nv">bs</span><span class="o">=</span>16M
+<span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>16M
+</code></pre></div>    </div>
+  </li>
+  <li>Install required packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anna-install crypto-dm-modules cryptsetup-udeb lvm2-udeb parted-udeb
+</code></pre></div>    </div>
+  </li>
+  <li>Load required kernel module:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>depmod
+modprobe dm_crypt
+</code></pre></div>    </div>
+  </li>
+  <li>Unmount existing USB drive mounts:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>umount /media
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="usb-boot-drive">USB Boot Drive</h2>
+<h3 id="partition-layout">Partition Layout</h3>
+<ol>
+  <li>Create <em>GPT</em> partition layout:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parted /dev/sdb <span class="nt">-s</span> mklabel gpt
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>EFI</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parted /dev/sdb <span class="nt">-s</span> mkpart primary fat32 1MiB 257MiB
+parted /dev/sdb <span class="nt">-s</span> <span class="nb">set </span>1 esp on
+</code></pre></div>    </div>
+  </li>
+  <li>Create encrypted boot partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parted /dev/sdb <span class="nt">-s</span> mkpart primary ext2 257MiB 513MiB
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="efi-boot-partition">EFI Boot Partition</h3>
+<ol>
+  <li>Format <em>EFI</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.fat <span class="nt">-F</span> 32 /dev/sdb1
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="encrypted-boot-partition">Encrypted Boot Partition</h3>
+<ol>
+  <li>Encrypt boot partition:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksFormat -y -h sha512 -s 512 --type luks1 /dev/sdb2
+</code></pre></div>    </div>
+  </li>
+  <li>Open encrypted boot partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksOpen /dev/sdb2 crypt_boot
+</code></pre></div>    </div>
+  </li>
+  <li>Format boot partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext2 /dev/mapper/crypt_boot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="system-drive">System Drive</h2>
+<h3 id="encryption">Encryption</h3>
+<ol>
+  <li>Create empty header file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/tmp/root_header <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">count</span><span class="o">=</span>1
+</code></pre></div>    </div>
+  </li>
+  <li>Generate encryption key for the system drive:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/tmp/root_key <span class="nv">bs</span><span class="o">=</span>512 <span class="nv">count</span><span class="o">=</span>1
+</code></pre></div>    </div>
+  </li>
+  <li>Encrypt system drive with detached header and keyfile:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksFormat <span class="nt">-y</span> <span class="nt">-h</span> sha512 <span class="nt">-s</span> 512 <span class="nt">--header</span> /tmp/root_header <span class="nt">-o</span> 0 <span class="nt">--type</span> luks2 /dev/sda /tmp/root_key
+</code></pre></div>    </div>
+  </li>
+  <li>Open encrypted system drive:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksOpen <span class="nt">--header</span> /tmp/root_header <span class="nt">-d</span> /tmp/root_key /dev/sda crypt_root
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="lvm">LVM</h3>
+<ol>
+  <li>Create <em>physical volume</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pvcreate /dev/mapper/crypt_root
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>volume group</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgcreate kali /dev/mapper/crypt_root
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>swap</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-n</span> swap <span class="nt">-L</span> 2G kali
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>root</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-n</span> root <span class="nt">-l</span> 100%FREE kali
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="filesystem">Filesystem</h3>
+<ol>
+  <li>Format <em>swap</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkswap /dev/kali/swap
+</code></pre></div>    </div>
+  </li>
+  <li>Format <em>root</em> partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext4 /dev/kali/root
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="kali-linux-installation">Kali Linux Installation</h2>
+<h3 id="partition-disks">Partition Disks</h3>
+<blockquote>
+  <p>Switch back to the main installer screen by pressing <code class="highlighter-rouge">alt</code>+<code class="highlighter-rouge">F5</code>.</p>
+</blockquote>
+
+<p>Follow all the installation steps until the <em>Partition disks</em> screen appears. Choose <em>Manual</em> and assign all the mount points to the previously created partitions as shown here:</p>
+
+<p><img src="/files/kali-fde-02.png" alt="kali-fde-02.png" /></p>
+
+<h3 id="install-system">Install System</h3>
+<p>Installing the system to disk takes some time:
+<img src="/files/kali-fde-03.png" alt="kali-fde-03.png" /></p>
+
+<p>Wait until the next screen (<em>Network Mirror</em>) arrives. <strong>Don’t click <em>Continue</em> yet!</strong></p>
+
+<h2 id="doin-magic">Doin’ Magic</h2>
+<p>The bootloader will be written to the USB drive. The boot partition itself is encrypted, so it has to be unlocked with the previously set boot partition’s <em>LUKS</em> passphrase first. This is rather complicated and cannot be accomplished with the default <em>Kali</em> installer, so it has to be done manually:</p>
+
+<blockquote>
+  <p>Switch back to the <em>virtual terminal</em> screen by pressing <code class="highlighter-rouge">alt</code>+<code class="highlighter-rouge">F2</code>.</p>
+</blockquote>
+
+<h3 id="bind-mounts">Bind Mounts</h3>
+<ol>
+  <li>Create mountpoint for <code class="highlighter-rouge">/run/udev</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /target/run/udev
+</code></pre></div>    </div>
+  </li>
+  <li><em>Bind Mount</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">--bind</span> /run/udev /target/run/udev
+mount <span class="nt">--bind</span> /sys /target/sys
+mount <span class="nt">--bind</span> /dev/pts /target/dev/pts
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="grub">GRUB</h3>
+<ol>
+  <li>Install <em>GRUB</em> in chroot:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chroot</span> /target apt <span class="nb">install</span> <span class="nt">-y</span> grub-efi-amd64
+</code></pre></div>    </div>
+  </li>
+  <li>Add this lines to <code class="highlighter-rouge">/target/etc/default/grub</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda:crypt_root"
+GRUB_ENABLE_CRYPTODISK=y
+GRUB_DISABLE_LINUX_UUID=true
+</code></pre></div>    </div>
+  </li>
+  <li>Write bootloader to USB drive:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chroot</span> /target grub-install <span class="nt">--target</span><span class="o">=</span>x86_64-efi <span class="nt">--uefi-secure-boot</span> <span class="nt">--efi-directory</span><span class="o">=</span>/boot/efi <span class="nt">--bootloader</span><span class="o">=</span>kali <span class="nt">--boot-directory</span><span class="o">=</span>/boot/efi/EFI/kali <span class="nt">--recheck</span> /dev/sdb
+</code></pre></div>    </div>
+  </li>
+  <li>Generate <em>GRUB</em> config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chroot</span> /target grub-mkconfig <span class="nt">-o</span> /boot/efi/EFI/kali/grub/grub.cfg
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="ramdisk-initramfs">Ramdisk (initramfs)</h3>
+<ol>
+  <li>Move LUKS header and key files:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> /tmp/root_header /tmp/root_key /target/boot/
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/target/etc/crypttab</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>crypt_root /dev/sda /boot/root_key luks,discard,noearly,header=/boot/root_header,keyscript=/lib/cryptsetup/scripts/unlock
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/target/lib/cryptsetup/scripts/unlock</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat "$1"
+</code></pre></div>    </div>
+  </li>
+  <li>…and make it executable:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x /target/lib/cryptsetup/scripts/unlock
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/target/etc/initramfs-tools/hooks/luks</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p $DESTDIR/boot/
+cp /boot/root_header /boot/root_key $DESTDIR/boot/
+</code></pre></div>    </div>
+  </li>
+  <li>…and make it executable:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x /target/etc/initramfs-tools/hooks/luks
+</code></pre></div>    </div>
+  </li>
+  <li>Create ramdisk (<em>initramfs</em>):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chroot</span> /target update-initramfs <span class="nt">-c</span> <span class="nt">-k</span> all
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="workarounds">Workarounds</h3>
+<ol>
+  <li>The <em>Kali</em> installer would mess the previous steps up when installing the <em>GRUB</em> bootloader, so the  boot partition(s) need to be unmounted before continuing the installation process:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>umount /target/boot/efi
+umount /target/boot
+</code></pre></div>    </div>
+  </li>
+  <li>Comment out (or delete) the <em>/boot</em> and <em>/boot/efi</em> partition lines in <code class="highlighter-rouge">/target/etc/fstab</code>! If active, this will prevent the system from booting succesfully because it will try to mount the encrypted <em>boot</em> partition, which will fail.</li>
+</ol>
+
+<h2 id="finalize">Finalize</h2>
+<blockquote>
+  <p>Switch back to the main installer screen by pressing <code class="highlighter-rouge">alt</code>+<code class="highlighter-rouge">F5</code>.</p>
+</blockquote>
+
+<p>The <em>GRUB</em> installation step will fail, of course (the boot partitions are unmounted):
+<img src="/files/kali-fde-04.png" alt="kali-fde-04.png" /></p>
+
+<p>Ignore that and <strong><em>Continue without boot loader</em></strong> to finish the installation:
+<img src="/files/kali-fde-05.png" alt="kali-fde-05.png" /></p>
+
+<p>This is what unlocking the enrypted boot partition will look like:
+<img src="/files/kali-fde-06.png" alt="kali-fde-06.png" /></p>
+
+<h2 id="kernel-updates">Kernel Updates</h2>
+<p>Every time a new kernel is going to be installed, the encrypted boot partition needs to be decrypted and mounted first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksOpen /dev/sdb2 crypt_boot
+mount /dev/mapper/crypt_boot /boot
+mount /dev/sdb1 /boot/efi
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://and1equals1.blogspot.com/2009/10/encrypting-your-hdd-with-plausible.html">http://and1equals1.blogspot.com/2009/10/encrypting-your-hdd-with-plausible.html</a></li>
+  <li><a href="https://www.coolgeeks101.com/howto/infrastructure/full-disk-encryption-ubuntu-usb-detached-luks-header/">https://www.coolgeeks101.com/howto/infrastructure/full-disk-encryption-ubuntu-usb-detached-luks-header/</a></li>
+  <li><a href="https://outflux.net/blog/archives/2017/08/30/grub-and-luks/">https://outflux.net/blog/archives/2017/08/30/grub-and-luks/</a></li>
+  <li><a href="https://www.schmidp.com/2014/12/12/full-disk-encryption-with-grub-2-+-luks-+-lvm-+-swraid-on-debian/">https://www.schmidp.com/2014/12/12/full-disk-encryption-with-grub-2-+-luks-+-lvm-+-swraid-on-debian/</a></li>
+  <li><a href="https://cryptsetup-team.pages.debian.net/cryptsetup/encrypted-boot.html">https://cryptsetup-team.pages.debian.net/cryptsetup/encrypted-boot.html</a></li>
+  <li><a href="https://unixsheikh.com/tutorials/real-full-disk-encryption-using-grub-on-debian-linux-for-bios.html">https://unixsheikh.com/tutorials/real-full-disk-encryption-using-grub-on-debian-linux-for-bios.html</a></li>
+</ol>
+:ET

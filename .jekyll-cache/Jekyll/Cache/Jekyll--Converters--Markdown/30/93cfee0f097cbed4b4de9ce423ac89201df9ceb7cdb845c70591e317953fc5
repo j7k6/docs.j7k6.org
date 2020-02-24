@@ -1,0 +1,15 @@
+I"—<p>Extract private key:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-in</span> &lt;<span class="nv">$P12_FILE</span><span class="o">&gt;</span> <span class="nt">-nocerts</span> <span class="nt">-nodes</span> 2&gt;/dev/null <span class="se">\</span>
+  | <span class="nb">sed</span> <span class="nt">-n</span> <span class="s1">'/^-----BEGIN PRIVATE KEY-----$/,$p'</span> <span class="o">&gt;</span> key.pem
+</code></pre></div></div>
+
+<p>Extract public keys/certificates:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-in</span> &lt;<span class="nv">$P12_FILE</span><span class="o">&gt;</span> <span class="nt">-nokeys</span> <span class="nt">-nodes</span> 2&gt;/dev/null <span class="se">\</span>
+  | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'/-----BEGIN CERTIFICATE-----/,$!d'</span> <span class="nt">-e</span> <span class="s1">'/-----END CERTIFICATE-----/,/-----BEGIN CERTIFICATE-----/{//!d;}'</span> <span class="o">&gt;</span> cert.pem
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://wiki.cac.washington.edu/display/infra/Extracting+Certificate+and+Private+Key+Files+from+a+.pfx+File">https://wiki.cac.washington.edu/display/infra/Extracting+Certificate+and+Private+Key+Files+from+a+.pfx+File</a></li>
+</ol>
+:ET

@@ -1,0 +1,5 @@
+I"»<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> SimpleHTTPServer 8000
+</code></pre></div></div>
+
+<hr />
+:ET

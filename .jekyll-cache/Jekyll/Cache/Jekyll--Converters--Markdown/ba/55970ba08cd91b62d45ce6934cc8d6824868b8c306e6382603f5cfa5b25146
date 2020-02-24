@@ -1,0 +1,41 @@
+I"‡	<h2 id="write-capture-to-pcap-file">Write Capture to PCAP File</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump <span class="nt">-w</span> &lt;<span class="nv">$FILE</span><span class="o">&gt;</span>.pcap
+</code></pre></div></div>
+
+<h2 id="full-packet-view-in-hex">Full Packet View in Hex</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump <span class="nt">-nnvvXSs</span> 1514
+</code></pre></div></div>
+
+<h2 id="traffic-from-and-to-ip">Traffic from and to $IP</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump host &lt;<span class="nv">$IP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="traffic-from-ip">Traffic from $IP</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump src &lt;<span class="nv">$IP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="traffic-to-ip">Traffic to $IP</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump dst &lt;<span class="nv">$IP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="traffic-from-and-to-network">Traffic from and to Network</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump net &lt;<span class="nv">$NETWORK</span><span class="o">&gt;</span>/&lt;<span class="nv">$SUBNET</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="icmp">ICMP</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump icmp
+</code></pre></div></div>
+
+<h2 id="traffic-to-port">Traffic to Port</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump dst port &lt;<span class="nv">$PORT</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="port-range">Port Range</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump portrange &lt;<span class="nv">$FROM_PORT</span><span class="o">&gt;</span>-&lt;<span class="nv">$TO_PORT</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://danielmiessler.com/study/tcpdump/">https://danielmiessler.com/study/tcpdump/</a></li>
+</ol>
+:ET

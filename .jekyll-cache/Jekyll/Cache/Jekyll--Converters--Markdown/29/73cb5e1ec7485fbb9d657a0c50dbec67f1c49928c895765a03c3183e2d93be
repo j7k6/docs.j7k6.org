@@ -1,0 +1,7 @@
+I"6<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/init.d/apparmor stop
+update-rc.d <span class="nt">-f</span> apparmor remove
+apt-get remove <span class="nt">-y</span> <span class="nt">--purge</span> apparmor apparmor-utils
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,20 @@
+I"ù<h2 id="nginx">Nginx</h2>
+<p>Add this to <em>Nginx</em> proxy configuration:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  proxy_set_header X-Forwarded-Proto https;
+</code></pre></div></div>
+
+<h2 id="tomcat">Tomcat</h2>
+<p>Add this to <em>Tomcat</em>â€™s <code class="highlighter-rouge">conf/server.xml</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Valve</span> <span class="na">className=</span><span class="s">"org.apache.catalina.valves.RemoteIpValve"</span>
+  <span class="na">remoteIpHeader=</span><span class="s">"x-forwarded-for"</span>
+  <span class="na">remoteIpProxiesHeader=</span><span class="s">"x-forwarded-by"</span>
+  <span class="na">protocolHeader=</span><span class="s">"x-forwarded-proto"</span>
+<span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://stackoverflow.com/a/19917372">https://stackoverflow.com/a/19917372</a></li>
+</ol>
+:ET

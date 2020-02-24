@@ -1,0 +1,16 @@
+I"v<ol>
+  <li>On boot, press <code class="highlighter-rouge">cmd + S</code> to enter single user mode.</li>
+  <li>Run
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">-uw</span> /
+<span class="nb">rm</span> /var/db/.AppleSetupDone
+</code></pre></div>    </div>
+  </li>
+  <li>Continue boot process by pressing <code class="highlighter-rouge">ctrl + D</code>.</li>
+  <li>Finish the setup wizard to create a new admin user.</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://apple.stackexchange.com/a/164333">https://apple.stackexchange.com/a/164333</a></li>
+</ol>
+:ET

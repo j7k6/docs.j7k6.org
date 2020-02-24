@@ -1,0 +1,69 @@
+I"8<p><em>Tor Hidden Services</em> can be used to connect to services behind firewalls or NAT without port forwardings.</p>
+
+<h2 id="server">Server</h2>
+<h3 id="tor-setup">Tor Setup</h3>
+<ol>
+  <li>Add <code class="highlighter-rouge">tor</code> package sources:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> /etc/apt/sources.list.d/tor.list <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+deb http://deb.torproject.org/torproject.org </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="sh"> main
+deb-src http://deb.torproject.org/torproject.org </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="sh"> main
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+  </li>
+  <li>Add signing key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--keyserver</span> keys.gnupg.net <span class="nt">--recv</span> A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+gpg <span class="nt">--export</span> A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | <span class="nb">sudo </span>apt-key add -
+</code></pre></div>    </div>
+  </li>
+  <li>Install <code class="highlighter-rouge">tor</code> package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> tor deb.torproject.org-keyring
+</code></pre></div>    </div>
+  </li>
+  <li>Enable &amp; start <code class="highlighter-rouge">tor</code> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>tor.service
+systemctl start tor.service
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="tor-hidden-service-configuration">Tor Hidden Service Configuration</h3>
+<ol>
+  <li>Add to <code class="highlighter-rouge">/etc/tor/torrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HiddenServiceDir /var/lib/tor/ssh/
+HiddenServicePort 22 127.0.0.1:22
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <code class="highlighter-rouge">tor</code> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart tor.service
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>After restarting <code class="highlighter-rouge">tor</code>, there are two new files in <code class="highlighter-rouge">/var/lib/tor/hostname</code>:</p>
+<ul>
+  <li><code class="highlighter-rouge">hostname</code> (contains the hidden service hostname)</li>
+  <li><code class="highlighter-rouge">private_key</code> (back this one up!)</li>
+</ul>
+
+<p>The SSH service is now available as Tor Hidden Service.</p>
+
+<h2 id="client">Client</h2>
+<ol>
+  <li>Append to <code class="highlighter-rouge">~/.ssh/config</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host *.onion
+  ProxyCommand nc -x 127.0.0.1:9050 -X5 %h %p
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">tor</code></li>
+  <li>Connect to SSH Hidden Service over Tor:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;<span class="nv">$SSH_USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$ONION_ADDRESS</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="optional">(Optional)</h2>
+<p>If the SSH service should only be available as Tor Hidden Service, you can limit it to listen only on the servers loopback address (<em>127.0.0.1</em>).
+For this edit <code class="highlighter-rouge">/etc/ssh/sshd_config</code> on the server and set <code class="highlighter-rouge">ListenAddress 127.0.0.1</code>. Now restart the <code class="highlighter-rouge">sshd</code> service (<code class="highlighter-rouge">systemctl restart ssh</code>) to enable the configuration.</p>
+
+<hr />
+:ET

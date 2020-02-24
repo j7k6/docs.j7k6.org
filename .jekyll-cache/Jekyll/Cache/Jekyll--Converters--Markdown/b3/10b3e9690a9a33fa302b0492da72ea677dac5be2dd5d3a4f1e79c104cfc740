@@ -1,0 +1,12 @@
+I" <p>Edit <code class="highlighter-rouge">smb.conf</code> on Server:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[share]
+  ...
+   vfs objects = fruit streams_xattr
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://plazko.io/apple-osx-finder-is-listing-files-very-very-slow-when-connected-to-smb-shared-hard-drive-connected-to-a-wifi-router/">http://plazko.io/apple-osx-finder-is-listing-files-very-very-slow-when-connected-to-smb-shared-hard-drive-connected-to-a-wifi-router/</a></li>
+</ol>
+:ET

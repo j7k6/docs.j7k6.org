@@ -1,0 +1,19 @@
+I"Ý<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/rc.local.d/local.sh</code>, insert this before the <code class="highlighter-rouge">exit 0</code> line:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/kill $(cat /var/run/crond.pid)
+/bin/echo "0 21 * * 5 /opt/ghettovcb/bin/ghettoVCB.sh -a -g /vmfs/volumes/&lt;$DATASTORE&gt;/ghettoVCB.conf &gt; /vmfs/volumes/&lt;$BACKUP_DATASTORE&gt;/Backups/ghettoVCB-\$(date +%s).log" &gt;&gt; /var/spool/cron/crontabs/root
+/usr/lib/vmware/busybox/bin/busybox crond
+</code></pre></div>    </div>
+  </li>
+  <li>Run the script:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/sh /etc/rc.local.d/local.sh
+</code></pre></div>    </div>
+  </li>
+  <li>Make the changes persistent:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/auto-backup.sh
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

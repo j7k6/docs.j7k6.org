@@ -1,0 +1,5 @@
+I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli system settings advanced <span class="nb">set</span> <span class="nt">-o</span> /UserVars/SuppressShellWarning <span class="nt">-i</span> 1
+</code></pre></div></div>
+
+<hr />
+:ET

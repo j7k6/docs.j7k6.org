@@ -1,0 +1,35 @@
+I"·
+<ol>
+  <li>Generate <a href="https://app.sparkpost.com/account/api-keys">SparkPost</a> API key.</li>
+  <li>Install <code class="highlighter-rouge">sparkpost</code> Python package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>sparkpost
+</code></pre></div>    </div>
+  </li>
+  <li>Python script:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparkpost</span> <span class="kn">import</span> <span class="n">SparkPost</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">SparkPost</span><span class="p">(</span><span class="o">&lt;</span><span class="err">$</span><span class="n">SPARKPOST_API_KEY</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">transmissions</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+  <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="o">&lt;</span><span class="err">$</span><span class="n">RECIPIENTS_LIST</span><span class="o">&gt;</span><span class="p">],</span>
+  <span class="n">text</span><span class="o">=&lt;</span><span class="err">$</span><span class="n">MESSAGE</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="n">from_email</span><span class="o">=&lt;</span><span class="err">$</span><span class="n">SENDER_ADDRESS</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="n">subject</span><span class="o">=&lt;</span><span class="err">$</span><span class="n">SUBJECT</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="n">attachments</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"name"</span><span class="p">:</span> <span class="s">"&lt;$FILE_NAME&gt;"</span><span class="p">,</span>
+      <span class="s">"type"</span><span class="p">:</span> <span class="s">"&lt;$MIME_TYPE&gt;"</span><span class="p">,</span>
+      <span class="s">"filename"</span><span class="p">:</span> <span class="s">"&lt;$FILE_LOCATION&gt;"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://python-sparkpost.readthedocs.io/en/latest/resources/transmissions.html">https://python-sparkpost.readthedocs.io/en/latest/resources/transmissions.html</a></li>
+</ol>
+:ET

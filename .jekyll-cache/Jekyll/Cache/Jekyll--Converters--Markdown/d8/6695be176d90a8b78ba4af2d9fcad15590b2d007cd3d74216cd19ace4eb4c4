@@ -1,0 +1,5 @@
+I"-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-p</span> 8080:80 <span class="nt">-v</span> <span class="nv">$PWD</span>:/usr/local/apache2/htdocs httpd:alpine
+</code></pre></div></div>
+
+<hr />
+:ET

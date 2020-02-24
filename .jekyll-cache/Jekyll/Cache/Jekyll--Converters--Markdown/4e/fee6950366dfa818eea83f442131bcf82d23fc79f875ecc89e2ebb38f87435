@@ -1,0 +1,17 @@
+I"þ<p>Add this to the <em>OpenVPN</em> <strong>server</strong> configuration:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sndbuf 393216
+rcvbuf 393216
+push "sndbuf 393216"
+push "rcvbuf 393216"
+
+tun-mtu 1400
+mssfix 1360
+
+cipher AES-128-CBC
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://winaero.com/blog/speed-up-openvpn-and-get-faster-speed-over-its-channel/">https://winaero.com/blog/speed-up-openvpn-and-get-faster-speed-over-its-channel/</a></li>
+</ol>
+:ET

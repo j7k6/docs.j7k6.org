@@ -1,0 +1,21 @@
+I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl s_client <span class="nt">-crlf</span> <span class="nt">-connect</span> &lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>:993
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># login
+A login &lt;$USER&gt; &lt;$PASSWORD&gt;
+
+# show message count
+A status INBOX (messages)
+
+# read message body
+A fetch &lt;$MESSAGE_ID&gt; rfc822.text
+
+# read message header
+A fetch &lt;$MESSAGE_ID&gt; rfc822.header
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://www.unixwitch.de/de/sysadmin/tools/imap-mit-ssl-testen">http://www.unixwitch.de/de/sysadmin/tools/imap-mit-ssl-testen</a></li>
+</ol>
+:ET

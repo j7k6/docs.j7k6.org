@@ -1,0 +1,5 @@
+I"÷<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"&lt;</span><span class="nv">$USER</span><span class="s2">&gt;:</span><span class="si">$(</span>openssl passwd <span class="nt">-apr1</span> &lt;<span class="nv">$PASSWORD</span><span class="o">&gt;</span><span class="si">)</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> .htpasswd
+</code></pre></div></div>
+
+<hr />
+:ET

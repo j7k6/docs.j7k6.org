@@ -1,0 +1,29 @@
+I"æ<p>Edit <code class="highlighter-rouge">/etc/nginx/nginx.conf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>map_hash_bucket_size 256; 
+</code></pre></div></div>
+
+<p>Edit site configuration:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>map $request_uri $new_uri {
+    default "";
+    /&lt;$OLD_URI1&gt; /&lt;$NEW_URI1&gt;;
+    /&lt;$OLD_URI2&gt; /&lt;$NEW_URI2&gt;;
+    /&lt;$OLD_URI3&gt; /&lt;$NEW_URI3&gt;;
+    ...
+}
+
+server {
+  ...
+
+  if ($new_uri) {
+    return 301 $new_uri;
+  }
+
+  ...
+}
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://stackoverflow.com/a/40576333/8434893">https://stackoverflow.com/a/40576333/8434893</a></li>
+</ol>
+:ET

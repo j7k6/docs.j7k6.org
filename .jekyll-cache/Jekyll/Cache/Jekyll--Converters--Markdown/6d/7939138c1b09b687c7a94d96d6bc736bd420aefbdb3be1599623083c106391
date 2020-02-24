@@ -1,0 +1,14 @@
+I"I<ol>
+  <li>Enable <em>ControlPort</em> in <code class="highlighter-rouge">/etc/tor/torrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ControlPort 127.0.0.1:9051
+CookieAuthentication 0
+</code></pre></div>    </div>
+  </li>
+  <li>Request new <em>Tor</em> identity:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s1">'AUTHENTICATE\r\nSIGNAL NEWNYM\r\nQUIT\r\n'</span> | nc 127.0.0.1 9051
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

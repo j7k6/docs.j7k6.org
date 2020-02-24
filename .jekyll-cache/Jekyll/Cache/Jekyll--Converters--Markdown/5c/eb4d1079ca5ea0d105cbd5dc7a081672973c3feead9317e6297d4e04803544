@@ -1,0 +1,11 @@
+I"Ã<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> /etc/default/locale <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://askubuntu.com/a/229512">http://askubuntu.com/a/229512</a></li>
+</ol>
+:ET

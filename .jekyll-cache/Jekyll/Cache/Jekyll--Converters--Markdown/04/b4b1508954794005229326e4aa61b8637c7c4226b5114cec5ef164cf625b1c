@@ -1,0 +1,5 @@
+I"l<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> &lt;<span class="nv">$SRC_CONTAINER</span><span class="o">&gt;</span> mysqldump <span class="nt">-u</span>&lt;<span class="nv">$DB_USER</span><span class="o">&gt;</span> <span class="nt">-p</span>&lt;<span class="nv">$DB_PASS</span><span class="o">&gt;</span> &lt;<span class="nv">$DB_NAME</span><span class="o">&gt;</span> | docker <span class="nb">exec</span> <span class="nt">-i</span> &lt;<span class="nv">$DST_CONTAINER</span><span class="o">&gt;</span> mysql <span class="nt">-u</span>&lt;<span class="nv">$DB_USER</span><span class="o">&gt;</span> <span class="nt">-p</span>&lt;<span class="nv">$DB_PASS</span><span class="o">&gt;</span> &lt;<span class="nv">$DB_NAME</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

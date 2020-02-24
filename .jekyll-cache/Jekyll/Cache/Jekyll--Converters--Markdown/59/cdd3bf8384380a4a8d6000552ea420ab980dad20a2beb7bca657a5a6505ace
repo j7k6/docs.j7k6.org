@@ -1,0 +1,44 @@
+I"�<h2 id="web-scenario">Web Scenario</h2>
+<p>To monitor a website in <strong>Zabbix</strong>, a new <em>web scenario</em> has to be created.</p>
+
+<ol>
+  <li>Navigate to <em>Configuration</em> &gt; <em>Hosts</em> &gt; Select host for web monitoring</li>
+  <li>Go to the <strong>Web scenarios</strong> tab and click on <em>Create web scenario</em>.</li>
+  <li><strong>Scenario</strong>:
+<img src="/files/zabbix-website-monitoring/scenario.png" alt="scenario.png" />
+    <ul>
+      <li><em>Name</em>: <code class="highlighter-rouge">&lt;$WEBSITE_TITLE&gt;</code></li>
+      <li><em>Application</em> OR <em>New application</em>: <code class="highlighter-rouge">HTTP</code></li>
+      <li><em>Enabled</em>:</li>
+    </ul>
+  </li>
+  <li><strong>Steps</strong>:
+<img src="/files/zabbix-website-monitoring/steps.png" alt="steps.png" />
+    <ul>
+      <li><em>Name</em>: <code class="highlighter-rouge">&lt;$WEBSITE_TITLE&gt;</code></li>
+      <li><em>URL</em>: <code class="highlighter-rouge">&lt;$WEBSITE_URL&gt;</code></li>
+      <li><em>Follow redirects</em>: <code class="highlighter-rouge">x</code></li>
+      <li><em>Retrieve only headers</em>: <code class="highlighter-rouge">x</code></li>
+      <li><em>Required status codes</em>: <code class="highlighter-rouge">200</code></li>
+    </ul>
+  </li>
+  <li>Click <em>Add</em>.</li>
+</ol>
+
+<h2 id="trigger">Trigger</h2>
+<p>The trigger will take action (e.g. send a notification) when the website does not return HTTP status code <code class="highlighter-rouge">200</code>.
+On the host’s page, go to the <strong>Triggers</strong> tab and click on <em>Create trigger</em>:</p>
+
+<p><img src="/files/zabbix-website-monitoring/trigger.png" alt="trigger.png" /></p>
+<ul>
+  <li><em>Name</em>: <code class="highlighter-rouge">&lt;$WEBSITE_TITLE&gt;</code></li>
+  <li><em>Severity</em>: <code class="highlighter-rouge">High</code></li>
+  <li><em>Expression</em>: <code class="highlighter-rouge">{&lt;$HOST&gt;:web.test.error[&lt;$WEBSITE_TITLE&gt;].strlen()}&gt;0 and {&lt;$HOST&gt;:web.test.fail[&lt;$WEBSITE_TITLE&gt;].last()}&gt;0</code></li>
+  <li><em>Allow manual close</em>: <code class="highlighter-rouge">x</code></li>
+  <li><em>Enabled</em>: <code class="highlighter-rouge">x</code></li>
+</ul>
+
+<p>…and click <em>Add</em>.</p>
+
+<hr />
+:ET

@@ -1,0 +1,13 @@
+I"<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">@</span><span class="k">max</span> <span class="p">:</span><span class="o">=</span> <span class="k">MAX</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="o">+</span> <span class="mi">1</span> <span class="k">FROM</span> <span class="n">ABC</span><span class="p">;</span> 
+
+<span class="k">PREPARE</span> <span class="n">stmt</span> <span class="k">FROM</span> <span class="s1">'ALTER TABLE ABC AUTO_INCREMENT = ?'</span><span class="p">;</span>
+<span class="k">EXECUTE</span> <span class="n">stmt</span> <span class="k">USING</span> <span class="o">@</span><span class="k">max</span><span class="p">;</span>
+
+<span class="k">DEALLOCATE</span> <span class="k">PREPARE</span> <span class="n">stmt</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://stackoverflow.com/a/2411823">http://stackoverflow.com/a/2411823</a></li>
+</ol>
+:ET

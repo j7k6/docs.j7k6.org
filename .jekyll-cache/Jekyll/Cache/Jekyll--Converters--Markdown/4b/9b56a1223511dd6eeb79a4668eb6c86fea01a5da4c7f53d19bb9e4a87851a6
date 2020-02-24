@@ -1,0 +1,14 @@
+I"U<h2 id="option-1">Option 1</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl s_client <span class="nt">-connect</span> &lt;<span class="nv">$HOST</span><span class="o">&gt;</span>:443 <span class="nt">-showcerts</span> &lt; /dev/null 2&gt; /dev/null | openssl x509 <span class="nt">-outform</span> PEM <span class="o">&gt;</span> cert.pem
+</code></pre></div></div>
+
+<h2 id="option-2">Option 2</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"GET"</span> | openssl s_client <span class="nt">-connect</span> &lt;<span class="nv">$HOST</span><span class="o">&gt;</span>:443 <span class="nt">-showcerts</span> | <span class="nb">sed</span> <span class="nt">-n</span> <span class="s1">'/BEGIN CERTIFICATE/,/END CERTIFICATE/p'</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://superuser.com/a/641396">http://superuser.com/a/641396</a></li>
+  <li><a href="https://calomel.org/postfix.html">https://calomel.org/postfix.html</a></li>
+</ol>
+:ET

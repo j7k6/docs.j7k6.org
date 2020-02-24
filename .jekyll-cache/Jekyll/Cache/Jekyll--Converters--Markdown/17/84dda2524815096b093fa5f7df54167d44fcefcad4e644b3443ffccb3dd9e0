@@ -1,0 +1,5 @@
+I"=<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim-cmd vmsvc/power.reset <span class="sb">`</span>vim-cmd vmsvc/getallvms | <span class="nb">awk</span> <span class="s1">'/&lt;$VM_NAME&gt;/ {print $1}'</span><span class="sb">`</span>
+</code></pre></div></div>
+
+<hr />
+:ET

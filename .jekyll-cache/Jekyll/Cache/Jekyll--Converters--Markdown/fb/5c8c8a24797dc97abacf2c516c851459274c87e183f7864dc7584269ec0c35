@@ -1,0 +1,17 @@
+I"¸<ol>
+  <li>Run command prompt (<code class="highlighter-rouge">cmd</code>, <strong>NOT</strong> <code class="highlighter-rouge">powershell</code>) as administrator.</li>
+  <li>Install service:
+    <pre><code class="language-ps">java -jar "%UserProfile%\Ubiquiti UniFi\lib\ace.jar" installsvc
+</code></pre>
+  </li>
+  <li>Start service:
+    <pre><code class="language-ps">java -jar "%UserProfile%\Ubiquiti UniFi\lib\ace.jar" startsvc
+</code></pre>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://help.ubnt.com/hc/en-us/articles/205144550-UniFi-Run-the-controller-as-a-Windows-service">https://help.ubnt.com/hc/en-us/articles/205144550-UniFi-Run-the-controller-as-a-Windows-service</a></li>
+</ol>
+:ET

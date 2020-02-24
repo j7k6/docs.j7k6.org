@@ -1,0 +1,9 @@
+I"�<p><code class="highlighter-rouge">curl -o &lt;$EXTENSION_NAME&gt;.crx -fsSL "https://clients2.google.com/service/update2/crx?response=redirect&amp;prodversion=&lt;$CHROME_VERSION&gt;&amp;x=id%3D&lt;$EXTENSION_ID&gt;%26uc"</code></p>
+
+<p>Example ‘<strong>uBlock Origin</strong>’:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> ublock.crx <span class="nt">-fsSL</span> <span class="s2">"https://clients2.google.com/service/update2/crx?response=redirect&amp;prodversion=69.0.3497.100&amp;x=id%3Dcjpalhdlnbpafiamejdnhcphjbkeiagm%26uc"</span>
+unzip ublock.crx <span class="nt">-d</span> ublock/
+</code></pre></div></div>
+
+<hr />
+:ET

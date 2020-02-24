@@ -1,0 +1,49 @@
+I"�<p>This is a collection of free macOS GUI tools that get shit done!</p>
+
+<h2 id="flux">f.lux</h2>
+<p><em>f.lux</em> sets the screen’s color temperature to calm the eyes at night time. [<a href="https://justgetflux.com">https://justgetflux.com</a>]</p>
+
+<h2 id="secure-pipes">Secure Pipes</h2>
+<p><em>Secure Pipes</em> manages SSH port forwardings, so it’s not neccessary to open up a SSH connection in the terminal to create a local or remote port forwarding. [<a href="https://www.opoet.com/pyro/">https://www.opoet.com/pyro/</a>]</p>
+
+<h2 id="spectacle">Spectacle</h2>
+<p><em>Spectacle</em> is a small little tool, which performs a task very well which macOS for some reason doesn’t offer: managing window layouts with simple keystrokes. [<a href="https://www.spectacleapp.com">https://www.spectacleapp.com</a>]</p>
+
+<h2 id="caffeine">Caffeine</h2>
+<p><em>Caffeine</em> prevents your Mac going to sleep. That’s it. [<a href="http://lightheadsw.com/caffeine/">http://lightheadsw.com/caffeine/</a>]</p>
+
+<h2 id="transmission">Transmission</h2>
+<p><em>Transmission</em> is a minimal BitTorrent client, which serves its purpose very well. So many BitTorrent clients are bloated and unsuable, <em>Transmission</em> keeps it simple. [<a href="https://transmissionbt.com">https://transmissionbt.com</a>]</p>
+
+<h2 id="iterm2">iTerm2</h2>
+<p>Yes, <em>iTerm2</em> is a terminal emulator, but somehow it’s a GUI tool. It’s the best replacement for the stock macOS <em>Terminal.app</em>. [<a href="https://www.iterm2.com">https://www.iterm2.com</a>]</p>
+
+<h2 id="tunnelblick">Tunnelblick</h2>
+<p><em>Tunnelblick</em> is a simple OpenVPN client and nothing more. [<a href="https://tunnelblick.net">https://tunnelblick.net</a>]</p>
+
+<h2 id="appcleaner">AppCleaner</h2>
+<p><em>AppCleaner</em> removes macOS applications from disk completely, including all settings and related file clutter. [<a href="https://freemacsoft.net/appcleaner/">https://freemacsoft.net/appcleaner/</a>]</p>
+
+<h2 id="realvnc-viewer">RealVNC Viewer</h2>
+<p>Although macOS has an integrated VNC client, <em>RealVNC viewer</em> is the better choice in most cases. [<a href="https://www.realvnc.com/en/connect/download/viewer/">https://www.realvnc.com/en/connect/download/viewer/</a>]</p>
+
+<h2 id="vlc">VLC</h2>
+<p>Pure and simple, <em>VLC</em> is the best mediaplayer ever. Although the UI is not the nicest, it’s simple and perforce well. [<a href="https://www.videolan.org/vlc/index.de.html">https://www.videolan.org/vlc/index.de.html</a>]</p>
+
+<h2 id="the-unarchiver">The Unarchiver</h2>
+<p><em>The Unarchiver</em> is more feature-rich than the build-in macOS archiving app. [<a href="https://theunarchiver.com">https://theunarchiver.com</a>]</p>
+
+<h2 id="cyberduck">Cyberduck</h2>
+<p><em>Cyberduck</em> is a clean and simple file-transfer tool. It supports FTP, SFTP, Amazon S3 and many more. [<a href="https://cyberduck.io">https://cyberduck.io</a>]</p>
+
+<h2 id="microsoft-remote-desktop">Microsoft Remote Desktop</h2>
+<p>Even better than the original Windows RDP client. Best feature: Clipboard sharing between local macOS and remote Windows system. [<a href="https://itunes.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12">https://itunes.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12</a>]</p>
+
+<h2 id="sublime-text">Sublime Text</h2>
+<p>Although I use <strong><em>Sublime Text</em></strong> mainly for note taking, it really is a great code editor besides that. Way more performant than it’s alternative <em>Atom</em>.  [<a href="https://www.sublimetext.com">https://www.sublimetext.com</a>]</p>
+
+<h2 id="google-chrome">Google Chrome</h2>
+<p>Of course. [<a href="https://www.google.com/chrome/index.html">https://www.google.com/chrome/index.html</a>]</p>
+
+<hr />
+:ET

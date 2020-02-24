@@ -1,0 +1,33 @@
+I"�<p>If you have some spare bandwith on your <a href="https://www.digitalocean.com">DigitalOcean</a> Droplet, it makes sense to run a <a href="https://www.torproject.org">Tor</a> relay on it (<strong>NOT</strong> an <em>exit node</em>!).</p>
+
+<p>But simply running a Tor relay on the Droplet would render the server’s public IP address unusable because it will land on all kinds of blacklists, so especially mail servers will suffer from that.
+Unfortunately, DigitalOcean doesn’t offer additional IPs for Droplets. But they have a neat little feature called “<em>Foating IP</em>”, which is normally used for load balancing purposes. If one floating IP is assigned to one droplet, you can use it like kind of a second public IP address.</p>
+
+<h2 id="floating-ip">Floating IP</h2>
+<p>To use the <em>Floating IP</em> as additional public IP, you need to assign one to your droplet in the DigitalOcean <a href="https://cloud.digitalocean.com/networking/floating_ips"><em>Networking/Floating IPs</em></a> settings.
+The floating IP is routed to the droplet’s internal network address (<code class="highlighter-rouge">10.0.0.0/8</code>). The internal address is also called “<em>Anchor IP</em>” and will be used in the Tor configuration as outbound bind address.
+To get the anchor IP, run <code class="highlighter-rouge">curl 169.254.169.254/metadata/v1/interfaces/public/0/anchor_ipv4/address</code> on the droplet.</p>
+
+<h2 id="tor">Tor</h2>
+<p>A simple <code class="highlighter-rouge">/etc/tor/torrc</code> configuration file for a Tor relay with the floating IP as outbound address looks like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DirPort 9030
+ORPort 9001
+Nickname &lt;$RELAY_NAME&gt;
+ExitPolicy reject *:*
+Address &lt;$FLOATING_IP&gt;
+OutboundBindAddressOR &lt;$ANCHOR_IP&gt;
+RelayBandwidthRate 250 KBytes
+RelayBandwidthBurst 500 KBytes
+</code></pre></div></div>
+
+<h2 id="iptables">Iptables</h2>
+<p>Besides allowing incoming traffic to the floating IP on the Tor ports, those <code class="highlighter-rouge">iptables</code> rules help the Tor relay to find the right way to the internet, which is through the floating IP:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-A</span> INPUT <span class="nt">-d</span> &lt;<span class="nv">$ANCHOR_IP</span><span class="o">&gt;</span>/32 <span class="nt">-p</span> tcp <span class="nt">-m</span> multiport <span class="nt">--dports</span> 9001,9030 <span class="nt">-m</span> state <span class="nt">--state</span> NEW,ESTABLISHED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--dport</span> 9030 <span class="nt">-j</span> SNAT <span class="nt">--to-source</span> &lt;<span class="nv">$ANCHOR_IP</span><span class="o">&gt;</span>
+iptables <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--dport</span> 9001 <span class="nt">-j</span> SNAT <span class="nt">--to-source</span> &lt;<span class="nv">$ANCHOR_IP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

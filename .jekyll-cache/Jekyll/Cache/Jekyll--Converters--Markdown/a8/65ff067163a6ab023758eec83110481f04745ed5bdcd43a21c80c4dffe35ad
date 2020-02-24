@@ -1,0 +1,5 @@
+I"*<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VBoxManage internalcommands converttoraw &lt;<span class="nv">$VM</span><span class="o">&gt;</span>.vdi &lt;<span class="nv">$VM</span><span class="o">&gt;</span>.raw
+</code></pre></div></div>
+
+<hr />
+:ET

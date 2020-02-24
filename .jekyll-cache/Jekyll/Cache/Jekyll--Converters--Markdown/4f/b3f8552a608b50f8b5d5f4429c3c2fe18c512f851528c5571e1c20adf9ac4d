@@ -1,0 +1,25 @@
+I"-<p>This is based on a <code class="highlighter-rouge">postfix</code> MX server, whose single purpose is to relay mails for an <em>Exchange</em> server. While migrating mailboxes to Office 365 in a hybri on-premise/cloud environment, mails for mailboxes which are already flagged as “Office 365”, may have problems being delivered for several reasons. To get mails delivered to that mailboxes, they need to be redirected to the outlook.com MX servers by <code class="highlighter-rouge">postfix</code>. This can be done with <code class="highlighter-rouge">transport_maps</code>:</p>
+
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/main.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+relay_domains = &lt;$DOMAIN&gt;
+relay_transport = smtp:[&lt;$EXCHANGE_IP&gt;]:25
+transport_maps = hash:/etc/postfix/transport_maps
+...
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/transport_maps</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;$DOMAIN&gt; smtp:[&lt;$EXCHANGE_IP&gt;]:25
+&lt;$USER&gt;@&lt;$DOMAIN&gt; smtp:&lt;$ORG&gt;.mail.protection.outlook.com
+</code></pre></div>    </div>
+  </li>
+  <li>Regenerate <code class="highlighter-rouge">transport_maps</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postmap /etc/postfix/transport_maps
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">postfix reload</code></li>
+</ol>
+
+<hr />
+:ET

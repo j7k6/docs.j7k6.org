@@ -1,0 +1,10 @@
+I"›<ol>
+  <li>Delete Favicon directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/Google/Chrome/Default/Favicons"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Restart Chrome.</li>
+</ol>
+
+<hr />
+:ET

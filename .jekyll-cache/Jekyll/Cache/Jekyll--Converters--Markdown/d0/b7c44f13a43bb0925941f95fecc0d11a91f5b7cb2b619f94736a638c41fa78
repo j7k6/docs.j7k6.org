@@ -1,0 +1,12 @@
+I"#<p>Edit: <code class="highlighter-rouge">/etc/ufw/before.rules</code>:</p>
+<blockquote>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-A ufw-before-output -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+-A ufw-before-output -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
+</code></pre></div>  </div>
+</blockquote>
+
+<hr />
+<ol>
+  <li><a href="http://www.kelvinism.com/2010/09/enable-icmp-through-ufw_461.html">http://www.kelvinism.com/2010/09/enable-icmp-through-ufw_461.html</a></li>
+</ol>
+:ET

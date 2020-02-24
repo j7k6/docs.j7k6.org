@@ -1,0 +1,10 @@
+I"–<h2 id="copy-without-attributes">Copy without attributes</h2>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">robocopy</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SOURCE</span><span class="err">&gt;</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$TARGET</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/MIR</span><span class="w"> </span><span class="nx">/W:0</span><span class="w"> </span><span class="nx">/R:0</span><span class="w"> </span><span class="nx">/COPY:DT</span><span class="w"> </span><span class="nx">/DCOPY:T</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="copy-with-attributes">Copy with attributes</h2>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">robocopy</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SOURCE</span><span class="err">&gt;</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$TARGET</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/MIR</span><span class="w"> </span><span class="nx">/W:0</span><span class="w"> </span><span class="nx">/R:0</span><span class="w"> </span><span class="nx">/COPY:DAT</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

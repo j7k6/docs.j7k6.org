@@ -1,0 +1,11 @@
+I"‘<p>Since <em>Raspbian Jessie</em>, all IP configuration is done by the DHCP Client Daemon. So the old <code class="highlighter-rouge">/etc/network/interfaces</code> doesnâ€™t need to be touched anymore for configuring a static IP.
+To set a static IP, edit the configuration in <code class="highlighter-rouge">/etc/dhcpcd.conf</code> and reboot afterwards (or run <code class="highlighter-rouge">systemctl restart dhcpcd</code>):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface eth0
+static ip_address=10.0.0.10/24
+static routers=10.0.0.1
+static domain_name_servers=10.0.0.1
+</code></pre></div></div>
+
+<hr />
+:ET

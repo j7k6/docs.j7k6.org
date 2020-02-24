@@ -1,0 +1,11 @@
+I"è<ol>
+  <li>Download <em>macOS</em> installer from AppStore</li>
+  <li>Copy installer contents to USB drive:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>High<span class="se">\ </span>Sierra.app/Contents/Resources/createinstallmedia <span class="nt">--volume</span> /Volumes/&lt;<span class="nv">$VOLUME_NAME</span><span class="o">&gt;</span> <span class="nt">--applicationpath</span> /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>High<span class="se">\ </span>Sierra.app
+</code></pre></div>    </div>
+  </li>
+  <li>Unmount volume</li>
+</ol>
+
+<hr />
+:ET

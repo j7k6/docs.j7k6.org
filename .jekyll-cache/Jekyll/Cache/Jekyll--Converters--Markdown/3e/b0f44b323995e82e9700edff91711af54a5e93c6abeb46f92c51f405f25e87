@@ -1,0 +1,28 @@
+I"ß<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> /etc/apt/sources.list <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+deb http://archive.debian.org/debian/ squeeze main non-free contrib
+deb-src http://archive.debian.org/debian/ squeeze main non-free contrib
+deb http://archive.debian.org/debian-security/ squeeze/updates main non-free contrib
+deb-src http://archive.debian.org/debian-security/ suqeeze/updates main non-free contrib
+</span><span class="no">EOF
+
+</span>apt-get <span class="nb">install </span>debian-archive-keyring
+apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+
+<span class="nb">cat</span> <span class="o">&gt;</span> /etc/apt/sources.list <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+deb http://security.debian.org/ wheezy/updates main
+deb-src http://security.debian.org/ wheezy/updates main
+
+deb http://ftp.de.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.de.debian.org/debian/ wheezy main contrib non-free
+</span><span class="no">EOF
+
+</span>apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+reboot
+</code></pre></div></div>
+
+<hr />
+:ET

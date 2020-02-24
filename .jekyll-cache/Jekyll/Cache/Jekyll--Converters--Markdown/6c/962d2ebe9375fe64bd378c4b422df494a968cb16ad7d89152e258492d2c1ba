@@ -1,0 +1,9 @@
+I"<ol>
+  <li>Boot into <em>Recovery Mode</em>: Hold <code class="highlighter-rouge">[cmd + r]</code></li>
+  <li>Open <code class="highlighter-rouge">Terminal</code></li>
+  <li>Run: <code class="highlighter-rouge">csrutil disable</code></li>
+  <li>Reboot</li>
+</ol>
+
+<hr />
+:ET

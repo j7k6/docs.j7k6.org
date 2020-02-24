@@ -1,0 +1,10 @@
+I"/<h2 id="gnulinux">GNU/Linux</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date</span> <span class="nt">-d</span> @&lt;<span class="nv">$TIMESTAMP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="macos">MacOS</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date</span> <span class="nt">-r</span> &lt;<span class="nv">$TIMESTAMP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

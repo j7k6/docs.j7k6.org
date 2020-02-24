@@ -1,0 +1,14 @@
+I"c<ol>
+  <li>Press <code class="highlighter-rouge">e</code> in GRUB boot menu.</li>
+  <li>Append <code class="highlighter-rouge">init=/bin/bash</code> to the kernel line.</li>
+  <li>Press <code class="highlighter-rouge">b</code> to boot.</li>
+  <li>Mount filesystem as writeable: <code class="highlighter-rouge">mount -o remount,rw /</code></li>
+  <li>Set new root password with <code class="highlighter-rouge">passwd</code>.</li>
+  <li>Reboot</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://wiki.archlinux.org/index.php/Reset_root_password">https://wiki.archlinux.org/index.php/Reset_root_password</a></li>
+</ol>
+:ET

@@ -1,0 +1,15 @@
+I"^<p>Since <strong>EdgeOS</strong> is based on <em>VyOS</em>, which is based on <em>Debian</em>, it’s possible to install Debian packages on <em>Ubiquity</em>’s <strong><em>EdgeRouter Lite/X</em></strong>. As always, type <code class="highlighter-rouge">configure</code> to enter configuration mode.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set system package repository wheezy components 'main contrib non-free' 
+set system package repository wheezy distribution wheezy 
+set system package repository wheezy url http://http.us.debian.org/debian
+
+commit
+save
+exit
+</code></pre></div></div>
+
+<p>Now it’s possible to run <code class="highlighter-rouge">apt-get install</code> to install Debian Packages on EdgeOS. Of course <code class="highlighter-rouge">apt-get update</code> needs to be run first.</p>
+
+<hr />
+:ET

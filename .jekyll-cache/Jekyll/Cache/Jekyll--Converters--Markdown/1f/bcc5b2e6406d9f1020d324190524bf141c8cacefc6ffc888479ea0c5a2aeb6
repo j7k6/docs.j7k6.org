@@ -1,0 +1,5 @@
+I"1<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Move-ActiveMailboxDatabase</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$DATABASE</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-ActivateOnServer</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SERVER</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-SkipLagCheck</span><span class="w"> </span><span class="nt">-SkipClientExperience</span><span class="w"> </span><span class="nt">-SkipHealthChecks</span><span class="w"> </span><span class="nt">-MountDialOverride</span><span class="p">:</span><span class="nx">None</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

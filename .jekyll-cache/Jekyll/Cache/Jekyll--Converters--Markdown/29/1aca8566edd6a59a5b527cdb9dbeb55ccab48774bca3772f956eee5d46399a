@@ -1,0 +1,6 @@
+I"ê<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netdom</span><span class="w"> </span><span class="nx">join</span><span class="w"> </span><span class="o">%</span><span class="nx">computername</span><span class="o">%</span><span class="w"> </span><span class="nx">/domain:</span><span class="err">&lt;</span><span class="nv">$DOMAIN</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/UserD:</span><span class="err">&lt;</span><span class="nv">$DOMAIN</span><span class="err">&gt;</span><span class="nx">\</span><span class="err">&lt;</span><span class="nv">$ADMIN_USER</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/Password:</span><span class="s2">"&lt;</span><span class="nv">$ADMIN_PASSWORD</span><span class="s2">&gt;"</span><span class="w">
+</span><span class="nf">shutdown</span><span class="w"> </span><span class="nx">/r</span><span class="w"> </span><span class="nx">/f</span><span class="w"> </span><span class="nx">/t</span><span class="w"> </span><span class="nx">0</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

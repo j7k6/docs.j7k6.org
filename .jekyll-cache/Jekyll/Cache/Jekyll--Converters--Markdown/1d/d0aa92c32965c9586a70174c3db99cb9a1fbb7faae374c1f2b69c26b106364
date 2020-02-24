@@ -1,0 +1,9 @@
+I"M<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nmap <span class="nt">-sP</span> <span class="nt">-n</span> 192.168.1.0/24
+</code></pre></div></div>
+
+<blockquote>
+  <p>This is handy when scanning network for new/unknown devices.</p>
+</blockquote>
+
+<hr />
+:ET

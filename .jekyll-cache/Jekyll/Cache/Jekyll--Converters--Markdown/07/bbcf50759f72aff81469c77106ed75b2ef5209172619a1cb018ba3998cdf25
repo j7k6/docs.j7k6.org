@@ -1,0 +1,60 @@
+I"š	<ol>
+  <li>Install required packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> nfs-common rsnapshot
+</code></pre></div>    </div>
+  </li>
+  <li>Add this line to <code class="highlighter-rouge">/etc/fstab</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;$NFS_SERVER&gt;:&lt;$NFS_SHARE&gt;	/mnt/backups	nfs	rw,async	0	0
+</code></pre></div>    </div>
+  </li>
+  <li>Mount NFS share:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/backups
+mount /mnt/backups
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/rsnapshot.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config_version	1.2
+snapshot_root	/mnt/backups
+no_create_root	0
+cmd_cp			/bin/cp
+cmd_rm			/bin/rm
+cmd_rsync		/usr/bin/rsync
+cmd_logger		/usr/bin/logger
+retain			hourly			12
+retain			daily			7
+retain			weekly			4
+retain			monthly			6
+exclude			/sys/**
+exclude			/dev/**
+exclude			/run/**
+exclude			/proc/**
+exclude			/tmp/**
+exclude			/mnt/**
+backup			/				./
+</code></pre></div>    </div>
+    <blockquote>
+      <p><strong>Note</strong>: Mind the [TAB]â€™s, rsnapshot is very picky about them!</p>
+    </blockquote>
+  </li>
+  <li>Add cronjobs (<code class="highlighter-rouge">crontab -e</code>):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 8-20 * * 1-5 /usr/bin/rsnapshot hourly # every work-day, every hour between 8 and 20h
+@daily /usr/bin/rsnapshot daily
+@weekly /usr/bin/rsnapshot weekly
+@monthly /usr/bin/rsnapshot monthly
+</code></pre></div>    </div>
+  </li>
+  <li>Manual backup:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rnsapshot daily
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="restore-from-backup">Restore from Backup</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync <span class="nt">-av</span> /mnt/backups/daily.0/var/lib/. /var/lib/
+</code></pre></div></div>
+<p>This restores the last daily backup of the <code class="highlighter-rouge">/var/lib</code> folder.</p>
+
+<hr />
+:ET

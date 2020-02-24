@@ -1,0 +1,8 @@
+I"Ú<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ifconfig en0 ether <span class="sb">`</span>openssl rand <span class="nt">-hex</span> 6 | <span class="nb">sed</span> <span class="s1">'s/\(..\)/\1:/g; s/.$//'</span><span class="sb">`</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://www.alecjacobson.com/weblog/?p=4616">http://www.alecjacobson.com/weblog/?p=4616</a></li>
+</ol>
+:ET

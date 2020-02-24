@@ -1,0 +1,5 @@
+I"6<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"&lt;</span><span class="nv">$USER</span><span class="s2">&gt; ALL=NOPASSWD:ALL"</span> <span class="o">&gt;&gt;</span> /etc/sudoers
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,6 @@
+I"»<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli software acceptance <span class="nb">set</span> <span class="nt">--level</span><span class="o">=</span>CommunitySupported
+esxcli software vib <span class="nb">install</span> <span class="nt">-d</span> http://vibsdepot.v-front.de <span class="nt">-n</span> ghettoVCB <span class="nt">--no-sig-check</span>
+</code></pre></div></div>
+
+<hr />
+:ET

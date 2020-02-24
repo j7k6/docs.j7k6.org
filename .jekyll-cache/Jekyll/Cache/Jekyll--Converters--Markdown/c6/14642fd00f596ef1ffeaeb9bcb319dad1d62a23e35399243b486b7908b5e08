@@ -1,0 +1,9 @@
+I"i<p>Add to <code class="highlighter-rouge">/etc/goaccess.conf</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time-format %T
+date-format %d/%b/%Y
+log-format %h %^[%d:%t %^] <span class="s2">"%r"</span> %s %b <span class="s2">"%R"</span> <span class="s2">"%u"</span>
+</code></pre></div></div>
+
+<hr />
+:ET

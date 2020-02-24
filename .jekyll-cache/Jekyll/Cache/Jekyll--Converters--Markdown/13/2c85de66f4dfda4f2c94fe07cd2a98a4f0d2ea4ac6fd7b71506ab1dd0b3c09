@@ -1,0 +1,19 @@
+I"�<ol>
+  <li>Resize the virtual disk in <em>vSphere</em>.</li>
+  <li>Trigger the kernel to acknowledge disk size changes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>DEV <span class="k">in</span> <span class="sb">`</span><span class="nb">ls</span> /sys/class/scsi_device<span class="sb">`</span><span class="p">;</span> <span class="k">do
+  </span><span class="nb">echo </span>1 <span class="o">&gt;</span> /sys/class/scsi_device/<span class="nv">$DEV</span>/device/rescan<span class="p">;</span>
+<span class="k">done</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">fdisk /dev/sda</code> to delete and recreate the last partition.
+    <blockquote>
+      <p><strong>Note</strong>: If the to-be-resized partition is also the boot-partition, don’t forget to toggle the ‘bootable’ flag after recreating (press <code class="highlighter-rouge">a</code>).</p>
+    </blockquote>
+  </li>
+  <li>Run <code class="highlighter-rouge">partprobe</code> to let the kernel re-read the partition table (Errors can be ignored).</li>
+  <li>Expand the partition: <code class="highlighter-rouge">resize2fs /dev/sda&lt;#&gt;</code></li>
+</ol>
+
+<hr />
+:ET

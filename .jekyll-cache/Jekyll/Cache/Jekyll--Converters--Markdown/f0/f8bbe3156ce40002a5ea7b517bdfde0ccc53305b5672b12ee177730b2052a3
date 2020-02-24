@@ -1,0 +1,11 @@
+I"<p><strong>Example:</strong> Allow <em>deploy</em> user to restart <em>Nginx</em> service without having to enter a password. Create <code class="highlighter-rouge">/etc/sudoers.d/nginx</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cmnd_Alias NGINX_RESTART = /bin/systemctl restart nginx
+Cmnd_Alias NGINX_RELOAD  = /bin/systemctl reload nginx
+Cmnd_Alias NGINX_STOP  = /bin/systemctl stop nginx
+
+deploy ALL=NOPASSWD: NGINX_RESTART, NGINX_RELOAD, NGINX_STOP
+</code></pre></div></div>
+
+<hr />
+:ET

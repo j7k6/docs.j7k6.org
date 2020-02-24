@@ -1,0 +1,20 @@
+I"g<p>When <a href="/vmware-esxi-upgrade-6-5-0-6-7-0/">upgrading to <em>ESXi 6.7.0</em></a> this error occured:</p>
+<blockquote>
+  <p>[InstallationError]<br />
+[Errno 28] No space left on device<br />
+      vibs = VMware_locker_tools-light_10.2.0.7253323-8169922<br />
+Please refer to the log file for more details.</p>
+</blockquote>
+
+<p>It can be fixed by manually installing the <em>VMware_locker_tools-light_10.2.0.7253323-8169922</em> VIB:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://hostupdate.vmware.com/software/VUM/PRODUCTION/main/esx/vmw/vib20/tools-light/VMware_locker_tools-light_10.2.0.7253323-8169922.vib
+esxcli software vib <span class="nb">install</span> <span class="nt">-f</span> <span class="nt">-v</span> /tmp/VMware_locker_tools-light_10.2.0.7253323-8169922.vib
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://blog.friedlandreas.net/2018/05/vmware-upgrade-errno-28-no-space-left-on-device/">https://blog.friedlandreas.net/2018/05/vmware-upgrade-errno-28-no-space-left-on-device/</a></li>
+</ol>
+:ET

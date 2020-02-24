@@ -1,0 +1,97 @@
+I"�<blockquote>
+  <p><strong>Note</strong>: Only non-default values are listed below. For full configuration details see links in footer.</p>
+</blockquote>
+
+<h2 id="pfsense">pfSense</h2>
+<p>Go to <em>VPN</em> → <em>IPsec</em> → <em>Tunnels</em>.</p>
+
+<h3 id="add-p1">Add P1</h3>
+<h4 id="general-information">General Information</h4>
+<ul>
+  <li>Remote Gateway: <code class="highlighter-rouge">0.0.0.0</code></li>
+  <li>Description: <code class="highlighter-rouge">EdgeRouter</code></li>
+</ul>
+
+<h4 id="phase-1-proposal-authentication">Phase 1 Proposal (Authentication)</h4>
+<ul>
+  <li>Peer identifier: <code class="highlighter-rouge">any</code></li>
+  <li>Pre-Shared Key: <code class="highlighter-rouge">&lt;$SHARED_SECRET&gt;</code></li>
+</ul>
+
+<h4 id="phase-1-proposal-encryption-algorithm">Phase 1 Proposal (Encryption Algorithm)</h4>
+<ul>
+  <li>Hash: <code class="highlighter-rouge">SHA1</code></li>
+</ul>
+
+<h3 id="add-p2">Add P2</h3>
+<h4 id="general-information-1">General Information</h4>
+<ul>
+  <li>Remote Network: <code class="highlighter-rouge">&lt;$EDGEROUTER_SUBNET&gt;</code></li>
+</ul>
+
+<h4 id="phase-2-proposal-sakey-exchange">Phase 2 Proposal (SA/Key Exchange)</h4>
+<ul>
+  <li>Encryption Algorithms: <code class="highlighter-rouge">AES</code> - <code class="highlighter-rouge">128 bits</code></li>
+  <li>Hash Algorithms: <code class="highlighter-rouge">SHA1</code></li>
+</ul>
+
+<h3 id="pre-shared-keys">Pre-Shared Keys</h3>
+<p>Go to <em>VPN</em> → <em>IPsec</em> → <em>Pre-Shared Keys</em>.</p>
+
+<h4 id="add-pre-shared-key">Add Pre-Shared Key</h4>
+<ul>
+  <li>Identifier: <code class="highlighter-rouge">any</code></li>
+  <li>Pre-Shared Key: <code class="highlighter-rouge">&lt;$SHARED_SECRET&gt;</code></li>
+</ul>
+
+<hr />
+
+<h2 id="edgerouter">EdgeRouter</h2>
+<p>Login via SSH and run <code class="highlighter-rouge">configure</code> to get to the configuration interface.</p>
+
+<h3 id="ipsec-configuration">IPsec Configuration:</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set vpn ipsec esp-group ipsec
+set vpn ipsec esp-group ipsec mode tunnel
+set vpn ipsec esp-group ipsec pfs enable
+set vpn ipsec esp-group ipsec proposal 1
+set vpn ipsec esp-group ipsec proposal 1 encryption aes128
+set vpn ipsec esp-group ipsec proposal 1 hash sha1
+set vpn ipsec esp-group ipsec lifetime 86400
+set vpn ipsec esp-group ipsec compression disable
+set vpn ipsec ike-group ipsec dead-peer-detection action restart
+set vpn ipsec ike-group ipsec dead-peer-detection interval 30
+set vpn ipsec ike-group ipsec dead-peer-detection timeout 60
+set vpn ipsec ike-group ipsec proposal 1
+set vpn ipsec ike-group ipsec proposal 1 encryption aes128
+set vpn ipsec ike-group ipsec proposal 1 hash sha1
+set vpn ipsec ike-group ipsec lifetime 86400
+set vpn ipsec ike-group ipsec key-exchange ikev1
+set vpn ipsec ike-group ipsec proposal 1 dh-group 14
+set vpn ipsec ipsec-interfaces interface eth0
+set vpn ipsec auto-firewall-nat-exclude enable
+set vpn ipsec nat-networks allowed-network 0.0.0.0/0
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt;
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; description pfSense
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; connection-type initiate
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; authentication mode pre-shared-secret
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; authentication pre-shared-secret &lt;$SHARED_SECRET&gt;
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; ike-group ipsec
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; local-address any
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1 esp-group ipsec
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1 local prefix &lt;$EDGEROUTER_SUBNET&gt;
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1 remote prefix &lt;$PFSENSE_SUBNET&gt;
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1 allow-nat-networks disable
+set vpn ipsec site-to-site peer &lt;$PFSENSE_IP&gt; tunnel 1 allow-public-networks disable
+</code></pre></div></div>
+
+<p>After that, run <code class="highlighter-rouge">commit</code>, <code class="highlighter-rouge">save</code> &amp; <code class="highlighter-rouge">exit</code>. The <strong>ipsec</strong> process will be started after that.
+To check on the IPsec connection status run <code class="highlighter-rouge">sudo ipsec statusall</code>.</p>
+
+<hr />
+<ol>
+  <li><a href="https://help.ubnt.com/hc/en-us/articles/115012408087-EdgeRouter-Site-to-Site-IPsec-VPN-to-pfSense">https://help.ubnt.com/hc/en-us/articles/115012408087-EdgeRouter-Site-to-Site-IPsec-VPN-to-pfSense</a></li>
+  <li><a href="https://futuristicsecurity.com/how-to-configure-site-to-site-ipsec-vpn-on-ubiquiti-edgerouter/">https://futuristicsecurity.com/how-to-configure-site-to-site-ipsec-vpn-on-ubiquiti-edgerouter/</a></li>
+  <li><a href="https://forum.netgate.com/topic/99550/site-to-site-ipsec-vpn-pfsense-to-ubiquiti-edgeos/2">https://forum.netgate.com/topic/99550/site-to-site-ipsec-vpn-pfsense-to-ubiquiti-edgeos/2</a></li>
+</ol>
+:ET

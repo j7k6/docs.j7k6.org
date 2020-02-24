@@ -1,0 +1,120 @@
+I"<ol>
+  <li>Install Packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+<span class="nb">export </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$PASSWORD</span><span class="s2">&gt;"</span>
+
+<span class="nb">echo </span>mysql-server mysql-server/root_password <span class="k">select</span> <span class="nv">$MYSQL_ROOT_PASSWORD</span> | debconf-set-selections
+<span class="nb">echo </span>mysql-server mysql-server/root_password_again <span class="k">select</span> <span class="nv">$MYSQL_ROOT_PASSWORD</span> | debconf-set-selections
+
+apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\</span>
+  build-essential <span class="se">\</span>
+  curl <span class="se">\</span>
+  mariadb-server <span class="se">\</span>
+  libxml2-dev <span class="se">\</span>
+  libcurl4-openssl-dev <span class="se">\</span>
+  libmariadbclient-dev <span class="se">\</span>
+  libsnmp-dev <span class="se">\</span>
+  libevent-dev <span class="se">\</span>
+  libpcre3-dev <span class="se">\</span>
+  snmp-mibs-downloader <span class="se">\</span>
+  snmp <span class="se">\</span>
+  nginx <span class="se">\</span>
+  php7.0-fpm <span class="se">\</span>
+  php7.0-mysql <span class="se">\</span>
+  php7.0-gd <span class="se">\</span>
+  php7.0-mbstring <span class="se">\</span>
+  php7.0-bcmath <span class="se">\</span>
+  php7.0-xml
+</code></pre></div>    </div>
+  </li>
+  <li>Add User &amp; Group:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>groupadd zabbix
+useradd <span class="nt">-g</span> zabbix zabbix
+</code></pre></div>    </div>
+  </li>
+  <li>Build &amp; Install Zabbix:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> http://repo.zabbix.com/zabbix/3.2/debian/pool/main/z/zabbix/zabbix_3.2.7.orig.tar.gz | <span class="nb">tar </span>zxvf -
+<span class="nb">cd </span>zabbix-3.2.7
+ 
+./configure <span class="se">\</span>
+  <span class="nt">--enable-server</span> <span class="se">\</span>
+  <span class="nt">--enable-agent</span> <span class="se">\</span>
+  <span class="nt">--with-mysql</span> <span class="se">\</span>
+  <span class="nt">--with-net-snmp</span> <span class="se">\</span>
+  <span class="nt">--with-libcurl</span> <span class="se">\</span>
+  <span class="nt">--with-libxml2</span>
+make <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Setup Database:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql <span class="nt">-uroot</span> <span class="nt">-p</span><span class="nv">$MYSQL_ROOT_PASSWORD</span> <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+CREATE DATABASE zabbix CHARACTER SET utf8 COLLATE utf8_bin;
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost' IDENTIFIED BY 'zabbix';
+</span><span class="no">EOF
+   
+</span>mysql <span class="nt">-uzabbix</span> <span class="nt">-pzabbix</span> zabbix &lt; database/mysql/schema.sql
+mysql <span class="nt">-uzabbix</span> <span class="nt">-pzabbix</span> zabbix &lt; database/mysql/images.sql
+mysql <span class="nt">-uzabbix</span> <span class="nt">-pzabbix</span> zabbix &lt; database/mysql/data.sql
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/usr/local/etc/zabbix_server.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DBHost=localhost
+DBName=zabbix
+DBUser=zabbix
+DBPassword=zabbix
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/systemd/system/zabbix-server.service</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=Zabbix Server
+After=syslog.target network.target mysqld.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/zabbix_server -c /usr/local/etc/zabbix_server.conf
+ExecReload=/usr/local/sbin/zabbix_server -R config_cache_reload
+RemainAfterExit=yes
+PIDFile=/run/zabbix/zabbix_server.pid
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/systemd/system/zabbix-agent.service</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=Zabbix Agent
+After=syslog.target network.target network-online.target
+Wants=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/zabbix_agentd -c /usr/local/etc/zabbix_agentd.conf
+RemainAfterExit=yes
+PIDFile=/var/run/zabbix/zabbix_agentd.pid
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div>    </div>
+  </li>
+  <li>Enable &amp; Start Services:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
+systemctl <span class="nb">enable </span>zabbix-server
+systemctl <span class="nb">enable </span>zabbix-agent
+systemctl start zabbix-server
+systemctl start zabbix-agent
+</code></pre></div>    </div>
+  </li>
+  <li>Copy Frontend Files to Web-Server Document Root:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/www/html/zabbix
+<span class="nb">cp</span> <span class="nt">-r</span> frontends/php/<span class="k">*</span> /var/www/html/zabbix/
+</code></pre></div>    </div>
+  </li>
+  <li><a href="/install-lemp-stack-ubuntu/">Configure Nginx</a>.</li>
+</ol>
+
+<h3 id="updates">Updates</h3>
+<p>For installing Zabbix updates, just repeat steps <em>3.</em> and <em>9.</em> &amp; restart services.</p>
+
+<hr />
+:ET

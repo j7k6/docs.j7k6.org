@@ -1,0 +1,118 @@
+I"u<h2 id="prerequirements">Prerequirements</h2>
+<ul>
+  <li><a href="/compile-nginx-openssl-debian-jessie/">Compile Nginx Against Bleeding Edge OpenSSL On Debian Jessie</a></li>
+  <li><a href="/install-certbot-letsencrypt-debian-jessie-ssl-certificates/">Install Certbot from jessie-packports</a></li>
+</ul>
+
+<h2 id="initial-nginx-config">Initial Nginx Config</h2>
+<p>Initially, a non-SSL virtual host config has to be created, because the certificate is not yet available at this point.</p>
+
+<ol>
+  <li>Create <code class="highlighter-rouge">/etc/nginx/sites-available/&lt;$DOMAIN&gt;.conf</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server <span class="o">{</span>
+  listen 80<span class="p">;</span>
+  server_name &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span> www.&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span><span class="p">;</span>
+      
+  location /.well-known/acme-challenge <span class="o">{</span>
+    root /var/www/letsencrypt<span class="p">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create directory for the <em>ACME Challenge</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/www/letsencrypt
+</code></pre></div>    </div>
+  </li>
+  <li>Link virtual host config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /etc/nginx/sites-available/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.conf /etc/nginx/sites-enabled/
+</code></pre></div>    </div>
+  </li>
+  <li>Restart Nginx:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart nginx
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="certbot">Certbot</h2>
+<ol>
+  <li>Request a certificate from <a href="https://letsencrypt.org"><em>Let’s Encrypt</em></a>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>certbot certonly <span class="nt">--rsa-key-size</span> 4096 <span class="nt">--webroot</span> <span class="nt">-w</span> /var/www/letsencrypt <span class="nt">-d</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span> <span class="nt">-d</span> www.&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Modify Renewal Cronjob in <code class="highlighter-rouge">/etc/cron.d/certbot</code>, append <code class="highlighter-rouge">--post-hook "service nginx reload"</code> to <code class="highlighter-rouge">certbot renew</code> command.</li>
+</ol>
+
+<h2 id="final-nginx-ssl-config">Final Nginx SSL Config</h2>
+<p>Now that the certificate is available, the final virtual host config can be deployed.</p>
+
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/nginx/sites-available/&lt;$DOMAIN&gt;.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  listen 80;
+  server_name &lt;$DOMAIN&gt; www.&lt;$DOMAIN&gt;;
+
+  location /.well-known/acme-challenge {
+    root /var/www/letsencrypt;
+  }
+
+  location / {
+    return 301 https://www.&lt;$DOMAIN&gt;$request_uri;
+  }
+}
+
+server {
+  listen 443 ssl http2;
+  server_name &lt;$DOMAIN&gt; www.&lt;$DOMAIN&gt;;
+
+  ssl on;
+  ssl_certificate /etc/letsencrypt/live/&lt;$DOMAIN&gt;/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/&lt;$DOMAIN&gt;/privkey.pem;
+  ssl_trusted_certificate /etc/letsencrypt/live/&lt;$DOMAIN&gt;/chain.pem;
+
+  ssl_protocols TLSv1.2;
+  ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+  ssl_prefer_server_ciphers on;
+  ssl_ecdh_curve secp384r1;
+
+  ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+  ssl_session_timeout 1d;
+  ssl_session_cache shared:SSL:50m;
+  ssl_session_tickets off;
+
+  ssl_stapling on;
+  ssl_stapling_verify on;
+  resolver 8.8.8.8 8.8.4.4 valid=300s;
+
+  add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-Content-Type-Options "nosniff";
+  ...
+}
+</code></pre></div>    </div>
+    <blockquote>
+      <p><em>Note</em>: A modern cipher list (<code class="highlighter-rouge">ssl_ciphers</code>) can be generated with the <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Mozilla SSL Configuration Generator</a>.</p>
+    </blockquote>
+  </li>
+  <li>Generate Diffie-Hellman Key Exchange:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl dhparam <span class="nt">-out</span> /etc/ssl/certs/dhparam.pem 4096
+</code></pre></div>    </div>
+  </li>
+  <li>Restart Nginx:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart nginx
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="qualys-ssl-labs-test">Qualys SSL Labs Test</h2>
+<p>Now that all is set-up, it’s time to boost the Sysadmin’s ego with a perfect <a href="https://www.ssllabs.com/ssltest"><strong>SSL Labs</strong></a> test result:</p>
+
+<p><img src="/files/nginx-letsencrypt-debian-jessie-ssllabs/ssllabs.png" alt="ssllabs" /></p>
+
+<hr />
+<ol>
+  <li><a href="https://www.sherbers.de/howto/nginx/">https://www.sherbers.de/howto/nginx/</a></li>
+  <li><a href="https://sethvargo.com/getting-an-a-plus-on-qualys-ssl-labs-tester/">https://sethvargo.com/getting-an-a-plus-on-qualys-ssl-labs-tester/</a></li>
+  <li><a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html">https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</a></li>
+</ol>
+:ET

@@ -1,0 +1,14 @@
+I"�<h2 id="background">Background</h2>
+<p>When having <em>ESXi</em>’s SSH port exposed to the internet for more than 10 minutes, chances are high that there are multiple attempts to brute force the <code class="highlighter-rouge">root</code> account’s password. This will lead to a locked <code class="highlighter-rouge">root</code> account, unable to login via password, not only for SSH but also for the vSphere Web Interface.</p>
+
+<h2 id="workaround">Workaround</h2>
+<p>The account lock can be bypassed on SSH by logging in via private-key auth. To remove the account lock run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pam_tally2 <span class="nt">--user</span> root <span class="nt">--reset</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://discoposse.com/2017/10/09/resetting-vsphere-6-x-esxi-account-lockouts-via-ssh/">https://discoposse.com/2017/10/09/resetting-vsphere-6-x-esxi-account-lockouts-via-ssh/</a></li>
+</ol>
+:ET

@@ -1,0 +1,96 @@
+I"><h2 id="dockerfile">Dockerfile</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM debian:jessie
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN echo "deb http://deb.torproject.org/torproject.org jessie main" &gt; /etc/apt/sources.list.d/tor.list \
+  &amp;&amp; gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 \
+  &amp;&amp; gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
+
+RUN apt-get update \
+  &amp;&amp; apt-get install -yqq \
+    tor \
+    deb.torproject.org-keyring \
+    build-essential \
+    curl \
+    git \
+    vim \
+    sudo
+
+COPY config/torrc /etc/tor/torrc
+COPY config/iptables.sh /etc/iptables.sh
+
+CMD /bin/sh /etc/iptables.sh; echo "nameserver 127.0.0.1" &gt; /etc/resolv.conf; sudo -u debian-tor bash -c tor
+</code></pre></div></div>
+
+<h2 id="config-files">Config files</h2>
+<ul>
+  <li><code class="highlighter-rouge">config/torrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VirtualAddrNetworkIPv4 10.192.0.0/10
+AutomapHostsOnResolve 1
+TransPort 9040
+DNSPort 5353
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">config/iptables.sh</code>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+
+<span class="nv">_out_if</span><span class="o">=</span><span class="s2">"eth0"</span>
+<span class="nv">_tor_uid</span><span class="o">=</span><span class="sb">`</span><span class="nb">id</span> <span class="nt">-u</span> debian-tor<span class="sb">`</span>
+<span class="nv">_trans_port</span><span class="o">=</span><span class="s2">"9040"</span>
+<span class="nv">_dns_port</span><span class="o">=</span><span class="s2">"5353"</span>
+<span class="nv">_virt_addr</span><span class="o">=</span><span class="s2">"10.192.0.0/10"</span>
+<span class="nv">_non_tor</span><span class="o">=</span><span class="s2">"127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"</span>
+<span class="nv">_resv_iana</span><span class="o">=</span><span class="s2">"0.0.0.0/8 100.64.0.0/10 169.254.0.0/16 192.0.0.0/24 192.0.2.0/24 192.88.99.0/24 198.18.0.0/15 198.51.100.0/24 203.0.113.0/24 224.0.0.0/3"</span>
+
+iptables <span class="nt">-F</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-F</span>
+
+iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> <span class="nv">$_virt_addr</span> <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--tcp-flags</span> FIN,SYN,RST,ACK SYN <span class="nt">-j</span> REDIRECT <span class="nt">--to-ports</span> <span class="nv">$_trans_port</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> 127.0.0.1/32 <span class="nt">-p</span> udp <span class="nt">-m</span> udp <span class="nt">--dport</span> 53 <span class="nt">-j</span> REDIRECT <span class="nt">--to-ports</span> <span class="nv">$_dns_port</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-m</span> owner <span class="nt">--uid-owner</span> <span class="nv">$_tor_uid</span> <span class="nt">-j</span> RETURN
+iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-o</span> lo <span class="nt">-j</span> RETURN
+
+<span class="k">for </span>_lan <span class="k">in</span> <span class="nv">$_non_tor</span><span class="p">;</span> <span class="k">do
+  </span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> <span class="nv">$_lan</span> <span class="nt">-j</span> RETURN
+<span class="k">done
+
+for </span>_iana <span class="k">in</span> <span class="nv">$_resv_iana</span><span class="p">;</span> <span class="k">do
+  </span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> <span class="nv">$_iana</span> <span class="nt">-j</span> RETURN
+<span class="k">done
+
+</span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--tcp-flags</span> FIN,SYN,RST,ACK SYN <span class="nt">-j</span> REDIRECT <span class="nt">--to-ports</span> <span class="nv">$_trans_port</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-m</span> state <span class="nt">--state</span> ESTABLISHED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-i</span> lo <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> FORWARD <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-m</span> state <span class="nt">--state</span> INVALID <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-m</span> state <span class="nt">--state</span> ESTABLISHED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-o</span> <span class="nv">$_out_if</span> <span class="nt">-m</span> owner <span class="nt">--uid-owner</span> <span class="nv">$_tor_uid</span> <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--tcp-flags</span> FIN,SYN,RST,ACK SYN <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> 127.0.0.1/32 <span class="nt">-o</span> lo <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> 127.0.0.1/32 <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--dport</span> <span class="nv">$_trans_port</span> <span class="nt">--tcp-flags</span> FIN,SYN,RST,ACK SYN <span class="nt">-j</span> ACCEPT
+
+<span class="k">for </span>_lan <span class="k">in</span> <span class="nv">$_non_tor</span><span class="p">;</span> <span class="k">do
+  </span>iptables <span class="nt">-A</span> OUTPUT <span class="nt">-d</span> <span class="nv">$_lan</span> <span class="nt">-j</span> ACCEPT
+<span class="k">done
+
+</span>iptables <span class="nt">-A</span> OUTPUT <span class="nt">-j</span> LOG <span class="nt">--log-prefix</span> <span class="s2">"Dropped OUTPUT packet: "</span> <span class="nt">--log-level</span> 7 <span class="nt">--log-uid</span>
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-j</span> DROP
+iptables <span class="nt">-P</span> INPUT DROP
+iptables <span class="nt">-P</span> FORWARD DROP
+iptables <span class="nt">-P</span> OUTPUT DROP
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="run">Run</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> &lt;<span class="nv">$IMAGE_NAME</span><span class="o">&gt;</span> <span class="nb">.</span>
+docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>&lt;<span class="nv">$CONTAINER_NAME</span><span class="o">&gt;</span> <span class="nt">--restart</span><span class="o">=</span>always <span class="nt">--cap-add</span><span class="o">=</span>NET_ADMIN <span class="nt">--cap-add</span><span class="o">=</span>NET_RAW &lt;<span class="nv">$IMAGE_NAME</span><span class="o">&gt;</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> &lt;<span class="nv">$CONTAINER_NAME</span><span class="o">&gt;</span> /bin/bash
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy">https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy</a></li>
+</ol>
+:ET

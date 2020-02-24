@@ -1,0 +1,39 @@
+I"¼	<ol>
+  <li>Install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> openvpn unzip wget
+</code></pre></div>    </div>
+  </li>
+  <li>Download <em>PIA</em> OpenVPN configs:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
+</code></pre></div>    </div>
+  </li>
+  <li>Extract <em>PIA</em> OpenVPN configs:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>unzip openvpn.zip <span class="nt">-d</span> /etc/openvpn/pia
+</code></pre></div>    </div>
+  </li>
+  <li>Copy desired <em>PIA</em> profile to <code class="highlighter-rouge">/etc/openvpn/pia.conf</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo cp</span> /etc/openvpn/pia/&lt;<span class="nv">$PIA_PROFILE</span><span class="o">&gt;</span>.ovpn /etc/openvpn/pia.conf
+</code></pre></div>    </div>
+  </li>
+  <li>Change line in <code class="highlighter-rouge">/etc/openvpn/pia.conf</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/^auth-user-pass$/auth-user-pass \/etc\/openvpn\/pia.auth/'</span> /etc/openvpn/pia.conf
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>PIA</em> credential file <code class="highlighter-rouge">/etc/openvpn/pia.auth</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;$PIA_USERNAME&gt;
+&lt;$PIA_PASSWORD&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Restrict access to <code class="highlighter-rouge">/etc/openvpn/pia.auth</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chmod </span>0400 /etc/openvpn/pia.auth
+</code></pre></div>    </div>
+  </li>
+  <li>Enable and start OpenVPN service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable</span> <span class="nt">--now</span> openvpn@pia.service
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

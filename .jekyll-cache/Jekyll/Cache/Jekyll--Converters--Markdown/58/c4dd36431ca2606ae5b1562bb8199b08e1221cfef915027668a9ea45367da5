@@ -1,0 +1,32 @@
+I"<ol>
+  <li>Install Git:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>git
+</code></pre></div>    </div>
+  </li>
+  <li>Add Git User:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adduser <span class="nt">--home</span> /var/git <span class="nt">--shell</span> <span class="si">$(</span>which git-shell<span class="si">)</span> <span class="nt">--gecos</span> <span class="s2">""</span> git
+</code></pre></div>    </div>
+  </li>
+  <li>Add SSH Key(s):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-u</span> git <span class="nb">mkdir</span> ~git/.ssh
+   
+<span class="nb">sudo</span> <span class="nt">-u</span> git <span class="nb">cat</span> <span class="o">&gt;</span> ~git/.ssh/authorized_keys <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+ssh-rsa ...
+</span><span class="no">EOF
+
+</span><span class="nb">chmod</span> <span class="nt">-R</span> 0700 ~git/.ssh
+</code></pre></div>    </div>
+  </li>
+  <li>Create new Git repo:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-u</span> git <span class="nb">mkdir</span> ~git/&lt;<span class="nv">$REPO</span><span class="o">&gt;</span>.git
+<span class="nb">sudo</span> <span class="nt">-u</span> git git <span class="nt">-C</span> ~git/&lt;<span class="nv">$REPO</span><span class="o">&gt;</span>.git init <span class="nt">--bare</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://eklitzke.org/how-to-how-your-own-private-git-repositories">https://eklitzke.org/how-to-how-your-own-private-git-repositories</a></li>
+  <li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server">https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server</a></li>
+</ol>
+:ET

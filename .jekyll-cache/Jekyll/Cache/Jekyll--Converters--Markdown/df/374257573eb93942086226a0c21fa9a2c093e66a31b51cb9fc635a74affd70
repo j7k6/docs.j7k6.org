@@ -1,0 +1,48 @@
+I"<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/systemd/system/nfs-common.services</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=NFS Common daemons
+Wants=remote-fs-pre.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/init.d/nfs-common start
+ExecStop=/etc/init.d/nfs-common stop
+
+[Install]
+WantedBy=sysinit.target
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/systemd/system/rpcbind.service</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=RPC bind portmap service
+After=systemd-tmpfiles-setup.service
+Wants=remote-fs-pre.target
+Before=remote-fs-pre.target
+DefaultDependencies=no
+
+[Service]
+ExecStart=/sbin/rpcbind -f -w
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=sysinit.target
+Alias=portmap
+</code></pre></div>    </div>
+  </li>
+  <li>Enable Services &amp; Reboot:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>nfs-common
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>rpcbind
+<span class="nb">sudo </span>reboot 
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://github.com/geerlingguy/raspberry-pi-dramble/issues/65#issuecomment-283046966">https://github.com/geerlingguy/raspberry-pi-dramble/issues/65#issuecomment-283046966</a></li>
+</ol>
+:ET

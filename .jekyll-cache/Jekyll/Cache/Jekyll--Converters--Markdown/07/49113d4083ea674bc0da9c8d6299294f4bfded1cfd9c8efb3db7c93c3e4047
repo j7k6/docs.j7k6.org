@@ -1,0 +1,119 @@
+I"R<h2 id="prerequirements">Prerequirements</h2>
+<p>This setup was tested on <em><a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Stretch</a></em>.
+In this example the Raspberry Pi’s IP address is <em>192.168.1.10/24</em>.</p>
+
+<p>First install the required packages:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> vim dnsmasq pxelinux
+</code></pre></div></div>
+
+<h2 id="dnsmasq">dnsmasq</h2>
+<p><code class="highlighter-rouge">dnsmasq</code> is used as a DHCP proxy here, it uses an existing DHCP server on the network for assigning IPs. Also, the DNS service is disabled.</p>
+
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/dnsmasq.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port=0
+interface=eth0
+dhcp-range=192.168.1.0,proxy,255.255.255.0
+dhcp-script=/bin/echo
+pxe-service=x86PC, "PXE Boot Menu", pxelinux
+dhcp-boot=pxelinux.0
+enable-tftp
+tftp-root=/var/lib/tftpboot
+</code></pre></div>    </div>
+  </li>
+  <li>Create directories:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/tftpboot/pxelinux.cfg
+</code></pre></div>    </div>
+  </li>
+  <li>Restart service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart dnsmasq
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="pxelinux-the-bootloader">pxelinux (the bootloader)</h2>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/var/lib/tftpboot/pxelinux.cfg/default</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MENU TITLE Network Boot Menu
+DEFAULT menu.c32
+</code></pre></div>    </div>
+  </li>
+  <li>Create file links:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /usr/lib/PXELINUX/pxelinux.0 /var/lib/tftpboot/
+<span class="nb">ln</span> <span class="nt">-s</span> /usr/lib/syslinux/modules/bios/<span class="o">{</span>ldlinux,menu,libcom32,libutil<span class="o">}</span>.c32 /var/lib/tftpboot/
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="pxe-bootable-kali-linux">PXE bootable Kali Linux</h2>
+<ol>
+  <li>Download <em>Kali Linux</em> ISO:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://cdimage.kali.org/kali-2017.2/kali-linux-2017.2-amd64.iso
+</code></pre></div>    </div>
+  </li>
+  <li>Create mount directories:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/tftpboot/kali
+<span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/kali
+</code></pre></div>    </div>
+  </li>
+  <li>Mount ISO:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount kali-linux-2017.2-amd64.iso /mnt/kali
+</code></pre></div>    </div>
+  </li>
+  <li>Copy files from ISO and unmount:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /mnt/kali/live/<span class="o">{</span>filesystem.squashfs,initrd.img,vmlinuz<span class="o">}</span> /var/lib/tftpboot/kali/
+umount /mnt/kali
+</code></pre></div>    </div>
+  </li>
+  <li>Append to <code class="highlighter-rouge">/var/lib/tftpboot/pxelinux.cfg/default</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+LABEL kali
+MENU default
+MENU LABEL Kali Linux
+KERNEL /kali/vmlinuz
+APPEND initrd=/kali/initrd.img boot=live username=root hostname=kali gfxpayload=1024x768x16,1024x768 components fetch=tftp://192.168.1.10/kali/filesystem.squashfs
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Now it’s possible to boot <em>Kali Linux</em> over the network:
+<img src="/files/raspberry-pi-pxe-server.png" alt="raspberry-pi-pxe-server" /></p>
+
+<h2 id="update-boot-from-nfs-share">Update: Boot from NFS share</h2>
+<p>This configuration downloads the whole Kali live-system via TFTP, which is incredibly slow. To speed up the boot process, it can be accessed via NFS instead of the anachronistic TFTP protocol.
+Follow those steps to boot from an NFS share:</p>
+
+<ol>
+  <li>Install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> nfs-kernel-server
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/exports</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/lib/tftpboot/kali 192.168.1.0/24(ro,sync,no_subtree_check,no_root_squash)
+</code></pre></div>    </div>
+  </li>
+  <li>Reload <code class="highlighter-rouge">exports</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exportfs <span class="nt">-ra</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Enable &amp; start NFS service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>nfs-kernel-server
+systemctl start nfs-kernel-server
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <em>APPEND</em>-line in <code class="highlighter-rouge">/var/lib/tftpboot/pxelinux.cfg/default</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>APPEND initrd=/kali/initrd.img boot=live username=root hostname=kali gfxpayload=1024x768x16,1024x768 components netboot=nfs nfsroot=192.168.1.10:/var/lib/tftpboot/kali live-media-path=/
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://github.com/pimterry/rpi-pxe-server">https://github.com/pimterry/rpi-pxe-server</a></li>
+  <li><a href="http://www.raspberry-pi-geek.de/Magazin/2014/02/Raspberry-Pi-als-PXE-Server/">http://www.raspberry-pi-geek.de/Magazin/2014/02/Raspberry-Pi-als-PXE-Server/</a></li>
+  <li><a href="http://www.gtkdb.de/index_7_2744.html">http://www.gtkdb.de/index_7_2744.html</a></li>
+  <li><a href="https://lists.debian.org/debian-live/2015/05/msg00028.html">https://lists.debian.org/debian-live/2015/05/msg00028.html</a></li>
+</ol>
+
+:ET

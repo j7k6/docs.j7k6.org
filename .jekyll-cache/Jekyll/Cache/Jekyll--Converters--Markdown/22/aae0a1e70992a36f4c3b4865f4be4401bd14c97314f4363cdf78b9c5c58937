@@ -1,0 +1,16 @@
+I"Í<ol>
+  <li>Find Admin User Name:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongo <span class="nt">--port</span> 27117 ace <span class="nt">--eval</span> <span class="s2">"db.admin.find().forEach(printjson);"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Reset Password for Admin User:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mongo <span class="nt">--port</span> 27117 ace <span class="nt">--eval</span> <span class="s1">'db.admin.update( { "name" : "&lt;$ADMIN_USER&gt;" }, { $set : { "x_shadow" : "'</span><span class="sb">`</span><span class="nb">printf</span> <span class="s2">"&lt;</span><span class="nv">$NEW_PASSWORD</span><span class="s2">&gt;"</span> | mkpasswd <span class="nt">-s</span> <span class="nt">-m</span> sha-512<span class="sb">`</span><span class="s1">'" } } )'</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://community.ubnt.com/t5/UniFi-Wireless/Controller-not-letting-me-change-admin-password/m-p/1560546#M160088">https://community.ubnt.com/t5/UniFi-Wireless/Controller-not-letting-me-change-admin-password/m-p/1560546#M160088</a></li>
+</ol>
+:ET

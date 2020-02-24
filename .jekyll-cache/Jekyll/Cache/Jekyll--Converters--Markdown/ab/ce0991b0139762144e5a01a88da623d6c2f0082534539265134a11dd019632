@@ -1,0 +1,10 @@
+I"Ÿ<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"use-agent"</span> <span class="o">&gt;&gt;</span> ~/.gnupg/gpg.conf
+<span class="nb">echo</span> <span class="s2">"pinentry-mode loopback"</span> <span class="o">&gt;&gt;</span> ~/.gnupg/gpg.conf
+<span class="nb">echo</span> <span class="s2">"allow-loopback-pinentry"</span> <span class="o">&gt;&gt;</span> ~/.gnupg/gpg-agent.conf
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://d.sb/2016/11/gpg-inappropriate-ioctl-for-device-errors">https://d.sb/2016/11/gpg-inappropriate-ioctl-for-device-errors</a></li>
+</ol>
+:ET

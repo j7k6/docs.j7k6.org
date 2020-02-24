@@ -1,0 +1,5 @@
+I"ã<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip route replace default via &lt;<span class="nv">$GATEWAY_IP</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

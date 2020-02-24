@@ -1,0 +1,14 @@
+I"<ol>
+  <li>Download the <strong>aacraid</strong> driver package from <a href="https://my.vmware.com/group/vmware/details?downloadGroup=DT-ESXI60-ADAPTEC-AACRAID-62152011&amp;productId=491">VMware</a>.</li>
+  <li><code class="highlighter-rouge">unzip aacraid-6.0.6.2.1.54013-5685402.zip</code></li>
+  <li>SCP the <code class="highlighter-rouge">vmware-esxi-drivers-scsi-aacraid-600.6.2.1.54013.-1.0.6.2494585.x86_64.vib</code> file to the ESXi system.</li>
+  <li>On ESXi, install the driver bundle:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli software acceptance <span class="nb">set</span> <span class="nt">--level</span><span class="o">=</span>CommunitySupported
+esxcli software vib <span class="nb">install</span> <span class="nt">-v</span><span class="o">=</span><span class="s2">"/tmp/vmware-esxi-drivers-scsi-aacraid-600.6.2.1.54013.-1.0.6.2494585.x86_64.vib"</span> <span class="nt">--no-sig-check</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Reboot ESXi.</li>
+</ol>
+
+<hr />
+:ET

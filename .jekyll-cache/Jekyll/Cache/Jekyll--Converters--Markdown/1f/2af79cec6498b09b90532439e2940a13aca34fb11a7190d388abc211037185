@@ -1,0 +1,7 @@
+I"†<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> <span class="nt">-r</span> <span class="nt">--cached</span> <span class="nb">.</span>
+git add <span class="nb">.</span> <span class="nt">--all</span>
+git commit <span class="nt">-am</span> <span class="s2">"Ignore Files"</span>
+</code></pre></div></div>
+
+<hr />
+:ET

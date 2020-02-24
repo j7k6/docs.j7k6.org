@@ -1,0 +1,10 @@
+I"5<h2 id="stdout">Stdout</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> /proc/&lt;<span class="nv">$PID</span><span class="o">&gt;</span>/fd/1
+</code></pre></div></div>
+
+<h2 id="stderr">Stderr</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> /proc/&lt;<span class="nv">$PID</span><span class="o">&gt;</span>/fd/2
+</code></pre></div></div>
+
+<hr />
+:ET

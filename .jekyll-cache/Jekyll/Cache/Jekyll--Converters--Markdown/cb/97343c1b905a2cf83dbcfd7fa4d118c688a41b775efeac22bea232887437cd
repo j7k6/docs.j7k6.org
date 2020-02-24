@@ -1,0 +1,9 @@
+I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>snmp-mibs-downloader
+systemctl restart zabbix-server
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://e3fi389.wordpress.com/2016/03/28/zabbix-error-in-autodiscovery-function-snmp_parse_oid-cannot-parse-oid-if-mibifdescr/">https://e3fi389.wordpress.com/2016/03/28/zabbix-error-in-autodiscovery-function-snmp_parse_oid-cannot-parse-oid-if-mibifdescr/</a></li>
+</ol>
+:ET

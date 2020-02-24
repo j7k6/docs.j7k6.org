@@ -1,0 +1,6 @@
+I"u<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KEEP</span><span class="o">=</span>5
+<span class="nb">rm</span> <span class="nt">-rf</span> <span class="sb">`</span><span class="nb">ls</span> <span class="nt">-td</span> &lt;<span class="nv">$PATH_TO_FILES</span><span class="o">&gt;</span>/<span class="k">*</span>/ | <span class="nb">tail</span> <span class="nt">-n</span> +<span class="k">$((</span><span class="nv">$KEEP</span><span class="o">+</span><span class="m">1</span><span class="k">))</span><span class="sb">`</span>
+</code></pre></div></div>
+
+<hr />
+:ET

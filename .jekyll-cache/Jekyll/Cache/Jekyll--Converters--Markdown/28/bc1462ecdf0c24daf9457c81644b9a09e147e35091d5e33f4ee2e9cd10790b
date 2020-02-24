@@ -1,0 +1,13 @@
+I"Q<h2 id="mount">Mount</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>losetup /dev/loop0 &lt;<span class="nv">$VMDK_FLAT_FILE</span><span class="o">&gt;</span>
+losetup <span class="nt">-o</span> <span class="k">$((</span><span class="si">$(</span>fdisk <span class="nt">-l</span> | <span class="nb">awk</span> <span class="s1">'/^\/dev\/loop0p1/ { if($2=="*") print $3; else print $2; }'</span><span class="si">)</span><span class="o">*</span><span class="m">512</span><span class="k">))</span> /dev/loop1 /dev/loop0
+mount /dev/loop1 /mnt
+</code></pre></div></div>
+
+<h2 id="unmount">Unmount</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>umount /mnt
+losetup <span class="nt">-d</span> /dev/loop0 /dev/loop1
+</code></pre></div></div>
+
+<hr />
+:ET

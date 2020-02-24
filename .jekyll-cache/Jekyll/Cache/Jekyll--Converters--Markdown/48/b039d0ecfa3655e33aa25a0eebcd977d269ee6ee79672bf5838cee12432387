@@ -1,0 +1,40 @@
+I"Î<ol>
+  <li>Add <code class="highlighter-rouge">mopidy</code> repository:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://apt.mopidy.com/mopidy.gpg | <span class="nb">sudo </span>apt-key add -
+curl <span class="nt">-fsSL</span> https://apt.mopidy.com/jessie.list <span class="o">&gt;</span> /etc/apt/sources.list.d/mopidy.list
+</code></pre></div>    </div>
+  </li>
+  <li>Install:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update
+apt <span class="nb">install </span>mopidy mopidy-spotify mopidy-spotify-tunigo
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/mopidy/mopidy.conf</code> (get Spotify <code class="highlighter-rouge">client_id</code> and <code class="highlighter-rouge">client_secret</code> <a href="https://www.mopidy.com/authenticate/">here</a>):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[mpd]
+hostname = 0.0.0.0
+
+[spotify]
+username = &lt;$SPOTIFY_USERNAME&gt;
+password = &lt;$SPOTIFY_PASSWORD&gt;
+client_id = &lt;$SPOTIFY_CLIENT_ID&gt;
+client_secret = &lt;$SPOTIFY_CLIENT_SECRET&gt;
+bitrate = 320
+
+[spotify_tunigo]
+enabled = true
+</code></pre></div>    </div>
+  </li>
+  <li>Enable &amp; start <code class="highlighter-rouge">mopidy</code> service
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable</span> <span class="nt">--now</span> mopidy
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">ncmpcpp --host=&lt;$MOPIDY_HOST&gt;</code> (locally or via network)</li>
+</ol>
+
+<blockquote>
+  <p>In <code class="highlighter-rouge">ncmpcpp</code> browse Spotify playlist by pressing <code class="highlighter-rouge">2</code>.<br />
+Search songs and albums by pressing <code class="highlighter-rouge">3</code>.</p>
+</blockquote>
+
+<hr />
+:ET

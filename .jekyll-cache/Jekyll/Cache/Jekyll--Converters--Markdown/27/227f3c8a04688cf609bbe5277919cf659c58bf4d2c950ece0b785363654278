@@ -1,0 +1,5 @@
+I"²<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tune2fs <span class="nt">-m</span> 0 /dev/sda1
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,13 @@
+I"‰<p>When moving a <strong>Gitlab CE</strong> instance to a new server and upgrading to version <em>10.6</em>, all deployments started to fail because somehow the internal routing to the registry had changed.
+When a deployment task tried to push a Docker image to the internal registry, it always failed with a  <code class="highlighter-rouge">blob upload unknown</code> error message.</p>
+
+<p>To fix this error, I had to add this line to the <code class="highlighter-rouge">gitlab.rb</code> configuration file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>registry_nginx['proxy_set_headers'] = { "Host" =&gt; "&lt;$GITLAB_HOSTNAME&gt;:&lt;$DOCKER_PORT&gt;" }
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/20164#note_13270027">https://gitlab.com/gitlab-org/gitlab-ce/issues/20164#note_13270027</a></li>
+</ol>
+:ET

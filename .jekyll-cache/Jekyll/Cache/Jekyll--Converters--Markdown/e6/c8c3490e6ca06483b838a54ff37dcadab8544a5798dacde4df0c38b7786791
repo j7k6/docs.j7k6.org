@@ -1,0 +1,93 @@
+I"�<h2 id="prerequirements">Prerequirements</h2>
+<p>To connect to Freenode via Tor, a registerd nickname and SASL authentication is required.</p>
+
+<p>Install the required packages first:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install -y tor irssi
+</code></pre></div></div>
+
+<h3 id="tor">Tor</h3>
+<ol>
+  <li>Add this line to <code class="highlighter-rouge">/etc/tor/torrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapaddress 10.40.40.40 freenodeok2gncmy.onion
+</code></pre></div>    </div>
+  </li>
+  <li>Restart the <code class="highlighter-rouge">tor</code> service:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart tor
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="sasl">SASL</h3>
+<ol>
+  <li>Generate keypair &amp; certificate:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-newkey</span> rsa:4096 <span class="nt">-days</span> 3650 <span class="nt">-x509</span> <span class="nt">-keyout</span> ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.key <span class="nt">-out</span> ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.crt <span class="nt">-nodes</span>  <span class="nt">-subj</span> <span class="s2">"/CN=&lt;</span><span class="nv">$NICK</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create certificate bundle:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.crt ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.key <span class="o">&gt;</span> ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.pem
+</code></pre></div>    </div>
+  </li>
+  <li>Get the certificate’s fingerprint (<code class="highlighter-rouge">&lt;$CERT_FINGERPRINT&gt;</code>, will be needed later):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 <span class="nt">-in</span> ~/.irssi/&lt;<span class="nv">$NICK</span><span class="o">&gt;</span>.pem <span class="nt">-outform</span> der | <span class="nb">sha1sum</span> <span class="nt">-b</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="s1">' '</span> <span class="nt">-f1</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="irssi">irssi</h2>
+<h3 id="nickname-registration">Nickname Registration</h3>
+<ol>
+  <li>Run <code class="highlighter-rouge">irssi</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irssi <span class="nt">-n</span> &lt;<span class="nv">$NICK</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Connect to Freenode:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/connect irc.freenode.org 6667
+</code></pre></div>    </div>
+  </li>
+  <li>Register Nickname:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/msg NickServ REGISTER &lt;$PASSWORD&gt; &lt;$EMAIL&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Add the previously generated certifcate’s fingerprint:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/msg NickServ CERT ADD &lt;$CERT_FINGERPRINT&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Now wait for the email to arrive and confirm the nickname registration.
+Enter the command from the confirmation email:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/msg NickServ VERIFY REGISTER &lt;$NICK&gt; &lt;$CONFIRMATION_PASSWORD&gt;
+</code></pre></div></div>
+
+<h3 id="configuration">Configuration</h3>
+<p>When the nickname registration was succesful, prepare <code class="highlighter-rouge">irssi</code> for connecting to Freenode’s <code class="highlighter-rouge">freenodeok2gncmy.onion</code> address.</p>
+
+<ol>
+  <li>Add the network:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/network add -sasl_username &lt;$NICK&gt; -sasl_password &lt;$PASSWORD&gt; -sasl_mechanism EXTERNAL Freenode
+</code></pre></div>    </div>
+  </li>
+  <li>Add the server:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/server add -auto -net Freenode -ssl -ssl_cert ~/.irssi/&lt;$NICK&gt;.pem 10.40.40.40 6697
+</code></pre></div>    </div>
+  </li>
+  <li>Write config to file:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/save
+</code></pre></div>    </div>
+  </li>
+  <li>Exit <code class="highlighter-rouge">irssi</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/quit
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Now run <code class="highlighter-rouge">irssi</code> via Tor:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torify irssi <span class="nt">-n</span> &lt;<span class="nv">$NICK</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://freenode.net/kb/answer/registration">https://freenode.net/kb/answer/registration</a></li>
+  <li><a href="https://www.funtoo.org/Irssi_over_tor">https://www.funtoo.org/Irssi_over_tor</a></li>
+</ol>
+:ET

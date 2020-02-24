@@ -1,0 +1,33 @@
+I"Ã<ol>
+  <li>Power-off VM</li>
+  <li>Convert VMDK to <em>thin provisioned</em> on ESXi:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmkfstools <span class="nt">-i</span> &lt;<span class="nv">$THICK_VMDK</span><span class="o">&gt;</span> <span class="nt">-d</span> thin &lt;<span class="nv">$THIN_VMDK</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Replace <em>$THICK_VMDK</em> with <em>$THIN_VMDK</em> in the VM settings</li>
+  <li>Power-on VM</li>
+  <li>Login to VM to zero disk space:
+    <ul>
+      <li><strong>Linux</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/zero <span class="nv">bs</span><span class="o">=</span>64m
+ <span class="nb">rm</span> <span class="nt">-f</span> /zero
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Windows</strong>:
+        <ul>
+          <li>Download <a href="http://technet.microsoft.com/en-us/sysinternals/bb897443.aspx"><em>sdelete</em></a></li>
+          <li>run <code class="highlighter-rouge">sdelete -z c:</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Power-off VM and login to ESXi via SSH to <em>punchzero</em> the thin disk:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmkfstools <span class="nt">-K</span> &lt;<span class="nv">$THIN_VMDK</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Power-on VM</li>
+  <li>Delete <em>$THICK_VMDK</em> from datastore</li>
+</ol>
+
+<hr />
+:ET

@@ -1,0 +1,5 @@
+I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>ffmpeg <span class="nt">--with-fdk-aac</span> <span class="nt">--with-ffplay</span> <span class="nt">--with-freetype</span> <span class="nt">--with-libass</span> <span class="nt">--with-libquvi</span> <span class="nt">--with-libvorbis</span> <span class="nt">--with-libvpx</span> <span class="nt">--with-opus</span> <span class="nt">--with-x265</span>
+</code></pre></div></div>
+
+<hr />
+:ET

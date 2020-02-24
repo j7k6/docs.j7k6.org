@@ -1,0 +1,9 @@
+I"ï<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"text": "&lt;$TEXT&gt;", "mode": "markdown"}'</span> <span class="se">\</span>
+  https://api.github.com/markdown
+</code></pre></div></div>
+
+<hr />
+:ET

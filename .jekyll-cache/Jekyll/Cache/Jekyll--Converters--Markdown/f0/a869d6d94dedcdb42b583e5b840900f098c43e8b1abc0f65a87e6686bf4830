@@ -1,0 +1,5 @@
+I"Ğ<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl dhparam <span class="nt">-out</span> /etc/ssl/certs/dhparam.pem 4096
+</code></pre></div></div>
+
+<hr />
+:ET

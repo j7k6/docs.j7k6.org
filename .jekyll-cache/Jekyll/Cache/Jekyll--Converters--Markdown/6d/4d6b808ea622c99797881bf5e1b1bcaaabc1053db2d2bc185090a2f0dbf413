@@ -1,0 +1,16 @@
+I"°<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>xtables-addons-common libtext-csv-xs-perl
+
+<span class="nb">mkdir</span> /usr/share/xt_geoip
+/usr/lib/xtables-addons/xt_geoip_dl
+/usr/lib/xtables-addons/xt_geoip_build  <span class="nt">-D</span> /usr/share/xt_geoip  <span class="k">*</span>.csv
+
+modprobe xt_geoip
+
+iptables <span class="nt">-A</span> INPUT <span class="nt">-m</span> geoip <span class="nt">--src-cc</span> CN <span class="nt">-j</span> DROP
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://mikhailian.mova.org/node/238">http://mikhailian.mova.org/node/238</a></li>
+</ol>
+:ET

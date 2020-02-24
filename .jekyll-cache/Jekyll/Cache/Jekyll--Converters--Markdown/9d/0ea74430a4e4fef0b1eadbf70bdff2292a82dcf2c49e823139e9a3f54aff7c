@@ -1,0 +1,5 @@
+I"ò<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl <span class="nt">-w</span> net.inet.ip.forwarding<span class="o">=</span>1
+</code></pre></div></div>
+
+<hr />
+:ET

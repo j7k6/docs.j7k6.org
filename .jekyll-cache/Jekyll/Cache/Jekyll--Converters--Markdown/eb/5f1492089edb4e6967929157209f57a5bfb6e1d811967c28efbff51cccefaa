@@ -1,0 +1,17 @@
+I"Ò<ol>
+  <li>Create empty folder:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>empty
+</code></pre></div>    </div>
+  </li>
+  <li>Delete files and folders recursively:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rsync <span class="nt">-a</span> <span class="nt">--delete</span> empty/ &lt;<span class="nv">$FOLDER_TO_DELETE</span><span class="o">&gt;</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> &lt;<span class="nv">$FOLDER_TO_DELETE</span><span class="o">&gt;</span> empty
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://web.archive.org/web/20130929001850/http://linuxnote.net/jianingy/en/linux/a-fast-way-to-remove-huge-number-of-files.html">https://web.archive.org/web/20130929001850/http://linuxnote.net/jianingy/en/linux/a-fast-way-to-remove-huge-number-of-files.html</a></li>
+</ol>
+:ET

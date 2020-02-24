@@ -1,0 +1,21 @@
+I"Î<h2 id="problem">Problem:</h2>
+<p>When installing <code class="highlighter-rouge">fail2ban</code> on a fresh and clean Ubuntu (&gt;=16.04), it fails starting the service and throws errors whenever an other packet is installed with <code class="highlighter-rouge">apt</code>. The reason for this is that the <code class="highlighter-rouge">fail2ban</code> Ubuntu package isnâ€™t configured for <code class="highlighter-rouge">systemd</code> by default, but relies on the old way of reading log-files from <code class="highlighter-rouge">/var/log/</code>.</p>
+
+<h2 id="workaround">Workaround:</h2>
+<p>When running <code class="highlighter-rouge">journalctl -u fail2ban.service</code> it will say: <em>ERROR  No file(s) found for glob /var/log/auth.log</em> somewhere.
+This means <code class="highlighter-rouge">syslogd</code> is missing. Install it so that the <code class="highlighter-rouge">auth.log</code> files is generated. Then restart the <code class="highlighter-rouge">fail2ban</code> service:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install -y inetutils-syslogd
+systemctl restart fail2ban
+</code></pre></div></div>
+
+<h2 id="solution">Solution:</h2>
+<p>The proper solution is to set the <code class="highlighter-rouge">fail2ban</code> backend to <code class="highlighter-rouge">systemd</code>.
+In <code class="highlighter-rouge">/etc/fail2ban/jail.conf</code> set <code class="highlighter-rouge">backend = systemd</code> and restart the service.</p>
+
+<hr />
+<ol>
+  <li><a href="https://unix.stackexchange.com/a/271376">https://unix.stackexchange.com/a/271376</a></li>
+  <li><a href="https://unix.stackexchange.com/a/335528">https://unix.stackexchange.com/a/335528</a></li>
+</ol>
+:ET

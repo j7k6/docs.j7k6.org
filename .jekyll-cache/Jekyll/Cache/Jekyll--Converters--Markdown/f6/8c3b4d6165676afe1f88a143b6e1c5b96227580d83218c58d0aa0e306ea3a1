@@ -1,0 +1,15 @@
+I"$<h2 id="enable-read-only-mode">Enable Read-Only Mode</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FLUSH</span> <span class="n">TABLES</span> <span class="k">WITH</span> <span class="k">READ</span> <span class="k">LOCK</span><span class="p">;</span>
+<span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">read_only</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="disable-read-only-mode">Disable Read-Only Mode</h2>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">read_only</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">UNLOCK</span> <span class="n">TABLES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://stackoverflow.com/a/18401612">http://stackoverflow.com/a/18401612</a></li>
+</ol>
+:ET

@@ -1,0 +1,12 @@
+I"ë<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span><span class="w"> </span><span class="nx">interface</span><span class="w"> </span><span class="nx">ipv4</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">ipstats</span><span class="w">
+
+</span><span class="nf">netsh</span><span class="w"> </span><span class="nx">interface</span><span class="w"> </span><span class="nx">ipv4</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">tcpstats</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If <code class="highlighter-rouge">In Errors</code>, <code class="highlighter-rouge">In Header Errors</code> or <code class="highlighter-rouge">Fragments Failed</code> have a value &gt;0, there is a physical wire problem.</p>
+
+<hr />
+<ol>
+  <li><a href="http://superuser.com/a/934112">http://superuser.com/a/934112</a></li>
+</ol>
+:ET

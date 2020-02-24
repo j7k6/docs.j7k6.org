@@ -1,0 +1,34 @@
+I"�<ol>
+  <li>Generate <em>Base64</em> digests of username and password:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl <span class="nt">-MMIME</span>::Base64 <span class="nt">-e</span> <span class="s1">'print encode_base64("&lt;$USERNAME&gt;")'</span>
+perl <span class="nt">-MMIME</span>::Base64 <span class="nt">-e</span> <span class="s1">'print encode_base64("&lt;$PASSWORD&gt;")'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Connect to mail server:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl s_client <span class="nt">-starttls</span> smtp <span class="nt">-crlf</span> <span class="nt">-quiet</span> <span class="nt">-connect</span> &lt;<span class="nv">$MAIL_SERVER</span><span class="o">&gt;</span>:587
+</code></pre></div>    </div>
+    <blockquote>
+      <p><strong>Note</strong>: Mind the <code class="highlighter-rouge">-quiet</code> option! Without it, openssl will renegotiate the SSL connection when the capital <strong>R</strong> (as in “<code class="highlighter-rouge">RCPT TO</code>”) is pressed, instead of sending the “R” character to the server. [<a href="http://tumbleweed.org.za/2007/07/17/sclients-r-feature">Source</a>]</p>
+    </blockquote>
+  </li>
+  <li>Send SMTP commands to server:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EHLO localhost
+AUTH LOGIN
+&lt;$USERNAME_BASE64&gt;
+&lt;$PASSWORD_BASE64&gt;
+MAIL FROM: &lt;$SENDER_ADDRESS&gt;
+RCPT TO: &lt;$RCPT_ADDRESS&gt;
+DATA
+Subject: &lt;$MAIL_SUBJECT&gt;
+From: &lt;$SENDER_ADDRESS&gt;
+
+&lt;$MAIL_BODY&gt;
+   
+.
+QUIT
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

@@ -1,0 +1,23 @@
+I"<h2 id="problem">Problem</h2>
+<p>When a client has multiple SSH keys loaded into the SSH agent, it might occur that a server exceeds its limit for failed authentication attempts before it reaches the right key, resulting in the following error message:</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">Received disconnect from &lt;$IP&gt; port 22:2: Too many authentication failures for &lt;$USER&gt; Authentication failed.</code></p>
+</blockquote>
+
+<h2 id="solution">Solution</h2>
+<p>There are (at least) two solutions to this problem:</p>
+
+<ol>
+  <li>Specify a key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-i</span> ~/.ssh/id_rsa &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Disable <em>Pubkey</em>-Authentication:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-o</span> <span class="nv">PubkeyAuthentication</span><span class="o">=</span>no &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

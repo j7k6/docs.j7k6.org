@@ -1,0 +1,13 @@
+I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$PASSWORD</span><span class="s2">&gt;"</span>
+
+mysql <span class="nt">-uroot</span> <span class="o">&lt;&lt;</span> <span class="sh">'</span><span class="no">EOF</span><span class="sh">'
+UPDATE mysql.user SET Password=PASSWORD('</span><span class="nv">$MYSQL_ROOT_PASSWORD</span><span class="sh">') WHERE User='root';
+DELETE FROM mysql.user WHERE user='root' AND host NOT IN ('localhost', '127.0.0.1', '::1');
+DELETE FROM mysql.user WHERE user='';
+DROP DATABASE test;
+FLUSH PRIVILEGES;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<hr />
+:ET

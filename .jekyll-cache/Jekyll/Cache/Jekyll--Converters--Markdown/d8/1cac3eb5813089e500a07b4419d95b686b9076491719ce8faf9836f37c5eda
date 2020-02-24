@@ -1,0 +1,8 @@
+I"j<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://www.openssl.org/source/openssl-1.1.0e.tar.gz | <span class="nb">tar </span>zxvf -
+<span class="nb">cd </span>openssl-1.1.0e
+./Configure shared <span class="nt">--prefix</span><span class="o">=</span>/usr <span class="c"># ! Overwrites system's OpenSSL !</span>
+make <span class="nt">-j</span><span class="si">$(</span><span class="nb">nproc</span><span class="si">)</span> <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
+</code></pre></div></div>
+
+<hr />
+:ET

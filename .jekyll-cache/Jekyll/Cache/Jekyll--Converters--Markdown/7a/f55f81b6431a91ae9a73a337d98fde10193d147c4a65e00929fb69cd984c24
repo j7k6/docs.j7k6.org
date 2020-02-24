@@ -1,0 +1,70 @@
+I".<p><em>(only tested on macOS)</em></p>
+
+<p>Besides managing the GPG keychain, <strong>GnuPG</strong> is also able to handle SSH key authentication. This makes the native <code class="highlighter-rouge">ssh-agent</code> obsolete. <code class="highlighter-rouge">gpg-agent</code> can be used for this instead.</p>
+
+<p>First, a subkey for authentication needs to be added to an existing GPG key.</p>
+
+<h2 id="add-subkey">Add Subkey</h2>
+<ol>
+  <li>Edit existing key in <em>expert</em> mode:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--expert</span> <span class="nt">--edit-key</span> &lt;<span class="nv">$KEY_ID</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Type <code class="highlighter-rouge">addkey</code>…
+    <ul>
+      <li><code class="highlighter-rouge">8</code>  to edit capabilities</li>
+      <li><code class="highlighter-rouge">S</code> to toggle off the sign capability</li>
+      <li><code class="highlighter-rouge">E</code> to toggle off the encrypt capability</li>
+      <li><code class="highlighter-rouge">A</code> to toggle on the authenticate capability</li>
+      <li><code class="highlighter-rouge">Q</code> to quit</li>
+      <li>Keysize: <code class="highlighter-rouge">4096</code></li>
+      <li><code class="highlighter-rouge">0</code> for ‘never expire’</li>
+      <li><code class="highlighter-rouge">save</code> and <code class="highlighter-rouge">quit</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="configure-zshbash">Configure zsh/bash</h2>
+<ol>
+  <li>Add this lines to <code class="highlighter-rouge">~/.zshrc</code> or <code class="highlighter-rouge">~/.bashrc</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg-connect-agent --quiet /bye &gt;/dev/null 2&gt;/dev/null
+gpg-agent --daemon --quiet --enable-ssh-support &gt;/dev/null 2&gt;&amp;1
+
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export GPG_TTY=$(tty)
+</code></pre></div>    </div>
+  </li>
+  <li>Kill running <code class="highlighter-rouge">gpg-agent</code> processes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>killall <span class="nt">-9</span> gpg-agent
+</code></pre></div>    </div>
+  </li>
+  <li>Reload shell configuration:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="add-subkey-to-gpg-agent">Add Subkey to GPG Agent</h2>
+<ol>
+  <li>Find the <em>keygrip</em> (identified by <code class="highlighter-rouge">[A]</code> for <em>authentication</em>):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--list-secret-keys</span> <span class="nt">--with-keygrip</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Write the <em>keygrip</em> to the <code class="highlighter-rouge">sshcontrol</code> file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"&lt;</span><span class="nv">$KEYGRIP</span><span class="s2">&gt;"</span> <span class="o">&gt;&gt;</span> ~/.gnupg/sshcontrol
+</code></pre></div>    </div>
+  </li>
+  <li>Read the public SSH key and add it to the server’s <code class="highlighter-rouge">~/.ssh/authorized_keys</code> file:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-add -L
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The SSH client now uses the <code class="highlighter-rouge">gpg-agent</code> to authenticate.</p>
+
+<hr />
+<ol>
+  <li><a href="https://ryanlue.com/posts/2017-06-29-gpg-for-ssh-auth">https://ryanlue.com/posts/2017-06-29-gpg-for-ssh-auth</a></li>
+  <li><a href="https://linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/#generating-the-authentication-subkey">https://linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/#generating-the-authentication-subkey</a></li>
+</ol>
+:ET

@@ -1,0 +1,8 @@
+I"ð<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"nat on &lt;</span><span class="nv">$EXT_INTERFACE</span><span class="s2">&gt; inet from &lt;</span><span class="nv">$INT_NETWORK</span><span class="s2">&gt;/&lt;</span><span class="nv">$INT_NETMASK</span><span class="s2">&gt; to any -&gt; &lt;</span><span class="nv">$EXT_INTERFACE</span><span class="s2">&gt;"</span> | <span class="nb">sudo </span>pfctl <span class="nt">-v</span> <span class="nt">-ef</span> -
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://discussions.apple.com/message/27406950#message27406950">https://discussions.apple.com/message/27406950#message27406950</a></li>
+</ol>
+:ET

@@ -1,0 +1,10 @@
+I"•<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-mpck</span> <span class="nt">--user-agent</span><span class="o">=</span><span class="s2">""</span> <span class="nt">-e</span> <span class="nv">robots</span><span class="o">=</span>off <span class="nt">-E</span> http://&lt;<span class="nv">$URL</span><span class="o">&gt;</span>/
+</code></pre></div></div>
+
+<p>Example usage: Convert a Wordpress Blog to a static site.</p>
+
+<hr />
+<ol>
+  <li><a href="https://swsblog.stanford.edu/blog/creating-static-copy-website">https://swsblog.stanford.edu/blog/creating-static-copy-website</a></li>
+</ol>
+:ET

@@ -1,0 +1,11 @@
+I"Z<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-N</span> LOGGING
+iptables <span class="nt">-A</span> LOGGING <span class="nt">-m</span> limit <span class="nt">--limit</span> 2/min <span class="nt">-j</span> LOG <span class="nt">--log-prefix</span> <span class="s2">"IPTables-Dropped: "</span> <span class="nt">--log-level</span> 4
+
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 80 <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-m</span> recent <span class="nt">--set</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 80 <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-m</span> recent <span class="nt">--update</span> <span class="nt">--seconds</span> 60 <span class="nt">--hitcount</span> 20 <span class="nt">-j</span> LOGGING
+
+iptables <span class="nt">-A</span> LOGGING <span class="nt">-j</span> DROP
+</code></pre></div></div>
+
+<hr />
+:ET

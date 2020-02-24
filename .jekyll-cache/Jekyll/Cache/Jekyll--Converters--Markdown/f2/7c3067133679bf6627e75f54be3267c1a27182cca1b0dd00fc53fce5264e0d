@@ -1,0 +1,18 @@
+I"<ol>
+  <li>Run <code class="highlighter-rouge">gitlab-rails dbconsole</code> to remove the LDAP identity:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">identities</span><span class="p">;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">identities</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=&lt;</span><span class="err">$</span><span class="n">USER_ID</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="err">\</span><span class="n">q</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">gitlab-rails console</code> to set a new password for the user:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>u=User.find_by_username('&lt;$USERNAME&gt;');
+u.password='&lt;$PASSWORD&gt;'
+u.save
+exit
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

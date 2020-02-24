@@ -1,0 +1,12 @@
+I"±<p>Run <a href="http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185"><strong>Azure Active Directory Module for Windows PowerShell</strong></a> as Administrator.</p>
+
+<h2 id="delta-synchronization">Delta Synchronization</h2>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Start-ADSyncSyncCycle</span><span class="w"> </span><span class="nt">-PolicyType</span><span class="w"> </span><span class="nx">Delta</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="full-synchronization">Full Synchronization</h2>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Start-ADSyncSyncCycle</span><span class="w"> </span><span class="nt">-PolicyType</span><span class="w"> </span><span class="nx">Initial</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+:ET

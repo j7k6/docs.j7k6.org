@@ -1,0 +1,5 @@
+I"G<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netstat <span class="nt">-nr</span> | <span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"^default"</span> | <span class="nb">awk</span> <span class="s1">'{print $2}'</span>
+</code></pre></div></div>
+
+<hr />
+:ET

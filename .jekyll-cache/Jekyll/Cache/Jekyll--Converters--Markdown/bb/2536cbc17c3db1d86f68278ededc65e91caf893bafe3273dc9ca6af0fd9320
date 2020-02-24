@@ -1,0 +1,10 @@
+I"°<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$ANDROID_HOME</span>/licenses/ <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"8933bad161af4178b1185d1a37fbf41ea5269c55"</span> <span class="o">&gt;</span> <span class="nv">$ANDROID_HOME</span>/licenses/android-sdk-license <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"84831b9409646a918e30573bab4c9c91346d8abd"</span> <span class="o">&gt;</span> <span class="nv">$ANDROID_HOME</span>/licenses/android-sdk-preview-license
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/issues/1956#note_22781429">https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/issues/1956#note_22781429</a></li>
+</ol>
+:ET

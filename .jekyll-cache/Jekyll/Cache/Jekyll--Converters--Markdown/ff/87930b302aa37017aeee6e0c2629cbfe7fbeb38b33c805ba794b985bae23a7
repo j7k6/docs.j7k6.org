@@ -1,0 +1,14 @@
+I"m<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/wheezy/jessie/g'</span> /etc/apt/sources.list
+
+apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+reboot
+</code></pre></div></div>
+
+<hr />
+:ET

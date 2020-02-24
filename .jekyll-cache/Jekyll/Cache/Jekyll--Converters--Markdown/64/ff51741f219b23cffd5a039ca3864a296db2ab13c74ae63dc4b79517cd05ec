@@ -1,0 +1,16 @@
+I"’<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream &lt;$PROXY_NAME&gt; {
+  server 127.0.0.1:&lt;$PROXY_PORT&gt;;
+}
+
+server {
+  location / {
+    proxy_set_header  Host      $host;
+    proxy_set_header  Proxy     "";
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_pass                  http://&lt;$PROXY_NAME&gt;;
+  }
+}
+</code></pre></div></div>
+
+<hr />
+:ET

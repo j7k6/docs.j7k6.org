@@ -1,0 +1,10 @@
+I"‹<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Get-ChildItem</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$TARGET</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-Recurse</span><span class="w"> </span><span class="nt">-Force</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">%</span><span class="p">{</span><span class="w">
+  </span><span class="nf">Get-Acl</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SOURCE</span><span class="err">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Set-Acl</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="nf">fullname</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://social.technet.microsoft.com/Forums/windowsserver/en-US/d3a11f8f-5771-4730-9bf5-ec75317ff8bf/set-recursive-acl-to-directory-and-its-subdirectories?forum=winserverpowershell">https://social.technet.microsoft.com/Forums/windowsserver/en-US/d3a11f8f-5771-4730-9bf5-ec75317ff8bf/set-recursive-acl-to-directory-and-its-subdirectories?forum=winserverpowershell</a></li>
+</ol>
+:ET

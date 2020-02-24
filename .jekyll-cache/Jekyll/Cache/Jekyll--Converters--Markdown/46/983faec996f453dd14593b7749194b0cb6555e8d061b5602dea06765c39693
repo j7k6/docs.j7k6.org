@@ -1,0 +1,10 @@
+I"G<p>Add this line to <code class="highlighter-rouge">php.ini</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pcre.jit=0
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://stackoverflow.com/a/39535288/8434893">https://stackoverflow.com/a/39535288/8434893</a></li>
+</ol>
+:ET

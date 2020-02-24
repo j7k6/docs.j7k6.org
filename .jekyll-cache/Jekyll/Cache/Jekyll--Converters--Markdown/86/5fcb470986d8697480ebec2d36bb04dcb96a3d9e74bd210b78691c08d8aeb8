@@ -1,0 +1,7 @@
+I"/<p>In newer version of <code class="highlighter-rouge">certbot</code> cronjobs are not being used anymore to renew certificates. Instead it uses <code class="highlighter-rouge">systemd</code> timers for certificate renewals. So attaching renewal hooks to the exisiting cronjob won’t work anymore. Instead the hooks are now located in <code class="highlighter-rouge">/etc/letsencrypt/cli.ini</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>renew-hook = systemctl reload nginx
+</code></pre></div></div>
+
+<hr />
+:ET

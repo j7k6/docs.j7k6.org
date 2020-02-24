@@ -1,0 +1,14 @@
+I"T<ol>
+  <li>Run <strong><em>Group Policy Editor</em></strong>:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">gpedit.msc</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Navigate to <em>Local Computer Policy &gt; Computer Configuration &gt; Administrative Templates &gt; Windows Components &gt; Bitlocker Drive Encryption &gt; Operation System Drives &gt; Require additional authentication at startup</em>.</li>
+  <li>Check <strong><em>Enabled</em></strong> and <strong><em>Allow Bitlocker without compatible TPM (…)</em></strong>.</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/">https://www.howtogeek.com/howto/6229/how-to-use-bitlocker-on-drives-without-tpm/</a></li>
+</ol>
+:ET

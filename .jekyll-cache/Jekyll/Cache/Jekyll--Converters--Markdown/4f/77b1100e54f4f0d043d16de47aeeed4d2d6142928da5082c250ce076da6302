@@ -1,0 +1,5 @@
+I"*<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl <span class="nt">-e</span> <span class="s1">'use MIME::Base64; print encode_base64(join "\0", qw"&lt;$USERNAME&gt; &lt;$USERNAME&gt; &lt;$PASSWORD&gt;");'</span>
+</code></pre></div></div>
+
+<hr />
+:ET

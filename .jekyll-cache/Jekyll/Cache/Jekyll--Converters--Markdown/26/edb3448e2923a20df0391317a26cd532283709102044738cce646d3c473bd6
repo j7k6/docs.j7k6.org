@@ -1,0 +1,10 @@
+I"q<h2 id="containers">Containers</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">rm</span> <span class="nt">-f</span> <span class="si">$(</span>docker ps <span class="nt">-a</span> <span class="nt">-q</span><span class="si">)</span>
+</code></pre></div></div>
+
+<h2 id="images">Images</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi <span class="nt">-f</span> <span class="si">$(</span>docker images <span class="nt">-q</span><span class="si">)</span>
+</code></pre></div></div>
+
+<hr />
+:ET

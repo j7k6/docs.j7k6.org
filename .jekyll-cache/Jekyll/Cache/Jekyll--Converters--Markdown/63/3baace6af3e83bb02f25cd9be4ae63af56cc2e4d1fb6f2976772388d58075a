@@ -1,0 +1,9 @@
+I"6<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults write com.google.Chrome SyncDisabled <span class="nt">-bool</span> <span class="nb">true
+</span>defaults write com.google.Chrome RestrictSigninToPattern <span class="nt">-string</span> <span class="s2">".*@example.com"</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://blog.ideasynthesis.com/2018/09/24/Disable-Google-Chrome-Sign-In-and-Sync/">https://blog.ideasynthesis.com/2018/09/24/Disable-Google-Chrome-Sign-In-and-Sync/</a></li>
+</ol>
+:ET

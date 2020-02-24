@@ -1,0 +1,5 @@
+I"á<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">-o</span> remount,size<span class="o">=</span>1G /run/archiso/cowspace
+</code></pre></div></div>
+
+<hr />
+:ET

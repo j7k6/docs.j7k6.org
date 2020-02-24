@@ -1,0 +1,11 @@
+I"â<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>bash-completion
+
+<span class="nb">ln</span> <span class="nt">-s</span> /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/bash_completion.d/
+<span class="nb">ln</span> <span class="nt">-s</span> /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/bash_completion.d/
+<span class="nb">.</span> <span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span>/etc/bash_completion
+
+<span class="nb">echo</span> <span class="s2">". </span><span class="se">\$</span><span class="s2">(brew --prefix)/etc/bash_completion"</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,11 @@
+I"N<h2 id="add-rule">Add Rule</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli network firewall ruleset <span class="nb">set</span> <span class="nt">--ruleset-id</span> sshServer <span class="nt">--allowed-all</span> <span class="nb">false
+</span>esxcli network firewall ruleset allowedip add <span class="nt">--ruleset-id</span> sshServer <span class="nt">--ip-address</span> &lt;<span class="nv">$NET_IP</span><span class="o">&gt;</span>/&lt;<span class="nv">$NET_MASK</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="list-rules">List Rules</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli network firewall ruleset allowedip list <span class="nt">--ruleset-id</span> sshServer
+</code></pre></div></div>
+
+<hr />
+:ET

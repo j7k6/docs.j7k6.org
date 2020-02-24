@@ -1,0 +1,19 @@
+I"D<p>IIS uses lots of resources as an Exchange frontend. The <em>w3wp</em> process can be on constant high load, which can lead to make the Exchange Server stop working.
+The fix for this is a tiny Powershell script, which checks if the load is too high and kills the rogue <em>w3wp</em> process. IIS will respawn the process by itself, so everything will continue to work.</p>
+
+<p>This is the Powershell script:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$w3wp_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">get-process</span><span class="w"> </span><span class="nx">w3wp</span><span class="o">*</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">where-object</span><span class="w"> </span><span class="p">{</span><span class="bp">$_</span><span class="o">.</span><span class="nf">cpu</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="nx">500</span><span class="p">}</span><span class="w">
+</span><span class="nf">stop-process</span><span class="w"> </span><span class="nt">-inputobject</span><span class="w"> </span><span class="nv">$w3wp_proc</span><span class="w"> </span><span class="nt">-Force</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This script has to be executed by the <em>Task Scheduler</em> in an arbitrary interval (e.g. 15 minutes).
+The command to be run by the <em>Task Scheduler</em> is: <code class="highlighter-rouge">Powershell.exe -ExecutionPolicy Bypass D:\w3wp_killer.ps1</code>, it has to be executed with high privileges.</p>
+
+<p>Successfully tested on Exchange 2013.</p>
+
+<hr />
+<ol>
+  <li><a href="https://forums.iis.net/post/2040928.aspx">https://forums.iis.net/post/2040928.aspx</a></li>
+</ol>
+:ET

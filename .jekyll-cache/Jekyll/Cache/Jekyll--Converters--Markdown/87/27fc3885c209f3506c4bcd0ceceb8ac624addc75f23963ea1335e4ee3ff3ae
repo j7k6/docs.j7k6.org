@@ -1,0 +1,54 @@
+I"_<h2 id="preparations">Preparations</h2>
+<ol>
+  <li>Download <a href="https://www.raspberrypi.org/downloads/raspbian/"><em>Raspbian</em></a> and install to SD card.</li>
+  <li>Download Debian packages:
+    <ul>
+      <li><a href="http://mirrordirector.raspbian.org/raspbian/pool/main/libp/libpcap/libpcap0.8_1.7.4-2_armhf.deb">libpcap0.8_1.7.4-2_armhf.deb</a></li>
+      <li><a href="http://mirrordirector.raspbian.org/raspbian/pool/main/p/ppp/ppp_2.4.7-1+2_armhf.deb">ppp_2.4.7-1+2_armhf.deb</a></li>
+    </ul>
+  </li>
+  <li>Copy <code class="highlighter-rouge">*.deb</code> to SD cards boot partition.</li>
+  <li>Boot Raspberry Pi and connect to console: <code class="highlighter-rouge">screen /dev/ttyUSB0 115200</code></li>
+</ol>
+
+<h2 id="on-raspberry-pi">On Raspberry Pi</h2>
+<ol>
+  <li>Install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg <span class="nt">-i</span> /boot/libpcap0.8_<span class="k">*</span>.deb
+dpkg <span class="nt">-i</span> /boot/ppp_<span class="k">*</span>.deb
+</code></pre></div>    </div>
+  </li>
+  <li>Remove <code class="highlighter-rouge">console=serial0,115200</code> from <code class="highlighter-rouge">/boot/cmdline.txt</code>.</li>
+  <li>Edit <code class="highlighter-rouge">/etc/rc.local</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nb">stty</span> <span class="nt">-F</span> /dev/ttyAMA0 raw
+<span class="nb">stty</span> <span class="nt">-F</span> /dev/ttyAMA0 <span class="nt">-a</span>
+pppd /dev/ttyAMA0 115200 10.0.0.2:10.0.0.1 noauth <span class="nb">local </span>debug dump defaultroute nocrtscts persist maxfail 0 holdoff 1
+   
+<span class="nb">exit </span>0
+</code></pre></div>    </div>
+  </li>
+  <li>Reboot</li>
+</ol>
+
+<h2 id="on-host">On host</h2>
+<ol>
+  <li>Run <code class="highlighter-rouge">pppd</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">stty</span> <span class="nt">-F</span> /dev/ttyUSB0 raw
+<span class="nb">sudo </span>pppd /dev/ttyUSB0 115200 10.0.0.1:10.0.0.2 proxyarp <span class="nb">local </span>noauth debug nodetach dump nocrtscts passive persist maxfail 0 holdoff 1 &amp;
+</code></pre></div>    </div>
+  </li>
+  <li>Enable Routing and NAT:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl <span class="nt">-w</span> net.ipv4.ip_forward<span class="o">=</span>1
+<span class="nb">sudo </span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> MASQUERADE
+</code></pre></div>    </div>
+  </li>
+  <li>Connect to Raspberry Pi via SSH: <code class="highlighter-rouge">ssh pi@10.0.0.2</code></li>
+  <li>Download files from the Internet with <em>~12KB/s</em> like it’s 1998.</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="http://statusorel.ru/technology/connect-the-raspberry-pi-to-network-using-uart.html">http://statusorel.ru/technology/connect-the-raspberry-pi-to-network-using-uart.html</a></li>
+</ol>
+:ET

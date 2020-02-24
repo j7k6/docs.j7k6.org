@@ -1,0 +1,10 @@
+I"<h2 id="disable-temporarily">Disable Temporarily</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rmmod pcspkr
+</code></pre></div></div>
+
+<h2 id="disable-permanently">Disable Permanently</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"blacklist pcspkr"</span> <span class="o">&gt;</span> <span class="nb">sudo tee</span> /etc/modprobe.d/nobeep.conf
+</code></pre></div></div>
+
+<hr />
+:ET

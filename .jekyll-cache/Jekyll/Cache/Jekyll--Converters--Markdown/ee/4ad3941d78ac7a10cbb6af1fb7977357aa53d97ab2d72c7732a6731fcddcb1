@@ -1,0 +1,661 @@
+I"k<h2 id="prerequirements">Prerequirements</h2>
+<h3 id="dns">DNS</h3>
+<ol>
+  <li>Set-up required <em>DNS</em> records:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;$DOMAIN&gt;          IN  MX   0  &lt;$FQDN&gt;
+&lt;$FQDN&gt;            IN  A       &lt;$IP&gt;
+&lt;$DOMAIN&gt;          IN  TXT     v=spf1 mx ~all
+_dmarc.&lt;$DOMAIN&gt;   IN  TXT     v=DMARC1; p=none
+</code></pre></div>    </div>
+  </li>
+  <li>Set-up a <em>Reverse-DNS</em> record for the server.</li>
+</ol>
+
+<h3 id="basic-system-setup">Basic System Setup</h3>
+<ol>
+  <li>Install required packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+
+apt update
+apt <span class="nb">install</span> <span class="nt">-y</span> 
+  amavisd-new <span class="se">\</span>
+  certbot <span class="se">\</span>
+  dovecot-core <span class="se">\</span>
+  dovecot-imapd <span class="se">\</span>
+  dovecot-lmtpd <span class="se">\</span>
+  dovecot-mysql <span class="se">\</span>
+  dovecot-sieve <span class="se">\</span>
+  haveged <span class="se">\</span>
+  mailutils <span class="se">\</span>
+  mariadb-server <span class="se">\</span>
+  opendkim <span class="se">\</span>
+  opendkim-tools <span class="se">\</span>
+  p7zip <span class="se">\</span>
+  postfix <span class="se">\</span>
+  postfix-mysql <span class="se">\</span>
+  postgrey <span class="se">\</span>
+  spamassassin
+</code></pre></div>    </div>
+  </li>
+  <li>Generate <code class="highlighter-rouge">dhparam</code> file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl dhparam <span class="nt">-out</span> /etc/ssl/certs/dhparam.pem 2048
+</code></pre></div>    </div>
+  </li>
+  <li>Create required <code class="highlighter-rouge">vmail</code> user and group:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>groupadd <span class="nt">-g</span> 5000 vmail
+useradd <span class="nt">-g</span> vmail <span class="nt">-u</span> 5000 vmail <span class="nt">-d</span> /var/vmail
+</code></pre></div>    </div>
+  </li>
+  <li>Create mailbox directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/vmail
+<span class="nb">chown</span> <span class="nt">-R</span> vmail:vmail /var/vmail
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="mysql">MySQL</h2>
+<ol>
+  <li>Configure <em>MariaDB</em> (MySQL):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql_secure_installation
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">mysql -uroot -p</code></li>
+  <li>Create <em>postfix</em> database &amp; user:
+    <pre><code class="language-mysql">CREATE DATABASE `postfix`;
+GRANT SELECT ON `postfix`.* TO `postfix`@`127.0.0.1` IDENTIFIED BY 'postfix';
+FLUSH PRIVILEGES;
+USE postfix;
+</code></pre>
+  </li>
+  <li>Create <em>domains</em> table:
+    <pre><code class="language-mysql">CREATE TABLE `domains` (
+  `id` int(11) NOT NULL auto_increment,
+  `domain` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+  </li>
+  <li>Create <em>users</em> table:
+    <pre><code class="language-mysql">CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `domain` int(11) NOT NULL,
+  `password` varchar(106) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  FOREIGN KEY (domain) REFERENCES domains(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+  </li>
+  <li>Create <em>aliases</em> table:
+    <pre><code class="language-mysql">CREATE TABLE `aliases` (
+  `id` int(11) NOT NULL auto_increment,
+  `domain` int(11) NOT NULL,
+  `source` varchar(100) NOT NULL,
+  `destination` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (domain) REFERENCES domains(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+  </li>
+</ol>
+
+<h2 id="lets-encrypt">Let’s Encrypt</h2>
+<h3 id="nginx-base-setup">Nginx Base Setup</h3>
+<ol>
+  <li>Install <em>Nginx</em>, see <a href="/nginx-debian-install/">here</a>.</li>
+  <li>Configure <em>Nginx</em>, see <a href="https://github.com/j7k6/nginx-config">here</a></li>
+</ol>
+
+<h3 id="certbot">Certbot</h3>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/letsencrypt/cli.ini</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>renew-hook = systemctl restart nginx postfix dovecot
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>webroot</em> directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /var/www/letsencrypt
+</code></pre></div>    </div>
+  </li>
+  <li>Fetch SSL certificate:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>certbot certonly <span class="nt">--agree-tos</span> <span class="nt">-m</span> postmaster@&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span> <span class="nt">--no-eff-email</span> <span class="nt">--rsa-key-size</span> 4096 <span class="nt">--webroot</span> <span class="nt">-w</span> /var/www/letsencrypt <span class="nt">-d</span> &lt;<span class="nv">$FQDN</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="postfix">Postfix</h2>
+<h3 id="basic-configuration">Basic Configuration</h3>
+<ol>
+  <li>Add to <code class="highlighter-rouge">/etc/postfix/master.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>submission inet n       -       y      -       -       smtpd
+  -o smtpd_tls_security_level=encrypt
+  -o content_filter=
+amavis           unix    -       -       n       -       2       smtp
+  -o smtp_send_xforward_command=yes
+  -o smtp_tls_security_level=none
+127.0.0.1:10025  inet    n       -       n       -       -       smtpd
+  -o content_filter=
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/main.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias_maps = hash:/etc/aliases
+compatibility_level = 2
+content_filter = amavis:[127.0.0.1]:10024
+inet_protocols = ipv4
+mailbox_size_limit = 0
+message_size_limit = 20480000
+myhostname = &lt;$FQDN&gt;
+non_smtpd_milters = inet:[127.0.0.1]:12301
+recipient_delimiter = +
+smtpd_banner = $myhostname ESMTP
+smtpd_milters=inet:[127.0.0.1]:12301
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_invalid_hostname, reject_non_fqdn_hostname, reject_non_fqdn_sender, reject_non_fqdn_recipient, reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_destination, check_policy_service inet:[127.0.0.1]:10023
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_path = private/auth
+smtpd_sasl_type = dovecot
+smtpd_tls_CApath = /etc/ssl/certs
+smtpd_tls_cert_file = /etc/letsencrypt/live/&lt;$FQDN&gt;/fullchain.pem
+smtpd_tls_eecdh_grade = strong
+smtpd_tls_key_file = /etc/letsencrypt/live/&lt;$FQDN&gt;/privkey.pem
+smtpd_tls_security_level = may
+smtp_header_checks = regexp:/etc/postfix/header_checks
+smtp_mime_header_checks = regexp:/etc/postfix/header_checks
+smtp_tls_CApath = /etc/ssl/certs
+smtp_tls_cert_file = $smtpd_tls_cert_file
+smtp_tls_key_file = $smtpd_tls_key_file
+smtp_tls_security_level = may
+smtp_use_tls = yes
+tls_preempt_cipherlist = yes
+virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_email.cf, mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+virtual_gid_maps = static:5000
+virtual_mailbox_base = /var/vmail
+virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_mailbox_domains.cf
+virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
+virtual_transport = lmtp:unix:private/dovecot-lmtp
+virtual_uid_maps = static:5000
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="mysql-configuration">MySQL Configuration</h3>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/mysql_virtual_mailbox_domains.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user = postfix
+password = postfix
+hosts = 127.0.0.1
+dbname = postfix
+query = SELECT 1 FROM domains WHERE domain='%s'
+</code></pre></div>    </div>
+  </li>
+  <li>Edit: <code class="highlighter-rouge">/etc/postfix/mysql_virtual_mailbox_maps.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user = postfix
+password = postfix
+hosts = 127.0.0.1
+dbname = postfix
+query = SELECT 1 FROM users WHERE email='%s'
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/mysql_virtual_alias_maps.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user = postfix
+password = postfix
+hosts = 127.0.0.1
+dbname = postfix
+query = SELECT destination FROM aliases WHERE source='%s'
+</code></pre></div>    </div>
+  </li>
+  <li>Edit: <code class="highlighter-rouge">/etc/postfix/mysql_virtual_alias_emails.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user = postfix
+password = postfix
+hosts = 127.0.0.1
+dbname = postfix
+query = SELECT email FROM users WHERE email='%s'
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="header-checks">Header Checks</h3>
+<blockquote>
+  <p><strong>Note</strong>: Header checks prevent outgoing mails from leaking privacy related information like internal IP addresses or the mail client’s name.</p>
+</blockquote>
+
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/postfix/header_checks</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/^Received:.*with ESMTP/        IGNORE
+/^X-Mailer:/                    IGNORE
+/^User-Agent:/                  IGNORE
+/^Mime-Version:/                IGNORE
+</code></pre></div>    </div>
+  </li>
+  <li>Generate Postfix map:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postmap /etc/postfix/header_checks
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="finalize-postfix-setup">Finalize Postfix Setup</h3>
+<ol>
+  <li>Generate <em>alias</em> map:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>newaliases
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>Postfix</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart postfix
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="dovecot">Dovecot</h2>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/dovecot/dovecot.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>listen = *
+mail_location = maildir:/var/vmail/%d/%n/
+protocols = imap lmtp
+ssl = required
+ssl_cert = &lt; /etc/letsencrypt/live/&lt;$FQDN&gt;/fullchain.pem
+ssl_key = &lt; /etc/letsencrypt/live/&lt;$FQDN&gt;/privkey.pem
+ssl_prefer_server_ciphers = yes
+
+namespace inbox {
+  inbox = yes
+  location =
+  separator = /
+
+  mailbox Drafts {
+    auto = subscribe
+    special_use = \Drafts
+  }
+
+  mailbox "Sent Messages" {
+    auto = subscribe
+    special_use = \Sent
+  }
+
+  mailbox Junk {
+    auto = subscribe
+    special_use = \Junk
+  }
+
+  mailbox "Deleted Messages" {
+    auto = subscribe
+    special_use = \Trash
+  }
+
+  mailbox Archive {
+    auto = subscribe
+    special_use = \Archive
+  }
+
+  mailbox Notes {
+    auto = subscribe
+  }
+}
+
+passdb {
+  driver = sql
+  args = /etc/dovecot/dovecot-sql.conf.ext
+}
+
+userdb {
+  driver = static
+  args = uid=vmail gid=vmail home=/var/vmail/%d/%n
+}
+
+service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    group = postfix
+    mode = 0660
+    user = postfix
+  }
+
+  unix_listener auth-userdb {
+    mode = 0600
+    user = vmail
+  }
+
+  user = dovecot
+}
+
+service auth-worker {
+  user = vmail
+}
+
+service imap-login {
+  inet_listener imap {
+    port = 0
+  }
+  inet_listener imaps {
+    port = 993
+  }
+}
+
+service lmtp {
+  unix_listener /var/spool/postfix/private/dovecot-lmtp {
+    group = postfix
+    mode = 0600
+    user = postfix
+  }
+}
+
+protocol lmtp {
+  postmaster_address = postmaster@&lt;$FQDN&gt;
+  hostname = &lt;$FQDN&gt;
+  mail_plugins = sieve
+}
+
+plugin {
+  sieve_before = /etc/dovecot/spam.sieve
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/dovecot/dovecot-sql.conf.ext</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>driver = mysql
+connect = host=127.0.0.1 dbname=postfix user=postfix password=postfix
+default_pass_scheme = SHA512-CRYPT
+password_query = SELECT email as user, password FROM users WHERE email='%u';
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/dovecot/spam.sieve</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require ["fileinto", "imap4flags"];
+
+if header :contains "X-Spam-Flag" "YES" {
+  setflag "\\Seen";
+  fileinto "Junk";
+  stop;
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Compile <em>Sieve</em> spam rules:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sievec /etc/dovecot/spam.sieve
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>Dovecot</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart dovecot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="anti-spam-measures">Anti-Spam Measures</h2>
+<h3 id="postgrey">Postgrey</h3>
+<ol>
+  <li>Update <em>Greylisting</em> whitelist:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget -O /etc/postgrey/whitelist_clients https://raw.githubusercontent.com/schweikert/postgrey/master/postgrey_whitelist_clients
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>Postgrey</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart postgrey
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="opendkim">OpenDKIM</h3>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/opendkim.conf</code>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AutoRestart             Yes
+AutoRestartRate         10/1h
+UMask                   002
+Syslog                  yes
+SyslogSuccess           Yes
+LogWhy                  Yes
+
+Canonicalization        relaxed/simple
+
+ExternalIgnoreList      refile:/etc/opendkim/TrustedHosts
+InternalHosts           refile:/etc/opendkim/TrustedHosts
+KeyTable                refile:/etc/opendkim/KeyTable
+SigningTable            refile:/etc/opendkim/SigningTable
+
+Mode                    sv
+PidFile                 /var/run/opendkim/opendkim.pid
+SignatureAlgorithm      rsa-sha256
+
+UserID                  opendkim:opendkim
+Socket                  inet:12301@localhost
+</code></pre></div>    </div>
+  </li>
+  <li>Create config directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /etc/opendkim
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/opendkim/TrustedHosts</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1
+localhost
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/opendkim/KeyTable</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mail2019._domainkey.&lt;$DOMAIN&gt; &lt;$DOMAIN&gt;:mail2019:/etc/opendkim/keys/&lt;$DOMAIN&gt;/mail2019.private
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/opendkim/SigningTable</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*@&lt;$DOMAIN&gt; mail2019._domainkey.&lt;$DOMAIN&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>Domain Key</em> directory:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p /etc/opendkim/keys/&lt;$DOMAIN&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Generate <em>Domain Key</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opendkim-genkey <span class="nt">-s</span> mail2019 <span class="nt">-d</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span> <span class="nt">-D</span> /etc/opendkim/keys/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Set permissions on <em>Domain Key</em>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown </span>opendkim:opendkim /etc/opendkim/keys/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>/mail2019.private
+<span class="nb">chmod </span>0400 /etc/opendkim/keys/&lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>/mail2019.private
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>OpenDKIM</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart opendkim
+</code></pre></div>    </div>
+  </li>
+  <li>Get DKIM record from <code class="highlighter-rouge">/etc/opendkim/keys/&lt;$DOMAIN&gt;/mail2019.txt</code> and create a new DNS record from it.</li>
+</ol>
+
+<h3 id="amavis">Amavis</h3>
+<ol>
+  <li>Add <code class="highlighter-rouge">amavis</code> user to <code class="highlighter-rouge">vmail</code> group:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermod <span class="nt">-aG</span> vmail amavis
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/amavis/conf.d/50-user</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use strict;
+
+$smtp_connection_cache_on_demand = 0;
+$smtp_connection_cache_enable = 0;
+
+@bypass_spam_checks_maps = (
+   \%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
+
+$sa_tag_level_deflt  = -999;
+$sa_tag2_level_deflt = 2.0;
+$sa_kill_level_deflt = 2.0;
+$sa_dsn_cutoff_level = 5.0;
+
+$final_spam_destiny       = D_PASS;
+
+$undecipherable_subject_tag=undef;
+
+@lookup_sql_dsn = (
+  ['DBI:mysql:database=postfix;host=127.0.0.1;port=3306',
+   'postfix',
+   'postfix']);
+
+$sql_select_policy = 'SELECT domain FROM domains WHERE CONCAT("@",domain) IN (%k)';
+
+1;
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>Amavis</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart amavis
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="spamassassin">Spamassassin</h3>
+<ol>
+  <li>Download and extract spam samples:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /tmp
+wget http://untroubled.org/spam/2019-08.7z
+p7zip <span class="nt">-d</span> 2019-08.7z
+<span class="nb">chown</span> <span class="nt">-R</span> amavis:amavis 2019/
+<span class="nb">cd</span> -
+</code></pre></div>    </div>
+  </li>
+  <li>Make <em>Spamassassin</em> learn from spam samples to populate the local <em>ham/spam</em>  database:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su amavis <span class="nt">-c</span> <span class="s1">'sa-learn --progress --spam /tmp/2019/'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add cronjobs for <em>Spamassassin</em> (run <code class="highlighter-rouge">crontab -e</code>):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@hourly su amavis -c 'sa-learn --ham /var/vmail/*/*/cur/'
+@hourly su amavis -c 'sa-learn --spam /var/vmail/*/*/.Junk/cur/'
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="razor--pyzor">Razor (&amp; Pyzor)</h3>
+<ol>
+  <li>Initialize <em>Razor</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su amavis <span class="nt">-c</span> <span class="s1">'razor-admin -create'</span>
+su amavis <span class="nt">-c</span> <span class="s1">'razor-admin -register'</span>
+su amavis <span class="nt">-c</span> <span class="s1">'razor-admin -discover'</span>
+</code></pre></div>    </div>
+  </li>
+  <li><em>Pyzor</em> doesn’t need any configuration.</li>
+</ol>
+
+<h2 id="domains-mailboxes--aliases">Domains, Mailboxes &amp; Aliases</h2>
+<h3 id="domains">Domains</h3>
+<ol>
+  <li>Create domain mailbox directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su vmail <span class="nt">-c</span> <span class="s1">'mkdir -p -m 0770 /var/vmail/&lt;$DOMAIN&gt;'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add domain entry to <em>MySQL</em> database:
+    <pre><code class="language-mysql">INSERT INTO `postfix`.`domains` (`id` ,`domain`) VALUES ('1', '&lt;$DOMAIN&gt;');
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="mailboxes">Mailboxes</h3>
+<ol>
+  <li>Add mailbox entry to <em>MySQL</em> database:
+    <pre><code class="language-mysql">INSERT INTO `postfix`.`users` (`id`, `domain`, `password` , `email`) VALUES ('1', '1', ENCRYPT('&lt;$PASSWORD&gt;', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'admin@&lt;$DOMAIN&gt;');
+</code></pre>
+  </li>
+  <li>Initialize mailbox directory (optional):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doveadm mailbox create -u admin@&lt;$DOMAIN&gt; INBOX
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="aliases">Aliases</h3>
+<p>To create a <em>Catch-All</em> alias, add this alias entry to the <em>MySQL</em> database:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO `postfix`.`aliases` (`id`, `domain`, `source`, `destination`) VALUES ('1', '1', '@&lt;$DOMAIN&gt;', 'admin@&lt;$DOMAIN&gt;');
+</code></pre></div></div>
+
+<h2 id="roundcubemail">Roundcubemail</h2>
+<p><strong>Roundcubemail</strong> is used for webmail. To keep the PHP stuff isolated from the mail server, it will be installed in a <em>Docker</em> container.</p>
+
+<h3 id="docker-installation">Docker Installation</h3>
+<ol>
+  <li>Run this one-liner (or do it all by hand, see <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-engine---community-1">here</a>):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://get.docker.com | <span class="nb">sudo </span>sh -
+</code></pre></div>    </div>
+  </li>
+  <li>Install <em>Docker Compose</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install</span> <span class="nt">-y</span> python3-pip
+pip3 <span class="nb">install </span>docker-compose
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="container-setup">Container Setup</h3>
+<ol>
+  <li>Download <code class="highlighter-rouge">docker-compose.yml</code> (see <a href="https://github.com/j7k6/dockerized">here</a>):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://raw.githubusercontent.com/j7k6/dockerized/master/roundcubemail/docker-compose.yml
+</code></pre></div>    </div>
+  </li>
+  <li>Start container:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export IMAP_SERVER="ssl://$(hostname --fqdn)"
+export SMTP_SERVER="tls://$(hostname --fqdn)"
+
+docker-compose up -d
+          
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="nginx-ssl-site-setup">Nginx SSL Site Setup</h3>
+<ol>
+  <li>Create <code class="highlighter-rouge">/etc/nginx/sites-available/&lt;$FQDN&gt;.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  server_name &lt;$FQDN&gt;;
+
+  include conf.d/common.conf;
+  include conf.d/ssl.conf;
+  include conf.d/sslmodern.conf;
+
+  ssl_certificate /etc/letsencrypt/live/&lt;$FQDN&gt;/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/&lt;$FQDN&gt;/privkey.pem;
+  ssl_trusted_certificate /etc/letsencrypt/live/&lt;$FQDN&gt;/chain.pem;
+
+  location / {
+    include conf.d/proxy.conf;
+    proxy_pass http://127.0.0.1:8080;
+  }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Symlink site config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> /etc/nginx/sites-available/&lt;<span class="nv">$FQDN</span><span class="o">&gt;</span>.conf /etc/nginx/sites-enabled/
+</code></pre></div>    </div>
+  </li>
+  <li>Restart <em>Nginx</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart nginx
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="extras">Extras</h2>
+<h3 id="client-configuration">Client Configuration</h3>
+<ul>
+  <li><strong>IMAP</strong>:
+    <blockquote>
+      <p>Server: <code class="highlighter-rouge">&lt;$FQDN&gt;</code><br />
+Port: <code class="highlighter-rouge">993</code><br />
+Encryption: <code class="highlighter-rouge">SSL/TLS</code></p>
+    </blockquote>
+  </li>
+  <li><strong>SMTP</strong>:
+    <blockquote>
+      <p>Server: <code class="highlighter-rouge">&lt;$FQDN&gt;</code><br />
+Port: <code class="highlighter-rouge">587</code><br />
+Encryption: <code class="highlighter-rouge">STARTTLS</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="tests">Tests</h3>
+<p>There are some useful online tools to test if outgoing mails are considered as spam by other mail servers or if the spam filter is detecting incoming spam mails correctly.</p>
+
+<ul>
+  <li>
+    <p><strong>Incoming Mails:</strong>
+See <a href="https://www.emailsecuritycheck.net">https://www.emailsecuritycheck.net</a>.</p>
+  </li>
+  <li>
+    <p><strong>Outgoing Mails:</strong>
+See <a href="https://www.mail-tester.com">https://www.mail-tester.com</a>:</p>
+
+    <p><img src="/files/mail-test-01.png" alt="mail-tester.com" /></p>
+  </li>
+</ul>
+
+<hr />
+<ol>
+  <li><a href="https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/">https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/</a></li>
+  <li><a href="https://blogging.dragon.org.uk/mail-server-on-ubuntu-18-04-part-3/">https://blogging.dragon.org.uk/mail-server-on-ubuntu-18-04-part-3/</a></li>
+  <li><a href="https://www.syn-flut.de/spamassassin-erkennungsrate-deutlich-verbessern">https://www.syn-flut.de/spamassassin-erkennungsrate-deutlich-verbessern</a></li>
+  <li><a href="https://www.df.eu/de/support/df-faq/cloudserver/anleitungen/spam-und-virenschutz-mit-postfix-debian/">https://www.df.eu/de/support/df-faq/cloudserver/anleitungen/spam-und-virenschutz-mit-postfix-debian/</a></li>
+  <li><a href="https://major.io/2013/04/14/remove-sensitive-information-from-email-headers-with-postfix/">https://major.io/2013/04/14/remove-sensitive-information-from-email-headers-with-postfix/</a></li>
+</ol>
+:ET

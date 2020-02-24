@@ -1,0 +1,10 @@
+I"G<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /opt/java
+curl <span class="nt">-b</span> <span class="s1">'oraclelicense=accept-securebackup-cookie'</span> <span class="nt">-L</span> <span class="s1">'http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz'</span> | <span class="nb">tar </span>xz <span class="nt">-C</span> /opt/java
+update-alternatives <span class="nt">--remove-all</span> java
+update-alternatives <span class="nt">--remove-all</span> javac
+update-alternatives <span class="nt">--install</span> /usr/bin/java java /opt/java/jdk1.8.0_92/bin/java 1
+update-alternatives <span class="nt">--install</span> /usr/bin/javac javac /opt/java/jdk1.8.0_92/bin/javac 1
+</code></pre></div></div>
+
+<hr />
+:ET

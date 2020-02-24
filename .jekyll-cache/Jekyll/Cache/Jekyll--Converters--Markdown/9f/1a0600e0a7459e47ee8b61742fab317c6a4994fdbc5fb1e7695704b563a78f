@@ -1,0 +1,6 @@
+I"Ü<p>Edit <code class="highlighter-rouge">/etc/postfix/main.cf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>message_size_limit = 20480000
+</code></pre></div></div>
+
+<hr />
+:ET

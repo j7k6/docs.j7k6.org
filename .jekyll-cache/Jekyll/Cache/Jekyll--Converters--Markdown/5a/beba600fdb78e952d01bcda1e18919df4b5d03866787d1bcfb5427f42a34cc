@@ -1,0 +1,14 @@
+I"Ö<p>Edit: <code class="highlighter-rouge">/etc/default/ufw</code>:</p>
+<blockquote>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+DEFAULT_FORWARD_POLICY="ACCEPT"
+</code></pre></div>  </div>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service ufw restart
+ufw allow <span class="k">in </span>on docker0
+ufw allow out on docker0
+</code></pre></div></div>
+
+<hr />
+:ET

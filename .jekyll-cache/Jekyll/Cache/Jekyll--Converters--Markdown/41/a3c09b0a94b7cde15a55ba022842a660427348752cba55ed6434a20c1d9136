@@ -1,0 +1,14 @@
+I"ù<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"deb http://httpredir.debian.org/debian/ jessie main contrib non-free"</span> <span class="o">&gt;&gt;</span> /etc/apt/sources.list
+
+apt-get update
+apt-get <span class="nb">install </span>linux-image-<span class="si">$(</span><span class="nb">uname</span> <span class="nt">-r</span>|sed <span class="s1">'s,[^-]*-[^-]*-,,'</span><span class="si">)</span> linux-headers-<span class="si">$(</span><span class="nb">uname</span> <span class="nt">-r</span>|sed <span class="s1">'s,[^-]*-[^-]*-,,'</span><span class="si">)</span> broadcom-sta-dkms
+modprobe <span class="nt">-r</span> b44 b43 b43legacy ssb brcmsmac bcma
+modprobe wl
+<span class="o">[</span>reboot]
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://wiki.debian.org/wl">https://wiki.debian.org/wl</a></li>
+</ol>
+:ET

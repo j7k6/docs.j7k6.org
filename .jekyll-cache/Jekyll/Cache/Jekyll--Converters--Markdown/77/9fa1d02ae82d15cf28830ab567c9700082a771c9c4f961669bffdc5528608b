@@ -1,0 +1,33 @@
+I"y<ol>
+  <li>Enable DHCP:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>dhcpcd systemctl start dhcpcd
+</code></pre></div>    </div>
+  </li>
+  <li>Connect to wireless network:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wifi-menu
+</code></pre></div>    </div>
+  </li>
+  <li>Add user:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useradd <span class="nt">-m</span> <span class="nt">-g</span> <span class="nb">users</span> <span class="nt">-s</span> /bin/bash &lt;<span class="nv">$USER</span><span class="o">&gt;</span>
+passwd &lt;<span class="nv">$USER</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Configure Sudo with <code class="highlighter-rouge">visudo</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%wheel ALL=(ALL) ALL: ALL
+</code></pre></div>    </div>
+  </li>
+  <li>Add User to <em>wheel</em> group:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpasswd <span class="nt">-a</span> &lt;<span class="nv">$USER</span><span class="o">&gt;</span> wheel
+</code></pre></div>    </div>
+  </li>
+  <li>Setup NTP:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>ntpd.service
+systemctl start ntpd.service
+ntpd <span class="nt">-gq</span>
+hwclock <span class="nt">-w</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

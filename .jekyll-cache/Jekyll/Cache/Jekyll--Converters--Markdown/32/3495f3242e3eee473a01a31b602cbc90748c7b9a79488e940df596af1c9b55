@@ -1,0 +1,8 @@
+I" <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi <span class="nt">-f</span> <span class="si">$(</span>docker images | <span class="nb">grep</span> <span class="s2">"^&lt;none&gt;"</span> | <span class="nb">awk</span> <span class="s1">'{print $3}'</span><span class="si">)</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html">http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html</a></li>
+</ol>
+:ET

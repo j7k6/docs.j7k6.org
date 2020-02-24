@@ -1,0 +1,13 @@
+I"<blockquote>
+  <p><strong>Example</strong>: set time to 00:00:00, but keep dates.</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git filter-branch <span class="nt">-f</span> <span class="nt">--env-filter</span> <span class="se">\</span>
+  <span class="s2">"
+  export GIT_AUTHOR_DATE=</span><span class="se">\$</span><span class="s2">(echo </span><span class="se">\$</span><span class="s2">GIT_AUTHOR_DATE | awk '{print substr(</span><span class="se">\$</span><span class="s2">1,2)}' | xargs -I {} date -r {} +'%a %b %Oe %T %Y +0000' | awk '{gsub(/[0-9]{2}:[0-9]{2}:[0-9]{2}/, "</span><span class="se">\"</span><span class="s2">"00:00:00"</span><span class="se">\"</span><span class="s2">"); gsub(/  /, "</span><span class="se">\"</span><span class="s2">" "</span><span class="se">\"</span><span class="s2">"); print}');
+  export GIT_COMMITTER_DATE=</span><span class="se">\$</span><span class="s2">GIT_AUTHOR_DATE;
+  "</span>
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,11 @@
+I"V<h2 id="chrome">Chrome</h2>
+<p><a href="chrome://net-internals/#hsts">chrome://net-internals/#hsts</a></p>
+
+<h2 id="firefox">Firefox</h2>
+<p>Browse History, search for site &amp; click <em>Forget About This Site</em>.</p>
+
+<h2 id="safari">Safari</h2>
+<p>Delete <code class="highlighter-rouge">~/Library/Cookies/HSTS.plist</code>.</p>
+
+<hr />
+:ET

@@ -1,0 +1,5 @@
+I"A<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open <span class="nt">-a</span> <span class="s2">"Google Chrome"</span> <span class="nt">--args</span> <span class="nt">--disable-web-security</span> <span class="nt">--user-data-dir</span>
+</code></pre></div></div>
+
+<hr />
+:ET

@@ -1,0 +1,25 @@
+I"$<ol>
+  <li>Install dependencies:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update
+apt <span class="nb">install</span> <span class="nt">-y</span> curl apt-transport-https
+</code></pre></div>    </div>
+  </li>
+  <li>Add <code class="highlighter-rouge">/etc/apt/source.list.d/tor.list</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb https://deb.torproject.org/torproject.org buster main
+deb-src https://deb.torproject.org/torproject.org buster main
+</code></pre></div>    </div>
+  </li>
+  <li>Import signing key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg <span class="nt">--import</span>
+gpg <span class="nt">--export</span> A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
+</code></pre></div>    </div>
+  </li>
+  <li>Install the <code class="highlighter-rouge">tor</code> package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update
+apt <span class="nb">install</span> <span class="nt">-y</span> tor deb.torproject.org-keyring
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

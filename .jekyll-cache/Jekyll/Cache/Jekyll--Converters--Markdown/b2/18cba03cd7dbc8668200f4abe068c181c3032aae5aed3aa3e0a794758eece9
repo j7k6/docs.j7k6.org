@@ -1,0 +1,137 @@
+I"À)<h2 id="ssh">SSH</h2>
+<h3 id="ssh-keygen">SSH Keygen</h3>
+<ul>
+  <li>Generate SSH Key (unencrypted, without password):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-b</span> 4096 <span class="nt">-N</span> <span class="s2">""</span> <span class="nt">-C</span> <span class="s2">"&lt;</span><span class="nv">$EMAIL</span><span class="s2">&gt;"</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Password-Protect Private Key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-p</span> <span class="nt">-N</span> <span class="s2">"&lt;</span><span class="nv">$PASSWORD</span><span class="s2">&gt;"</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Edit Comment:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-c</span> <span class="nt">-C</span> <span class="s2">"&lt;</span><span class="nv">$EMAIL</span><span class="s2">&gt;"</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>View Public Key Fingerprint:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-l</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.ssh/id_ed25519.pub"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="ssh-tunnel">SSH Tunnel</h3>
+<ul>
+  <li>Forward Tunnel (open remote port on local host):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-L</span> &lt;<span class="nv">$LOCAL_PORT</span><span class="o">&gt;</span>:127.0.0.1:&lt;<span class="nv">$REMOTE_PORT</span><span class="o">&gt;</span> ...
+</code></pre></div>    </div>
+  </li>
+  <li>Reverse Tunnel (open local port on remote host):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-R</span> &lt;<span class="nv">$REMOTE_PORT</span><span class="o">&gt;</span>:127.0.0.1:&lt;<span class="nv">$LOCAL_PORT</span><span class="o">&gt;</span> ...
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="ssl">SSL</h2>
+<ul>
+  <li>Generate Secret Key &amp; CSR:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-out</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.csr <span class="nt">-newkey</span> rsa:4096 <span class="nt">-nodes</span> <span class="nt">-sha256</span> <span class="nt">-keyout</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.key <span class="nt">-subj</span> <span class="s2">"/CN=&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Self-Sign Certificate:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-out</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.csr <span class="nt">-newkey</span> rsa:4096 <span class="nt">-nodes</span> <span class="nt">-sha256</span> <span class="nt">-keyout</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.key <span class="nt">-subj</span> <span class="s2">"/CN=&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Generate Self Signed Certificate (One-Liner):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-x509</span> <span class="nt">-newkey</span> rsa:4096 <span class="nt">-nodes</span> <span class="nt">-sha256</span> <span class="nt">-keyout</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.key <span class="nt">-out</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.pem <span class="nt">-days</span> 365 <span class="nt">-subj</span> <span class="s2">"/CN=&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Generate Diffie-Hellman:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl dhparam <span class="nt">-out</span> /etc/ssl/certs/dhparam.pem 4096
+</code></pre></div>    </div>
+  </li>
+  <li>Test SSL Connection:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl s_client <span class="nt">-connect</span> &lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>:&lt;<span class="nv">$PORT</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Generate .htpasswd:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"&lt;</span><span class="nv">$USER</span><span class="s2">&gt;:</span><span class="si">$(</span>openssl passwd <span class="nt">-apr1</span> &lt;<span class="nv">$PASSWORD</span><span class="o">&gt;</span><span class="si">)</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> .htpasswd
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="linux-networking">Linux Networking</h2>
+<ul>
+  <li>Set Default Route:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip route add default via &lt;<span class="nv">$GATEWAY</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Change Default Route:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip route replace default via &lt;<span class="nv">$GATEWAY</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add Static Route:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip route add &lt;<span class="nv">$DESTINATION</span><span class="o">&gt;</span> via &lt;<span class="nv">$GATEWAY</span><span class="o">&gt;</span> dev &lt;<span class="nv">$DEVICE</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Enable IP Forwarding:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sysctl <span class="nt">-w</span> net.ipv4.ip_forward<span class="o">=</span>1
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="windows-networking">Windows Networking</h2>
+<ul>
+  <li>Open Port in Windows Firewall:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span><span class="w"> </span><span class="nx">firewall</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">portopening</span><span class="w"> </span><span class="nx">tcp</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$PORT</span><span class="err">&gt;</span><span class="w"> </span><span class="s2">"&lt;</span><span class="nv">$DESCRIPTION</span><span class="s2">&gt;"</span><span class="w"> </span><span class="nx">enable</span><span class="w"> </span><span class="nx">all</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Set Default Route:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">route</span><span class="w"> </span><span class="nx">ADD</span><span class="w"> </span><span class="nx">0.0.0.0</span><span class="w"> </span><span class="nx">MASK</span><span class="w"> </span><span class="nx">0.0.0.0</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$GATEWAY</span><span class="err">&gt;</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Add Static Route:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">route</span><span class="w"> </span><span class="nt">-p</span><span class="w"> </span><span class="nx">ADD</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$DESTINATION</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">MASK</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$MASK</span><span class="err">&gt;</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$GATEWAY</span><span class="err">&gt;</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="docker">Docker</h2>
+<ul>
+  <li>Remove all Containers:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">rm</span> <span class="nt">-f</span> <span class="si">$(</span>docker ps <span class="nt">-aq</span><span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove all Images:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi <span class="nt">-f</span> <span class="si">$(</span>docker images <span class="nt">-q</span><span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove untagged Images:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker rmi <span class="nt">-f</span> <span class="si">$(</span>docker images | <span class="nb">grep</span> <span class="s2">"^&lt;none&gt;"</span> | <span class="nb">awk</span> <span class="s1">'{print $3}'</span><span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="git">Git</h2>
+<ul>
+  <li>Add Remote URL
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin &lt;<span class="nv">$REMOTE_URL</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Change Remote URL
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote set-url origin &lt;<span class="nv">$REMOTE_URL</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+:ET

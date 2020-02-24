@@ -1,0 +1,86 @@
+I"b<blockquote>
+  <p><strong>Note</strong>: Since the <em>Alpine Linux</em> installation ISO doesn’t support ZFS kernel modules, it’s necessary to make a quick standard installation on an USB drive or second HDD first, then boot into the freshly installed Alpine system and do the ZFS based installation from there.</p>
+</blockquote>
+
+<ol>
+  <li>Install required packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apk add <span class="nt">--update</span> sgdisk cryptsetup e2fsprogs syslinux zfs zfs-<span class="si">$(</span><span class="nb">uname</span> <span class="nt">-r</span> | rev | <span class="nb">cut</span> <span class="nt">-d</span><span class="s1">'-'</span> <span class="nt">-f1</span> | rev<span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Prepare GPT partition scheme:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sgdisk <span class="nt">-og</span> /dev/sda
+sgdisk <span class="nt">-n</span> 1:2048:+100M <span class="nt">-t</span> 1:8300 /dev/sda
+sgdisk <span class="nt">--attributes</span><span class="o">=</span>1:set:2 /dev/sda
+sgdisk <span class="nt">-n</span> 2:0:0 <span class="nt">-t</span> 2:8300 /dev/sda
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">partprobe</code> isn’t working here for some reason, so <code class="highlighter-rouge">reboot</code> to let the kernel know about the new partition layout.</li>
+  <li>Format boot partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext2 /dev/sda1
+</code></pre></div>    </div>
+  </li>
+  <li>Enrcrypt raw system partition with <em>LUKS</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup <span class="nt">-c</span> aes-xts-plain64 <span class="nt">-y</span> <span class="nt">-s</span> 512 <span class="nt">-h</span> sha256 luksFormat /dev/sda2
+</code></pre></div>    </div>
+  </li>
+  <li>Unlock encrypted partition:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cryptsetup luksOpen /dev/sda2 zfscrypt
+</code></pre></div>    </div>
+  </li>
+  <li>Load ZFS kernel module:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>modprobe zfs
+</code></pre></div>    </div>
+  </li>
+  <li>Create <em>zpool</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zpool create <span class="nt">-f</span> <span class="nt">-m</span> none <span class="nt">-R</span> /mnt <span class="nt">-O</span> <span class="nv">compression</span><span class="o">=</span>lz4 zroot /dev/mapper/zfscrypt
+</code></pre></div>    </div>
+  </li>
+  <li>Create ZFS root dataset:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zfs create <span class="nt">-o</span> <span class="nv">mountpoint</span><span class="o">=</span>none <span class="nt">-o</span> <span class="nv">canmount</span><span class="o">=</span>off zroot/ROOT
+zfs create <span class="nt">-o</span> <span class="nv">mountpoint</span><span class="o">=</span>/ zroot/ROOT/alpine
+</code></pre></div>    </div>
+  </li>
+  <li>Mount boot partition into the ZFS mountpoint:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/boot
+mount /dev/sda1 /mnt/boot
+</code></pre></div>    </div>
+  </li>
+  <li>Install <em>Alpine Linux</em> into ZFS mountpoint:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setup-disk <span class="nt">-m</span> sys /mnt/
+</code></pre></div>    </div>
+  </li>
+  <li>Prepare <em>initramfs</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"crypt /dev/sda2 none  luks"</span> <span class="o">&gt;</span> /mnt/etc/crypttab
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"/zfs/d"</span> /mnt/etc/fstab
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s/zfs/cryptsetup zfs/"</span> /mnt/etc/mkinitfs/mkinitfs.conf
+</code></pre></div>    </div>
+  </li>
+  <li>Build <em>initramfs</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkinitfs <span class="nt">-c</span> /mnt/etc/mkinitfs/mkinitfs.conf <span class="nt">-b</span> /mnt/ <span class="si">$(</span><span class="nb">ls</span> /mnt/lib/modules/<span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update <em>syslinux</em> bootloader:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s|rootfstype=zfs|cryptroot=/dev/sda2 cryptdm=crypt rootfstype=zfs|"</span> /mnt/etc/update-extlinux.conf
+<span class="nb">chroot</span> /mnt/ /sbin/update-extlinux 2&gt;/dev/null
+</code></pre></div>    </div>
+  </li>
+  <li>Write MBR to disk:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="nv">bs</span><span class="o">=</span>440 <span class="nv">count</span><span class="o">=</span>1 <span class="nv">conv</span><span class="o">=</span>notrunc <span class="k">if</span><span class="o">=</span>/mnt/usr/share/syslinux/gptmbr.bin <span class="nv">of</span><span class="o">=</span>/dev/sda
+</code></pre></div>    </div>
+  </li>
+  <li>Unmount everything:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>umount /mnt/boot
+zfs unmount <span class="nt">-a</span>
+cryptsetup luksClose zfscrypt
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">reboot</code></li>
+</ol>
+
+<p><img src="/files/alpine-zfs-luks.png" alt="alpine-zfs-luks" /></p>
+
+<hr />
+<ol>
+  <li><a href="https://wiki.alpinelinux.org/wiki/Setting_up_ZFS_on_LUKS">https://wiki.alpinelinux.org/wiki/Setting_up_ZFS_on_LUKS</a></li>
+</ol>
+:ET

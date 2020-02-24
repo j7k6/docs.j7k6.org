@@ -1,0 +1,15 @@
+I"ð<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/default/grub</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
+</code></pre></div>    </div>
+  </li>
+  <li>Run: <code class="highlighter-rouge">update-grub</code>.</li>
+  <li>Edit <code class="highlighter-rouge">/etc/network/interfaces</code> and rename interface to <code class="highlighter-rouge">eth0</code>.</li>
+  <li>Reboot</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="http://www.itzgeek.com/how-tos/mini-howtos/change-default-network-name-ens33-to-old-eth0-on-ubuntu-16-04.html">http://www.itzgeek.com/how-tos/mini-howtos/change-default-network-name-ens33-to-old-eth0-on-ubuntu-16-04.html</a></li>
+</ol>
+:ET

@@ -1,0 +1,13 @@
+I"Õ<h2 id="on-linux-with-coreutils--v824">On Linux with <code class="highlighter-rouge">coreutils</code> &gt;= v8.24</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>&lt;<span class="nv">$IN_FILE</span><span class="o">&gt;</span> <span class="nv">of</span><span class="o">=</span>&lt;<span class="nv">$OUT_FILE</span><span class="o">&gt;</span> <span class="nv">status</span><span class="o">=</span>progress
+</code></pre></div></div>
+
+<h2 id="on-older-linux-requires-pv">On older Linux (requires <code class="highlighter-rouge">pv</code>)</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>&lt;<span class="nv">$IN_FILE</span><span class="o">&gt;</span> | pv | <span class="nb">dd </span><span class="nv">of</span><span class="o">=</span>&lt;<span class="nv">$OUT_FILE</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="os-x--macos-press">OS X / macOS: press</h2>
+<p><code class="highlighter-rouge">CTRL</code> + <code class="highlighter-rouge">T</code></p>
+
+<hr />
+:ET

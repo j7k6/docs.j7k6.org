@@ -1,0 +1,5 @@
+I"ø<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-r</span> <span class="nt">-l</span> inf <span class="nt">-nH</span> <span class="nt">-nc</span> <span class="nt">--restrict-file-names</span><span class="o">=</span>nocontrol ftp://&lt;<span class="nv">$USER</span><span class="o">&gt;</span>:<span class="s1">'&lt;$PASSWORD&gt;'</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>/
+</code></pre></div></div>
+
+<hr />
+:ET

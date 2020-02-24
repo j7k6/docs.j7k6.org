@@ -1,0 +1,9 @@
+I"I<blockquote>
+  <p><strong>Note</strong>: Requires <code class="highlighter-rouge">tor</code> installation via <code class="highlighter-rouge">brew</code>!</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew services start tor
+</code></pre></div></div>
+
+<hr />
+:ET

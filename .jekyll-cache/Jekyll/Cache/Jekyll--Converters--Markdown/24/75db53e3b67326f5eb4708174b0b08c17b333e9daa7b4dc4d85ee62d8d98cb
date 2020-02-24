@@ -1,0 +1,23 @@
+I"§
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># $REG_IP needs to be added as insecure registry in the local docker client</span>
+
+<span class="c"># on macOS a loopback alias IP has to be used (e.g. 172.16.123.1).</span>
+<span class="nb">sudo </span>ifconfig lo0 <span class="nb">alias </span>172.16.123.1
+<span class="nv">REG_IP</span><span class="o">=</span><span class="s2">"172.16.123.1"</span>
+
+<span class="c"># on Linux</span>
+<span class="nv">REG_IP</span><span class="o">=</span><span class="s2">"127.0.0.1"</span>
+
+<span class="c"># open tunnel in background</span>
+ssh <span class="nt">-o</span> <span class="nv">ControlPath</span><span class="o">=</span>/tmp/temp_ssh_tunnel <span class="nt">-f</span> <span class="nt">-N</span> <span class="nt">-M</span> <span class="nt">-L</span> <span class="k">${</span><span class="nv">REG_IP</span><span class="k">}</span>:5000:127.0.0.1:5000 <span class="k">${</span><span class="nv">SSH_OPTIONS</span><span class="k">}</span> <span class="k">${</span><span class="nv">SSH_USER</span><span class="k">}</span>@<span class="k">${</span><span class="nv">SSH_HOST</span><span class="k">}</span>
+
+<span class="c"># push through tunnel</span>
+docker tag <span class="s2">"</span><span class="k">${</span><span class="nv">DOCKER_IMAGE</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">BUILD_VERSION</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">REG_IP</span><span class="k">}</span><span class="s2">:5000/</span><span class="k">${</span><span class="nv">DOCKER_IMAGE</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">BUILD_VERSION</span><span class="k">}</span><span class="s2">"</span>
+docker push <span class="s2">"</span><span class="k">${</span><span class="nv">REG_IP</span><span class="k">}</span><span class="s2">:5000/</span><span class="k">${</span><span class="nv">DOCKER_IMAGE</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">BUILD_VERSION</span><span class="k">}</span><span class="s2">"</span>
+
+<span class="c"># close tunnel</span>
+ssh <span class="nt">-o</span> <span class="nv">ControlPath</span><span class="o">=</span>/tmp/temp_ssh_tunnel <span class="nt">-O</span> <span class="nb">exit</span> <span class="k">${</span><span class="nv">SSH_OPTIONS</span><span class="k">}</span> <span class="k">${</span><span class="nv">SSH_USER</span><span class="k">}</span>@<span class="k">${</span><span class="nv">SSH_HOST</span><span class="k">}</span>
+</code></pre></div></div>
+
+<hr />
+:ET

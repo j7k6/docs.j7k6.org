@@ -1,0 +1,23 @@
+I"<h2 id="disable-hdmi">Disable HDMI</h2>
+<blockquote>
+  <p>This will reduce the power consumption by ~30mA.</p>
+</blockquote>
+
+<p>Add <code class="highlighter-rouge">/usr/bin/tvservice -o</code> to <em>/etc/rc.local</em> (right before the <code class="highlighter-rouge">exit 0</code> line).</p>
+
+<h2 id="disable-the-act-led">Disable the ACT LED</h2>
+<blockquote>
+  <p>The <em>ACT</em> LED indicates network and disk activity, turning it off will reduce the overall power consumption a tiny bit more.</p>
+</blockquote>
+
+<p>Add these lines to <em>/boot/config.txt</em>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://web.archive.org/web/20151204043226/http://www.midwesternmac.com:80/comment/3216">https://web.archive.org/web/20151204043226/http://www.midwesternmac.com:80/comment/3216</a></li>
+  <li><a href="https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-conserve-energy">https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-conserve-energy</a></li>
+</ol>
+:ET

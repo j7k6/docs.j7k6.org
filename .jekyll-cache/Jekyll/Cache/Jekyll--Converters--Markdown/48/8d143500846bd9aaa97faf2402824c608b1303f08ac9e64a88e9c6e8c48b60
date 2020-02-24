@@ -1,0 +1,10 @@
+I"�<p>This regex removes all lines starting with ‘<code class="highlighter-rouge">#</code>’ and all empty lines from a vim buffer/file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:g/\v^(#|$)/d_
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://stackoverflow.com/a/12662649/8434893">https://stackoverflow.com/a/12662649/8434893</a></li>
+</ol>
+:ET

@@ -1,0 +1,20 @@
+I"h<ol>
+  <li>Enable Remote Syslog:
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli system syslog config <span class="nb">set</span> <span class="nt">--loghost</span><span class="o">=</span><span class="s1">'udp://&lt;$SYSLOG_SERVER&gt;:514'</span>
+esxcli system syslog reload
+</code></pre></div>    </div>
+  </li>
+  <li>Enable Firewall Rule:
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli network firewall ruleset <span class="nb">set</span> <span class="nt">--ruleset-id</span><span class="o">=</span>syslog <span class="nt">--enabled</span><span class="o">=</span><span class="nb">true
+</span>esxcli network firewall refresh
+</code></pre></div>    </div>
+  </li>
+  <li>Disable Remote Syslog:
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>esxcli system syslog config <span class="nb">set</span> <span class="nt">--loghost</span><span class="o">=</span><span class="s1">''</span>
+esxcli system syslog reload
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

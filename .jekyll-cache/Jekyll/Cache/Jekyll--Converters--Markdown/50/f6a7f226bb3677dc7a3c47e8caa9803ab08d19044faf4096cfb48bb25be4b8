@@ -1,0 +1,129 @@
+I"\<p>Sixfab’s <a href="https://sixfab.com/product/gsmgprs-shield/">Raspberry Pi GSM/GPRS Shield</a> is a nice little IoT modem to connect the Pi to the internet in remote locations via a 2G mobile network.</p>
+
+<h2 id="serial-port-configuration">Serial Port Configuration</h2>
+<ol>
+  <li>In <code class="highlighter-rouge">/boot/cmdline.txt</code> remove the <code class="highlighter-rouge">console=serial0,115200</code> part.</li>
+  <li>Add this lines to <code class="highlighter-rouge">/boot/config.txt</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>enable_uart=1
+dtoverlay=pi3-disable-bt
+</code></pre></div>    </div>
+  </li>
+  <li>Disable the <em>serial-getty</em> service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl stop serial-getty@ttyAMA0.service
+systemctl disable serial-getty@ttyAMA0.service
+</code></pre></div>    </div>
+  </li>
+  <li>Power-off the Pi.</li>
+  <li>Connect the <em>Sixfab GSM/GPRS Shield</em> to the Raspberry Pi’s GPIO pins.</li>
+  <li>Make sure the physical switch on the Shield is set to <strong>“Pi”</strong> (not <em>USB</em>!)</li>
+  <li>Power-on the Pi.</li>
+</ol>
+
+<h2 id="ppp">PPP</h2>
+<ol>
+  <li>Install the <code class="highlighter-rouge">ppp</code> package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> ppp
+</code></pre></div>    </div>
+  </li>
+  <li>Create directories:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /etc/chatscripts /etc/ppp/peers
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/etc/chatscripts/quectel-chat-connect</code> file:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ABORT "BUSY"
+ABORT "NO CARRIER"
+ABORT "NO DIALTONE"
+ABORT "ERROR"
+ABORT "NO ANSWER"
+TIMEOUT 30
+"" AT
+OK ATE0
+OK ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&amp;D2
+OK AT+CGDCONT=1,"IP","\T",,0,0
+OK ATD*99#
+CONNECT
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/etc/chatscripts/quectel-chat-disconnect</code> file:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ABORT "ERROR"
+ABORT "NO DIALTONE"
+SAY "\nSending break to the modem\n"
+"" +++
+"" +++
+"" +++
+SAY "\nGoodbye!\n"
+   
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">/etc/ppp/peers/gprs</code>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/dev/ttyAMA0 115200
+connect 'chat -s -v -f /etc/chatscripts/quectel-chat-connect -T &lt;$APN&gt;'
+disconnect 'chat -s -v -f /etc/chatscripts/quectel-chat-disconnect'
+hide-password
+noauth
+debug
+defaultroute
+noipdefault
+novj
+novjccomp
+noccp
+ipcp-accept-local
+ipcp-accept-remote
+local
+lock
+modem
+dump
+nodetach
+nocrtscts
+remotename 3gppp
+ipparam 3gppp
+ipcp-max-failure 30
+usepeerdns
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="usage">Usage</h2>
+<ol>
+  <li>To power-up the Shield using the GPIO pins, use this Python script:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span>   
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="n">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+   
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+   
+<span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+   
+<span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Initiate GPRS call to connect to the internet:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pppd call gprs &amp;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="optional">Optional</h3>
+<ul>
+  <li>Make the PPP connection the default route (optional):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>route del default
+route add default dev ppp0
+</code></pre></div>    </div>
+  </li>
+  <li>Disconnect the PPP connection:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">kill</span> <span class="nt">-9</span> <span class="sb">`</span>pidof pppd<span class="sb">`</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+<ol>
+  <li><a href="https://sixfab.com/sending-sms-with-sixfab-gsmgprs-shield/">https://sixfab.com/sending-sms-with-sixfab-gsmgprs-shield/</a></li>
+  <li><a href="https://sixfab.com/updated-tutorial-2-make-a-ppp-internet-connection-with-sixfab-gprs-shield-on-raspberry-pi/">https://sixfab.com/updated-tutorial-2-make-a-ppp-internet-connection-with-sixfab-gprs-shield-on-raspberry-pi/</a></li>
+</ol>
+:ET

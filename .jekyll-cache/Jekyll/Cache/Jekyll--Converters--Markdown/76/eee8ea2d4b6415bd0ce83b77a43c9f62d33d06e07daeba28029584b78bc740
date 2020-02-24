@@ -1,0 +1,6 @@
+I"z<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sSL</span> https://get.rvm.io | bash <span class="nt">-s</span> stable <span class="nt">--ruby</span><span class="o">=</span>2.3.1 <span class="nt">--auto-dotfiles</span>
+rvm use ruby-2.3.1 <span class="nt">--default</span>
+</code></pre></div></div>
+
+<hr />
+:ET

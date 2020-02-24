@@ -1,0 +1,197 @@
+I"À6<h2 id="prerequirements">Prerequirements</h2>
+<ol>
+  <li>Change root password: <code class="highlighter-rouge">passwd</code></li>
+  <li>Fix locale:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LANGUAGE</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export </span><span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
+</code></pre></div>    </div>
+  </li>
+  <li>Set parameters:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span><span class="s2">"noninteractive"</span>
+<span class="nb">export </span><span class="nv">EMAIL</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$EMAIL_ADDRESS</span><span class="s2">&gt;"</span>
+<span class="nb">export </span><span class="nv">MAIL_RELAY</span><span class="o">=</span><span class="s2">""</span>
+<span class="nb">export </span><span class="nv">USER</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$DEPLOY_USER</span><span class="s2">&gt;"</span>
+<span class="nb">export </span><span class="nv">PASSWORD</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$RANDOM_PASSWORD</span><span class="s2">&gt;"</span>
+<span class="nb">export </span><span class="nv">SSH_PUBKEY</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$PUB_KEY</span><span class="s2">&gt;"</span>
+<span class="nb">export </span><span class="nv">SSH_PORT</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$CUSTOM_SSH_PORT</span><span class="s2">&gt;"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update &amp; install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get upgrade <span class="nt">-y</span>
+
+apt-get <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\</span>
+<span class="nb">sudo</span> <span class="se">\</span>
+fail2ban <span class="se">\</span>
+logwatch <span class="se">\</span>
+vim <span class="se">\</span>
+htop <span class="se">\</span>
+tmux <span class="se">\</span>
+postfix <span class="se">\</span>
+iptables-persistent <span class="se">\</span>
+build-essential <span class="se">\</span>
+git <span class="se">\</span>
+rkhunter <span class="se">\</span>
+mosh
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="service-configuration">Service Configuration</h2>
+<ol>
+  <li>Postfix config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> /etc/postfix/main.cf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+myhostname = localhost
+mydestination =
+relayhost = </span><span class="k">${</span><span class="nv">MAIL_RELAY</span><span class="k">}</span><span class="sh">
+mynetworks = 127.0.0.0/8
+inet_interfaces = loopback-only
+inet_protocols = ipv4
+</span><span class="no">EOF
+   
+</span><span class="nb">cat</span> <span class="o">&gt;&gt;</span> /etc/aliases <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+root: </span><span class="k">${</span><span class="nv">EMAIL</span><span class="k">}</span><span class="sh">
+</span><span class="no">EOF
+   
+</span>newaliases
+</code></pre></div>    </div>
+  </li>
+  <li>RKHunter config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"/lwp-request/s/^/#/"</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"/^#MAIL-ON-WARNING/s/.*/MAIL-ON-WARNING=root@localhost/"</span> <span class="se">\</span>
+/etc/rkhunter.conf
+   
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s1">'s/CRON_DAILY_RUN=""/CRON_DAILY_RUN="true"/g'</span> <span class="se">\</span>
+/etc/default/rkhunter
+   
+rkhunter <span class="nt">--propupd</span> <span class="nt">--update</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Logwatch config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;&gt;</span> /etc/cron.daily/00logwatch <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+/usr/sbin/logwatch --output mail --mailto root@localhost --detail high
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+  </li>
+  <li>SSH config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"s/^Port .*/Port </span><span class="k">${</span><span class="nv">SSH_PORT</span><span class="k">}</span><span class="s2">/g"</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"s/[#]*PermitRootLogin yes/PermitRootLogin no/g"</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"s/[#]*PasswordAuthentication yes/PasswordAuthentication no/g"</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"s/[#]*UsePAM yes/UsePAM no/g"</span> <span class="se">\</span>
+/etc/ssh/sshd_config
+</code></pre></div>    </div>
+  </li>
+  <li>Fail2Ban config:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"s/^port.*=.*ssh/port = </span><span class="k">${</span><span class="nv">SSH_PORT</span><span class="k">}</span><span class="s2">/g"</span> <span class="se">\</span>
+/etc/fail2ban/jail.conf
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="user-setup">User Setup:</h2>
+<ol>
+  <li>Add user:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useradd <span class="nt">-u</span> 1000 <span class="nt">-g</span> <span class="nb">sudo</span> <span class="nt">-d</span> /home/<span class="nv">$USER</span> <span class="nt">-s</span> /bin/bash <span class="nt">-p</span> <span class="si">$(</span><span class="nb">echo</span> <span class="nv">$PASSWORD</span> | openssl passwd <span class="nt">-1</span> <span class="nt">-stdin</span><span class="si">)</span> <span class="nv">$USER</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add SSH Public Key:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /home/<span class="nv">$USER</span>/.ssh
+<span class="nb">cat</span> <span class="o">&gt;</span> /home/<span class="nv">$USER</span>/.ssh/authorized_keys <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+</span><span class="nv">$SSH_PUBKEY</span><span class="sh">
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="networking--firewall">Networking &amp; Firewall</h2>
+<ol>
+  <li>Disable IPv6:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> /etc/sysctl.d/01-disable-ipv6.conf <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+net.ipv6.conf.all.disable_ipv6 = 1
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+  </li>
+  <li>Set IPTables Rules:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># keep ssh connection alive</span>
+iptables <span class="nt">-P</span> INPUT ACCEPT
+iptables <span class="nt">-P</span> OUTPUT ACCEPT
+iptables <span class="nt">-P</span> FORWARD ACCEPT
+   
+<span class="c"># reset iptables rules/chains</span>
+iptables <span class="nt">-F</span>
+iptables <span class="nt">-X</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-F</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-X</span>
+iptables <span class="nt">-t</span> mangle <span class="nt">-F</span>
+iptables <span class="nt">-t</span> mangle <span class="nt">-X</span>
+   
+<span class="c"># drop everything</span>
+iptables <span class="nt">-P</span> INPUT DROP
+iptables <span class="nt">-P</span> OUTPUT DROP
+iptables <span class="nt">-P</span> FORWARD DROP
+   
+<span class="c"># allow local connections</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-i</span> lo <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-o</span> lo <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow established/related connections</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-m</span> state <span class="nt">--state</span> RELATED,ESTABLISHED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-m</span> state <span class="nt">--state</span> ESTABLISHED <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># prevent tcp syn attack</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--tcp-flags</span> FIN,SYN,RST,PSH,ACK,URG NONE <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="o">!</span> <span class="nt">--tcp-flags</span> FIN,SYN,RST,ACK SYN <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> tcp <span class="nt">--tcp-flags</span> FIN,SYN,RST,PSH,ACK,URG FIN,SYN,RST,PSH,ACK,URG <span class="nt">-j</span> DROP
+   
+<span class="c"># allow inbound ports</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> multiport <span class="nt">--dports</span> <span class="k">${</span><span class="nv">SSH_PORT</span><span class="k">}</span> <span class="nt">-m</span> state <span class="nt">--state</span> NEW,ESTABLISHED <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> multiport <span class="nt">--sports</span> <span class="k">${</span><span class="nv">SSH_PORT</span><span class="k">}</span> <span class="nt">-m</span> state <span class="nt">--state</span> ESTABLISHED <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow mobile-shell</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> udp <span class="nt">-m</span> multiport <span class="nt">--dports</span> 60000:61000 <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow outbound ports</span>
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> multiport <span class="nt">--dports</span> 22,25,80,443,123,11371 <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow outbound dns</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> udp <span class="nt">--sport</span> 53 <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> udp <span class="nt">--dport</span> 53 <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow outbound traceroute</span>
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> udp <span class="nt">--sport</span> 32769:65535 <span class="nt">--dport</span> 33434:33523 <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow inbound ping</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> icmp <span class="nt">--icmp-type</span> echo-request <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> icmp <span class="nt">--icmp-type</span> echo-reply <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># allow outbound ping</span>
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-p</span> icmp <span class="nt">--icmp-type</span> echo-request <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> icmp <span class="nt">--icmp-type</span> echo-reply <span class="nt">-j</span> ACCEPT
+   
+<span class="c"># drop everything else</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> OUTPUT <span class="nt">-j</span> DROP
+iptables <span class="nt">-A</span> FORWARD <span class="nt">-j</span> DROP
+</code></pre></div>    </div>
+  </li>
+  <li>Save IPTables Rules:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables-save <span class="o">&gt;</span> /etc/iptables/rules.v4
+</code></pre></div>    </div>
+  </li>
+  <li>Reboot</li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/">http://www.codelitt.com/blog/my-first-10-minutes-on-a-server-primer-for-securing-ubuntu/</a></li>
+  <li><a href="https://www.inversoft.com/guides/2016-guide-to-user-data-security">https://www.inversoft.com/guides/2016-guide-to-user-data-security</a></li>
+  <li><a href="https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers">https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers</a></li>
+</ol>
+:ET

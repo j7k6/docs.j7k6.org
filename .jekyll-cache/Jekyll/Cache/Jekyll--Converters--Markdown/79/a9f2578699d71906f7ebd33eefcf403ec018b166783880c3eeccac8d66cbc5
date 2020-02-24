@@ -1,0 +1,26 @@
+I"°<h2 id="php">PHP</h2>
+<p>Add this line to <code class="highlighter-rouge">php.ini</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sendmail_path = "/usr/sbin/ssmtp -t"
+</code></pre></div></div>
+
+<h2 id="ssmtp">SSMTP</h2>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/ssmt/ssmtp.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root=&lt;$SENDER_ADDRESS&gt;
+RewriteDomain=&lt;$SENDER_DOMAIN&gt;
+mailhub=&lt;$SMTP_SERVER&gt;:587
+AuthUser=&lt;$SMTP_USER&gt;
+AuthPass=&lt;$SMTP_PASSWORD&gt;
+FromLineOverride=Yes
+UseTLS=Yes
+UseSTARTTLS=Yes
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">config/ssmtp/revaliases</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root:&lt;$SENDER_ADDRESS&gt;:&lt;$SMTP_SERVER&gt;:587
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

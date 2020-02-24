@@ -1,0 +1,8 @@
+I"Z<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://askubuntu.com/a/269821">https://askubuntu.com/a/269821</a></li>
+</ol>
+:ET

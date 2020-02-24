@@ -1,0 +1,78 @@
+I"ó<h2 id="prerequirements">Prerequirements:</h2>
+<ul>
+  <li>1x Server with Hardware RAID &amp; Intel Xeon CPU</li>
+  <li>1x additional IP for Firewall VM outbound NIC (Request Seperate MAC for Firewall)</li>
+  <li>1x additional /29 subnet for 6 VM IPs (Routing to additional IP)</li>
+  <li>1x VMWare ESXi Free License (<a href="https://my.vmware.com/en/group/vmware/evalcenter?p=free-esxi6">https://my.vmware.com/en/group/vmware/evalcenter?p=free-esxi6</a>)</li>
+</ul>
+
+<h2 id="lara-raid-setup-esxi-installation">LARA: RAID Setup, ESXi Installation</h2>
+<ol>
+  <li>Request LARA Console for Server</li>
+  <li>Set ESXi ISO in LARA Interface Setting: <em>Interfaces -&gt; Virtual Media -&gt; Image on Windows Share</em>
+    <ul>
+      <li>Share Host/IP: <code class="highlighter-rouge">mirror.hetzner.de</code></li>
+      <li>Share Name: <code class="highlighter-rouge">vmware</code></li>
+      <li>Image File with Path: <code class="highlighter-rouge">VMware-VMvisor-Installer-6.5.0-4564106.x86_64.iso</code></li>
+    </ul>
+  </li>
+  <li>Restart Server, boot into RAID Configuration to set-up RAID</li>
+  <li>Reboot &amp; Install ESXi</li>
+  <li>Eject ISO &amp; Reboot Server</li>
+</ol>
+
+<h2 id="vmware-esxi-65-setup">VMWare ESXi 6.5 Setup</h2>
+<ol>
+  <li>Enable SSH in <code class="highlighter-rouge">Troubleshooting Options</code>.</li>
+  <li>Quit LARA</li>
+  <li>Connect to server via SSH</li>
+  <li>Download ISOs to Datastore:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /vmfs/volumes/datastore1/
+mkdir ISO
+cd ISO
+wget http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-8.7.1-amd64-netinst.iso
+wget http://frafiles.pfsense.org/mirror/downloads/pfSense-CE-2.3.2-RELEASE-amd64.iso.gz
+gunzip http://frafiles.pfsense.org/mirror/downloads/pfSense-CE-2.3.2-RELEASE-amd64.iso.gz
+</code></pre></div>    </div>
+  </li>
+  <li>Open serverâ€™s VMWare UI in browser</li>
+</ol>
+
+<h3 id="networking-setup">Networking Setup</h3>
+<ol>
+  <li><em>Networking -&gt; Virtual switches -&gt; Add standard virtual switch</em>
+    <ul>
+      <li>vSwitch Name: <code class="highlighter-rouge">subnet0</code></li>
+    </ul>
+  </li>
+  <li><em>Networking -&gt; Port groups -&gt; Add port group</em>
+    <ul>
+      <li>Name: <code class="highlighter-rouge">Subnet0</code></li>
+      <li>Virtual switch: <code class="highlighter-rouge">subnet0</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="pfsense-firewall">pfSense Firewall</h2>
+<ol>
+  <li>Create new VM:
+    <ul>
+      <li>Name: <code class="highlighter-rouge">firewall</code></li>
+      <li>RAM: <code class="highlighter-rouge">512 MB</code></li>
+      <li>HDD: <code class="highlighter-rouge">8 GB</code></li>
+      <li>NIC1: <code class="highlighter-rouge">VM Network</code> (static MAC: requested from Hetzner Robot, see <em>Prerequirements</em>)</li>
+      <li>NIC2: <code class="highlighter-rouge">subnet0</code></li>
+      <li>DVD: ISO (<code class="highlighter-rouge">pfSense-CE-2.3.2-RELEASE-amd64.iso</code>)</li>
+    </ul>
+  </li>
+  <li>Install <code class="highlighter-rouge">pfSense</code>
+    <ul>
+      <li>First network interface: Additional IP</li>
+      <li>Second network interface: IP from /29 Subnet</li>
+    </ul>
+  </li>
+  <li>Configure <code class="highlighter-rouge">pfSense</code> via Web UI</li>
+</ol>
+
+<hr />
+:ET

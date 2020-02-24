@@ -1,0 +1,5 @@
+I"‡<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump <span class="nt">-uroot</span> <span class="nt">-p</span> &lt;<span class="nv">$SRC_DB</span><span class="o">&gt;</span> | mysql <span class="nt">-uroot</span> <span class="nt">-p</span> &lt;<span class="nv">$DST_DB</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+:ET

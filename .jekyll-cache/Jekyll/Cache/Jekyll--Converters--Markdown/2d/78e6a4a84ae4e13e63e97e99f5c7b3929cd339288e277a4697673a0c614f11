@@ -1,0 +1,70 @@
+I"6<p>If your APC UPS doesn’t has a network management card, its status can only be monitored with a special USB cable, so there is no SNMP available.
+To query the UPS status on a Linux host, the <code class="highlighter-rouge">apcupsd</code> utility needs to be installed first. This software package contains the tool <code class="highlighter-rouge">apcaccess</code>, which is able to get some useful information about the batteries status.</p>
+
+<h2 id="prerequirements">Prerequirements</h2>
+<ol>
+  <li>Install <code class="highlighter-rouge">apcupsd</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> apcupsd
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/default/apcupsd</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ISCONFIGURED=yes
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/apcupsd/apcupsd.conf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UPSCABLE usb
+UPSTYPE usb
+DEVICE
+...
+</code></pre></div>    </div>
+  </li>
+  <li>Restart the service:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart apcupsd
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="zabbix">Zabbix</h2>
+<h3 id="zabbix-agent-configuration">Zabbix Agent Configuration</h3>
+<p>To integrate the <code class="highlighter-rouge">apcaccess</code> status integration into the <em>Zabbix Agent</em>, append this lines to the hosts <code class="highlighter-rouge">zabbix_agentd.conf</code>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UserParameter=UPSStatus,apcaccess | awk '/^(STATUS).*:/ { print $3 }'
+UserParameter=UPSBcharge,apcaccess | awk '/^(BCHARGE).*:/ { print $3 }'
+UserParameter=UPSTimeleft,apcaccess | awk '/^(TIMELEFT).*:/ { print $3 }'
+</code></pre></div></div>
+
+<p>This parameters query the status (<code class="highlighter-rouge">ONLINE</code>|<code class="highlighter-rouge">ONBATT</code>) of the connected APC UPS. To activate them, restart the service:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart zabbix-agent
+</code></pre></div></div>
+
+<h3 id="zabbix-items">Zabbix Items</h3>
+<p>In the web interface, navigate to the hosts <em>Configuration</em> &gt; <em>Items</em> and create 3 new Items:</p>
+<ol>
+  <li>APC Status:
+<img src="/files/zabbix-apc-ups-usb/apc-status.png" alt="apc-status.png" /></li>
+  <li>APC Battery Charge:
+<img src="/files/zabbix-apc-ups-usb/apc-battery-charge.png" alt="apc-battery-charge.png" /></li>
+  <li>APC Time left:
+<img src="/files/zabbix-apc-ups-usb/apc-time-left.png" alt="apc-time-left.png" /></li>
+</ol>
+
+<p>Now, the data from the <code class="highlighter-rouge">apcaccess</code> query is available in Zabbix (&gt; <em>Latest data</em> tab):
+<img src="/files/zabbix-apc-ups-usb/apc-data.png" alt="apc-data.png" /></p>
+
+<h3 id="zabbix-triggers">Zabbix Triggers</h3>
+<p>Navigate to the hosts <em>Trigger</em> tab to create a new trigger for the <code class="highlighter-rouge">APCStatus</code> item:
+<img src="/files/zabbix-apc-ups-usb/apc-trigger.png" alt="apc-trigger.png" /></p>
+<ul>
+  <li><em>Name</em>: <code class="highlighter-rouge">APC Status: {ITEM.VALUE}</code></li>
+  <li><em>Severity</em>: <code class="highlighter-rouge">Desaster</code></li>
+  <li><em>Expression</em>: <code class="highlighter-rouge">{example-host:UPSStatus.regexp(ONLINE)}=0</code></li>
+  <li><em>Enabled</em>: <code class="highlighter-rouge">x</code></li>
+</ul>
+
+<p>Now all the alarms (if configured correctly) will go off as soon as the UPS is on battery support.</p>
+
+<hr />
+<ol>
+  <li><a href="https://www.linuxquestions.org/questions/linux-server-73/ups-monitoring-without-snmp-apcupsd-zabbix-need-some-help-831752/">https://www.linuxquestions.org/questions/linux-server-73/ups-monitoring-without-snmp-apcupsd-zabbix-need-some-help-831752/</a></li>
+</ol>
+:ET

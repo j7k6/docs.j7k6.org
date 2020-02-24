@@ -1,0 +1,49 @@
+I"ä<h2 id="prerequirements">Prerequirements</h2>
+<ol>
+  <li>Install System requirements:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update
+apt-get <span class="nb">install</span> <span class="nt">-y</span> python-software-properties
+</code></pre></div>    </div>
+  </li>
+  <li>Add PPAâ€™s:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-apt-repository <span class="nt">-y</span> ppa:ondrej/php
+add-apt-repository <span class="nt">-y</span> ppa:nginx/stable
+apt-get update
+</code></pre></div>    </div>
+  </li>
+  <li>Install packages:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> nginx php7.1-fpm php7.1-mysql mariadb-server
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="configuration">Configuration</h2>
+<h3 id="nginx">Nginx</h3>
+<ol>
+  <li>Edit <code class="highlighter-rouge">/etc/nginx/sites-enabled/default</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  listen 80 default_server;
+  server_name _;
+  root /var/www/html;
+  index index.php index.html index.htm
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+  }
+}
+</code></pre></div>    </div>
+  </li>
+  <li>Restart Nginx: <code class="highlighter-rouge">systemctl restart nginx</code></li>
+</ol>
+
+<h3 id="mariadb">MariaDB</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql_secure_installation
+</code></pre></div></div>
+
+<hr />
+:ET

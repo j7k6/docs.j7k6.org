@@ -1,0 +1,8 @@
+I"Ó<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg <span class="nt">-l</span> | <span class="nb">awk</span> <span class="s1">'/^rc/ {print $2}'</span> | xargs dpkg <span class="nt">--purge</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://ascending.wordpress.com/2007/04/10/apt-tip-purge-removed-packages/">https://ascending.wordpress.com/2007/04/10/apt-tip-purge-removed-packages/</a></li>
+</ol>
+:ET

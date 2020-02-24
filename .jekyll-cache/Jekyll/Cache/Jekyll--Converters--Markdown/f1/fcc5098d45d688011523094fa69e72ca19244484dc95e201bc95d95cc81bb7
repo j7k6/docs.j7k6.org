@@ -1,0 +1,11 @@
+I"³<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install</span> <span class="nt">-y</span> software-properties-common
+apt-key adv <span class="nt">--recv-keys</span> <span class="nt">--keyserver</span> hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+add-apt-repository <span class="s1">'deb [arch=amd64,arm64,i386,ppc64el] http://mirror.netcologne.de/mariadb/repo/10.3/ubuntu xenial main'</span>
+apt-get update
+debconf-set-selections <span class="o">&lt;&lt;&lt;</span> <span class="s1">'mariadb-server-10.3 mysql-server/root_password password &lt;$MYSQL_ROOT_PASSWORD&gt;'</span>
+debconf-set-selections <span class="o">&lt;&lt;&lt;</span> <span class="s1">'mariadb-server-10.3 mysql-server/root_password_again password &lt;$MYSQL_ROOT_PASSWORD&gt;'</span>
+apt-get <span class="nb">install</span> <span class="nt">-y</span> mariadb-server
+</code></pre></div></div>
+
+<hr />
+:ET

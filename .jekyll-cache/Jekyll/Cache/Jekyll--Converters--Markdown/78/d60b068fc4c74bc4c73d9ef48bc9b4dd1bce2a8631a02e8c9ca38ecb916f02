@@ -1,0 +1,48 @@
+I"	<ol>
+  <li>Stop MySQL service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl stop mysql
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/mysql/my.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>innodb_force_recovery=4
+</code></pre></div>    </div>
+  </li>
+  <li>Fix permissions (optional):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> mysql:mysql /var/lib/mysql
+</code></pre></div>    </div>
+  </li>
+  <li>Start MySQL service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start mysql
+</code></pre></div>    </div>
+  </li>
+  <li>Export all existing databases:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump <span class="nt">-A</span> <span class="o">&gt;</span> all_databases.sql
+</code></pre></div>    </div>
+  </li>
+  <li>Stop MySQL service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl stop mysql
+</code></pre></div>    </div>
+  </li>
+  <li>Remove <code class="highlighter-rouge">ib*</code> files:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> /var/lib/mysql/ib<span class="k">*</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove/comment this line from <code class="highlighter-rouge">/etc/mysql/my.cf</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#innodb_force_recovery=4
+</code></pre></div>    </div>
+  </li>
+  <li>Start MySQL service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start mysql
+</code></pre></div>    </div>
+  </li>
+  <li>Re-import previously exported databases:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql &lt; all_databases.sql
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+<ol>
+  <li><a href="https://www.linet-services.de/was-tun-wenns-brennt-innodb-corruption-und-recovery/">https://www.linet-services.de/was-tun-wenns-brennt-innodb-corruption-und-recovery/</a></li>
+</ol>
+:ET

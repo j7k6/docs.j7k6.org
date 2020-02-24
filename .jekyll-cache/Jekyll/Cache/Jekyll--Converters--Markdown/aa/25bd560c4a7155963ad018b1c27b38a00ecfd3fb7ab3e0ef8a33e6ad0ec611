@@ -1,0 +1,5 @@
+I"˜<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>readlink -f /proc/&lt;$PID&gt;/exe
+</code></pre></div></div>
+
+<hr />
+:ET

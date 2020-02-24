@@ -1,0 +1,48 @@
+I"1<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">user</span> <span class="s">www-data</span><span class="p">;</span>
+<span class="k">pid</span> <span class="n">/var/run/nginx.pid</span><span class="p">;</span>
+<span class="k">worker_processes</span> <span class="s">auto</span><span class="p">;</span>
+<span class="k">worker_rlimit_nofile</span> <span class="mi">65536</span><span class="p">;</span>
+
+<span class="k">events</span> <span class="p">{</span>
+  <span class="kn">worker_connections</span> <span class="mi">16384</span><span class="p">;</span>
+  <span class="kn">multi_accept</span> <span class="no">on</span><span class="p">;</span>
+  <span class="kn">use</span> <span class="s">epoll</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span> <span class="p">{</span>
+  <span class="kn">server_tokens</span> <span class="no">off</span><span class="p">;</span>
+  <span class="kn">sendfile</span> <span class="no">on</span><span class="p">;</span>
+  <span class="kn">tcp_nopush</span> <span class="no">on</span><span class="p">;</span>
+  <span class="kn">tcp_nodelay</span> <span class="no">on</span><span class="p">;</span>
+
+  <span class="kn">access_log</span> <span class="n">/var/log/nginx/access.log</span><span class="p">;</span>
+  <span class="kn">error_log</span> <span class="n">/var/log/nginx/error.log</span> <span class="s">crit</span><span class="p">;</span>
+
+  <span class="kn">client_body_timeout</span> <span class="mi">600</span><span class="p">;</span>
+  <span class="kn">client_max_body_size</span> <span class="mi">512m</span><span class="p">;</span>
+
+  <span class="kn">include</span> <span class="s">mime.types</span><span class="p">;</span>
+  <span class="kn">default_type</span> <span class="nc">text/html</span><span class="p">;</span>
+  <span class="kn">charset</span> <span class="s">UTF-8</span><span class="p">;</span>
+
+  <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+  <span class="kn">gzip_vary</span> <span class="no">on</span><span class="p">;</span>
+  <span class="kn">gzip_proxied</span> <span class="s">any</span><span class="p">;</span>
+  <span class="kn">gzip_min_length</span> <span class="mi">256</span><span class="p">;</span>
+  <span class="kn">gzip_comp_level</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="kn">gzip_types</span>
+    <span class="nc">text/plain</span>
+    <span class="nc">text/css</span>
+    <span class="nc">application/xml</span>
+    <span class="nc">application/javascript</span><span class="p">;</span>
+
+  <span class="kn">open_file_cache</span> <span class="s">max=65536</span> <span class="s">inactive=60s</span><span class="p">;</span>
+  <span class="kn">open_file_cache_errors</span> <span class="no">on</span><span class="p">;</span>
+
+  <span class="kn">include</span> <span class="s">conf.d/*.conf</span><span class="p">;</span>
+  <span class="kn">include</span> <span class="s">sites-enabled/*.conf</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+:ET

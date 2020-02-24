@@ -1,0 +1,10 @@
+I"a<h2 id="backup-mbr-to-file">Backup MBR to file</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>mbr.img <span class="nv">bs</span><span class="o">=</span>446 <span class="nv">count</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<h2 id="restore-mbr-to-disk">Restore MBR to disk</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>mbr.img <span class="nv">of</span><span class="o">=</span>/dev/sda <span class="nv">bs</span><span class="o">=</span>446 <span class="nv">count</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<hr />
+:ET

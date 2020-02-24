@@ -1,0 +1,8 @@
+I"}<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ioreg <span class="nt">-rd1</span> <span class="nt">-c</span> IOPlatformExpertDevice | <span class="nb">awk</span> <span class="nt">-F</span><span class="s1">'"'</span> <span class="s1">'/IOPlatformSerialNumber/{print $4}'</span>
+</code></pre></div></div>
+
+<hr />
+<ol>
+  <li><a href="https://www.neverhadtofight.com/blog/2018/06/19/find-a-macs-serial-number-in-recovery-partition-or-the-macos-installer/">https://www.neverhadtofight.com/blog/2018/06/19/find-a-macs-serial-number-in-recovery-partition-or-the-macos-installer/</a></li>
+</ol>
+:ET

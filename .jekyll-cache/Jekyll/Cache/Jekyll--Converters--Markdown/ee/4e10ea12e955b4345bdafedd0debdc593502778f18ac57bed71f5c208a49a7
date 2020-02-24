@@ -1,0 +1,16 @@
+I"4<ol>
+  <li>Save <code class="highlighter-rouge">iptables</code> rules:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables-save <span class="o">&gt;</span> /etc/iptables.conf
+</code></pre></div>    </div>
+  </li>
+  <li>Edit <code class="highlighter-rouge">/etc/network/interfaces</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+iface eth0 inet dhcp
+  pre-up iptables-restore &lt; /etc/iptables.conf
+...
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+:ET

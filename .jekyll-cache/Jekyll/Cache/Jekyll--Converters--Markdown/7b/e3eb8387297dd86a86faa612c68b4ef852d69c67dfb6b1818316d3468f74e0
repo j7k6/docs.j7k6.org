@@ -1,0 +1,22 @@
+I"&<p>Sometimes, making changes to the Gitlab CI pipeline config (<code class="highlighter-rouge">.gitlab-ci.yml</code>) can be quite annoying if you push to the repo and the pipeline fails because of invalid <em>YAML</em>. To prevent this, add a <em>pre-commit</em> hook to the local repository folder.</p>
+
+<ol>
+  <li>Install <code class="highlighter-rouge">yamllint</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>yamllint
+</code></pre></div>    </div>
+  </li>
+  <li>Create <code class="highlighter-rouge">.git/hooks/pre-commit</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+yamllint <span class="nt">-d</span> relaxed .gitlab-ci.yml
+</code></pre></div>    </div>
+  </li>
+  <li>Make hook <em>executable</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>u+x .git/hooks/pre-commit
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>When <code class="highlighter-rouge">git commit</code> is executed, the pre-commit hook will test if the <code class="highlighter-rouge">.gitlab-ci.yml</code> YAML is valid and will cancel the commit if it fails.</p>
+
+<hr />
+:ET

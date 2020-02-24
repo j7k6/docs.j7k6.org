@@ -1,0 +1,33 @@
+I"è	<p>When setting up <strong>pfSense</strong> without access to the LAN interface, there are several options to enable access to the webinterface.</p>
+
+<h2 id="disable-the-packet-filter-pf">Disable the <em>packet filter</em> (pf)</h2>
+<p>In the <em>pfSense Console</em>  (Shell), enter <code class="highlighter-rouge">pfctl -d</code> to disable <code class="highlighter-rouge">pf</code>. This will only be temporarily, <code class="highlighter-rouge">pf</code> will be re-enabled everytime a change is made to the firewall rules in the pfSense GUI.</p>
+
+<h2 id="allow-wan-access-to-port-443">Allow WAN access to port 443</h2>
+<p>Add a new firewall rule:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>easyrule pass wan tcp any any 443
+</code></pre></div></div>
+
+<h2 id="ssh">SSH</h2>
+<p>Another option is to forward port 443 on the pfSense LAN interface to the local machine with SSH.</p>
+<ol>
+  <li>In the <em>pfSense Console</em>, <strong>Enable Secure Shell (sshd)</strong></li>
+  <li>Add firewall rule for port 22:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> easyrule pass wan tcp any any 22
+</code></pre></div>    </div>
+  </li>
+  <li>Connect via SSH:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ssh <span class="nt">-L</span> 4443:&lt;<span class="nv">$LAN_IP</span><span class="o">&gt;</span>:443 root@&lt;<span class="nv">$WAN_IP</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Browse to <code class="highlighter-rouge">https://localhost:4443</code>.</li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If none of the above works, it might be possible that the WAN interface is connected to a private (<em>RFC1918</em>) network. This might be the case in a lab environment using VirtualBox, or for any other reason. The problem with that is, that pfSense blocks any private network on the WAN interface (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) by default.</p>
+
+<p>To solve this problem, you need to disable the following setting in the webinterface (first run <code class="highlighter-rouge">pfctl -d</code> to disable the packet filter temporarily):
+<em>Interfaces &gt; WAN &gt;</em> <strong><em>Block private networks and loopback addresses</em></strong> + hit <code class="highlighter-rouge">Apply Changes</code>.</p>
+
+<hr />
+:ET

@@ -1,0 +1,26 @@
+I"Í<ol>
+  <li>Install <em>proxychains</em> and <em>nmap</em>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>proxychains nmap
+</code></pre></div>    </div>
+  </li>
+  <li>Configure <em>Proxychains</em> (edit <code class="highlighter-rouge">/etc/proxychains.conf</code>):
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+[ProxyList]
+socks4 127.0.0.1 9050
+</code></pre></div>    </div>
+  </li>
+  <li>Portscan:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proxychains nmap <span class="nt">-sT</span> <span class="nt">-PN</span> <span class="nt">-n</span> <span class="nt">-sV</span> <span class="nt">-p</span> 22,80,443 &lt;<span class="nv">$TARGET_IP</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p><em>Note</em>: <code class="highlighter-rouge">tor</code> has to be running for this!</p>
+</blockquote>
+
+<hr />
+<ol>
+  <li><a href="https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/">https://www.shellhacks.com/anonymous-port-scanning-nmap-tor-proxychains/</a></li>
+</ol>
+:ET
