@@ -73,32 +73,10 @@
        url('/assets/fonts/fira-code-v7-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* fira-code-regular - latin */
-@font-face {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 400;
-  src: local(''),
-       url('/assets/fonts/fira-code-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-code-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* fira-code-700 - latin */
-@font-face {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 700;
-  src: local(''),
-       url('/assets/fonts/fira-code-v7-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-code-v7-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-
 $bgColor: #fcfcfc;
 $textColor: #333;
-$textColor2: lighten($textColor, 33%);
+$textColor2: lighten($textColor, 40%);
 $textColor3: lighten($textColor, 15%);
-$linkColor: #0000EE;
 
 $defaultFont:  'Merriweather', serif;
 $codeFont: 'Fira Code', monospace;
@@ -136,6 +114,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
 }
 
 *:focus {
@@ -143,7 +122,6 @@ body {
 }
 
 a {
-  color: $linkColor;
   text-decoration: none;
 
   &:hover {
@@ -156,9 +134,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-family: $codeFont;
   font-weight: 300;
   color: $textColor !important;
   line-height: 1.4;
+  text-align: center;
 
   a {
     color: $textColor;
@@ -199,46 +179,23 @@ h2 {
 header {
   margin: 2em auto;
 
+  a {
+    display: block;
+    margin: .5em auto;
+    width: 5em;
+    height: 5em;
+    background: url('/assets/images/header.jpg') center center;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
+
   h1 {
     font-family: $codeFont;
-    white-space: pre;
 
-    a {
-      position: relative;
-      border-bottom: none;
-
+    &.index span.cursor {
       &:after {
-        content: '\00a0 ';
-        background: $textColor3;
-        -webkit-transition: all .1s ease-in-out 0s;
-        transition: all .1s ease-in-out 0s;
-      }
-
-      &:hover:after {
-        content: '\2190';
-        font-weight: 300;
-        color: $textColor3;
-        background: $bgColor;
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: $textColor3;
-        visibility: hidden;
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transition: all .3s ease-in-out 0s;
-        transition: all .3s ease-in-out 0s;
-      }
-    }
-
-    &.index a {
-      &:after {
+        margin-left: .125em;
         content: '\00a0 ';
         background: $textColor3;
         text-decoration: blink;
@@ -273,24 +230,18 @@ pre, code {
 }
 
 pre {
-  overflow-x: scroll;
+  overflow: auto;
   padding: 1em !important;
 }
 
 code {
   font-family: $codeFont;
   padding: 3px;
-  font-weight: 300;
   line-height: 1.6 !important;
   color: $textColor3;
 
   pre & {
     padding: 0;
-  }
-
-  .var {
-    color: $textColor;
-    font-style: italic;
   }
 }
 
@@ -359,7 +310,6 @@ article {
 
     li {
       margin: 0;
-      font-weight: 300;
       text-indent: 0 !important;
       display: block;
       overflow: hidden;
@@ -392,21 +342,18 @@ ul.index {
     text-overflow: ellipsis;
     white-space: nowrap;
     color: $textColor2;
+    padding: .5em 0;
 
     a {
-      padding: .5em 0;
-      display: inline-block;
+      color: $textColor;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &::after {
-      content: '~ ' attr(data-date);
+      content: '| ' attr(data-date);
       margin-left: .5em;
       font-size: .8em;
-      font-weight: normal !important;
-    }
-
-    &:not(.fav) {
-      display: none;
     }
   }
 }
@@ -415,7 +362,6 @@ ul.index {
   text-align: right;
   font-size: .8em;
   color: $textColor2;
-  font-weight: 300;
 }
 
 table {
