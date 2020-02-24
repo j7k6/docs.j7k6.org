@@ -1,8 +1,0 @@
-I"Á<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>crontab <span class="nt">-l</span> <span class="p">;</span> <span class="nb">echo</span> <span class="s2">"&lt;</span><span class="nv">$NEW_CRONJOB</span><span class="s2">&gt;"</span><span class="o">)</span> | crontab -
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://stackoverflow.com/questions/878600/how-to-create-a-cron-job-using-bash-automatically-without-the-interactive-editor#comment63572267_878647">https://stackoverflow.com/questions/878600/how-to-create-a-cron-job-using-bash-automatically-without-the-interactive-editor#comment63572267_878647</a></li>
-</ol>
-:ET

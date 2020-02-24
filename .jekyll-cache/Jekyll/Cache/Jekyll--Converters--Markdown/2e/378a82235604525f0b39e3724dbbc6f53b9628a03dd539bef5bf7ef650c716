@@ -1,8 +1,0 @@
-I"w<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm config <span class="nb">set </span>package-lock <span class="nb">false</span>
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://github.com/npm/npm/issues/16861#issuecomment-325635296">https://github.com/npm/npm/issues/16861#issuecomment-325635296</a></li>
-</ol>
-:ET

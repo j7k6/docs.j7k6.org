@@ -1,4 +1,0 @@
-I"¶<p>When a parent element has set <code class="highlighter-rouge">transform: translateZ(0);</code>, <code class="highlighter-rouge">position: fixed;</code> will not work.</p>
-
-<hr />
-:ET

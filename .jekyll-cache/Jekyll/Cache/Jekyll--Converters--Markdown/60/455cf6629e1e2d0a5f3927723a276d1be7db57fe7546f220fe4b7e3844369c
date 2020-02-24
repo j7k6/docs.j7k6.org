@@ -1,9 +1,0 @@
-I"©<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-d</span> <span class="nt">-fx</span> <span class="nb">.</span>
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://stackoverflow.com/a/8362346">https://stackoverflow.com/a/8362346</a></li>
-  <li><a href="https://git-scm.com/docs/git-clean">https://git-scm.com/docs/git-clean</a></li>
-</ol>
-:ET

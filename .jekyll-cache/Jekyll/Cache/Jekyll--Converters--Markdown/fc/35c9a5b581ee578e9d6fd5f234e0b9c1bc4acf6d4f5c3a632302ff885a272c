@@ -1,8 +1,0 @@
-I"O<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tcpdump <span class="nt">-Ii</span> en1
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://danielmiessler.com/blog/entering-promiscuous-mode-os-x/">https://danielmiessler.com/blog/entering-promiscuous-mode-os-x/</a></li>
-</ol>
-:ET

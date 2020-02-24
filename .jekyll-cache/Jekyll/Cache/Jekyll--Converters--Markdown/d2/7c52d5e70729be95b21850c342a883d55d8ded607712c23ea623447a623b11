@@ -1,7 +1,0 @@
-I"*<p>If sending an email with the native PHP <code class="highlighter-rouge">mail()</code> function shouldn’t  block the rest of the script, it’s possible to fork the process into background with a system shell execution:</p>
-
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">exec</span><span class="p">(</span><span class="s2">"php -r 'mail(</span><span class="se">\"</span><span class="s2">"</span><span class="o">.</span><span class="nv">$to</span><span class="o">.</span><span class="s2">"</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">"</span><span class="o">.</span><span class="nv">$subject</span><span class="o">.</span><span class="s2">"</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">"</span><span class="o">.</span><span class="nv">$body</span><span class="o">.</span><span class="s2">"</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">"</span><span class="o">.</span><span class="nv">$header</span><span class="o">.</span><span class="s2">"</span><span class="se">\"</span><span class="s2">);' &gt; /dev/null  &amp;"</span><span class="p">);</span>
-</code></pre></div></div>
-
-<hr />
-:ET

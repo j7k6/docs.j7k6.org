@@ -1,5 +1,0 @@
-I"g<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find &lt;<span class="nv">$DIRECTORY</span><span class="o">&gt;</span> <span class="nt">-mtime</span> +&lt;<span class="nv">$DAYS</span><span class="o">&gt;</span> <span class="nt">-type</span> f <span class="nt">-delete</span>
-</code></pre></div></div>
-
-<hr />
-:ET

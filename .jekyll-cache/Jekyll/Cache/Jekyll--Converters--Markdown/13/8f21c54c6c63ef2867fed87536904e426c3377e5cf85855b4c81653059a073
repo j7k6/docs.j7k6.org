@@ -1,9 +1,0 @@
-I"•<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">slmgr.vbs</span><span class="w"> </span><span class="nt">-ipk</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$PRODUCT_KEY</span><span class="err">&gt;</span><span class="w">
-</span><span class="nf">slmgr.vbs</span><span class="w"> </span><span class="nt">-ato</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://technet.microsoft.com/en-us/library/jj592692(v=ws.11).aspx#BKMK_1.5">https://technet.microsoft.com/en-us/library/jj592692(v=ws.11).aspx#BKMK_1.5</a></li>
-</ol>
-:ET

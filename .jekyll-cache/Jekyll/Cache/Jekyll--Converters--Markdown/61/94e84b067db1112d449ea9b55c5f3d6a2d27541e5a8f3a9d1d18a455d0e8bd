@@ -1,5 +1,0 @@
-I"—<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span><span class="w"> </span><span class="nx">interface</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">delete</span><span class="w"> </span><span class="nx">arpcache</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

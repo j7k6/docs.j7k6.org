@@ -1,5 +1,0 @@
-I"î<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>whois <span class="nt">-h</span> whois.radb.net &lt;<span class="nv">$IP</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

@@ -1,5 +1,0 @@
-I";<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su - &lt;<span class="nv">$USER</span><span class="o">&gt;</span> <span class="nt">-c</span> <span class="s2">"&lt;</span><span class="nv">$COMMAND</span><span class="s2">&gt;"</span>
-</code></pre></div></div>
-
-<hr />
-:ET

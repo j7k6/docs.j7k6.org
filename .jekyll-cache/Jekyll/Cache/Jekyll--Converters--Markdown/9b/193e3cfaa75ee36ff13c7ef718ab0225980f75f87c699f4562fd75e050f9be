@@ -1,5 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-z</span> &lt;<span class="nv">$SERVER</span><span class="o">&gt;</span> &lt;<span class="nv">$PORT</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

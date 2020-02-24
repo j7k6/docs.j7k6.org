@@ -1,5 +1,0 @@
-I"¥<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>route <span class="nt">-n</span> add <span class="nt">-net</span> &lt;<span class="nv">$NETWORK</span><span class="o">&gt;</span>/&lt;<span class="nv">$NETMASK</span><span class="o">&gt;</span> &lt;<span class="nv">$GATEWAY_IP</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

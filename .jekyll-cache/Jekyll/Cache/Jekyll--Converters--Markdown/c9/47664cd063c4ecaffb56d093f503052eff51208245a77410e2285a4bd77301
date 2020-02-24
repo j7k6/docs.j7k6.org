@@ -1,5 +1,0 @@
-I"â<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh &lt;<span class="nv">$USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SERVER</span><span class="o">&gt;</span> tcpdump <span class="nt">-s0</span> <span class="nt">-w</span> - <span class="nt">-U</span> &lt;<span class="nv">$FILTER</span><span class="o">&gt;</span> | wireshark <span class="nt">-k</span> <span class="nt">-i</span> -
-</code></pre></div></div>
-
-<hr />
-:ET

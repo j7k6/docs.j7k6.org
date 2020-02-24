@@ -1,9 +1,0 @@
-I"L<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlite3 <span class="nt">-ascii</span> ~/Library/Messages/chat.db <span class="se">\</span>
-  <span class="s2">"SELECT substr(text,32,6) FROM message </span><span class="se">\</span><span class="s2">
-   WHERE text LIKE 'PayPal: Your security code is: %' </span><span class="se">\</span><span class="s2">
-   AND datetime(substr(date,1,9)+978307200,'unixepoch','localtime') &gt; datetime('now','-5 minutes') LIMIT 1"</span> <span class="se">\</span>
-| pbcopy
-</code></pre></div></div>
-
-<hr />
-:ET

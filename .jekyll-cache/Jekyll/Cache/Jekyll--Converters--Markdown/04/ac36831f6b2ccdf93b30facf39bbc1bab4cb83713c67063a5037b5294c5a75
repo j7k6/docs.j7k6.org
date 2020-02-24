@@ -1,8 +1,0 @@
-I"*<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@&lt;<span class="nv">$ESX_SERVER</span><span class="o">&gt;</span> <span class="s1">'LD_LIBRARY_PATH=/opt/lsi/MegaCLI /opt/lsi/MegaCLI/MegaCli -CfgDsply -aALL'</span> | <span class="se">\</span>
-  <span class="nb">grep </span>State | <span class="se">\</span>
-  <span class="nb">head</span> <span class="nt">-n1</span> | <span class="se">\</span>
-  <span class="nb">awk</span> <span class="s1">'{print $3}'</span>
-</code></pre></div></div>
-
-<hr />
-:ET

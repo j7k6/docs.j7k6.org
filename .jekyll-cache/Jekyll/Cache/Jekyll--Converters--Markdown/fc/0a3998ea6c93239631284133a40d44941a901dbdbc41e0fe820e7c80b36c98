@@ -1,5 +1,0 @@
-I"r<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-b</span> 4096 <span class="nt">-N</span> <span class="s1">''</span> <span class="nt">-f</span> ~/.ssh/id_rsa <span class="nt">-C</span> <span class="s1">'&lt;$COMMENT&gt;'</span>
-</code></pre></div></div>
-
-<hr />
-:ET

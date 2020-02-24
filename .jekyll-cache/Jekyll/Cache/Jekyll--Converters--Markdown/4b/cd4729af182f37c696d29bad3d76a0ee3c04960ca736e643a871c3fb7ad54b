@@ -1,5 +1,0 @@
-I"a<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"&lt;</span><span class="nv">$USERNAME</span><span class="s2">&gt;:&lt;</span><span class="nv">$PASSWORD</span><span class="s2">&gt;"</span> | <span class="nb">base64</span>
-</code></pre></div></div>
-
-<hr />
-:ET

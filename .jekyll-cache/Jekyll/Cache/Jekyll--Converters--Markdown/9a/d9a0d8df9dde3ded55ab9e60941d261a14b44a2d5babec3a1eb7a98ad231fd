@@ -1,8 +1,0 @@
-I"œ
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>CONTAINER <span class="k">in</span> <span class="si">$(</span>docker ps <span class="nt">-q</span><span class="si">)</span><span class="p">;</span> <span class="k">do
-  </span><span class="nb">echo</span> <span class="s2">""</span> <span class="o">&gt;</span> <span class="si">$(</span>docker inspect <span class="nt">--format</span><span class="o">=</span><span class="s1">'{{.LogPath}}'</span> <span class="nv">$CONTAINER</span><span class="si">)</span><span class="p">;</span> 
-<span class="k">done</span>
-</code></pre></div></div>
-
-<hr />
-:ET

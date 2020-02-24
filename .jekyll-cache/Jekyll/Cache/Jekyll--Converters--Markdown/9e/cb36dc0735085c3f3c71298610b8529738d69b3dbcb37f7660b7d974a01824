@@ -1,7 +1,0 @@
-I"Â<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"deb http://ftp.debian.org/debian/ jessie-backports main non-free contrib"</span> <span class="o">&gt;</span> /etc/apt/sources.list.d/jessie-backports.list
-apt-get update
-apt-get <span class="nt">-t</span> jessie-backports <span class="nb">install </span>linux-image-amd64
-</code></pre></div></div>
-
-<hr />
-:ET

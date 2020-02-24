@@ -1,8 +1,0 @@
-I"Ê<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sync</span> <span class="o">&amp;&amp;</span> <span class="nb">echo </span>3 <span class="o">&gt;</span> /proc/sys/vm/drop_caches
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="http://www.upubuntu.com/2011/09/how-to-free-up-ram-on-ubuntudebian.html">http://www.upubuntu.com/2011/09/how-to-free-up-ram-on-ubuntudebian.html</a></li>
-</ol>
-:ET

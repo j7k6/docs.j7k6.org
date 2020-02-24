@@ -1,6 +1,0 @@
-I"§<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-A</span> PREROUTING <span class="nt">-t</span> nat <span class="nt">-i</span> eth0 <span class="nt">-p</span> tcp <span class="nt">--dport</span> 80 <span class="nt">-j</span> DNAT <span class="nt">--to</span> &lt;<span class="nv">$LOCAL_IP</span><span class="o">&gt;</span>:80
-iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">-m</span> state <span class="nt">--state</span> NEW <span class="nt">--dport</span> 80 <span class="nt">-i</span> eth0 <span class="nt">-j</span> ACCEPT
-</code></pre></div></div>
-
-<hr />
-:ET

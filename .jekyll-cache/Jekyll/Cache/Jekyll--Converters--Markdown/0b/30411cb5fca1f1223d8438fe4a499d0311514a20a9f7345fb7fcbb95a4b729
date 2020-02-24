@@ -1,8 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tmux <span class="k">select</span><span class="nt">-window</span> <span class="nt">-t</span> &lt;<span class="nv">$WINDOW</span><span class="o">&gt;</span> <span class="se">\;</span> attach <span class="nt">-t</span> &lt;<span class="nv">$SESSION</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://stackoverflow.com/a/24100903/8434893">https://stackoverflow.com/a/24100903/8434893</a></li>
-</ol>
-:ET

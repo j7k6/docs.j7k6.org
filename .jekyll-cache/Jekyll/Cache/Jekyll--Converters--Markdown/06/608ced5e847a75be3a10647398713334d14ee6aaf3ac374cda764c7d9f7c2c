@@ -1,6 +1,0 @@
-I"+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-type</span> d <span class="nt">-print</span> <span class="nt">-exec</span> setfacl <span class="nt">-b</span> <span class="o">{}</span> <span class="se">\;</span>
-find <span class="nb">.</span> <span class="nt">-type</span> f <span class="nt">-print</span> <span class="nt">-exec</span> setfacl <span class="nt">-b</span> <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

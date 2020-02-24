@@ -1,5 +1,0 @@
-I"6<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl req <span class="nt">-out</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.csr <span class="nt">-newkey</span> rsa:4096 <span class="nt">-nodes</span> <span class="nt">-sha256</span> <span class="nt">-keyout</span> &lt;<span class="nv">$DOMAIN</span><span class="o">&gt;</span>.key <span class="nt">-subj</span> <span class="s2">"/CN=&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;"</span>
-</code></pre></div></div>
-
-<hr />
-:ET

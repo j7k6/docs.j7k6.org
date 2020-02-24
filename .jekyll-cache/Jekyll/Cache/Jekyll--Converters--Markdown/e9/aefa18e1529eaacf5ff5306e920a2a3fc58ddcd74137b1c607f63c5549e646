@@ -1,8 +1,0 @@
-I"Œ<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig +short myip.opendns.com @resolver1.opendns.com
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="http://www.tutorialspoint.com/articles/find-my-public-ip-address-from-linux-command-line">http://www.tutorialspoint.com/articles/find-my-public-ip-address-from-linux-command-line</a></li>
-</ol>
-:ET

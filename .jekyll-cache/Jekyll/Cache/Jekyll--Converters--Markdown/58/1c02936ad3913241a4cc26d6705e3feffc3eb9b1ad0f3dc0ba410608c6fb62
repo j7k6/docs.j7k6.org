@@ -1,8 +1,0 @@
-I"¤<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">scope</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[ng-controller=&lt;$CTRLNAME&gt;]</span><span class="dl">'</span><span class="p">)).</span><span class="nx">scope</span><span class="p">();</span>
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="http://stackoverflow.com/a/24043433">http://stackoverflow.com/a/24043433</a></li>
-</ol>
-:ET

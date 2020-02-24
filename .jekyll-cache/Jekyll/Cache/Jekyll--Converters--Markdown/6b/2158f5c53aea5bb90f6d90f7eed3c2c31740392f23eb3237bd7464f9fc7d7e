@@ -1,8 +1,0 @@
-I"7<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">$</span><span class="k">DATABASE</span><span class="o">&gt;</span> <span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">utf8</span> <span class="k">COLLATE</span> <span class="n">utf8_general_ci</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="o">&lt;</span><span class="err">$</span><span class="k">USER</span><span class="o">&gt;@</span><span class="n">localhost</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">'&lt;$PASSWORD&gt;'</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">&lt;</span><span class="err">$</span><span class="k">DATABASE</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="o">&lt;</span><span class="err">$</span><span class="k">USER</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

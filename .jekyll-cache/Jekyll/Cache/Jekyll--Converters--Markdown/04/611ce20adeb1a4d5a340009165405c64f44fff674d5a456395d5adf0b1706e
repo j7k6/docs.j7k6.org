@@ -1,5 +1,0 @@
-I"Ì<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Clear-DnsServerCache</span><span class="w"> </span><span class="err">â€“</span><span class="nx">ComputerName</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$SERVER</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">-Force</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

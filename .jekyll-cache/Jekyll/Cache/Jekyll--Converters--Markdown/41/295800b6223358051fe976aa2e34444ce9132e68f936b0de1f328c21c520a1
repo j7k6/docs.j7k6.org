@@ -1,13 +1,0 @@
-I"<ol>
-  <li><code class="highlighter-rouge">diskpart</code></li>
-  <li><code class="highlighter-rouge">select disk 0</code></li>
-  <li><code class="highlighter-rouge">list partition</code></li>
-  <li><code class="highlighter-rouge">select partition &lt;$PARTITION_ID&gt;</code></li>
-  <li><code class="highlighter-rouge">delete partition override</code></li>
-</ol>
-
-<hr />
-<ol>
-  <li><a href="https://social.technet.microsoft.com/Forums/windows/en-US/4f1b84ac-b193-40e3-943a-f45d52e23685/cant-delete-extra-healthy-recovery-partitions-and-healthy-efi-system-partition?forum=w8itproinstall">https://social.technet.microsoft.com/Forums/windows/en-US/4f1b84ac-b193-40e3-943a-f45d52e23685/cant-delete-extra-healthy-recovery-partitions-and-healthy-efi-system-partition?forum=w8itproinstall</a></li>
-</ol>
-:ET

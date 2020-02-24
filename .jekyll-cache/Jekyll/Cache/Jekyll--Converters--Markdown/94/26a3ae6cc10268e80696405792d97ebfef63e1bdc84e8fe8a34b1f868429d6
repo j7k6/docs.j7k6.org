@@ -1,9 +1,0 @@
-I"B<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Lines only in &lt;$FILE1&gt;</span>
-<span class="nb">comm</span> <span class="nt">-23</span> &lt;<span class="o">(</span><span class="nb">sort</span> &lt;<span class="nv">$FILE1</span><span class="o">&gt;)</span> &lt;<span class="o">(</span><span class="nb">sort</span> &lt;<span class="nv">$FILE2</span><span class="o">&gt;)</span>
-
-<span class="c"># Lines only in &lt;$FILE2&gt;</span>
-<span class="nb">comm</span> <span class="nt">-13</span> &lt;<span class="o">(</span><span class="nb">sort</span> &lt;<span class="nv">$FILE1</span><span class="o">&gt;)</span> &lt;<span class="o">(</span><span class="nb">sort</span> &lt;<span class="nv">$FILE2</span><span class="o">&gt;)</span>
-</code></pre></div></div>
-
-<hr />
-:ET

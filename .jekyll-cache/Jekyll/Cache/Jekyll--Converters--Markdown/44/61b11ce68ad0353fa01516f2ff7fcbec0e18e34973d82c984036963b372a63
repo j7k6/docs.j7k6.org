@@ -1,5 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> udp <span class="nt">--dport</span> 60000:61000 <span class="nt">-j</span> ACCEPT
-</code></pre></div></div>
-
-<hr />
-:ET

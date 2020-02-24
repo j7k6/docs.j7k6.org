@@ -1,5 +1,0 @@
-I",<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">attrib</span><span class="w"> </span><span class="nt">-h</span><span class="w"> </span><span class="nt">-r</span><span class="w"> </span><span class="nt">-s</span><span class="w"> </span><span class="s2">"&lt;</span><span class="nv">$PATH</span><span class="s2">&gt;\*.*"</span><span class="w"> </span><span class="nx">/s</span><span class="w"> </span><span class="nx">/d</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

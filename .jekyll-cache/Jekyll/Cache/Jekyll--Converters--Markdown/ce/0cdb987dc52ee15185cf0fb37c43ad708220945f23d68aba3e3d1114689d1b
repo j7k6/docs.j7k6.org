@@ -1,8 +1,0 @@
-I"2<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> &lt;<span class="nv">$INPUT_FILE</span><span class="o">&gt;</span>.mkv <span class="nt">-c</span>:v copy <span class="nt">-c</span>:a aac <span class="nt">-strict</span> experimental &lt;<span class="nv">$OUTPUT_FILE</span><span class="o">&gt;</span>.m4v
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://gist.github.com/pwenzel/d6a0b54b120afac0bd1f">https://gist.github.com/pwenzel/d6a0b54b120afac0bd1f</a></li>
-</ol>
-:ET

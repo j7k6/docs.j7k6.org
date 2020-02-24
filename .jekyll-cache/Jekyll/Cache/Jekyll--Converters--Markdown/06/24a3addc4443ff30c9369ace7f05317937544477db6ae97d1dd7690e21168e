@@ -1,5 +1,0 @@
-I"X<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span><span class="o">=</span>registry <span class="nt">--restart</span><span class="o">=</span>always <span class="nt">-d</span> <span class="nt">-p</span> 5000:5000 registry:2
-</code></pre></div></div>
-
-<hr />
-:ET

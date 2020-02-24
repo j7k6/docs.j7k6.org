@@ -1,9 +1,0 @@
-I"þ<p>Edit <code class="highlighter-rouge">/etc/systemd/system/getty@tty1.service.d/autologin.conf</code>:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin &lt;$USER&gt; %I 38400
-</code></pre></div></div>
-
-<hr />
-<p><a href="https://storma.wordpress.com/2012/11/28/debian-systemd-autologin-without-a-display-manager/">https://storma.wordpress.com/2012/11/28/debian-systemd-autologin-without-a-display-manager/</a></p>
-:ET

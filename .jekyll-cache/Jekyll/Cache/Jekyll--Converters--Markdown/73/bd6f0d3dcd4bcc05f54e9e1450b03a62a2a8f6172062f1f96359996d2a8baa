@@ -1,5 +1,0 @@
-I"ç<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">net</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="nx">/DOMAIN:</span><span class="err">&lt;</span><span class="nv">$DOMAIN</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/set</span><span class="w"> </span><span class="nx">/y</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

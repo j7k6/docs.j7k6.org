@@ -1,5 +1,0 @@
-I"¯<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Set-TransportConfig</span><span class="w"> </span><span class="nt">-MaxReceiveSize</span><span class="w"> </span><span class="nx">50MB</span><span class="w"> </span><span class="nt">-MaxSendSize</span><span class="w"> </span><span class="nx">50MB</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

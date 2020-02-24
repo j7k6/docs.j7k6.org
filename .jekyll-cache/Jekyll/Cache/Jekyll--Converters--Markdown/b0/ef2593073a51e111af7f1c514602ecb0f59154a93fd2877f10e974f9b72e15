@@ -1,8 +1,0 @@
-I"Á<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">foreach</span><span class="w"> </span><span class="p">(</span><span class="nv">$Mailbox</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="p">(</span><span class="nf">Get-Mailbox</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">New-MailboxExportRequest</span><span class="w"> </span><span class="nt">-Mailbox</span><span class="w"> </span><span class="nv">$Mailbox</span><span class="w"> </span><span class="nt">-FilePath</span><span class="w"> </span><span class="s2">"\\&lt;</span><span class="nv">$NETWORK_SHARE</span><span class="s2">&gt;\</span><span class="si">$(</span><span class="nv">$Mailbox</span><span class="o">.</span><span class="nf">Alias</span><span class="p">)</span><span class="o">.</span><span class="nf">pst</span><span class="s2">" }
-</span></code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://www.codetwo.com/admins-blog/exchange-mailbox-backup-pst-pros-cons/">https://www.codetwo.com/admins-blog/exchange-mailbox-backup-pst-pros-cons/</a></li>
-</ol>
-:ET

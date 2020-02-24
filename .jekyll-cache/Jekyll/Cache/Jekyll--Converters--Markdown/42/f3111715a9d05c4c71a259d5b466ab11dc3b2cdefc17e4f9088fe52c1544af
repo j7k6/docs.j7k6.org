@@ -1,9 +1,0 @@
-I".<blockquote>
-  <p><code class="highlighter-rouge">subinacl.exe</code> can be downloaded <a href="https://www.microsoft.com/en-us/download/details.aspx?id=23510">here</a></p>
-</blockquote>
-
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">subinacl.exe</span><span class="w"> </span><span class="nx">/subdirectories</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$PATH</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">/grant</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;\&lt;</span><span class="nv">$USER</span><span class="s2">&gt;"</span><span class="o">=</span><span class="nf">F</span><span class="w"> </span><span class="nx">/setowner</span><span class="o">=</span><span class="s2">"&lt;</span><span class="nv">$DOMAIN</span><span class="s2">&gt;\&lt;</span><span class="nv">$USER</span><span class="s2">&gt;"</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

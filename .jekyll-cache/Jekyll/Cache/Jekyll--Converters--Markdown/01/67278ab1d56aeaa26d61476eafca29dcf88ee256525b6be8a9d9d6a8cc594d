@@ -1,8 +1,0 @@
-I"ž<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> | openssl s_client <span class="nt">-servername</span> &lt;<span class="nv">$SERVER_NAME</span><span class="o">&gt;</span> <span class="nt">-connect</span> &lt;<span class="nv">$SERVER_IP_OR_NAME</span><span class="o">&gt;</span>:443 2&gt;/dev/null | openssl x509 <span class="nt">-noout</span> <span class="nt">-dates</span>
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://www.shellhacks.com/openssl-check-ssl-certificate-expiration-date/">https://www.shellhacks.com/openssl-check-ssl-certificate-expiration-date/</a></li>
-</ol>
-:ET

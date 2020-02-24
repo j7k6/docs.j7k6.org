@@ -1,8 +1,0 @@
-I"{<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git filter-branch <span class="nt">-f</span> <span class="nt">--commit-filter</span> <span class="s1">'git commit-tree -S "$@"'</span> HEAD
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="http://stackoverflow.com/a/27387391">http://stackoverflow.com/a/27387391</a></li>
-</ol>
-:ET

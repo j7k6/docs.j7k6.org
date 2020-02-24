@@ -1,7 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl stop dphys-swapfile
-systemctl disable dphys-swapfile
-apt-get remove <span class="nt">-y</span> <span class="nt">--purge</span> dphys-swapfile
-</code></pre></div></div>
-
-<hr />
-:ET

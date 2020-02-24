@@ -1,9 +1,0 @@
-I"‰<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mailq | <span class="se">\</span>
-  <span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"Connection (refused|timed out)"</span> <span class="nt">-B1</span> | <span class="se">\</span>
-  <span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"^[A-Z0-9]{10}</span><span class="se">\s</span><span class="s2">+"</span> | <span class="se">\</span>
-  <span class="nb">awk</span> <span class="s1">'{print $1}'</span> | <span class="se">\</span>
-  postsuper <span class="nt">-d</span> -
-</code></pre></div></div>
-
-<hr />
-:ET

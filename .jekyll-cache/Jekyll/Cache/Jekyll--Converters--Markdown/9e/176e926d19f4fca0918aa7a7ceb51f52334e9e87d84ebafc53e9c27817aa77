@@ -1,6 +1,0 @@
-I"±<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diskutil list
-diskutil unmountDisk /dev/disk2
-</code></pre></div></div>
-
-<hr />
-:ET

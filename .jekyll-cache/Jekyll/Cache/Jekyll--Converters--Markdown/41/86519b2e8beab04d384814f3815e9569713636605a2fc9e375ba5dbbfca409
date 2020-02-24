@@ -1,5 +1,0 @@
-I"$<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"&lt;</span><span class="nv">$STRING</span><span class="s2">&gt;"</span> | shasum <span class="nt">-a</span> 256
-</code></pre></div></div>
-
-<hr />
-:ET

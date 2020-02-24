@@ -1,6 +1,0 @@
-I"Y<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zfs list <span class="nt">-t</span> snapshot
-mount <span class="nt">-t</span> zfs &lt;<span class="nv">$SNAPSHOT</span><span class="o">&gt;</span> &lt;<span class="nv">$MOUNTPOINT</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

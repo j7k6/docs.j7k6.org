@@ -1,9 +1,0 @@
-I"Í<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build -t &lt;$IMAGE_NAME&gt; - &lt;&lt; EOF
-FROM alpine:latest
-...
-EXPOSE 80
-EOF
-</code></pre></div></div>
-
-<hr />
-:ET

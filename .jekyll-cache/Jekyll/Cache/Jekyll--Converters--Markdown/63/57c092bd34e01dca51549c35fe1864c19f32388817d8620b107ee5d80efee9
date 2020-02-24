@@ -1,5 +1,0 @@
-I"ø<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl s_client <span class="nt">-connect</span> &lt;<span class="nv">$SERVER</span><span class="o">&gt;</span>:443
-</code></pre></div></div>
-
-<hr />
-:ET

@@ -1,6 +1,0 @@
-I"°<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Remove-OwaVirtualDirectory</span><span class="w"> </span><span class="nt">-Identity</span><span class="w"> </span><span class="s1">'&lt;$SERVER&gt;\owa (Default Web Site)'</span><span class="w">
-</span><span class="nf">New-OwaVirtualDirectory</span><span class="w"> </span><span class="nt">-InternalUrl</span><span class="w"> </span><span class="s1">'https://&lt;$FQDN&gt;/owa'</span><span class="w"> </span><span class="nt">-WebSiteName</span><span class="w"> </span><span class="s1">'Default Web Site'</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

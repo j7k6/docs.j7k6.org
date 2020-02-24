@@ -1,5 +1,0 @@
-I"å<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span><span class="w"> </span><span class="nx">firewall</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">portopening</span><span class="w"> </span><span class="nx">tcp</span><span class="w"> </span><span class="err">&lt;</span><span class="nv">$PORT</span><span class="err">&gt;</span><span class="w"> </span><span class="s2">"&lt;</span><span class="nv">$DESCRIPTION</span><span class="s2">&gt;"</span><span class="w"> </span><span class="nx">enable</span><span class="w"> </span><span class="nx">all</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

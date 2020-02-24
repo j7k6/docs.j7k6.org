@@ -1,6 +1,0 @@
-I"”<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
-</span><span class="nf">Restart-WebAppPool</span><span class="w"> </span><span class="nx">MsExchangePowerShellAppPool</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

@@ -1,8 +1,0 @@
-I"A<p>Copying files from/to (SMB) Windows shares or USB drives on <em>macOS</em> can sometimes lead to <strong>Error: -36</strong>, which means that the system has a problem with the dotfiles (‘<code class="highlighter-rouge">._</code>’) on the volume.
-To fix the error, just run the <code class="highlighter-rouge">dot_clean</code> command in the terminal:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dot_clean /Volumes/&lt;<span class="nv">$VOLUME</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

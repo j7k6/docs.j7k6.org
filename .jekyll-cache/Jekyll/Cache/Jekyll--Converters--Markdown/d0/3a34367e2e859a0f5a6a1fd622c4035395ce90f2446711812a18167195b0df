@@ -1,9 +1,0 @@
-I""<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-rli</span> <span class="s2">"&lt;</span><span class="nv">$OLD_STRING</span><span class="s2">&gt;"</span> <span class="nb">.</span> | <span class="se">\</span>
-  xargs <span class="nt">-i</span>@ <span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/&lt;$OLD_STRING&gt;/&lt;$NEW_STRING&gt;/g'</span> @
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="http://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line#comment33720848_20721292">http://stackoverflow.com/questions/11392478/how-to-replace-a-string-in-multiple-files-in-linux-command-line#comment33720848_20721292</a></li>
-</ol>
-:ET

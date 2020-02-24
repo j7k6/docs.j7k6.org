@@ -1,8 +1,0 @@
-I"ä<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zfs list <span class="nt">-H</span> <span class="nt">-t</span> snapshot <span class="nt">-o</span> name | xargs <span class="nt">-n1</span> zfs destroy 2&gt;/dev/null
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://sysadminman.net/blog/2008/remove-all-zfs-snapshots-50#comment-1469">https://sysadminman.net/blog/2008/remove-all-zfs-snapshots-50#comment-1469</a></li>
-</ol>
-:ET

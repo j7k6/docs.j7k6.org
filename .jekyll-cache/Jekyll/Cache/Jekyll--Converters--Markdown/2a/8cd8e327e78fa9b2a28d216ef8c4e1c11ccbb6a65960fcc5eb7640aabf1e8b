@@ -1,5 +1,0 @@
-I"g<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"signal newnym</span><span class="se">\n</span><span class="s2">quit</span><span class="se">\n</span><span class="s2">"</span> | nc <span class="nt">-w</span> 1 10.152.152.10 9052
-</code></pre></div></div>
-
-<hr />
-:ET

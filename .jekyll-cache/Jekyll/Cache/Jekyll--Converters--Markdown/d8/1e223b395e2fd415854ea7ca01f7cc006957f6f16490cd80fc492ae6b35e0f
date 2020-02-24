@@ -1,5 +1,0 @@
-I"g<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> &lt;<span class="nv">$SERIALIZED_PHP_FILE</span><span class="o">&gt;</span> | php <span class="nt">-r</span> <span class="s1">'echo json_encode(unserialize(file_get_contents("php://stdin")));'</span>
-</code></pre></div></div>
-
-<hr />
-:ET

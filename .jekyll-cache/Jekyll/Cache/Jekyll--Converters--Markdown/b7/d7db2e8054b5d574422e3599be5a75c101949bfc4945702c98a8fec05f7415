@@ -1,5 +1,0 @@
-I"—<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zcat -f -- access.log* | goaccess
-</code></pre></div></div>
-
-<hr />
-:ET

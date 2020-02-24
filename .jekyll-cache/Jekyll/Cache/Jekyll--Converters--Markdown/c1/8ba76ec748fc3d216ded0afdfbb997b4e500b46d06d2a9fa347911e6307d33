@@ -1,5 +1,0 @@
-I"$<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nmap <span class="nt">-sP</span> &lt;<span class="nv">$NETWORK</span><span class="o">&gt;</span>/&lt;<span class="nv">$NETMASK</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

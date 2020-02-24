@@ -1,5 +1,0 @@
-I"á<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://get.docker.com | <span class="nb">sudo </span>sh -
-</code></pre></div></div>
-
-<hr />
-:ET

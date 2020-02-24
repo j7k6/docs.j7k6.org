@@ -1,7 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar </span>czhf - &lt;<span class="nv">$SRC_DIR</span><span class="o">&gt;</span> | <span class="se">\</span>
-  ssh &lt;<span class="nv">$SSH_USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SSH_HOST</span><span class="o">&gt;</span> <span class="se">\</span>
-    <span class="s2">"tar xzhf - -C &lt;</span><span class="nv">$DST_DIR</span><span class="s2">&gt;"</span>
-</code></pre></div></div>
-
-<hr />
-:ET

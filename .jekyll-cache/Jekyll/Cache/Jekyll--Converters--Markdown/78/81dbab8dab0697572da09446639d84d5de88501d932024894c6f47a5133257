@@ -1,5 +1,0 @@
-I"y<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> &lt;<span class="nv">$URL_TO_JSON</span><span class="o">&gt;</span> | python <span class="nt">-c</span> <span class="s1">'import sys, json; print json.load(sys.stdin)["X"]["Y"];'</span><span class="sb">`</span>
-</code></pre></div></div>
-
-<hr />
-:ET

@@ -1,8 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nmap <span class="nt">-T4</span> <span class="nt">-v</span> <span class="nt">-oA</span> shares <span class="nt">--script</span> smb-enum-shares <span class="nt">-p445</span> 192.168.1.0/24
-</code></pre></div></div>
-
-<hr />
-<ol>
-  <li><a href="https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/#samba-enumeration">https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/#samba-enumeration</a></li>
-</ol>
-:ET

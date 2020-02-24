@@ -1,7 +1,0 @@
-I"+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump -u&lt;$DB_USER&gt; -p&lt;$DB_PASS&gt; &lt;$DB_NAME&gt; \
-  | sed 's|&lt;$OLD_URL&gt;|&lt;$NEW_URL&gt;|g' \
-  | mysql -u&lt;$DB_USER&gt; -p&lt;$DB_PASS&gt; &lt;$DB_NAME&gt;
-</code></pre></div></div>
-
-<hr />
-:ET

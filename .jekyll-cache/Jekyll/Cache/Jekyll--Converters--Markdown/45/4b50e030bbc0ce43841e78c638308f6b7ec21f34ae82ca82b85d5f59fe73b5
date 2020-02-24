@@ -1,5 +1,0 @@
-I"A<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">du</span> <span class="nt">-a</span> / 2&gt;/dev/null | <span class="nb">sort</span> <span class="nt">-nr</span> | <span class="nb">head</span> <span class="nt">-n10</span>
-</code></pre></div></div>
-
-<hr />
-:ET

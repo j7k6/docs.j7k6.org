@@ -1,5 +1,0 @@
-I";<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git svn clone <span class="nt">-s</span>  file://&lt;<span class="nv">$SVN_REPO_PATH</span><span class="o">&gt;</span> &lt;<span class="nv">$GIT_REPO</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

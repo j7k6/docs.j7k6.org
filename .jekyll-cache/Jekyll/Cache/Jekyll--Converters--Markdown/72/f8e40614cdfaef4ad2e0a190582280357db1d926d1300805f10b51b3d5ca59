@@ -1,8 +1,0 @@
-I"ë<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  location = /robots.txt {
-    add_header Content-Type text/plain;
-    return 200 "User-agent: *\nDisallow: /\n";
-  }
-</code></pre></div></div>
-
-<hr />
-:ET

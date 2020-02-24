@@ -1,5 +1,0 @@
-I"C<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">([</span><span class="kt">adsi</span><span class="p">]</span><span class="s2">"WinNT://&lt;</span><span class="nv">$COMPUTER_NAME</span><span class="s2">&gt;/Administrator,user"</span><span class="p">)</span><span class="o">.</span><span class="nf">SetPassword</span><span class="p">(</span><span class="s2">"</span><span class="nv">$NEW_PASSWORD</span><span class="s2">"</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<hr />
-:ET

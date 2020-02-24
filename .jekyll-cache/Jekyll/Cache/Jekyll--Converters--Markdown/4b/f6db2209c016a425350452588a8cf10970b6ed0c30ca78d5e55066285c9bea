@@ -1,5 +1,0 @@
-I"<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>PORT <span class="k">in</span> &lt;<span class="nv">$PORT1</span><span class="o">&gt;</span> &lt;<span class="nv">$PORT2</span><span class="o">&gt;</span> &lt;<span class="nv">$PORT3</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">do </span>nc <span class="nt">-vz</span> &lt;<span class="nv">$SSH_HOST</span><span class="o">&gt;</span> &lt;<span class="nv">$PORT</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> ssh &lt;<span class="nv">$SSH_USER</span><span class="o">&gt;</span>@&lt;<span class="nv">$SSH_HOST</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<hr />
-:ET

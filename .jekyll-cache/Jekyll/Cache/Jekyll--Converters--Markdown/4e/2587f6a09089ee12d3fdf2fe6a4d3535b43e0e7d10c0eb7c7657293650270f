@@ -1,7 +1,0 @@
-I"ù<p>Add this line to <code class="highlighter-rouge">/boot/config.txt</code> and reboot after saving:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>display_rotate=3 # 270Â° 
-</code></pre></div></div>
-
-<hr />
-:ET

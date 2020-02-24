@@ -1,5 +1,0 @@
-I"™<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exiftool <span class="nt">-creatortool</span><span class="o">=</span> <span class="nt">-software</span><span class="o">=</span> <span class="nt">-all</span><span class="o">=</span> <span class="nt">-overwrite_original</span> <span class="nt">-r</span> <span class="nb">.</span>
-</code></pre></div></div>
-
-<hr />
-:ET
