@@ -156,9 +156,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  font-family: $codeFont;
   font-weight: 300;
   color: $textColor !important;
   line-height: 1.4;
+  text-align: center;
 
   a {
     color: $textColor;
@@ -199,45 +201,22 @@ h2 {
 header {
   margin: 2em auto;
 
+  a {
+    display: block;
+    margin: .5em auto;
+    width: 5em;
+    height: 5em;
+    background: url('/assets/images/header.jpg') center center;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
+
   h1 {
     font-family: $codeFont;
     white-space: pre;
 
-    a {
-      position: relative;
-      border-bottom: none;
-
-      &:after {
-        content: '\00a0 ';
-        background: $textColor3;
-        -webkit-transition: all .1s ease-in-out 0s;
-        transition: all .1s ease-in-out 0s;
-      }
-
-      &:hover:after {
-        content: '\2190';
-        font-weight: 300;
-        color: $textColor3;
-        background: $bgColor;
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: $textColor3;
-        visibility: hidden;
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transition: all .3s ease-in-out 0s;
-        transition: all .3s ease-in-out 0s;
-      }
-    }
-
-    &.index a {
+    &.index span.cursor {
       &:after {
         content: '\00a0 ';
         background: $textColor3;

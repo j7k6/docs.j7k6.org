@@ -21,7 +21,7 @@ $(document).ready(function() {
             q = q.substring(0, (q.length - 1));
           }
 
-          $('header h1 span').text(q);
+          $('header h1 span:not(.cursor)').text(q);
 
           break;
         case 32:
@@ -62,7 +62,7 @@ $(document).ready(function() {
         $('ul.index li.fav').show();
       }
 
-      $('header h1 span').text(q);
+      $('header h1 span:not(.cursor)').text(q);
     });
   }
 });
