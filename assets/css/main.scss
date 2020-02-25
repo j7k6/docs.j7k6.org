@@ -96,7 +96,7 @@
 
 $bgColor: #fcfcfc;
 $textColor: #333;
-$textColor2: lighten($textColor, 33%);
+$textColor2: lighten($textColor, 50%);
 $textColor3: lighten($textColor, 15%);
 
 $defaultFont:  'Merriweather', serif;
@@ -264,11 +264,6 @@ code {
 
   pre & {
     padding: 0;
-  }
-
-  .var {
-    color: $textColor;
-    font-style: italic;
   }
 }
 
