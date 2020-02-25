@@ -378,7 +378,7 @@ ul.index {
     }
 
     &::after {
-      content: '~ ' attr(data-date);
+      content: '| ' attr(data-date);
       margin-left: .5em;
       font-size: .8em;
       font-weight: normal !important;
