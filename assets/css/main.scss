@@ -98,7 +98,6 @@ $bgColor: #fcfcfc;
 $textColor: #333;
 $textColor2: lighten($textColor, 33%);
 $textColor3: lighten($textColor, 15%);
-$linkColor: #0000EE;
 
 $defaultFont:  'Merriweather', serif;
 $codeFont: 'Fira Code', monospace;
@@ -136,6 +135,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
 }
 
 *:focus {
@@ -143,7 +143,6 @@ body {
 }
 
 a {
-  color: $linkColor;
   text-decoration: none;
 
   &:hover {
@@ -252,7 +251,7 @@ pre, code {
 }
 
 pre {
-  overflow-x: scroll;
+  overflow: auto;
   padding: 1em !important;
 }
 
@@ -371,10 +370,12 @@ ul.index {
     text-overflow: ellipsis;
     white-space: nowrap;
     color: $textColor2;
+    padding: .5em 0;
 
     a {
-      padding: .5em 0;
-      display: inline-block;
+      color: $textColor;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &::after {
@@ -382,10 +383,6 @@ ul.index {
       margin-left: .5em;
       font-size: .8em;
       font-weight: normal !important;
-    }
-
-    &:not(.fav) {
-      display: none;
     }
   }
 }
