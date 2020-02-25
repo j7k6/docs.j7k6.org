@@ -216,6 +216,7 @@ header {
 
     &.index span.cursor {
       &:after {
+        margin-left: .125em;
         content: '\00a0 ';
         background: $textColor3;
         text-decoration: blink;
