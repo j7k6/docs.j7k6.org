@@ -4,7 +4,7 @@ title: "Boot Tails from USB Drive in VirtualBox on macOS"
 fav: 1
 ---
 
-Booting a Tails USB drive in a VirtualBox VM is rather complicated because VirtualBox is not able to boot from USB. The workaround consists of using VirtualBox' [*raw hard disk access*](https://www.virtualbox.org/manual/ch09.html#rawdisk) and modifying the Tails boot command.
+Booting a Tails USB drive in a VirtualBox VM is rather complicated because VirtualBox is not able to boot from an USB drive directly. The workaround consists of using VirtualBox' [*raw hard disk access*](https://www.virtualbox.org/manual/ch09.html#rawdisk) and modifying the Tails boot command.
 
 ## VirtualBox VM
 1. Download the [Tails VM ISO](https://tails.boum.org/install/vm-download/index.en.html).
