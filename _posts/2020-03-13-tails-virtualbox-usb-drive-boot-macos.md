@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Run Tails from USB Drive in VirtualBox on macOS"
+title: "Boot Tails from USB Drive in VirtualBox on macOS"
 fav: 1
 ---
 
