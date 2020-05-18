@@ -58,8 +58,7 @@ $(document).ready(function() {
         });
       } else {
         $('ul.index li a strong').contents().unwrap();
-        $('ul.index li').hide();
-        $('ul.index li.fav').show();
+        $('ul.index li').show();
       }
 
       $('header h1 span:not(.cursor)').text(q);
