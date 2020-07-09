@@ -59,6 +59,8 @@ $textColor: #222;
 $textColor2: lighten($textColor, 40%);
 $textColor3: lighten($textColor, 15%);
 $textColor4: lighten($textColor, 60%);
+$linkColor: #FFF700;
+
 
 $defaultFont:  'Fira Sans', sans-serif;
 $codeFont: 'Fira Code', monospace;
@@ -106,10 +108,6 @@ body {
 
 a {
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 strong {
@@ -189,6 +187,10 @@ footer {
 
   a {
     color: $textColor2;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -205,6 +207,18 @@ article {
 
     li {
       margin: 1rem 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    background: lighten($linkColor, 40%);
+    color: darken($linkColor, 30%);
+    border-bottom: 2px solid $linkColor;
+    padding: 2px;
+
+    &:hover {
+      background: lighten($linkColor, 30%);
     }
   }
 
@@ -225,6 +239,11 @@ article {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      a {
+        border-bottom: 1px solid $linkColor;
+        padding: 1px;
+      }
 
       &:before {
         color: $textColor3;
