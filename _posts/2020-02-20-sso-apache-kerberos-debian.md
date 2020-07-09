@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " SSO with Apache and Kerberos on Debian"
+title: "SSO with Apache and Kerberos on Debian"
 fav: 1
 ---
 

@@ -21,12 +21,12 @@ defaults write com.google.Chrome AuthServerWhitelist '*.example.org'
 defaults write com.google.Chrome AuthNegotiateDelegateWhitelist '*.example.org'
 ```
 
-### Firefox:
+### Firefox
 Go to `about:config` and apply the following settings:
 
-- `network.automatic-ntlm-auth.trusted-uris` → *https://test.example.org*
-- `network.negotiate-auth.delegation-uris` → *https://test.example.org*
-- `network.negotiate-auth.trusted-uris` → *https://test.example.org*
+|`network.automatic-ntlm-auth.trusted-uris`|*https://test.example.org*|
+|`network.negotiate-auth.delegation-uris`|*https://test.example.org*|
+|`network.negotiate-auth.trusted-uris`|*https://test.example.org*|
 
 ### Safari
 Safari doesn't need any further configruation.

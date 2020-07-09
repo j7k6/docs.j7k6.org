@@ -3,66 +3,6 @@
 
 @import 'normalize';
 
-/* merriweather-300 - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Merriweather Light'), local('Merriweather-Light'),
-       url('/assets/fonts/merriweather-v21-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* merriweather-300italic - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Merriweather Light Italic'), local('Merriweather-LightItalic'),
-       url('/assets/fonts/merriweather-v21-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* merriweather-regular - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Merriweather Regular'), local('Merriweather-Regular'),
-       url('/assets/fonts/merriweather-v21-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* merriweather-700 - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Merriweather Bold'), local('Merriweather-Bold'),
-       url('/assets/fonts/merriweather-v21-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* merriweather-italic - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Merriweather Italic'), local('Merriweather-Italic'),
-       url('/assets/fonts/merriweather-v21-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* merriweather-700italic - latin */
-@font-face {
-  font-family: 'Merriweather';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Merriweather Bold Italic'), local('Merriweather-BoldItalic'),
-       url('/assets/fonts/merriweather-v21-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/merriweather-v21-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 /* fira-code-300 - latin */
 @font-face {
   font-family: 'Fira Code';
@@ -73,12 +13,54 @@
        url('/assets/fonts/fira-code-v7-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* fira-sans-300 - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Fira Sans Light'), local('FiraSans-Light'),
+       url('/assets/fonts/fira-sans-v10-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/fira-sans-v10-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* fira-sans-300italic - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Fira Sans Light Italic'), local('FiraSans-LightItalic'),
+       url('/assets/fonts/fira-sans-v10-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/fira-sans-v10-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* fira-sans-500 - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Fira Sans Medium'), local('FiraSans-Medium'),
+       url('/assets/fonts/fira-sans-v10-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/fira-sans-v10-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* fira-sans-500italic - latin */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Fira Sans Medium Italic'), local('FiraSans-MediumItalic'),
+       url('/assets/fonts/fira-sans-v10-latin-500italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/fira-sans-v10-latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
 $bgColor: #fcfcfc;
 $textColor: #222;
 $textColor2: lighten($textColor, 40%);
 $textColor3: lighten($textColor, 15%);
+$textColor4: lighten($textColor, 60%);
 
-$defaultFont:  'Merriweather', serif;
+$defaultFont:  'Fira Sans', sans-serif;
 $codeFont: 'Fira Code', monospace;
 
 @-webkit-keyframes blinker {
@@ -111,6 +93,7 @@ html, body {
 body {
   font-family: $defaultFont;
   color: $textColor;
+  line-height: 1.8;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -129,183 +112,100 @@ a {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 1em auto !important;
-}
-
-h1 {
-  font-family: $codeFont;
-  font-weight: 300;
-  color: $textColor !important;
-  line-height: 1.4;
-  text-align: center;
-
-  a {
-    color: $textColor;
-    border-bottom: 1px solid transparent;
-
-    &:hover {
-      text-decoration: none;
-      border-color: $textColor;
-    }
-  }
-}
-
-h2 {
-  margin-top: 2em !important;
-}
-
-.content {
-  width: 100%;
-  margin: 2em auto;
-
-  & > h1 {
-    margin: 2em auto 0 auto !important;
-  }
-
-  .xkcd {
-    margin: 3em auto;
-    color: $textColor2;
-    text-align: center;
-    font-style: italic;
-
-    a {
-      color: inherit;
-      font-style: normal;
-    }
-  }
-}
-
-header {
-  margin: 2em auto;
-  
-  div {
-    margin: 0 auto;
-    overflow: hidden;
-    width: 10em;
-    height: 4.25em;
-    border-bottom: 1px solid #ededed;
-
-    a {
-      display: block;
-      margin: .5em auto;
-      width: 5em;
-      height: 5em;
-      background: url('/assets/images/header.jpg') center center;
-      background-size: cover;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-  }
-
-
-  h1 {
-    font-family: $codeFont;
-
-    &.index span.cursor {
-      &:after {
-        margin-left: .125em;
-        content: '\00a0 ';
-        background: $textColor3;
-        text-decoration: blink;
-        -webkit-animation: blinker .6s infinite ease-in-out alternate;
-                animation: blinker .6s infinite ease-in-out alternate;
-      }
-    }
-  }
-}
-
-img {
-  max-width: 90% !important;
-  display: block;
-  margin: 1em auto;
-}
-
-p {
-  line-height: 1.8;
-}
-
-blockquote {
-  font-style: italic;
-  margin: 1em auto;
-  margin: 1em 0 1em 1em;
-  padding-left: 1em;
-  border-left: 5px solid darken($bgColor, 3%);
-}
-
-pre, code {
-  background: darken($bgColor, 3%);
-  border-radius: 3px;
-}
-
-pre {
-  overflow: auto;
-  padding: 1em !important;
-}
-
-code {
-  font-family: $codeFont;
-  padding: 3px;
-  line-height: 1.6 !important;
-  color: $textColor3;
-
-  pre & {
-    padding: 0;
-  }
+strong {
+  font-weight: 500;
 }
 
 ul, ol {
-  margin: 1em 0 1em 1.5em;
-  padding: 0;
-}
-
-li > ul, li > ol {
-  margin: 0 0 0 1.5em;
-}
-
-li {
-  line-height: 1.8;
   margin: 0;
   padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    & > ul, & > ol {
+      margin: 0 0 0 1.5rem;
+    }
+  }
+}
+
+table {
+  tr {
+    th {
+      font-weight: 500;
+      text-align: left;
+      padding: .5em;
+    }
+
+    td {
+      padding: .5em;
+    }
+  }
 }
 
 div.wrapper {
   width: 600px;
   max-width: 95vw;
   margin: 0 auto;
+
+  div.content {
+    width: 100%;
+    margin: 2rem auto;
+  }
+}
+
+header {
+  margin: 2rem auto;
+  
+  div {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 10rem;
+    height: 4.25rem;
+    border-bottom: 1px solid #ededed;
+
+    a {
+      display: block;
+      margin: .5rem auto;
+      width: 5rem;
+      height: 5rem;
+      background: url('/assets/images/header.jpg') center center;
+      background-size: cover;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
 }
 
 footer {
   dispaly: table;
-  margin: 2em auto;
+  margin: 2rem auto;
   width: 100%;
   text-align: center;
   color: $textColor2;
   font-family: $codeFont;
-  font-weight: 300;
   font-size: .8em;
 
   a {
     color: $textColor2;
-    
-    &:hover {
-      border-color: $textColor2;
-    }
   }
 }
 
 article {
   overflow-x: hidden;
 
-  hr {
-    margin: 1em 0;
-    height: 0;
-    border: none;
-    border-bottom: 1px solid darken($bgColor, 5%);
+  & > * {
+    display: block;
+    margin: 1rem auto;
   }
 
-  li {
-    margin: 1em 0;
+  ul, ol {
+    margin-left: 1.5rem;
+
+    li {
+      margin: 1rem 0;
+    }
   }
 
   & > hr:last-of-type {
@@ -316,7 +216,7 @@ article {
     font-size: .8em;
     list-style-type: none;
     counter-reset: o-counter 0;
-    margin: 1em 0 1em .5em;
+    margin: 1rem 0 1rem .5rem;
 
     li {
       margin: 0;
@@ -327,70 +227,114 @@ article {
       white-space: nowrap;
 
       &:before {
+        color: $textColor3;
         content: '[' counter(o-counter) '] ';
         counter-increment: o-counter;
       }
     }
   }
+}
 
-  & > * {
-    margin-bottom: 2em;
 
-    &:first-child {
-      margin-top: 0 !important;
-    }
-  }
+h1 {
+  font-weight: 300;
+  line-height: 1.4;
+  padding: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+ 
+h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  padding: 0;
+}
+
+h2 {
+  margin-top: 3rem;
+}
+
+* + h3 {
+  margin-top: 2rem;
+}
+
+h2 + h3 {
+  margin-top: inherit;
+}
+
+hr {
+  margin: 2rem 0 0 0;
+  height: 0;
+  border: none;
+  border-bottom: 1px solid darken($bgColor, 5%);
+}
+
+
+img {
+  max-width: 90% !important;
+  display: block;
+  margin: 1rem auto;
+}
+
+blockquote {
+  font-style: italic;
+  padding: .25rem 1rem;
+  border-left: 5px solid darken($bgColor, 6%);
+  background: darken($bgColor, 3%);
+  color: $textColor3;
+}
+
+pre, code {
+  background: darken($bgColor, 3%);
+  border-radius: 3px;
+}
+
+pre {
+  overflow: auto;
+  padding: 1rem;
+  border-left: 5px solid darken($bgColor, 6%);
+  line-height: 1.6;
+}
+
+code {
+  font-family: $codeFont;
+  padding: 1px;
+  color: $textColor3;
+}
+
+pre > code {
+  padding: 0;
 }
 
 ul.index {
   list-style: none;
-  margin: 2em auto;
+  font-size: 1.4em;
 
   li {
     display: block;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     color: $textColor2;
-    padding: .5em 0;
 
     a {
       color: $textColor;
       text-overflow: ellipsis;
       white-space: nowrap;
+      display: block;
+      overflow: hidden;
+      padding: .75rem 0;
 
-      strong {
-        font-weight: 700;
-      }
-    }
-
-    &::after {
-      content: '| ' attr(data-date);
-      margin-left: .5em;
-      font-size: .8em;
-    }
-  }
-}
-
-.date {
-  text-align: right;
-  font-size: .8em;
-  color: $textColor2;
-}
-
-table {
-  tr {
-    td {
-      width: auto;
-      padding: .5em 1em .5em 0;
-      line-height: 1;
-
-      &:first-child {
-        font-weight: bold;
+      &:hover {
+        text-decoration: none;
       }
 
-      &:last-child {
-        
+      &:before {
+        font-family: $codeFont;
+        content: '\258b';
+        display: inline-block;
+        color: transparent;
+      }
+
+      &:hover:before {
+        color: $textColor;
       }
     }
   }

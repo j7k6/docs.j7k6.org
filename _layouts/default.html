@@ -12,15 +12,13 @@
     <div class="wrapper">
       <header>
         <div><a href="/"></a></div>
-        {% if page.index %}<h1 class="index"><span></span><span class="cursor"></span></h1>{% endif %}
       </header>
 
       <div class="content">
         {{ content }}
-        <div class="xkcd">&laquo;Who were you, DenverCoder9? &mdash; What did you see?!&raquo; (<a href="https://xkcd.com/979/">xkcd/979</a>)</div>
       </div>
 
-      <footer>&#x1F99D; | <a href="https://github.com/j7k6">2013–{{ 'now' | date: "%Y" }}</a>&nbsp;&nbsp;&nbsp;&nbsp;</footer>
+      <footer><a href="https://github.com/j7k6">2013–{{ 'now' | date: "%Y" }}</a></footer>
     </div>
     <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="/assets/js/main.js?{{ site.time | date: '%s'}}"></script>
