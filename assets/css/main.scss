@@ -3,16 +3,6 @@
 
 @import 'normalize';
 
-/* fira-code-300 - latin */
-@font-face {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 300;
-  src: local(''),
-       url('/assets/fonts/fira-code-v7-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-code-v7-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 /* fira-sans-300 - latin */
 @font-face {
   font-family: 'Fira Sans';
@@ -53,32 +43,31 @@
        url('/assets/fonts/fira-sans-v10-latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* inconsolata-300 - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('/assets/fonts/inconsolata-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/inconsolata-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 
 $bgColor: #fcfcfc;
 $textColor: #222;
 $textColor2: lighten($textColor, 40%);
 $textColor3: lighten($textColor, 15%);
 $textColor4: lighten($textColor, 60%);
+$linkColor: #FFF700;
 
-$defaultFont:  'Fira Sans', sans-serif;
-$codeFont: 'Fira Code', monospace;
-
-@-webkit-keyframes blinker {
-  from {opacity: 1.0;}
-  to {opacity: 0.0;}
-}
-
-@keyframes blinker {
-  from {opacity: 1.0;}
-  to {opacity: 0.0;}
-}
+$defaultFont: 'Fira Sans', sans-serif;
+$codeFont: Inconsolata, monospace;
 
 
 html {
   overflow: auto;
   overflow-x: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
 html, body {
@@ -87,7 +76,6 @@ html, body {
   margin: 0;
   padding: 0;
   background: $bgColor;
-
 }
 
 body {
@@ -106,10 +94,6 @@ body {
 
 a {
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 strong {
@@ -183,12 +167,44 @@ footer {
   margin: 2rem auto;
   width: 100%;
   text-align: center;
-  color: $textColor2;
+  color: $textColor4;
   font-family: $codeFont;
   font-size: .8em;
 
   a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+nav {
+  display: block;
+  position: fixed;
+  top: 2.1rem;
+  left: calc(50vw - 300px - 3.5rem);
+  width: 3rem;
+  height: 3rem;
+  opacity: .25;
+  background: $bgColor;
+
+  a {
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 3rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0;
     color: $textColor2;
+  }
+
+  &:hover {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
   }
 }
 
@@ -205,6 +221,18 @@ article {
 
     li {
       margin: 1rem 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    background: lighten($linkColor, 40%);
+    color: darken($linkColor, 30%);
+    border-bottom: 2px solid $linkColor;
+    padding: 2px;
+
+    &:hover {
+      background: lighten($linkColor, 30%);
     }
   }
 
@@ -226,6 +254,11 @@ article {
       text-overflow: ellipsis;
       white-space: nowrap;
 
+      a {
+        border-bottom: 1px solid $linkColor;
+        padding: 1px;
+      }
+
       &:before {
         color: $textColor3;
         content: '[' counter(o-counter) '] ';
@@ -235,22 +268,33 @@ article {
   }
 }
 
-
 h1 {
-  font-weight: 300;
+font-weight: 300;
   line-height: 1.4;
   padding: 0;
   margin-bottom: 2rem;
-  text-align: center;
+
+  &:before {
+    content: attr(data-date);
+    font-size: 45%;
+    color: $textColor4;
+    display: block;
+  }
 }
  
 h2, h3, h4, h5, h6 {
+  line-height: 1.4;
   font-weight: 500;
   padding: 0;
 }
 
 h2 {
   margin-top: 3rem;
+  font-weight: 500;
+}
+
+h1 + * {
+  margin-top: 1rem !important;
 }
 
 * + h3 {
@@ -258,7 +302,7 @@ h2 {
 }
 
 h2 + h3 {
-  margin-top: inherit;
+  margin-top: 1rem;
 }
 
 hr {
@@ -277,33 +321,33 @@ img {
 
 blockquote {
   font-style: italic;
-  padding: .25rem 1rem;
-  border-left: 5px solid darken($bgColor, 6%);
-  background: darken($bgColor, 3%);
-  color: $textColor3;
+  margin-left: 1rem;
+
+  p {
+    margin: 0 auto;
+  }
 }
 
 pre, code {
-  background: darken($bgColor, 3%);
+  background: darken($bgColor, 4%);
   border-radius: 3px;
 }
 
 pre {
   overflow: auto;
-  padding: 1rem;
-  border-left: 5px solid darken($bgColor, 6%);
-  line-height: 1.6;
+  padding: .5rem 1rem;
 }
 
 code {
   font-family: $codeFont;
-  padding: 1px;
+  padding: 3px;
   color: $textColor3;
 }
 
 pre > code {
   padding: 0;
 }
+
 
 ul.index {
   list-style: none;
@@ -313,29 +357,46 @@ ul.index {
     display: block;
     overflow: hidden;
     color: $textColor2;
+    line-height: 1;
 
     a {
-      color: $textColor;
+      display: block;
       text-overflow: ellipsis;
       white-space: nowrap;
-      display: block;
       overflow: hidden;
-      padding: .75rem 0;
+      color: $textColor;
+      padding: .5rem 0;
+      margin: .5rem auto;
 
-      &:hover {
-        text-decoration: none;
-      }
-
-      &:before {
-        font-family: $codeFont;
-        content: '\258b';
+      &:after {
+        content: attr(data-date);
+        font-size: 66%;
+        color: $textColor4;
+        margin-left: 1rem;
+        opacity: 0;
         display: inline-block;
-        color: transparent;
       }
 
-      &:hover:before {
-        color: $textColor;
+      &:hover:after {
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+      }
+
+      span {
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+          border-color: $textColor;
+        }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    top: 0;
+    left: 0;
+    opacity: .9;
   }
 }
