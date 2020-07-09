@@ -7,7 +7,6 @@ title: "MariaDB Master-Master Replication"
 
 ## MariaDB Config
 **(on both servers)**
-
 1. Add *MariaDB* config in the `[mysqld]` section:
    ```
    log-bin
