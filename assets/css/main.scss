@@ -345,14 +345,14 @@ ul.index {
         text-decoration: none;
       }
 
-      &:before {
+      &:after {
         font-family: $codeFont;
-        content: '\258b';
+        content: '\00a0\00b6';
         display: inline-block;
         color: transparent;
       }
 
-      &:hover:before {
+      &:hover:after {
         color: $textColor;
       }
     }
