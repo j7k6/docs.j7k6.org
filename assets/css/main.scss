@@ -254,22 +254,28 @@ article {
   }
 }
 
-
 h1 {
   font-weight: 300;
   line-height: 1.4;
   padding: 0;
   margin-bottom: 2rem;
-  text-align: center;
 }
  
 h2, h3, h4, h5, h6 {
+  line-height: 1.4;
   font-weight: 500;
   padding: 0;
 }
 
 h2 {
   margin-top: 3rem;
+  border-bottom: 1px solid $textColor;
+  display: inline-block;
+  font-weight: 300;
+}
+
+h1 + * {
+  margin-top: 1rem !important;
 }
 
 * + h3 {
@@ -324,6 +330,7 @@ pre > code {
   padding: 0;
 }
 
+
 ul.index {
   list-style: none;
   font-size: 1.4em;
@@ -332,6 +339,7 @@ ul.index {
     display: block;
     overflow: hidden;
     color: $textColor2;
+    line-height: 1;
 
     a {
       color: $textColor;
@@ -339,21 +347,22 @@ ul.index {
       white-space: nowrap;
       display: block;
       overflow: hidden;
-      padding: .75rem 0;
+      padding: 1.25rem 0;
+      border-bottom: 2px solid transparent;
 
       &:hover {
         text-decoration: none;
       }
 
       &:after {
-        font-family: $codeFont;
-        content: '\00a0\00b6';
+        margin-left: 1rem;
+        content: '\203a';
         display: inline-block;
         color: transparent;
       }
 
       &:hover:after {
-        color: $textColor;
+        color: $textColor4;
       }
     }
   }
