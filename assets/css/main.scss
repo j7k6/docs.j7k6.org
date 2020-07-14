@@ -181,16 +181,40 @@ footer {
   margin: 2rem auto;
   width: 100%;
   text-align: center;
-  color: $textColor2;
+  color: $textColor4;
   font-family: $codeFont;
   font-size: .8em;
 
   a {
-    color: $textColor2;
+    color: inherit;
 
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  a {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    color: $textColor2;
+  }
+
+  &:hover a {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
   }
 }
 
@@ -345,24 +369,15 @@ ul.index {
       color: $textColor;
       text-overflow: ellipsis;
       white-space: nowrap;
-      display: block;
+      display: inline-block;
       overflow: hidden;
-      padding: 1.25rem 0;
-      border-bottom: 2px solid transparent;
+      padding: .5rem 0;
+      margin: .5rem auto;
+      border-bottom: 1px solid transparent;
 
       &:hover {
         text-decoration: none;
-      }
-
-      &:after {
-        margin-left: 1rem;
-        content: '\203a';
-        display: inline-block;
-        color: transparent;
-      }
-
-      &:hover:after {
-        color: $textColor4;
+        border-color: $textColor;
       }
     }
   }
