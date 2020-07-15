@@ -3,16 +3,6 @@
 
 @import 'normalize';
 
-/* fira-code-300 - latin */
-@font-face {
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 300;
-  src: local(''),
-       url('/assets/fonts/fira-code-v7-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-code-v7-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 /* fira-sans-300 - latin */
 @font-face {
   font-family: 'Fira Sans';
@@ -53,6 +43,16 @@
        url('/assets/fonts/fira-sans-v10-latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* inconsolata-300 - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('/assets/fonts/inconsolata-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/inconsolata-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 
 $bgColor: #fcfcfc;
 $textColor: #222;
@@ -62,8 +62,8 @@ $textColor4: lighten($textColor, 60%);
 $linkColor: #FFF700;
 
 
-$defaultFont:  'Fira Sans', sans-serif;
-$codeFont: 'Fira Code', monospace;
+$defaultFont: 'Fira Sans', sans-serif;
+$codeFont: Inconsolata, monospace;
 
 html {
   overflow: auto;
@@ -191,6 +191,7 @@ nav {
   background: $bgColor;
 
   a {
+    text-align: center;
     display: block;
     width: 100%;
     height: 100%;
@@ -315,10 +316,7 @@ img {
 
 blockquote {
   font-style: italic;
-  padding: .5rem 1rem;
-  margin-left: .5rem;
-  border-left: 5px solid darken($bgColor, 6%);
-  color: $textColor3;
+  margin-left: 1rem;
 
   p {
     margin: 0 auto;
@@ -326,20 +324,18 @@ blockquote {
 }
 
 pre, code {
-  background: darken($bgColor, 3%);
+  background: darken($bgColor, 2%);
   border-radius: 3px;
 }
 
 pre {
   overflow: auto;
   padding: .5rem 1rem;
-  border-left: 5px solid darken($bgColor, 6%);
-  line-height: 1.6;
 }
 
 code {
   font-family: $codeFont;
-  padding: 1px;
+  padding: 3px;
   color: $textColor3;
 }
 
@@ -379,7 +375,7 @@ ul.index {
 @media only screen and (max-width: 600px) {
   nav {
     top: 0;
-    left: 2.5vw;
+    left: 0;
     opacity: .9;
   }
 }
