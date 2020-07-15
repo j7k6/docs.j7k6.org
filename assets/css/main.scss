@@ -198,6 +198,9 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
+  width: 25vw;
+  height: 25vh;
+  opacity: 0;
 
   a {
     display: block;
@@ -206,15 +209,14 @@ nav {
     line-height: 3rem;
     font-size: 1.5em;
     font-weight: 500;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
-    opacity: 0;
     color: $textColor2;
   }
 
-  &:hover a {
+  &:hover {
     opacity: 1;
-    transition: opacity .125s ease-in-out;
+    transition: opacity .25s ease-in-out;
   }
 }
 
