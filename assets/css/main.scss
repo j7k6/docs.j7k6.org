@@ -61,9 +61,9 @@ $textColor3: lighten($textColor, 15%);
 $textColor4: lighten($textColor, 60%);
 $linkColor: #FFF700;
 
-
 $defaultFont: 'Fira Sans', sans-serif;
 $codeFont: Inconsolata, monospace;
+
 
 html {
   overflow: auto;
@@ -183,7 +183,7 @@ footer {
 nav {
   display: block;
   position: fixed;
-  top: 2.75rem;
+  top: 2.1rem;
   left: calc(50vw - 300px - 3.5rem);
   width: 3rem;
   height: 3rem;
@@ -273,6 +273,13 @@ h1 {
   line-height: 1.4;
   padding: 0;
   margin-bottom: 2rem;
+
+    &:before {
+      content: attr(data-date);
+      font-size: 45%;
+      color: $textColor4;
+      display: block;
+    }
 }
  
 h2, h3, h4, h5, h6 {
@@ -355,18 +362,34 @@ ul.index {
     line-height: 1;
 
     a {
-      color: $textColor;
+      display: block;
       text-overflow: ellipsis;
       white-space: nowrap;
-      display: inline-block;
       overflow: hidden;
+      color: $textColor;
       padding: .5rem 0;
       margin: .5rem auto;
-      border-bottom: 1px solid transparent;
 
-      &:hover {
-        text-decoration: none;
-        border-color: $textColor;
+      &:after {
+        content: attr(data-date);
+        font-size: 66%;
+        color: $textColor4;
+        margin-left: 1rem;
+        opacity: 0;
+        display: inline-block;
+      }
+
+      &:hover:after {
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+      }
+
+      span {
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+          border-color: $textColor;
+        }
       }
     }
   }
