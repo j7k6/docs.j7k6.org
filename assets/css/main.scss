@@ -269,17 +269,17 @@ article {
 }
 
 h1 {
-  font-weight: 300;
+font-weight: 300;
   line-height: 1.4;
   padding: 0;
   margin-bottom: 2rem;
 
-    &:before {
-      content: attr(data-date);
-      font-size: 45%;
-      color: $textColor4;
-      display: block;
-    }
+  &:before {
+    content: attr(data-date);
+    font-size: 45%;
+    color: $textColor4;
+    display: block;
+  }
 }
  
 h2, h3, h4, h5, h6 {
@@ -290,9 +290,7 @@ h2, h3, h4, h5, h6 {
 
 h2 {
   margin-top: 3rem;
-  border-bottom: 1px solid $textColor;
-  display: inline-block;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 h1 + * {
@@ -331,7 +329,7 @@ blockquote {
 }
 
 pre, code {
-  background: darken($bgColor, 2%);
+  background: darken($bgColor, 4%);
   border-radius: 3px;
 }
 
