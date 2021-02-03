@@ -5,3 +5,5 @@ _site
 .jekyll-cache
 *.swp
 *.swo
+_sass
+

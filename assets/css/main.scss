@@ -1,73 +1,79 @@
 ---
 ---
 
-@import 'normalize';
-
-/* fira-sans-300 - latin */
+/* lekton-regular - latin */
 @font-face {
-  font-family: 'Fira Sans';
+  font-family: 'Lekton';
   font-style: normal;
-  font-weight: 300;
-  src: local('Fira Sans Light'), local('FiraSans-Light'),
-       url('/assets/fonts/fira-sans-v10-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-sans-v10-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* fira-sans-300italic - latin */
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Fira Sans Light Italic'), local('FiraSans-LightItalic'),
-       url('/assets/fonts/fira-sans-v10-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-sans-v10-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* fira-sans-500 - latin */
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Fira Sans Medium'), local('FiraSans-Medium'),
-       url('/assets/fonts/fira-sans-v10-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-sans-v10-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* fira-sans-500italic - latin */
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: local('Fira Sans Medium Italic'), local('FiraSans-MediumItalic'),
-       url('/assets/fonts/fira-sans-v10-latin-500italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/fira-sans-v10-latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* inconsolata-300 - latin */
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   src: local(''),
-       url('/assets/fonts/inconsolata-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/assets/fonts/inconsolata-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('/assets/fonts/lekton-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/lekton-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+/* pt-serif-regular - latin */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/assets/fonts/pt-serif-v12-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/pt-serif-v12-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
-$bgColor: #fcfcfc;
-$textColor: #222;
-$textColor2: lighten($textColor, 40%);
-$textColor3: lighten($textColor, 15%);
-$textColor4: lighten($textColor, 60%);
-$linkColor: #FFF700;
+/* pt-serif-italic - latin */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+       url('/assets/fonts/pt-serif-v12-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/pt-serif-v12-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
-$defaultFont: 'Fira Sans', sans-serif;
-$codeFont: Inconsolata, monospace;
+/* pt-serif-700 - latin */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/assets/fonts/pt-serif-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/pt-serif-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
+/* pt-serif-700italic - latin */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+       url('/assets/fonts/pt-serif-v12-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/pt-serif-v12-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* pt-sans-700 - latin */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/assets/fonts/pt-sans-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/pt-sans-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+$color1: #444;
+$color2: #666;
+$color3: #b8b8b8;
+$color4: #f8f8f8;
+
+$defaultFont: 'PT Serif', serif;
+$headerFont: 'PT Sans', sans-serif;
+$codeFont: 'Lekton', monospace;
 
 html {
   overflow: auto;
   overflow-x: hidden;
+  font-size: 112.5%;
 }
 
 html, body {
@@ -75,41 +81,115 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: $bgColor;
 }
 
 body {
   font-family: $defaultFont;
-  color: $textColor;
-  line-height: 1.8;
+  color: $color1;
+  line-height: 1.75;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
+  font-weight: 400;
 }
 
-*:focus {
-  outline: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-strong {
-  font-weight: 500;
-}
-
-ul, ol {
+* {
   margin: 0;
   padding: 0;
 
-  li {
-    margin: 0;
-    padding: 0;
+  &:focus {
+    outline: none;
+  }
+}
 
-    & > ul, & > ol {
-      margin: 0 0 0 1.5rem;
+h1, h2, h3, h4, h5 {
+  font-family: $headerFont;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 3rem 0 1.38rem;
+
+  a {
+    color: inherit;
+  }
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.802rem;
+
+  a {
+    color: inherit;
+  }
+}
+
+h1.archive {
+  margin-top: 1rem;
+}
+
+h2 {font-size: 1.602rem;}
+
+h1 + h2, h2 + h3, h3 + h4, h4 + h5 {
+  margin-top: 0;
+}
+
+h3 {font-size: 1.424rem;}
+
+h4 {font-size: 1.266rem;}
+
+h5 {font-size: 1.125rem;}
+
+header {
+  margin: 2rem auto 0 auto;
+
+  a {
+    color: inherit;
+  }
+
+  nav {
+    font-family: $headerFont;
+    width: 700;
+
+    a {
+      text-decoration: none !important;
+      color: $color3;
+
+      &:hover {
+        color: $color2;
+      }
+    }
+  }
+
+  p {
+    margin: 1rem auto 2rem auto;
+
+    a {
+      color: $color2;
+      font-style: italic;
+    }
+  }
+}
+
+footer {
+  margin: 1rem auto;
+  text-align: center;
+  color: $color3;
+  font-size: 80%;
+
+  a {
+    color: inherit;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      padding-left: .5rem;
+
+      &:not(:first-child):before {
+        content: '\00B7';
+        padding-right: .5rem;
+      }
     }
   }
 }
@@ -117,7 +197,7 @@ ul, ol {
 table {
   tr {
     th {
-      font-weight: 500;
+      font-weight: 700;
       text-align: left;
       padding: .5em;
     }
@@ -128,92 +208,89 @@ table {
   }
 }
 
-div.wrapper {
+.wrapper {
   width: 600px;
   max-width: 95vw;
-  margin: 0 auto;
-
-  div.content {
-    width: 100%;
-    margin: 2rem auto;
-  }
-}
-
-header {
   margin: 2rem auto;
-  
-  div {
-    margin: 0 auto;
-    overflow: hidden;
-    width: 10rem;
-    height: 4.25rem;
-    border-bottom: 1px solid #ededed;
-
-    a {
-      display: block;
-      margin: .5rem auto;
-      width: 5rem;
-      height: 5rem;
-      background: url('/assets/images/header.jpg') center center;
-      background-size: cover;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-  }
 }
 
-footer {
-  dispaly: table;
-  margin: 2rem auto;
-  width: 100%;
-  text-align: center;
-  color: $textColor4;
-  font-family: $codeFont;
-  font-size: .8em;
-
-  a {
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-nav {
-  display: block;
-  position: fixed;
-  top: 2.1rem;
-  left: calc(50vw - 300px - 3.5rem);
-  width: 3rem;
-  height: 3rem;
-  opacity: .25;
-  background: $bgColor;
-
-  a {
-    text-align: center;
-    display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 3rem;
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 0;
-    color: $textColor2;
-  }
+a {
+  text-decoration: none;
 
   &:hover {
-    opacity: 1;
-    transition: opacity .25s ease-in-out;
+    text-decoration: underline;
   }
+}
+
+ul, ol {
+  li {
+    & > ul, & > ol {
+      margin: 0 0 0 1.5rem;
+    }
+  }
+
+  &.index {
+    margin: 1rem auto 2rem auto;
+    list-style-type: none;
+
+    li {
+      display: block;
+      overflow: hidden;
+
+      &.fav {
+        font-style: italic;
+
+        a:before {
+          content: '\002605';
+          color: $color3;
+          display: inline-block;
+          font-size: 80%;
+          margin-right: .5rem;
+          font-style: normal;
+        }
+      }
+
+      &:not(.fav) a:before {
+        content: '\002702';
+        font-size: 80%;
+        color: $color3;
+        display: inline-block;
+        margin-right: .5rem;
+      }
+
+      a {
+        display: block;
+        line-height: 2.5;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:after {
+          font-style: normal;
+          font-size: 80%;
+          font-weight: 400 !important;
+          content: attr(data-date);
+          margin-left: .5rem;
+          display: inline-block;
+          font-family: $codeFont;
+          color: $color3;
+        }
+      }
+    }
+  }
+}
+
+strong {
+  font-weight: 700;
 }
 
 article {
   overflow-x: hidden;
+  margin: 1rem auto;
 
   & > * {
     display: block;
-    margin: 1rem auto;
+    margin: 0 auto 1rem auto;
   }
 
   ul, ol {
@@ -221,182 +298,78 @@ article {
 
     li {
       margin: 1rem 0;
-    }
-  }
 
-  a {
-    text-decoration: none;
-    background: lighten($linkColor, 40%);
-    color: darken($linkColor, 30%);
-    border-bottom: 2px solid $linkColor;
-    padding: 2px;
-
-    &:hover {
-      background: lighten($linkColor, 30%);
-    }
-  }
-
-  & > hr:last-of-type {
-    width: 10%;
-  }
-
-  & > hr:last-of-type + ol {
-    font-size: .8em;
-    list-style-type: none;
-    counter-reset: o-counter 0;
-    margin: 1rem 0 1rem .5rem;
-
-    li {
-      margin: 0;
-      text-indent: 0 !important;
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      a {
-        border-bottom: 1px solid $linkColor;
-        padding: 1px;
-      }
-
-      &:before {
-        color: $textColor3;
-        content: '[' counter(o-counter) '] ';
-        counter-increment: o-counter;
+      & > * {
+        margin-top: 1rem;
       }
     }
   }
-}
 
-h1 {
-font-weight: 300;
-  line-height: 1.4;
-  padding: 0;
-  margin-bottom: 2rem;
+  hr {
+    margin: 2rem 0 1rem 0;
+    height: 0;
+    border: none;
 
-  &:before {
-    content: attr(data-date);
-    font-size: 45%;
-    color: $textColor4;
-    display: block;
-  }
-}
- 
-h2, h3, h4, h5, h6 {
-  line-height: 1.4;
-  font-weight: 500;
-  padding: 0;
-}
+    &:last-of-type {
+      visibility: hidden;
 
-h2 {
-  margin-top: 3rem;
-  font-weight: 500;
-}
+      & + ol {
+        font-size: 80%;
+        margin: 0 0 1rem 0 !important;
+        color: $color3;
+        counter-reset: o-counter 0;
 
-h1 + * {
-  margin-top: 1rem !important;
-}
+        li {
+          margin: 0;
+          line-height: 1.25;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
 
-* + h3 {
-  margin-top: 2rem;
-}
-
-h2 + h3 {
-  margin-top: 1rem;
-}
-
-hr {
-  margin: 2rem 0 0 0;
-  height: 0;
-  border: none;
-  border-bottom: 1px solid darken($bgColor, 5%);
-}
-
-
-img {
-  max-width: 90% !important;
-  display: block;
-  margin: 1rem auto;
-}
-
-blockquote {
-  font-style: italic;
-  margin-left: 1rem;
-
-  p {
-    margin: 0 auto;
-  }
-}
-
-pre, code {
-  background: darken($bgColor, 4%);
-  border-radius: 3px;
-}
-
-pre {
-  overflow: auto;
-  padding: .5rem 1rem;
-}
-
-code {
-  font-family: $codeFont;
-  padding: 3px;
-  color: $textColor3;
-}
-
-pre > code {
-  padding: 0;
-}
-
-
-ul.index {
-  list-style: none;
-  font-size: 1.4em;
-
-  li {
-    display: block;
-    overflow: hidden;
-    color: $textColor2;
-    line-height: 1;
-
-    a {
-      display: block;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      color: $textColor;
-      padding: .5rem 0;
-      margin: .5rem auto;
-
-      &:after {
-        content: attr(data-date);
-        font-size: 66%;
-        color: $textColor4;
-        margin-left: 1rem;
-        opacity: 0;
-        display: inline-block;
-      }
-
-      &:hover:after {
-        opacity: 1;
-        transition: opacity .25s ease-in-out;
-      }
-
-      span {
-        border-bottom: 1px solid transparent;
-
-        &:hover {
-          border-color: $textColor;
+          &:before {
+            color: $color3;
+            content: '[' counter(o-counter) '] ';
+            counter-increment: o-counter;
+          }
         }
       }
     }
   }
-}
 
-@media only screen and (max-width: 600px) {
-  nav {
-    top: 0;
-    left: 0;
-    opacity: .9;
+  .date {
+    color: $color3;
+    font-size: 80%;
+    font-family: 'Lekton', monospace;
+  }
+
+  img {
+    max-width: 90% !important;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  pre, code, blockquote {
+    border-radius: 3px;
+    background: $color4;
+    color: $color2;
+  }
+
+  pre, blockquote {
+    overflow: auto;
+    padding: .5rem 1rem;
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+
+  code {
+    font-family: 'Lekton', monospace;
+    padding: 3px;
+  }
+
+  pre > code {
+    padding: 0;
   }
 }
