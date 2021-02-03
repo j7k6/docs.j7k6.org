@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "MariaDB Master-Master Replication"
+fav: 1
 ---
 
 > **Note**: This requires two servers with a running MariaDB installation.
