@@ -15,7 +15,7 @@ Follow these steps to setup *BlackHole*:
 4. Select *Build-in Output* and *BlackHole 2ch* as audio devices:
    ![blackhole](/files/macos-record-screen-audio-blackhole/02-blackhole.png)
 5. Open `Screenshot.app` and select *Record Selected Portion*... and select a portion of the screen to record.
-6. Select *BlackHole 2ch`* as Microphone:
+6. Select *BlackHole 2ch* as Microphone:
    ![blackhole](/files/macos-record-screen-audio-blackhole/03-blackhole.png)
 7. Hit *Record*.
 
