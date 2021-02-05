@@ -42,6 +42,61 @@ body {
   }
 }
 
+ul, ol {
+  li {
+    & > ul, & > ol {
+      margin: 0 0 0 1.5rem;
+    }
+  }
+
+  &.index {
+    margin: 1rem auto 2rem auto;
+    list-style-type: none;
+
+    li {
+      display: block;
+      overflow: hidden;
+
+      &.fav {
+        a:before {
+          content: '\002605';
+          color: $color3;
+          display: inline-block;
+          font-size: 80%;
+          margin-right: .5rem;
+          font-style: normal;
+        }
+      }
+
+      &:not(.fav) a:before {
+        content: '\002702';
+        font-size: 80%;
+        color: $color3;
+        display: inline-block;
+        margin-right: .5rem;
+      }
+
+      a {
+        display: block;
+        line-height: 2.5;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:after {
+          font-style: normal;
+          font-size: 80%;
+          font-weight: 400 !important;
+          content: attr(data-date);
+          margin-left: .5rem;
+          display: inline-block;
+          color: $color3;
+        }
+      }
+    }
+  }
+}
+
 article {
   overflow-x: hidden;
   margin: 1rem auto;
@@ -249,60 +304,5 @@ a {
 
   &:hover {
     text-decoration: underline;
-  }
-}
-
-ul, ol {
-  li {
-    & > ul, & > ol {
-      margin: 0 -1.5rem 0 1.5rem;
-    }
-  }
-
-  &.index {
-    margin: 1rem auto 2rem auto;
-    list-style-type: none;
-
-    li {
-      display: block;
-      overflow: hidden;
-
-      &.fav {
-        a:before {
-          content: '\002605';
-          color: $color3;
-          display: inline-block;
-          font-size: 80%;
-          margin-right: .5rem;
-          font-style: normal;
-        }
-      }
-
-      &:not(.fav) a:before {
-        content: '\002702';
-        font-size: 80%;
-        color: $color3;
-        display: inline-block;
-        margin-right: .5rem;
-      }
-
-      a {
-        display: block;
-        line-height: 2.5;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
-        &:after {
-          font-style: normal;
-          font-size: 80%;
-          font-weight: 400 !important;
-          content: attr(data-date);
-          margin-left: .5rem;
-          display: inline-block;
-          color: $color3;
-        }
-      }
-    }
   }
 }
