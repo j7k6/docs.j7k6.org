@@ -5,7 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% if page.title %}{{page.title}}{% else %}{{site.name}}{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/main.css?{{ site.time | date: '%s'}}">
+    {% capture styles %}
+    {% include main.scss %}
+    {% endcapture %}
+    <style>{{ styles | scssify }}</style>
   </head>
 
   <body>
@@ -13,10 +16,7 @@
       <header>
         {% if page.url == '/' %}
         <h1><a href="/">{{site.name}}</a></h1>
-        <p>This is my random collection of Sysadmin, Security, Computer Science related write-ups and Commandline Snippets (see <a href="/archive/">Archive</a>).
-        I created this site as a notebook for myself, so I don't have to google stuff more than once (and I needed a reason to play around with <a href="https://jekyllrb.com/">Jekyll</a>).
-        I don't take any responsibility for any damage caused by copy & pasting commands from this site, so please think before you hit the <em>enter</em> key.
-        Feel free to <a href="mailto:doc@j7k6.org">contact</a> me, maybe I'll answer... <em>//j7k6</em></p>
+        <p>Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets.</p>
         {% else %}
         <nav><a href="/">{{site.name}}</a></nav>
         {% endif %}
@@ -29,7 +29,6 @@
       <footer>
         <ul>
           <li>2013–{{ 'now' | date: "%Y" }}</li><!--
-          --><li><a href="/archive/">Archive</a></li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li>
         </ul>
       </footer>

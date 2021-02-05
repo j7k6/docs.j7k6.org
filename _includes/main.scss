@@ -1,0 +1,286 @@
+$color1: #444;
+$color2: #666;
+$color3: #b8b8b8;
+$color4: #f8f8f8;
+
+$defaultFont: sans-serif;
+$codeFont: 'Lucida Console', Courier, monospace;
+
+html {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $defaultFont;
+  color: $color1;
+  font-size: 1.2em;
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+ul, ol {
+  li {
+    & > ul, & > ol {
+      margin: 0 0 0 1.5rem;
+    }
+  }
+}
+
+ul.index {
+  margin: 1rem auto 2rem auto;
+  list-style-type: none;
+
+  li {
+    display: block;
+    overflow: hidden;
+
+    &:not(.fav) {
+      font-style: italic;
+    }
+
+    a {
+      display: block;
+      line-height: 2.5;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &:after {
+        font-style: normal;
+        font-size: 80%;
+        font-weight: 400 !important;
+        content: attr(data-date);
+        margin-left: .5rem;
+        display: inline-block;
+        color: $color3;
+      }
+    }
+  }
+}
+
+article {
+  overflow-x: hidden;
+  margin: 1rem auto;
+
+  & > * {
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
+
+  ul, ol {
+    margin-left: 2rem;
+
+    li {
+      margin: 1rem 0;
+
+      & > * {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  hr {
+    margin: 2rem 0 1rem 0;
+    height: 0;
+    border: none;
+
+    &:last-of-type {
+      visibility: hidden;
+
+      & + ol {
+        font-size: 80%;
+        margin: 0 0 1rem 0 !important;
+        color: $color3;
+        counter-reset: o-counter 0;
+
+        li {
+          margin: 0;
+          line-height: 1.25;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &:before {
+            color: $color3;
+            content: '[' counter(o-counter) '] ';
+            counter-increment: o-counter;
+          }
+        }
+      }
+    }
+  }
+
+  .date {
+    color: $color3;
+    line-height: 1;
+    font-size: 80%;
+  }
+
+  img {
+    max-width: 90% !important;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  pre, code, blockquote {
+    border-radius: 3px;
+    background: $color4;
+    color: $color2;
+  }
+
+  pre, blockquote {
+    overflow: auto;
+    padding: .5rem 1rem;
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 90%;
+    font-family: $codeFont;
+    padding: 3px;
+  }
+
+  pre > code {
+    padding: 0;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.3;
+  margin: 3rem 0 1.38rem;
+
+  a {
+    color: inherit;
+  }
+}
+
+h1 + h2, h2 + h3, h3 + h4, h4 + h5 {
+  margin-top: 0;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1.802rem;
+
+  a {
+    color: inherit;
+  }
+}
+
+h2 {font-size: 1.602rem;}
+h3 {font-size: 1.424rem;}
+h4 {font-size: 1.266rem;}
+h5 {font-size: 1.125rem;}
+
+header {
+  margin: 2rem auto 0 auto;
+
+  a {
+    color: inherit;
+  }
+
+  nav {
+    line-height: 1;
+    font-weight: bold;
+
+    a {
+      text-decoration: none !important;
+      color: $color3;
+
+      &:hover {
+        color: $color2;
+      }
+    }
+  }
+
+  p {
+    margin: 1rem auto 2rem auto;
+
+    a {
+      color: $color2;
+      font-style: italic;
+    }
+  }
+}
+
+footer {
+  margin: 1rem auto;
+  padding-bottom: 2rem;
+  color: $color3;
+  font-size: 80%;
+
+  a {
+    color: inherit;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+
+      &:not(:first-child):before {
+        content: '\00B7';
+        padding: 0 .5rem;
+      }
+    }
+  }
+}
+
+table {
+  tr {
+    th {
+      font-weight: bold;
+      text-align: left;
+      padding: .5em;
+    }
+
+    td {
+      padding: .5em;
+    }
+  }
+}
+
+.wrapper {
+  width: 600px;
+  max-width: 90vw;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 1.0em;
+  }
+}
