@@ -13,7 +13,6 @@ $codeFont: 'Lucida Console', Courier, monospace;
 html {
   overflow: auto;
   overflow-x: hidden;
-  font-size: 112.5%;
 }
 
 html, body {
@@ -26,6 +25,7 @@ html, body {
 body {
   font-family: $defaultFont;
   color: $color1;
+  font-size: 1.2em;
   line-height: 1.75;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,6 +39,96 @@ body {
 
   &:focus {
     outline: none;
+  }
+}
+
+article {
+  overflow-x: hidden;
+  margin: 1rem auto;
+
+  & > * {
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
+
+  ul, ol {
+    margin-left: 1.5rem;
+
+    li {
+      margin: 1rem 0;
+
+      & > * {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  hr {
+    margin: 2rem 0 1rem 0;
+    height: 0;
+    border: none;
+
+    &:last-of-type {
+      visibility: hidden;
+
+      & + ol {
+        font-size: 80%;
+        margin: 0 0 1rem 0 !important;
+        color: $color3;
+        counter-reset: o-counter 0;
+
+        li {
+          margin: 0;
+          line-height: 1.25;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &:before {
+            color: $color3;
+            content: '[' counter(o-counter) '] ';
+            counter-increment: o-counter;
+          }
+        }
+      }
+    }
+  }
+
+  .date {
+    color: $color3;
+    font-size: 80%;
+  }
+
+  img {
+    max-width: 90% !important;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  pre, code, blockquote {
+    border-radius: 3px;
+    background: $color4;
+    color: $color2;
+  }
+
+  pre, blockquote {
+    overflow: auto;
+    padding: .5rem 1rem;
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 90%;
+    font-family: $codeFont;
+    padding: 3px;
+  }
+
+  pre > code {
+    padding: 0;
   }
 }
 
@@ -214,99 +304,5 @@ ul, ol {
         }
       }
     }
-  }
-}
-
-strong {
-  font-weight: 600;
-}
-
-article {
-  overflow-x: hidden;
-  margin: 1rem auto;
-
-  & > * {
-    display: block;
-    margin: 0 auto 1rem auto;
-  }
-
-  ul, ol {
-    margin-left: 1.5rem;
-
-    li {
-      margin: 1rem 0;
-
-      & > * {
-        margin-top: 1rem;
-      }
-    }
-  }
-
-  hr {
-    margin: 2rem 0 1rem 0;
-    height: 0;
-    border: none;
-
-    &:last-of-type {
-      visibility: hidden;
-
-      & + ol {
-        font-size: 80%;
-        margin: 0 0 1rem 0 !important;
-        color: $color3;
-        counter-reset: o-counter 0;
-
-        li {
-          margin: 0;
-          line-height: 1.25;
-          display: block;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-
-          &:before {
-            color: $color3;
-            content: '[' counter(o-counter) '] ';
-            counter-increment: o-counter;
-          }
-        }
-      }
-    }
-  }
-
-  .date {
-    color: $color3;
-    font-size: 80%;
-  }
-
-  img {
-    max-width: 90% !important;
-    display: block;
-    margin: 1rem auto;
-  }
-
-  pre, code, blockquote {
-    border-radius: 3px;
-    background: $color4;
-    color: $color2;
-  }
-
-  pre, blockquote {
-    overflow: auto;
-    padding: .5rem 1rem;
-  }
-
-  blockquote {
-    font-style: italic;
-  }
-
-  code {
-    font-size: 90%;
-    font-family: $codeFont;
-    padding: 3px;
-  }
-
-  pre > code {
-    padding: 0;
   }
 }
