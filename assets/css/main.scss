@@ -43,8 +43,6 @@ body {
 }
 
 ul, ol {
-  padding-left: .25rem;
-  
   li {
     & > ul, & > ol {
       margin: 0 0 0 1.5rem;
@@ -94,7 +92,7 @@ article {
   }
 
   ul, ol {
-    margin-left: 1.5rem;
+    margin-left: 2rem;
 
     li {
       margin: 1rem 0;
@@ -118,7 +116,6 @@ article {
         margin: 0 0 1rem 0 !important;
         color: $color3;
         counter-reset: o-counter 0;
-        padding: 0;
 
         li {
           margin: 0;
@@ -253,15 +250,13 @@ footer {
 
   ul {
     list-style-type: none;
-    padding: 0;
 
     li {
       display: inline-block;
 
       &:not(:first-child):before {
-        padding-left: .5rem;
         content: '\00B7';
-        padding-right: .5rem;
+        padding: 0 .5rem;
       }
     }
   }
