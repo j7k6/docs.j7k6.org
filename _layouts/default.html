@@ -13,9 +13,7 @@
       <header>
         {% if page.url == '/' %}
         <h1><a href="/">{{site.name}}</a></h1>
-        <p>
-        Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets (see <a href="/archive/">Archive</a>).
-        </p>
+        <p>Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets.</p>
         {% else %}
         <nav><a href="/">{{site.name}}</a></nav>
         {% endif %}
@@ -28,7 +26,6 @@
       <footer>
         <ul>
           <li>2013–{{ 'now' | date: "%Y" }}</li><!--
-          --><li><a href="/archive/">Archive</a></li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li>
         </ul>
       </footer>
