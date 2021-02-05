@@ -59,23 +59,8 @@ ul, ol {
       display: block;
       overflow: hidden;
 
-      &.fav {
-        a:before {
-          content: '\002605';
-          color: $color3;
-          display: inline-block;
-          font-size: 80%;
-          margin-right: .5rem;
-          font-style: normal;
-        }
-      }
-
-      &:not(.fav) a:before {
-        content: '\002702';
-        font-size: 80%;
-        color: $color3;
-        display: inline-block;
-        margin-right: .5rem;
+      &:not(.fav) {
+        font-style: italic;
       }
 
       a {
