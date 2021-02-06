@@ -7,7 +7,6 @@ $color3: #b8b8b8;
 $color4: #f8f8f8;
 
 $defaultFont: sans-serif;
-$headerFont: sans-serif;
 $codeFont: 'Lucida Console', Courier, monospace;
 
 html {
@@ -30,7 +29,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
 }
 
 * {
@@ -48,35 +46,35 @@ ul, ol {
       margin: 0 0 0 1.5rem;
     }
   }
+}
 
-  &.index {
-    margin: 1rem auto 2rem auto;
-    list-style-type: none;
+ul.index {
+  margin: 1rem auto 2rem auto;
+  list-style-type: none;
 
-    li {
+  li {
+    display: block;
+    overflow: hidden;
+
+    &:not(.fav) {
+      font-style: italic;
+    }
+
+    a {
       display: block;
+      line-height: 2.5;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       overflow: hidden;
 
-      &:not(.fav) {
-        font-style: italic;
-      }
-
-      a {
-        display: block;
-        line-height: 2.5;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
-        &:after {
-          font-style: normal;
-          font-size: 80%;
-          font-weight: 400 !important;
-          content: attr(data-date);
-          margin-left: .5rem;
-          display: inline-block;
-          color: $color3;
-        }
+      &:after {
+        font-style: normal;
+        font-size: 80%;
+        font-weight: 400 !important;
+        content: attr(data-date);
+        margin-left: .5rem;
+        display: inline-block;
+        color: $color3;
       }
     }
   }
@@ -137,6 +135,7 @@ article {
 
   .date {
     color: $color3;
+    line-height: 1;
     font-size: 80%;
   }
 
@@ -173,14 +172,16 @@ article {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: $headerFont;
   line-height: 1.3;
-  font-weight: 600;
   margin: 3rem 0 1.38rem;
 
   a {
     color: inherit;
   }
+}
+
+h1 + h2, h2 + h3, h3 + h4, h4 + h5 {
+  margin-top: 0;
 }
 
 h1 {
@@ -193,15 +194,8 @@ h1 {
 }
 
 h2 {font-size: 1.602rem;}
-
-h1 + h2, h2 + h3, h3 + h4, h4 + h5 {
-  margin-top: 0;
-}
-
 h3 {font-size: 1.424rem;}
-
 h4 {font-size: 1.266rem;}
-
 h5 {font-size: 1.125rem;}
 
 header {
@@ -212,8 +206,8 @@ header {
   }
 
   nav {
-    font-family: $headerFont;
-    font-weight: 600;
+    line-height: 1;
+    font-weight: bold;
 
     a {
       text-decoration: none !important;
@@ -237,6 +231,7 @@ header {
 
 footer {
   margin: 1rem auto;
+  padding-bottom: 2rem;
   color: $color3;
   font-size: 80%;
 
@@ -261,7 +256,7 @@ footer {
 table {
   tr {
     th {
-      font-weight: 600;
+      font-weight: bold;
       text-align: left;
       padding: .5em;
     }
