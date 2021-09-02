@@ -7,7 +7,7 @@ If you follow the official [Gitlab documentation](https://docs.gitlab.com/runner
 
 > ERROR: Job failed: exit status 1
 
-The solution is to install it via Homebrew, which installs the `arm64` executable:
+The solution is to install it via Homebrew, which installs the correct `arm64` executable:
 ```bash
 brew install gitlab-runner
 ```
