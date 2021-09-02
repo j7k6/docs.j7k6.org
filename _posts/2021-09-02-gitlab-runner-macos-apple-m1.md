@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gitlab Runner on Apple M1"
+title: "Gitlab Runner on Apple M1 Hardware"
 ---
 
 If you follow the official [Gitlab documentation](https://docs.gitlab.com/runner/install/osx.html) to install a `gitlab-runner` instance on Apple M1 hardware, it will install the `amd64` version, which will result in this error when using the `shell` executor:
