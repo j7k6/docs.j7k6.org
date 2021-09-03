@@ -18,7 +18,7 @@ fav: 1
    ```bash
    diskutil unmountDisk /dev/disk2
    ```
-6. Format USB disk:
+6. Format USB drive:
    ```bash
    sudo diskutil eraseDisk FAT32 "WIN10" MBRFormat /dev/disk2
    ```
@@ -34,7 +34,7 @@ fav: 1
    ```bash
    wimlib-imagex split /Volumes/CCCOMA_X64FRE_DE-DE_DV9/sources/install.wim /Volumes/WIN10/sources/install.swm 3800
    ```
-4. Eject USB disk:
+4. Eject USB drive:
    ```
    diskutil eject /dev/disk2
    ```
