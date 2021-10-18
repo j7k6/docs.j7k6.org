@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Convert Currencies with the Coinbase Pthon API"
+title: "Convert Currencies with the Coinbase Python API"
 ---
 
 For some reason, Coinbase didn't implement the "Convert" function from the app in the Python (or any other) API framework. There are only two Stackoverflow comments that vaguely describe a workaround. This is how I got it working in Python:
