@@ -7,7 +7,7 @@ When pasting a list of commands from the clipboard into a Bash shell, the execut
 
 ```bash
 apt update
-apt install vim < /dev/null
+apt install -y vim < /dev/null
 echo "still running :)"
 ```
 
