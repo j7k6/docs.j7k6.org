@@ -14,7 +14,9 @@ title: "Parallel File Copy (cp)"
    ```
 3. Copy files:
    ```bash
-   find . ! -type d -print0 | xargs -0 -P<$NUM_PROCS> -n1 -I % cp -avn --parents % <$DEST_DIR>/
+   find . ! -type d -print0 | \
+     xargs -0 -P<$NUM_PROCS> -n1 -I % \
+     cp -avn --parents % <$DEST_DIR>/
    ```
 
 ---
