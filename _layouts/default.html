@@ -6,7 +6,7 @@
     <title>{% if page.title %}{{page.title}}{% else %}{{site.name}}{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% capture styles %}
-    {% include main.scss %}
+      {% include main.scss %}
     {% endcapture %}
     <style>{{ styles | scssify }}</style>
   </head>
@@ -17,9 +17,9 @@
         {% if page.url == '/' %}
         <h1><a href="/">{{site.name}}</a></h1>
         <p>Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets.</p>
-        <p><input type="text" name="q"></p>
+        <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
         {% else %}
-        <nav><a href="/">{{site.name}}</a></nav>
+        <nav><a href="/">&longleftarrow; {{site.name}}</a></nav>
         {% endif %}
       </header>
 
@@ -29,48 +29,16 @@
 
       <footer>
         <ul>
-          <li>2013–{{ 'now' | date: "%Y" }}</li><!--
+          <li>{% if page.date %}{{page.date | date_to_string }}{% else %}2013–{{ 'now' | date: "%Y" }}{% endif %}</li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
-          --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p</a></li>
+          --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate</a></li><!--
+          --><li><a href="http://sysadminxpvba6oi7vww2bqscy5aoakjwrjh7iadv3zb7xy5bp737qqd.onion/">Onion</a></li>
         </ul>
       </footer>
     </div>
 
     <script type="application/javascript">
-      if (document.querySelector('.index') !== null) {
-        var allItems = Array.from(document.querySelectorAll('ul.index li'));
-        var q = '';
-
-        document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
-          if (e.keyCode === 27) {
-            q = '';
-            document.querySelector('input[name=q]').value = '';
-
-            allItems.forEach((el) => el.style.display='block');
-          }
-
-          q = document.querySelector('input[name=q]').value.replace(/  /g, ' ');
-
-          if (q.length > 1) {
-            allItems.forEach((el) => el.style.display='none')
-
-            let queryWords = q.split(/\s/);
-
-            for (let i=0; i<queryWords.length; i++) {
-              queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
-            }
-
-            let matchItems = Array.from(document.querySelectorAll('ul.index li a')).filter(el => !el.innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
-            
-            matchItems.forEach((el) => el.closest('li').style.display='block');
-            matchItems.forEach((el) => el.innerHTML = el.innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
-          } else {
-            let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
-            highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
-            allItems.forEach((el) => el.style.display='block');
-          }
-        });
-      }
+      {% include main.js %}
     </script>
   </body>
 </html>
