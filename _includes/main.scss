@@ -37,6 +37,16 @@ body {
   }
 }
 
+input {
+  width: 100%;
+  padding: .5rem;
+  font-family: $codeFont;
+  font-size: 1.5rem;
+  color: $color3;
+  border-radius: 5px;
+  border: 1px solid $color3;
+}
+
 ul, ol {
   li {
     & > ul, & > ol {
