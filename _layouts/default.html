@@ -39,6 +39,7 @@
     <script type="application/javascript">
       if (document.querySelector('.index') !== null) {
         var allItems = Array.from(document.querySelectorAll('ul.index li'));
+        var favItems = Array.from(document.querySelectorAll('ul.index li.fav'));
         var q = '';
 
         document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
@@ -61,14 +62,14 @@
             }
 
             let matchItems = Array.from(document.querySelectorAll('ul.index li a')).filter(el => !el.innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
-            
-            matchItems.forEach((el) => el.closest('li').style.display='block');
+
+            matchItems.forEach((el) => el.closest('li').classList.add('show'));
             matchItems.forEach((el) => el.innerHTML = el.innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
           } else {
             let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
             highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
 
-            allItems.forEach((el) => el.style.display='block');
+            allItems.forEach((el) => el.classList.remove('show'));
           }
         });
       }
