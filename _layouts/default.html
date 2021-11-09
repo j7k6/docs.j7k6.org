@@ -61,10 +61,10 @@
               queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
             }
 
-            let matchItems = Array.from(document.querySelectorAll('ul.index li')).filter(el => !el.querySelector('a')[0].innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
+            let matchItems = Array.from(document.querySelectorAll('ul.index li')).filter(el => !el.querySelector('a').innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
 
             matchItems.forEach((el) => el.style.display='block')
-            matchItems.forEach((el) => el.querySelector('a')[0].innerHTML = el.querySelector('a')[0].innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
+            matchItems.forEach((el) => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
           } else {
             let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
 
