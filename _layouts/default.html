@@ -52,7 +52,7 @@
 
           q = document.querySelector('input[name=q]').value.replace(/  /g, ' ');
 
-          if (q.length > 1) {
+          if (q.split(/\s/).join('').length > 1) {
             allItems.forEach((el) => el.style.display='none')
 
             let queryWords = q.split(/\s/);
