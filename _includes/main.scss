@@ -1,3 +1,12 @@
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
+@keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
 
 $color1: #444;
 $color2: #666;
@@ -222,6 +231,15 @@ header {
 
   a {
     color: inherit;
+  }
+
+  a, nav a {
+    &:after {
+      content: '_';
+      text-decoration: blink;
+      -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
+              animation: blinker 0.6s infinite ease-in-out alternate;
+    }
   }
 
   nav {
