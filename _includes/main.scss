@@ -69,11 +69,17 @@ ul.index {
   list-style-type: none;
 
   li {
-    display: block;
+    display: none;
     overflow: hidden;
+    font-style: italic;
 
-    &:not(.fav) {
-      font-style: italic;
+    &:.fav {
+      display: block;
+      font-style: normal;
+    }
+
+    &:.show {
+      display: block;
     }
 
     a {
