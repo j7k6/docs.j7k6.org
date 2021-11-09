@@ -73,12 +73,12 @@ ul.index {
     overflow: hidden;
     font-style: italic;
 
-    &:.fav {
+    &.fav {
       display: block;
       font-style: normal;
     }
 
-    &:.show {
+    &.show {
       display: block;
     }
 
