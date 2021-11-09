@@ -50,7 +50,7 @@
             allItems.forEach((el) => el.style.display='block');
           }
 
-          q = document.querySelector('input[name=q]').value.replace(/\W/g, '').replace(/  /g, ' ');
+          q = document.querySelector('input[name=q]').value.replace(/[^0-9a-z\s]/gi, '').replace(/  /g, ' ');
 
           if (q.split(/\s/).join('').length > 1) {
             allItems.forEach((el) => el.style.display='none')
