@@ -46,8 +46,6 @@
           if (e.keyCode === 27) {
             q = '';
             document.querySelector('input[name=q]').value = '';
-
-            allItems.forEach((el) => el.style.display='block');
           }
 
           q = document.querySelector('input[name=q]').value.replace(/[^0-9a-z\s]/gi, '').replace(/\s\s/g, ' ');
