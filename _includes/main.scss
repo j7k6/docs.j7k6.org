@@ -78,10 +78,6 @@ ul.index {
       font-style: normal;
     }
 
-    &.show {
-      display: block;
-    }
-
     a {
       display: block;
       line-height: 2.5;
@@ -233,7 +229,6 @@ header {
 
     a {
       text-decoration: none !important;
-      color: $color3;
 
       &:hover {
         color: $color2;
