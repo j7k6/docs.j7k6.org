@@ -17,7 +17,6 @@
         {% if page.url == '/' %}
         <h1><a href="/">{{site.name}}</a></h1>
         <p>Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets.</p>
-        <p>Tip jar (&#x20BF;): <a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p</a></p>
         <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
         {% else %}
         <nav><a href="/">&longleftarrow;{{site.name}}</a></nav>
@@ -31,7 +30,8 @@
       <footer>
         <ul>
           <li>2013–{{ 'now' | date: "%Y" }}</li><!--
-          --><li><a href="mailto:docs@j7k6.org">Contact</a></li>
+          --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
+          --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate &#x20BF;</a></li>
         </ul>
       </footer>
     </div>
