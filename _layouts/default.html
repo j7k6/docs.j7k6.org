@@ -61,15 +61,16 @@
               queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
             }
 
-            let matchItems = Array.from(document.querySelectorAll('ul.index li a')).filter(el => !el.innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
+            let matchItems = Array.from(document.querySelectorAll('ul.index li')).filter(el => !el.querySelector('a')[0].innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
 
-            matchItems.forEach((el) => el.closest('li').classList.add('show'));
-            matchItems.forEach((el) => el.innerHTML = el.innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
+            matchItems.forEach((el) => el..style.display='block')
+            matchItems.forEach((el) => el.querySelector('a')[0].innerHTML = el.querySelector('a')[0].innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
           } else {
             let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
-            highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
 
-            allItems.forEach((el) => el.classList.remove('show'));
+            highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
+            allItems.forEach((el) => el.style.display('none'));
+            favItems.forEach((el) => el.style.display('block'));
           }
         });
       }
