@@ -47,8 +47,7 @@ input {
   border: 1px solid $color4;
 
   &::placeholder {
-    color: $color4;
-    opacity: 1;
+    opacity: .75;
   }
 
   &:focus {
