@@ -63,7 +63,6 @@
 
             let matchItems = Array.from(document.querySelectorAll('ul.index li a')).filter(el => !el.innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
 
-            matchItems.forEach((el) => el.style.display='none')
             matchItems.forEach((el) => el.closest('li').classList.add('show'));
             matchItems.forEach((el) => el.innerHTML = el.innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
           } else {
