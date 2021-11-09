@@ -21,7 +21,6 @@ html, body {
 body {
   font-family: $defaultFont;
   color: $color1;
-  font-size: 1.2em;
   line-height: 1.75;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -155,6 +154,7 @@ article {
     color: $color3;
     line-height: 1;
     font-size: 80%;
+    margin: 0 0 2rem 0;
   }
 
   img {
@@ -179,7 +179,7 @@ article {
   }
 
   code {
-    font-size: 90%;
+    font-size: 85%;
     font-family: $codeFont;
     padding: 3px;
   }
@@ -203,7 +203,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5 {
 }
 
 h1 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 .5rem 0;
   font-size: 1.802rem;
 
   a {
