@@ -46,9 +46,13 @@ input {
   color: $color4;
   border: 1px solid $color4;
 
+  &:placeholder {
+    color: $color4;
+  }
+
   &:focus {
     color: $color3;
-    border: 1px solid $color3;
+    border-color: $color3;
   }
 }
 
