@@ -29,7 +29,7 @@
 
       <footer>
         <ul>
-          <li>2013–{{ 'now' | date: "%Y" }}</li><!--
+          <li>{% if page.layout == 'post' %}{{page.date | date_to_string }}{% else %}2013–{{ 'now' | date: "%Y" }}{% endif %}</li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
           --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate</a></li><!--
           --><li><a href="http://sysadminjqrx33v4.onion/">Onion</a></li>
