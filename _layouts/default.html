@@ -58,7 +58,7 @@
             let queryWords = q.split(/\s/);
 
             for (let i=0; i<queryWords.length; i++) {
-              queryWords[i] = '(?=.*'+queryWords[i]+'.*)';
+              queryWords[i] = `(?=.*${queryWords[i]}.*)`;
             }
 
             let matchItems = Array.from(document.querySelectorAll('ul.index li')).filter(el => !el.querySelector('a').innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
