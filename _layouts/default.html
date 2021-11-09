@@ -69,8 +69,8 @@
             let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
 
             highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
-            allItems.forEach((el) => el.style.display('none'));
-            favItems.forEach((el) => el.style.display('block'));
+            allItems.forEach((el) => el.style.display='none');
+            favItems.forEach((el) => el.style.display='block');
           }
         });
       }
