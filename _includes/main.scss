@@ -237,9 +237,9 @@ header {
   a, nav a {
     &:after {
       content: '_';
+      font-weight: bold;
       text-decoration: blink;
-      -webkit-animation: blinker 0.6s infinite ease-in-out alternate;
-              animation: blinker 0.6s infinite ease-in-out alternate;
+      animation: blinker 0.6s infinite ease-in-out alternate;
     }
   }
 
