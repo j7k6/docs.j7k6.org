@@ -32,49 +32,42 @@
           <li>{% if page.date %}{{page.date | date_to_string }}{% else %}2013–{{ 'now' | date: "%Y" }}{% endif %}</li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
           --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate</a></li><!--
-          --><li><a href="http://sysadminjqrx33v4.onion/">Onion</a></li>
+          --><li><a href="http://sysadminxpvba6oi7vww2bqscy5aoakjwrjh7iadv3zb7xy5bp737qqd.onion/">Onion</a></li>
         </ul>
       </footer>
     </div>
 
     <script type="application/javascript">
-      if (document.querySelector('.index') !== null) {
-        var allItems = Array.from(document.querySelectorAll('ul.index li'));
-        var favItems = Array.from(document.querySelectorAll('ul.index li.fav'));
-        var q = '';
+      'use strict';
+      {% if page.url == '/' %}
+      const allItems = [...document.querySelectorAll('ul.index li')];
+      const favItems = [...document.querySelectorAll('ul.index li.fav')];
 
-        document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
-          if (e.keyCode === 27) {
-            q = '';
-            document.querySelector('input[name=q]').value = '';
-          }
+      document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
+        let q; 
 
-          q = document.querySelector('input[name=q]').value.replace(/[^0-9a-z\s]/gi, '').replace(/\s\s/g, ' ');
+        if (e.keyCode === 27) {
+          q = document.querySelector('input[name=q]').value = '';
+        } else {
+          q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s\s+/g, ' ');
+        }
 
-          if (q.split(/\s/).join('').length > 1) {
-            allItems.forEach((el) => el.style.display='none')
+        if (q.replace(/\\/, '').length > 1) {
+          allItems.forEach((el) => el.style.display='none');
 
-            let queryWords = q.split(/\s/);
+          let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
+          let matchItems = [...document.querySelectorAll('ul.index li')].filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
 
-            for (let i=0; i<queryWords.length; i++) {
-              queryWords[i] = `(?=.*${queryWords[i]}.*)`;
-            }
+          matchItems.forEach((el) => el.style.display='block');
+          matchItems.forEach((el) => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));
+        } else {
+          [...document.querySelectorAll('ul.index li a strong')].forEach((el) => el.replaceWith(...el.childNodes));
 
-            let matchItems = Array.from(document.querySelectorAll('ul.index li')).filter(el => !el.querySelector('a').innerText.match(new RegExp(`^(?!(${queryWords.join('')}.+))`, 'i')));
-
-            if (matchItems.length > 0) {
-              matchItems.forEach((el) => el.style.display='block')
-              matchItems.forEach((el) => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(/\s/).join('|'), 'gi'), match => `<strong>${match}</strong>`));
-            }
-          } else {
-            let highlightedItems = Array.from(document.querySelectorAll('ul.index li a strong'))
-
-            highlightedItems.forEach((el) => el.replaceWith(...el.childNodes));
-            allItems.forEach((el) => el.style.display='none');
-            favItems.forEach((el) => el.style.display='block');
-          }
-        });
-      }
+          allItems.forEach((el) => el.style.display='none');
+          favItems.forEach((el) => el.style.display='block');
+        }
+      });
+      {% endif %}
     </script>
   </body>
 </html>
