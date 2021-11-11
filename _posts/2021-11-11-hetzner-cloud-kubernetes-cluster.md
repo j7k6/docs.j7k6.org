@@ -20,7 +20,7 @@ fav: 1
    ```bash
    ssh-keygen -t rsa -b 4096 -N '' -C '<$CLUSTER_SSH_KEY>' -f ~/.ssh/id_rsa_cluster
    ```
-6. Store SSH oublic key in Hetzner Cloud:
+6. Store SSH public key:
    ```bash
    hcloud ssh-key create --name <$CLUSTER_SSH_KEY> --public-key-from-file ~/.ssh/id_rsa_cluster.pub
    ```
