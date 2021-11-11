@@ -98,7 +98,7 @@ hcloud server ssh <$NODE_NAME>
  EOF
 
  sysctl --system
-   ```
+```
 4. Install dependencies:
    ```bash
    apt update
@@ -127,7 +127,7 @@ EOF
 
 systemctl daemon-reload
 systemctl restart kubelet
-   ```
+```
 
 ### Initialize Kubernetes Cluster
 1. On the master node:
