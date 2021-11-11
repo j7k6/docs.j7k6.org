@@ -16,7 +16,7 @@ fav: 1
    ```bash
    hcloud context create <$CLUSTER_NAME>
    ```
-5. Generate SSH Key:
+5. Generate SSH key:
    ```bash
    ssh-keygen -t rsa -b 4096 -N '' -C '<$CLUSTER_SSH_KEY>' -f ~/.ssh/id_rsa_cluster
    ```
