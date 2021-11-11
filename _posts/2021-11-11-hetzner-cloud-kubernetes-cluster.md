@@ -148,7 +148,7 @@ The cluster configuration can be done locally.
    brew install kubernetes-cli
    ```
 2. Copy the contents of `/etc/kubernetes/admin.conf` from the master node to the local `$HOME/.kube/config` file.
-3. Check if connection to cluster is working and all nodes are `Ready`:
+3. Check if the connection to the cluster is working:
    ```bash
    kubectl get nodes
    ```
