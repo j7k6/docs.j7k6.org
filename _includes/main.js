@@ -16,15 +16,14 @@ document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
     allItems.forEach(el => el.style.display='none');
 
     let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
-    let matchItems = [...document.querySelectorAll('ul.index li')].filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
+    let matchItems = allItems.filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
 
     matchItems.forEach(el => el.style.display='block');
     matchItems.forEach(el => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));
   } else {
-    [...document.querySelectorAll('ul.index li a strong')].forEach((el) => el.replaceWith(...el.childNodes));
+    [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
 
     allItems.forEach(el => el.style.display='none');
     favItems.forEach(el => el.style.display='block');
   }
 });
-
