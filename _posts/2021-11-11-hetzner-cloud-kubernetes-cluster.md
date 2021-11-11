@@ -171,6 +171,8 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
      --from-literal=token=<$HETZNER_API_TOKEN> \
      --from-literal=network=<$CLUSTER_NETWORK_ID>
    ```
+
+   > **Note**: Run `hcloud network list` to get `<$CLUSTER_NETWORK_ID>`.
 2. Install *Hetzner Cloud Controller*:
    ```bash
    kubectl -n kube-system apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/download/v1.12.0/ccm-networks.yaml
