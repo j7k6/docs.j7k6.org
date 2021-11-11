@@ -84,21 +84,21 @@ hcloud server ssh <$NODE_NAME>
    ```
 2. Enable `br_netfilter` kernel module:
    ```
-   cat > /etc/modules-load.d/kubernetes.conf <<EOF
- br_netfilter
- EOF
+   cat > /etc/modules-load.d/kubernetes.conf << EOF
+   br_netfilter
+   EOF
 
- modprobe br_netfilter
+   modprobe br_netfilter
    ```
 3. Enable routing:
    ```bash
- cat > /etc/sysctl.d/kubernetes.conf <<EOF
- net.bridge.bridge-nf-call-iptables = 1
- net.ipv4.ip_forward = 1
- EOF
+   cat > /etc/sysctl.d/kubernetes.conf << EOF
+   net.bridge.bridge-nf-call-iptables = 1
+   net.ipv4.ip_forward = 1
+   EOF
 
- sysctl --system
-```
+   sysctl --system
+   ```
 4. Install dependencies:
    ```bash
    apt update
@@ -120,14 +120,14 @@ hcloud server ssh <$NODE_NAME>
    ```
 8. Configure `kubelet` service to enable *Hetzner Cloud Provider*:
    ```bash
-   cat > /etc/systemd/system/kubelet.service.d/20-hcloud.conf <<EOF
-[Service]
-Environment="KUBELET_EXTRA_ARGS=--cloud-provider=external"
-EOF
+   cat > /etc/systemd/system/kubelet.service.d/20-hcloud.conf << EOF
+   [Service]
+   Environment="KUBELET_EXTRA_ARGS=--cloud-provider=external"
+   EOF
 
-systemctl daemon-reload
-systemctl restart kubelet
-```
+   systemctl daemon-reload
+   systemctl restart kubelet
+   ```
 
 ### Initialize Kubernetes Cluster
 1. On the master node:
