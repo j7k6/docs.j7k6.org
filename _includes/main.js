@@ -12,24 +12,23 @@ if (document.querySelector('input[name=q]') !== null) {
       q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s\s+/g, ' ');
     }
 
-    console.log(q.replace(/\\/, '').length);
     if (q.replace(/\\/, '').length === 1) {
       allItems.forEach(el => el.style.display='block');
-    }
-
-    if (q.replace(/\\/, '').length > 1) {
-      allItems.forEach(el => el.style.display='none');
-
-      let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
-      let matchItems = allItems.filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
-
-      matchItems.forEach(el => el.style.display='block');
-      matchItems.forEach(el => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));
     } else {
-      [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
+      if (q.replace(/\\/, '').length > 1) {
+        allItems.forEach(el => el.style.display='none');
 
-      allItems.forEach(el => el.style.display='none');
-      allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
+        let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
+        let matchItems = allItems.filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
+
+        matchItems.forEach(el => el.style.display='block');
+        matchItems.forEach(el => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));
+      } else {
+        [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
+
+        allItems.forEach(el => el.style.display='none');
+        allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
+      }
     }
   });
 } else {
