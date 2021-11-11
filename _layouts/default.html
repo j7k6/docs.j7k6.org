@@ -43,7 +43,7 @@
       const allItems = [...document.querySelectorAll('ul.index li')];
       const favItems = [...document.querySelectorAll('ul.index li.fav')];
 
-      document.querySelector('input[name=q]').addEventListener('keydown', function(e) {
+      document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
         let q; 
 
         if (e.keyCode === 27) {
