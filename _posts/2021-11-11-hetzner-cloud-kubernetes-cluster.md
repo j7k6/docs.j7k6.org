@@ -152,33 +152,43 @@ The cluster configuration can be done locally.
    ```bash
    kubectl get nodes
    ```
-4. Install **Flannel Network Controller**:
-   ```bash
-   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-   ```
-5. Install **Hetzner Cloud Controller**:
-   ```bash
-   kubectl -n kube-system create secret generic hcloud --from-literal=token=<$HETZNER_API_TOKEN> --from-literal=network=<$CLUSTER_NETWORK_ID>
-   kubectl -n kube-system apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/download/v1.12.0/ccm-networks.yaml
-   ```
-6. Install **CSI Driver**:
-   ```bash
-   kubectl -n kube-system create secret generic hcloud-csi --from-literal=token=<$HETZNER_API_TOKEN>
-   kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v1.6.0/deploy/kubernetes/hcloud-csi.yml
-   ```
-7. Install **Nginx Ingress Controller**:
-   ```bash
-   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
-   ```
-8. Connect Ingress Controller to Hetzner Load Balancer:
-   ```bash
-   kubectl -n ingress-nginx annotate services ingress-nginx-controller \
-     load-balancer.hetzner.cloud/name="<$CLUSTER_LB>" \
-     load-balancer.hetzner.cloud/location="nbg1" \
-     load-balancer.hetzner.cloud/use-private-ip="true" \
-     load-balancer.hetzner.cloud/uses-proxyprotocol="true" \
-     load-balancer.hetzner.cloud/hostname="<$CLUSTER_LB_HOSTNAME>"
-   ```
+
+### Network Controller
+Install **Flannel Network Controller**:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+```
+
+### Hetzner Cloud Controller
+Install **Hetzner Cloud Controller**:
+```bash
+kubectl -n kube-system create secret generic hcloud --from-literal=token=<$HETZNER_API_TOKEN> --from-literal=network=<$CLUSTER_NETWORK_ID>
+kubectl -n kube-system apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/download/v1.12.0/ccm-networks.yaml
+```
+
+### CSI Driver
+Install **CSI Driver**:
+```bash
+kubectl -n kube-system create secret generic hcloud-csi --from-literal=token=<$HETZNER_API_TOKEN>
+kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v1.6.0/deploy/kubernetes/hcloud-csi.yml
+```
+
+### Ingress Controller
+Install **Nginx Ingress Controller**:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+ ```
+
+### Load Balancer
+Connect Ingress Controller to Hetzner Load Balancer:
+```bash
+kubectl -n ingress-nginx annotate services ingress-nginx-controller \
+  load-balancer.hetzner.cloud/name="<$CLUSTER_LB>" \
+  load-balancer.hetzner.cloud/location="nbg1" \
+  load-balancer.hetzner.cloud/use-private-ip="true" \
+  load-balancer.hetzner.cloud/uses-proxyprotocol="true" \
+  load-balancer.hetzner.cloud/hostname="<$CLUSTER_LB_HOSTNAME>"
+```
 
 ---
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
