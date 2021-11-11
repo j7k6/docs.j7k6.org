@@ -143,6 +143,7 @@ hcloud server ssh <$NODE_NAME>
 
 ## Kubernetes Configruation
 The cluster configuration can be done locally.
+
 1. Install `kubectl`:
    ```bash
    brew install kubernetes-cli
@@ -153,7 +154,7 @@ The cluster configuration can be done locally.
    kubectl get nodes
    ```
 
-   The nodes' status will be `NotReady` because there is no network controller installed yet.
+   > **Note**: The nodes' status will be `NotReady` because there is no network controller installed yet.
 
 ### Network Controller
 Install *Flannel Network Controller*:
@@ -161,7 +162,7 @@ Install *Flannel Network Controller*:
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-When running `kubectl get node` now, the status of all nodes should be `Ready`.
+> **Note**: When running `kubectl get node` now, the status of all nodes should be `Ready`.
 
 ### Hetzner Cloud Controller
 1. Create Secrets:
@@ -203,7 +204,7 @@ kubectl -n ingress-nginx annotate services ingress-nginx-controller \
   load-balancer.hetzner.cloud/hostname="<$CLUSTER_LB_HOSTNAME>"
 ```
 
-> **Note**: `<$CLUSTER_LB_HOSTNAME>` needs to be a valid DNS record that points to the Load Balancers public IP address.
+> **Note**: `<$CLUSTER_LB_HOSTNAME>` has to be a valid DNS record that points to the Load Balancers public IP address.
 
 ---
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
