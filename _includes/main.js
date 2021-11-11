@@ -1,7 +1,7 @@
 'use strict';
 
 const allItems = [...document.querySelectorAll('ul.index li')];
-const favItems = [...document.querySelectorAll('ul.index li.fav')];
+const favItems = allItems.filter(el => el.classList.contains('fav'));
 
 document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
   let q; 
