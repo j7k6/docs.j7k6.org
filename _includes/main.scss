@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @-webkit-keyframes blinker {
   from {opacity: 1.0;}
   to {opacity: 0.0;}
@@ -9,13 +8,7 @@
   to {opacity: 0.0;}
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c26ec22 (css)
 $color1: #444;
-=======
-$color1: #343434;
->>>>>>> 66bf726 (css)
 $color2: #666;
 $color3: #b8b8b8;
 $color4: #f8f8f8;
@@ -185,6 +178,7 @@ article {
   }
 
   blockquote {
+    font-family: Georgia, "Times New Roman", Times;
     font-style: italic;
   }
 
@@ -226,6 +220,19 @@ h1 {
 
   a {
     color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  pre {
+    font-size: .475rem;
+    font-weight: normal;
+    font-family: $codeFont;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
@@ -239,15 +246,6 @@ header {
 
   a {
     color: inherit;
-  }
-
-  a, nav a {
-    &:after {
-      content: '_';
-      font-weight: bold;
-      text-decoration: blink;
-      animation: blinker 0.6s infinite ease-in-out alternate;
-    }
   }
 
   nav {
@@ -328,4 +326,10 @@ a {
 
 span.var {
   color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 pre {
+    font-size: 1.25vw;
+  }
 }

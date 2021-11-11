@@ -1,5 +1,4 @@
 name: "My Sysadmin Cheatsheet"
-description: "Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets"
 url: "https://docs.j7k6.org"
 base: /
 permalink: /:title/
