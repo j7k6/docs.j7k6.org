@@ -10,7 +10,7 @@ fav: 1
 2. In the project, generate new Hetzner Cloud API Token. 
 3. Install `hcloud` commandline tool:
    ```bash
-   brew install hcloud kubernetes-cli
+   brew install hcloud
    ```
 4. Connect `hcloud` to API token:
    ```bash
