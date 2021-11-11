@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kubernetes Cluster on Hetzner Cloud"
+fav: 1
 ---
 
 ## Preparations
