@@ -23,6 +23,6 @@ document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
     [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
 
     allItems.forEach(el => el.style.display='none');
-    allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
+    allItems.filter(el => el.querySelector('.fav').forEach(el => el.style.display='block');
   }
 });
