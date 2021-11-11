@@ -27,4 +27,6 @@ if (document.querySelector('input[name=q]') !== null) {
       allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
     }
   });
+} else {
+  [...document.querySelectorAll('code')]forEach(el => el.innerHTML = el.innerText.replace(/<(\$[A-Z|_|0-9]+)>/g, match => `<span class="var">${match}</span>`));
 }
