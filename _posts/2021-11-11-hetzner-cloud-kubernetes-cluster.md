@@ -50,7 +50,7 @@ fav: 1
    ```
    hcloud server create --image ubuntu-20.04 --name <$MASTER_NODE> --type cpx11 --location nbg1 --start-after-create --ssh-key <$CLUSTER_SSH_KEY>
    hcloud server create --image ubuntu-20.04 --name <$WORKER_NODE_01> --type cpx31 --location nbg1 --start-after-create --ssh-key <$CLUSTER_SSH_KEY>
-   hcloud server create --image ubuntu-20.04 --name <$WORKER_NODE_02 --type cpx31 --location fsn1 --start-after-create --ssh-key <$CLUSTER_SSH_KEY>
+   hcloud server create --image ubuntu-20.04 --name <$WORKER_NODE_02>--type cpx31 --location fsn1 --start-after-create --ssh-key <$CLUSTER_SSH_KEY>
   ```
 2. Attach servers to internal network:
    ```bash
