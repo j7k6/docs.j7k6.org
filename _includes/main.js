@@ -1,7 +1,6 @@
 'use strict';
 
 const allItems = [...document.querySelectorAll('ul.index li')];
-const favItems = allItems.filter(el => el.classList.contains('fav'));
 
 document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
   let q; 
@@ -24,6 +23,6 @@ document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
     [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
 
     allItems.forEach(el => el.style.display='none');
-    favItems.forEach(el => el.style.display='block');
+    allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
   }
 });
