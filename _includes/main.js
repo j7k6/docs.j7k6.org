@@ -12,7 +12,7 @@ if (document.querySelector('input[name=q]') !== null) {
       q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s\s+/g, ' ');
     }
 
-    if (q.replace(/\\/, '').replace === 1) {
+    if (q.replace(/\\/, '').length === 1) {
       allItems.forEach(el => el.style.display='block');
     }
 
