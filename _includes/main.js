@@ -32,5 +32,5 @@ if (document.querySelector('input[name=q]') !== null) {
     }
   });
 } else {
-  [...document.querySelectorAll('code')].forEach(el => el.innerHTML = el.innerText.replace(/<\${1}([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
+  [...document.querySelectorAll('code')].forEach(el => el.innerHTML = el.innerHTML.replace(/<\${1}([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
 }
