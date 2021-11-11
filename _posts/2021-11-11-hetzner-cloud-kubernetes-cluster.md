@@ -153,25 +153,38 @@ The cluster configuration can be done locally.
    kubectl get nodes
    ```
 
+   The nodes' status will be `NotReady` because there is no network controller installed yet.
+
 ### Network Controller
 Install **Flannel Network Controller**:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
+When running `kubectl get node` now, the status of all nodes should be `Ready`.
+
 ### Hetzner Cloud Controller
-Install **Hetzner Cloud Controller**:
-```bash
-kubectl -n kube-system create secret generic hcloud --from-literal=token=<$HETZNER_API_TOKEN> --from-literal=network=<$CLUSTER_NETWORK_ID>
-kubectl -n kube-system apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/download/v1.12.0/ccm-networks.yaml
-```
+1. Create Secrets:
+   ```bash
+   kubectl -n kube-system create secret generic hcloud \
+     --from-literal=token=<$HETZNER_API_TOKEN> \
+     --from-literal=network=<$CLUSTER_NETWORK_ID>
+   ```
+2. Install **Hetzner Cloud Controller**:
+   ```bash
+   kubectl -n kube-system apply -f https://github.com/hetznercloud/hcloud-cloud-controller-manager/releases/download/v1.12.0/ccm-networks.yaml
+   ```
 
 ### CSI Driver
-Install **CSI Driver**:
-```bash
-kubectl -n kube-system create secret generic hcloud-csi --from-literal=token=<$HETZNER_API_TOKEN>
-kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v1.6.0/deploy/kubernetes/hcloud-csi.yml
-```
+1. Create Secret:
+   ```bash
+   kubectl -n kube-system create secret generic hcloud-csi \
+     --from-literal=token=<$HETZNER_API_TOKEN>
+   ```
+2. Install **CSI Driver**:
+   ```bash
+   kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v1.6.0/deploy/kubernetes/hcloud-csi.yml
+   ```
 
 ### Ingress Controller
 Install **Nginx Ingress Controller**:
