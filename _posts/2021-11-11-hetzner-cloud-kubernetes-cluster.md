@@ -204,7 +204,7 @@ kubectl -n ingress-nginx annotate services ingress-nginx-controller \
   load-balancer.hetzner.cloud/hostname="<$CLUSTER_LB_HOSTNAME>"
 ```
 
-> **Note**: `<$CLUSTER_LB_HOSTNAME>` has to be a valid DNS record that points to the Load Balancers public IP address.
+> **Note**: `<$CLUSTER_LB_HOSTNAME>` needs to be a valid DNS record that points to the Load Balancers' public IP address.
 
 ---
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
