@@ -32,4 +32,5 @@ if (document.querySelector('input[name=q]') !== null) {
     }
   });
 } else {
+  [...document.querySelectorAll('code')].forEach(el => el.innerHTML = el.innerText.replace(/<\$[A-Z0-9_]+>/g, match => `<span class="var">${match}</span>`));
 }
