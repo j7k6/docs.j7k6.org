@@ -179,10 +179,6 @@ The cluster configuration can be done locally.
      load-balancer.hetzner.cloud/uses-proxyprotocol="true" \
      load-balancer.hetzner.cloud/hostname="<$CLUSTER_LB_HOSTNAME>"
    ```
-9. Install **Cert Manager**:
-   ```bash
-   kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.yaml
-   ```
 
 ---
 1. <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
