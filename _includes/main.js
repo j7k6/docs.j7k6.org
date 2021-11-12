@@ -9,7 +9,7 @@ if (document.querySelector('input[name=q]') !== null) {
     let q;
     let d;
 
-    switch (e.keyCode)
+    switch (e.keyCode) {
       case 27:
         q = document.querySelector('input[name=q]').value = '';
         d = 0;
