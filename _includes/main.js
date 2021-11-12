@@ -6,17 +6,19 @@ if (document.querySelector('input[name=q]') !== null) {
   var timeout = null;
 
   document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
+    let q;
+    let d;
+
+    if (e.keyCode === 27) {
+      q = document.querySelector('input[name=q]').value = '';
+      d = 0;
+    } else {
+      q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
+      d = 100;
+    }
+
     clearTimeout(timeout);
-
     timeout = setTimeout(function() {
-      let q;
-
-      if (e.keyCode === 27) {
-        q = document.querySelector('input[name=q]').value = '';
-      } else {
-        q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
-      }
-
       if (q.replace(/\\/, '').length === 1) {
         allItems.forEach(el => el.style.display='block');
       } else {
@@ -35,7 +37,7 @@ if (document.querySelector('input[name=q]') !== null) {
           allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
         }
       }
-    }, 100);
+    }, d);
   });
 } else {
   [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<\${1}([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
