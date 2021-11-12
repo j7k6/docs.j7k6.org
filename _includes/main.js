@@ -1,29 +1,29 @@
 'use strict';
 
-if (document.querySelector('input[name=q]') !== null) {
-  const allItems = [...document.querySelectorAll('ul.index li')];
-  var timeout = null;
+const inputElement = document.querySelector('input[name=q]');
+const allItems = [...document.querySelectorAll('ul.index li')];
 
-  document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
-    let q, d;
+if (inputElement !== null) {
+  let timeout;
 
-    switch (e.keyCode) {
-      case 27:
-        q = document.querySelector('input[name=q]').value = '';
-        d = 0;
-        break;
-      default:
-        q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
-        d = 100;
-    }
+  inputElement.addEventListener('keyup', function(e) {
+    let q = '';
 
-    clearTimeout(timeout);
+    if (e.keyCode === 27) {
+      q = inputElement.value = '';
+    } else {  
+      q = inputElement.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
 
-    timeout = setTimeout(function() {
-      if (q.replace(/\\/, '').length === 1) {
+      let qc = q.replace(/\\/, '')
+
+      if (qc.length === 1) {
         allItems.forEach(el => el.style.display='block');
-      } else {
-        if (q.replace(/\\/, '').length > 1) {
+      }
+
+      if (qc.length > 1) {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function() {
           allItems.forEach(el => el.style.display='none');
 
           let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
@@ -31,15 +31,18 @@ if (document.querySelector('input[name=q]') !== null) {
 
           matchItems.forEach(el => el.style.display='block');
           matchItems.forEach(el => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));
-        } else {
-          [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
-
-          allItems.forEach(el => el.style.display='none');
-          allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
-        }
+        }, 100);
       }
-    }, d);
+    }
+
+    if (q.length === 0) {
+      [...document.querySelectorAll('ul.index li a strong')].forEach(el => el.replaceWith(...el.childNodes));
+
+      allItems.forEach(el => el.style.display='none');
+      allItems.filter(el => el.classList.contains('fav')).forEach(el => el.style.display='block');
+    }
   });
-} else {
-  [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<([^$].*)>/gi, '&lt;$1&gt;').replace(/<\$([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
 }
+
+// variable highlighter
+[...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<([^$].*)>/gi, '&lt;$1&gt;').replace(/<\$([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
