@@ -14,7 +14,7 @@ if (document.querySelector('input[name=q]') !== null) {
       d = 0;
     } else {
       q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
-      d = 1000;
+      d = 100;
     }
 
     clearTimeout(timeout);
