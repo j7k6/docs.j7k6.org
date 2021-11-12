@@ -2,12 +2,10 @@
 
 if (document.querySelector('input[name=q]') !== null) {
   const allItems = [...document.querySelectorAll('ul.index li')];
-
   var timeout = null;
 
   document.querySelector('input[name=q]').addEventListener('keyup', function(e) {
-    let q;
-    let d;
+    let q, d;
 
     switch (e.keyCode) {
       case 27:
