@@ -41,5 +41,5 @@ if (document.querySelector('input[name=q]') !== null) {
     }, d);
   });
 } else {
-  [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<([^$]{1}.*)>/gi, '&lt;$1&gt;').replace(/<\${1}([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
+  [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<([^$].*)>/gi, '&lt;$1&gt;').replace(/<\$([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
 }
