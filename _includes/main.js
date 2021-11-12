@@ -41,5 +41,5 @@ if (document.querySelector('input[name=q]') !== null) {
     }, d);
   });
 } else {
-  [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<[^$]{1}(.*)>/gi, match => `&lt;${match}&gt;`));
+  [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<[^$]{1}(.*)>/gi, `&lt;${1}&gt;`));
 }
