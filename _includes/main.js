@@ -9,7 +9,7 @@ if (document.querySelector('input[name=q]') !== null) {
     if (e.keyCode === 27) {
       q = document.querySelector('input[name=q]').value = '';
     } else {
-      q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s\s+/g, ' ');
+      q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
     }
 
     if (q.replace(/\\/, '').length === 1) {
