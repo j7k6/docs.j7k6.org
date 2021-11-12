@@ -9,15 +9,18 @@ if (document.querySelector('input[name=q]') !== null) {
     let q;
     let d;
 
-    if (e.keyCode === 27) {
-      q = document.querySelector('input[name=q]').value = '';
-      d = 0;
-    } else {
-      q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
-      d = 100;
+    switch (e.keyCode)
+      case 27:
+        q = document.querySelector('input[name=q]').value = '';
+        d = 0;
+        break;
+      default:
+        q = document.querySelector('input[name=q]').value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
+        d = 100;
     }
 
     clearTimeout(timeout);
+
     timeout = setTimeout(function() {
       if (q.replace(/\\/, '').length === 1) {
         allItems.forEach(el => el.style.display='block');
