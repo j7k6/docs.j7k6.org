@@ -36,7 +36,7 @@ if (document.querySelector('input[name=q]') !== null) {
         }
       }
     });
-  });
+  }, 1000);
 } else {
   [...document.querySelectorAll('article code')].forEach(el => el.innerHTML = el.innerText.replace(/<\${1}([A-Z0-9_]+)>/g, match => `<span class="var">${match}</span>`));
   [...document.querySelectorAll('article code *:not(span.var)')].forEach(el => el.closest('code').innerText = el.closest('code').innerHTML.replace(/&gt;(.*)&lt;/gi, match => `<${match}>`));
