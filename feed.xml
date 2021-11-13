@@ -14,7 +14,7 @@ layout: null
   {% for post in site.posts %}
   {%- if post.fav %}
   <item>
-    <title>{{ post.title }}</title>
+    <title>{{ post.title | xml_escape }}</title>
     <link>{{ site.url }}{{ post.id }}/</link>
     <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
     <guid>{{ site.url }}{{ post.id }}</guid>
