@@ -7,7 +7,6 @@ layout: null
 <channel>
   <title>{{ site.name }}</title>
   <link>{{ site.url }}</link>
-  <description></description>
   <language>en-us</language>
   <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
 
