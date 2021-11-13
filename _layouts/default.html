@@ -17,7 +17,7 @@
       <header>
         {% if page.url == '/' %}
         <h1><a href="/">{{site.name}}</a></h1>
-        <p>Just a random collection of Sysadmin, Security, Linux, Raspberry Pi related write-ups and commandline snippets.</p>
+        <p>{{ site.description }}</p>
         <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
         {% else %}
         <nav><a href="/">&longleftarrow; {{site.name}}</a></nav>
