@@ -17,7 +17,7 @@ layout: null
     <title>{{ post.title }}</title>
     <link>{{ site.url }}{{ post.id }}/</link>
     <pubDate>{{ post.date }}</pubDate>
-    <guid>{{ post.id }}</guid>
+    <guid>{{ site.url }}{{ post.id }}</guid>
   </item>
   {% endif -%}
   {% endfor %}
