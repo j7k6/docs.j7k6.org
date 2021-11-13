@@ -9,6 +9,7 @@
       {% include main.scss %}
     {% endcapture %}
     <style>{{ styles | scssify }}</style>
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="/feed.xml" />
   </head>
 
   <body>
@@ -30,6 +31,7 @@
       <footer>
         <ul>
           <li>{% if page.date %}{{page.date | date_to_string }}{% else %}2013–{{ 'now' | date: "%Y" }}{% endif %}</li><!--
+          --><li><a href="/feed.xml">RSS</a></li><!--
           --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
           --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate</a></li><!--
           --><li><a href="http://sysadminxpvba6oi7vww2bqscy5aoakjwrjh7iadv3zb7xy5bp737qqd.onion/">Onion</a></li>

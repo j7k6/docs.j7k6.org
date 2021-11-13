@@ -1,4 +1,5 @@
 name: "My Sysadmin Cheatsheet"
+url: "https://docs.j7k6.org"
 base: /
 permalink: /:title/
 encoding: utf-8
