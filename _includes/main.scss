@@ -220,6 +220,9 @@ h1 {
     font-size: .475rem;
     font-weight: normal;
     font-family: $codeFont;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
