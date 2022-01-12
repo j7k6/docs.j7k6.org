@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mullvad Wireguard VPN on EdgeRouter X/Lite
+title: Mullvad WireGuard VPN on EdgeRouter X/Lite
 fav: 1
 ---
 
@@ -18,7 +18,7 @@ fav: 1
    ```bash
    set interfaces wireguard wg0 address <$INTERFACE_ADDRESS>/32
    set interfaces wireguard wg0 peer "<$PUBLIC_KEY>" allowed-ips 0.0.0.0/0
-   set interfaces wireguard wg0 peer "<$PUBLIC_KEY>" endpoint "PEER_IP:51820"
+   set interfaces wireguard wg0 peer "<$PUBLIC_KEY>" endpoint "<$PEER_IP>:51820"
    set interfaces wireguard wg0 private-key "<$PRIVATE_KEY>"
    set interfaces wireguard wg0 route-allowed-ips false
    ```
