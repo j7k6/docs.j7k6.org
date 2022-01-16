@@ -38,10 +38,10 @@ fav: 1
    ```
 7. Configure *Policy-Based Routing*:
    ```bash
-   set firewall modify PBR_MODIFY rule 100 action modify
-   set firewall modify PBR_MODIFY rule 100 modify table 1
-   set firewall modify PBR_MODIFY rule 100 source address <$LOCAL_NETWORK>
-   set interfaces ethernet eth1 firewall in modify PBR_MODIFY
+   set firewall modify PBR rule 100 action modify
+   set firewall modify PBR rule 100 modify table 1
+   set firewall modify PBR rule 100 source address <$LOCAL_NETWORK>
+   set interfaces ethernet eth1 firewall in modify PBR
    commit
    ```
 8. Persist config with `save`.
