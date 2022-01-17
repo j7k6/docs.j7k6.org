@@ -29,7 +29,7 @@ Since IP ranges from VPN providers are blocked by Netflix, there needs to be a r
      done;
    done
    ```
-4. ...or just copy those commands and execute them (might be outdated at some point):
+4. ...and copy the resulting `set firewall` commands and execute them on the EdgeRouter configuration shell (the IP ranges below could change in the future, so always generate them with the command in step 3 instead of just copying those):
    ```bash
    set firewall group address-group NETFLIX address 69.53.224.0/19
    set firewall group address-group NETFLIX address 208.75.76.0/22
