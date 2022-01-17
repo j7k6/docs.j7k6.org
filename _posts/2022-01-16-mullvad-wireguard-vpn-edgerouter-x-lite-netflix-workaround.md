@@ -1,11 +1,13 @@
 ---
 layout: post
-title: Mullvad WireGuard VPN on EdgeRouter X/Lite with Netflix Workaround
+title: Mullvad WireGuard VPN on EdgeRouter X/Lite with Netflix Bypass Workaround
 fav: 1
 ---
 
 > **Note**: This is an extension of [Mullvad WireGuard VPN on EdgeRouter X/Lite](/mullvad-wireguard-vpn-edgerouter-x-lite/).
-> I successfully tested this workaround with Firefox on macOS and the Netflix AppleTV (3rd gen) app.
+> I successfully tested this workaround with Firefox on macOS and the Netflix AppleTV (3rd gen) app.  
+>  
+> **Disclaimer**: Bypassing the VPN is undermining your privacy because you connect to Netflix with your real IP. Since Netflix uses AWS to deliver content, Amazon is also seeing connections from your real IP.
 
 Since IP ranges from VPN providers are blocked by Netflix, there needs to be a routing exception for all Netflix traffic to bypass the VPN connection. The workaround is using the **dnsmasq** `ipset` feature to create a *network group* based on the IPs resolved to a Netflix domain from the list above.
 
