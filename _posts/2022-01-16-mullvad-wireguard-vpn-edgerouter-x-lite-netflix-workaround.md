@@ -12,7 +12,7 @@ Since IP ranges from VPN providers are blocked by Netflix, there needs to be a r
 1. DNS configuration:
    ```bash
    set service dhcp-server shared-network-name <$NETWORK_NAME> subnet <$LAN_SUBNET> dns-server <$ROUTER_LAN_IP>
-   set service dns forwarding options ipset=/netflix.com/netflix.com/nflxvideo.net/NETFLIX
+   set service dns forwarding options ipset=/netflix.com/nflxvideo.net/NETFLIX
    commit
    ```
 2. Add `NETFLIX` firewall address group:
