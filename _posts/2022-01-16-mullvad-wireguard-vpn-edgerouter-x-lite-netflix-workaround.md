@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mullvad WireGuard VPN on EdgeRouter X/Lite with Netflix Bypass Workaround
+title: Mullvad WireGuard VPN on EdgeRouter X/Lite Netflix Bypass Workaround
 fav: 1
 ---
 
