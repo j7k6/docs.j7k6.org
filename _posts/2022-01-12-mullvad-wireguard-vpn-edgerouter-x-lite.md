@@ -23,6 +23,14 @@ fav: 1
    set interfaces wireguard wg0 route-allowed-ips false
    commit
    ```
+5. Configure DNS (to tunnel any DNS requests):
+   ```bash
+   set system name-server 1.1.1.1
+   set system name-server 1.0.0.1
+   set protocols static interface-route 1.1.1.1/32 next-hop-interface wg0
+   set protocols static interface-route 1.0.0.1/32 next-hop-interface wg0
+   commit
+   ```
 5. Configure NAT:
    ```bash
    set service nat rule 5000 outbound-interface wg0
