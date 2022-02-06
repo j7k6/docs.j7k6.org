@@ -23,20 +23,28 @@ fav: 1
    set interfaces wireguard wg0 route-allowed-ips false
    commit
    ```
-5. Configure NAT:
+5. Configure DNS (to tunnel any DNS requests):
+   ```bash
+   set system name-server 1.1.1.1
+   set system name-server 1.0.0.1
+   set protocols static interface-route 1.1.1.1/32 next-hop-interface wg0
+   set protocols static interface-route 1.0.0.1/32 next-hop-interface wg0
+   commit
+   ```
+6. Configure NAT:
    ```bash
    set service nat rule 5000 outbound-interface wg0
    set service nat rule 5000 outside-address address <$INTERFACE_ADDRESS>
    set service nat rule 5000 type source
    commit
    ```
-6. Configure Killswitch:
+7. Configure Killswitch:
    ```bash
    set protocols static table 1 interface-route 0.0.0.0/0 next-hop-interface wg0
    set protocols static table 1 route 0.0.0.0/0 blackhole distance 255
    commit
    ```
-7. Configure *Policy-Based Routing*:
+8. Configure *Policy-Based Routing*:
    ```bash
    set firewall modify PBR rule 100 action modify
    set firewall modify PBR rule 100 modify table 1
@@ -44,7 +52,7 @@ fav: 1
    set interfaces ethernet eth1 firewall in modify PBR
    commit
    ```
-8. Persist config with `save`.
+9. Persist config with `save`.
 
 ---
 1. <https://github.com/WireGuard/wireguard-vyatta-ubnt/>
