@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        date: "{{ now | unixEpoch }}"
+        date: "{% raw %}{{ now | unixEpoch }}{% endraw %}"
 ```
 
 ---
