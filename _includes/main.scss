@@ -329,5 +329,9 @@ a {
 }
 
 span.var {
-  color: red;
+  font-style: italic;
+  background: $color1;
+  color: $color4;
+  border-radius: 2px;
+  padding: 0 2px;
 }
