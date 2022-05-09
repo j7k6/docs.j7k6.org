@@ -14,21 +14,8 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <h1>
-          <a href="/">
-            <pre>
- __  __          _____                     _           _          _____ _                _       _               _   
-|  \/  |        / ____|                   | |         (_)        / ____| |              | |     | |             | |  
-| \  / |_   _  | (___  _   _ ___  __ _  __| |_ __ ___  _ _ __   | |    | |__   ___  __ _| |_ ___| |__   ___  ___| |_ 
-| |\/| | | | |  \___ \| | | / __|/ _` |/ _` | '_ ` _ \| | '_ \  | |    | '_ \ / _ \/ _` | __/ __| '_ \ / _ \/ _ \ __|
-| |  | | |_| |  ____) | |_| \__ \ (_| | (_| | | | | | | | | | | | |____| | | |  __/ (_| | |_\__ \ | | |  __/  __/ |_ 
-|_|  |_|\__, | |_____/ \__, |___/\__,_|\__,_|_| |_| |_|_|_| |_|  \_____|_| |_|\___|\__,_|\__|___/_| |_|\___|\___|\__|
-         __/ |          __/ |                                                                                        
-        |___/          |___/                                                                                         
-            </pre>
-          </a>
-        </h1>
+      <header{% if page.url == '/' %} class="index"{% endif %}>
+        <h1><a href="/">{{site.name}}</a></h1>
         {% if page.url == '/' %}
         <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
         {% endif %}
@@ -40,11 +27,9 @@
 
       <footer>
         <ul>
-          <li>{% if page.date %}{{page.date | date_to_string }}{% else %}2013–{{ 'now' | date: "%Y" }}{% endif %}</li><!--
+          <li>2013–{{ 'now' | date: "%Y" }}</li><!--
           --><li><a href="/feed.xml">RSS</a></li><!--
-          --><li><a href="mailto:docs@j7k6.org">Contact</a></li><!--
-          --><li><a href="bitcoin:bc1qrljfddytn5snjxe7j5zsv7u27504r2wyrxxv2p">Donate</a></li><!--
-          --><li><a href="http://sysadminxpvba6oi7vww2bqscy5aoakjwrjh7iadv3zb7xy5bp737qqd.onion/">Onion</a></li>
+          --><li><a href="https://github.com/j7k6">GitHub</a></li>
         </ul>
       </footer>
     </div>

@@ -116,6 +116,15 @@ article {
     margin: 0 auto 1rem auto;
   }
 
+  h1::before {
+    content: attr(data-date);
+    font-size: 1rem;
+    display: block;
+    color: $color3;
+    font-weight: normal;
+    padding-bottom: .5rem;
+  }
+
   ul, ol {
     margin-left: 2rem;
 
@@ -244,21 +253,22 @@ h5 {font-size: 1.125rem;}
 header {
   margin: 2rem auto 0 auto;
 
-  a {
-    color: inherit;
-  }
-
-  nav {
-    line-height: 1;
-    font-weight: bold;
+  h1 {
+    margin: 0 0 2rem 0;
+    font-size: 1.602rem;
 
     a {
-      text-decoration: none !important;
+      color: inherit;
+      text-decoration: underline;
 
       &:hover {
-        color: $color2;
+        text-decoration: none;
       }
     }
+  }
+
+  &.index h1 {
+    font-size: 1.802rem;
   }
 
   p {
@@ -325,11 +335,8 @@ a {
 }
 
 span.var {
-  color: red;
-}
-
-@media only screen and (max-width: 600px) {
-  h1 pre {
-    font-size: 1.25vw;
-  }
+  background: $color1;
+  color: $color4;
+  border-radius: 2px;
+  padding: 0 2px;
 }

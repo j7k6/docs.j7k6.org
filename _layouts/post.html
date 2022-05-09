@@ -4,6 +4,6 @@ layout: default
 
 {% assign post = page %}
 <article class="post">
-  <h1><a href="{{post.id}}/">{{ post.title }}</a></h1>
+  <h1 data-date="{{page.date | date_to_string }}"><a href="{{post.id}}/">{{ post.title }}</a></h1>
   {{ content }}
 </article>
