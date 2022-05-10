@@ -245,22 +245,13 @@ header {
 
   h1, h2 {
     margin: 0 0 2rem 0;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  nav {
-    line-height: 1;
-    font-weight: bold;
 
     a {
-      text-decoration: none !important;
+      color: inherit;
+      text-decoration: underline;
 
       &:hover {
-        color: $color2;
+        text-decoration: none;
       }
     }
   }
