@@ -243,8 +243,9 @@ h5 {font-size: 1.125rem;}
 header {
   margin: 2rem auto 0 auto;
 
-  h1, h2 {
+  h1 {
     margin: 0 0 2rem 0;
+    font-size: 1.602rem;
 
     a {
       color: inherit;
@@ -254,6 +255,10 @@ header {
         text-decoration: none;
       }
     }
+  }
+
+  &.index h1 {
+    font-size: 1.802rem;
   }
 
   p {

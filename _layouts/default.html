@@ -14,12 +14,10 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        {% if page.url == '/' %}
+      <header{% if page.url == '/' %} class="index"{% endif %}>
         <h1><a href="/">{{site.name}}</a></h1>
+        {% if page.url == '/' %}
         <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
-        {% else %}
-        <h2><a href="/">{{site.name}}</a></h2>
         {% endif %}
       </header>
 
@@ -31,7 +29,7 @@
         <ul>
           <li>2013–{{ 'now' | date: "%Y" }}</li><!--
           --><li><a href="/feed.xml">RSS</a></li><!--
-          --><li><a href="https://github.com/j7k6">Github</a></li>
+          --><li><a href="https://github.com/j7k6">GitHub</a></li>
         </ul>
       </footer>
     </div>
