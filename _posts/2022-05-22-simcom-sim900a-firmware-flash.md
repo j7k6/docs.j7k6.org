@@ -19,7 +19,7 @@ Appearantly, the "**A**" in *SimCom's SIM900**A*** GPRS/GSM Modem Module stands 
    ![Windows Device Manager](/files/simcom-sim900a-firmware-flash/01.png)
 3. Run *PuTTY* to establish a serial connection to the SIM900A:
    ![PuTTY](/files/simcom-sim900a-firmware-flash/02.png)
-4. Set the SIM900A's fixed baudrate to 19200 by sending the `AT` command followed by the `AT+IPR=19200` to the modem:
+4. Set the SIM900A's fixed baudrate to 19200 by sending the `AT+IPR=19200` to the modem:
    ![PuTTY](/files/simcom-sim900a-firmware-flash/03.png)
 5. Quit *PuTTY* to close the serial line.
 6. Run the *SIM900 Custom Flash Loader*  tool and select the firmware file, the appropriate *COM Port* and set the line speed to `19200` baud.
