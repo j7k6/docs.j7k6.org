@@ -11,11 +11,11 @@ title: "Establish a GPRS Connection on a Raspberry Pi with a SimCom SIM900A and 
    apt install ppp screen
    ```
 4. The *SIM900A* runs on `9600` baud by default. To change the line speed to `115200` baud, connect to it on the serial line with `screen /dev/serial0 9600`.
-5. Enter this *AT* command:
+   Now send this *AT* command to the modem:
    ```
    AT+IPR=115200
    ```
-6. Disconnect from the serial terminal by pressing `CTRL` + `a` + `k` and confirm.
+6. Disconnect from the serial terminal by pressing `CTRL` + `a` + `k` and confirm (`y`).
 7. Create `/etc/pppd/peers/congstar`:
    ```
    /dev/serial0 115200
