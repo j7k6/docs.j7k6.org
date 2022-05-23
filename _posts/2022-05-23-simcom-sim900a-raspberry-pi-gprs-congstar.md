@@ -15,8 +15,8 @@ title: "Establish a GPRS Connection on a Raspberry Pi with a SimCom SIM900A and 
    ```
    AT+IPR=115200
    ```
-6. Disconnect from the serial terminal by pressing `CTRL` + `a` + `k` and confirm (`y`).
-7. Create `/etc/pppd/peers/congstar`:
+5. Disconnect from the serial terminal by pressing `CTRL` + `a` + `k` and confirm (`y`).
+6. Create `/etc/pppd/peers/congstar`:
    ```
    /dev/serial0 115200
    connect 'chat -s -v -f /etc/chatscripts/gprs -T internet.telekom'
@@ -27,7 +27,7 @@ title: "Establish a GPRS Connection on a Raspberry Pi with a SimCom SIM900A and 
    nodetach
    usepeerdns
    ```
-8. Connect to the internet:
+7. Connect to the internet:
    ```bash
    pppd call congstar
    ```
