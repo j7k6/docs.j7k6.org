@@ -13,8 +13,8 @@ $color2: #666;
 $color3: #b8b8b8;
 $color4: #f8f8f8;
 
-$defaultFont: sans-serif;
-$codeFont: 'Lucida Console', Courier, monospace;
+$defaultFont: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+$codeFont: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 
 html {
   overflow: auto;
@@ -187,7 +187,6 @@ article {
   }
 
   blockquote {
-    font-family: Georgia, "Times New Roman", Times;
     font-style: italic;
   }
 
