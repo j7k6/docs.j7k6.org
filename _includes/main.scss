@@ -155,6 +155,8 @@ article {
             color: $color3;
             content: '[' counter(o-counter) '] ';
             counter-increment: o-counter;
+            font-family: $codeFont;
+            font-size: 80%;
           }
         }
       }
