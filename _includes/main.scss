@@ -94,12 +94,13 @@ ul.index {
       white-space: nowrap;
       overflow: hidden;
 
-      &:after {
+      &:before {
         font-style: normal;
         font-size: 80%;
         font-weight: 400 !important;
         content: attr(data-date);
-        margin-left: .5rem;
+        margin-right: 1rem;
+        font-family: $codeFont;
         display: inline-block;
         color: $color3;
       }
@@ -116,13 +117,14 @@ article {
     margin: 0 auto 1rem auto;
   }
 
-  h1::before {
+  h1::after {
     content: attr(data-date);
-    font-size: 1rem;
+    font-size: .9rem;
+    font-family: $codeFont;
     display: block;
     color: $color3;
     font-weight: normal;
-    padding-bottom: .5rem;
+    padding-top: .5rem;
   }
 
   ul, ol {
@@ -141,9 +143,11 @@ article {
     margin: 2rem 0 1rem 0;
     height: 0;
     border: none;
+    border-top: 1px solid $color3;
 
     &:last-of-type {
-      visibility: hidden;
+      width: 20%;
+      margin-top: 4rem;
 
       & + ol {
         font-size: 90%;
@@ -163,6 +167,8 @@ article {
             color: $color3;
             content: '[' counter(o-counter) '] ';
             counter-increment: o-counter;
+            font-family: $codeFont;
+            font-size: 80%;
           }
         }
       }
@@ -250,24 +256,22 @@ h4 {font-size: 1.266rem;}
 h5 {font-size: 1.125rem;}
 
 header {
+  font-family: $codeFont;
   margin: 2rem auto 0 auto;
 
   h1 {
     margin: 0 0 2rem 0;
     font-size: 1.602rem;
+    font-weight: normal;
 
     a {
       color: inherit;
-      text-decoration: underline;
+      padding-bottom: .25rem;
+      border-bottom: 1px solid $color1;
 
       &:hover {
-        text-decoration: none;
       }
     }
-  }
-
-  &.index h1 {
-    font-size: 1.802rem;
   }
 
   p {
