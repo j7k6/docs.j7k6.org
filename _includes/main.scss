@@ -244,11 +244,13 @@ h4 {font-size: 1.266rem;}
 h5 {font-size: 1.125rem;}
 
 header {
+  font-family: $codeFont;
   margin: 2rem auto 0 auto;
 
   h1 {
     margin: 0 0 2rem 0;
     font-size: 1.602rem;
+    font-weight: normal;
 
     a {
       color: inherit;
@@ -258,10 +260,6 @@ header {
       &:hover {
       }
     }
-  }
-
-  &.index h1 {
-    font-size: 1.802rem;
   }
 
   p {
