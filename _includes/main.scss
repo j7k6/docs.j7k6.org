@@ -133,9 +133,11 @@ article {
     margin: 2rem 0 1rem 0;
     height: 0;
     border: none;
+    border-top: 1px solid $color3;
 
     &:last-of-type {
-      visibility: hidden;
+      width: 20%;
+      margin-top: 4rem;
 
       & + ol {
         font-size: 90%;
