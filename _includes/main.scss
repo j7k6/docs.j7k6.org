@@ -37,13 +37,14 @@ body {
 }
 
 input {
-  width: 100%;
+  display: block;
+  width: calc(100% - 1rem);
   padding: .5rem;
   font-family: $codeFont;
   font-size: 1.5rem;
   border-radius: 5px;
-  color: $color4;
-  border: 1px solid $color4;
+  color: $color3;
+  border: 1px solid $color3;
 
   &::placeholder {
     opacity: .25;
@@ -51,7 +52,7 @@ input {
 
   &:focus {
     color: $color3;
-    border-color: $color3;
+    border-color: $color2;
   }
 }
 
