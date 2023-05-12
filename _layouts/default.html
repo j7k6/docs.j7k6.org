@@ -15,7 +15,12 @@
   <body>
     <div class="wrapper">
       <header{% if page.url == '/' %} class="index"{% endif %}>
-        <h1><a href="/">{{site.name}}</a></h1>
+        <h1{% if page.url != '/' %} class="small"{% endif %}><a href="/">{{site.name}}</a></h1>
+        {% if page.url == '/' %}
+        <p>Hi, this is a personal collection of tutorials and random command line snippets from my daily sysadmin struggle and hobby projects.</p>
+        <p>If you have any complaints or suggestions for improvement, feel free to create an issue on <a href="https://github.com/j7k6/docs.j7k6.org/issues">GitHub</a>.
+        <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
+        {% endif %}
       </header>
 
       <div class="content">
