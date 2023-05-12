@@ -70,11 +70,13 @@ ul.index {
   li {
     display: none;
     overflow: hidden;
-    font-style: italic;
 
     &.fav {
       display: block;
-      font-style: normal;
+
+      a:before {
+        content: attr(data-date) '\00a0\002a\00a0' !important;
+      }
     }
 
     a {
@@ -88,8 +90,7 @@ ul.index {
         font-style: normal;
         font-size: 80%;
         font-weight: 400 !important;
-        content: attr(data-date);
-        margin-right: 1rem;
+        content: attr(data-date) '\00a0\00a0\00a0';
         font-family: $codeFont;
         display: inline-block;
         color: $color1;
