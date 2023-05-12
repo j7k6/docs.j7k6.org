@@ -46,25 +46,6 @@ body {
   }
 }
 
-input {
-  width: 100%;
-  padding: .5rem;
-  font-family: $codeFont;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  color: $color4;
-  border: 1px solid $color4;
-
-  &::placeholder {
-    opacity: .25;
-  }
-
-  &:focus {
-    color: $color3;
-    border-color: $color3;
-  }
-}
-
 ul, ol {
   li {
     & > ul, & > ol {
@@ -80,11 +61,13 @@ ul.index {
   li {
     display: none;
     overflow: hidden;
-    font-style: italic;
 
     &.fav {
       display: block;
-      font-style: normal;
+
+      a:before {
+        content: attr(data-date) '\00a0\002a\00a0' !important;
+      }
     }
 
     a {
@@ -98,11 +81,10 @@ ul.index {
         font-style: normal;
         font-size: 80%;
         font-weight: 400 !important;
-        content: attr(data-date);
-        margin-right: 1rem;
+        content: attr(data-date) '\00a0\00a0\00a0';
         font-family: $codeFont;
         display: inline-block;
-        color: $color3;
+        color: $color1;
       }
     }
   }
@@ -117,14 +99,11 @@ article {
     margin: 0 auto 1rem auto;
   }
 
-  h1::after {
-    content: attr(data-date);
-    font-size: .9rem;
+  div.date {
+    font-size: 80%;
     font-family: $codeFont;
-    display: block;
-    color: $color3;
     font-weight: normal;
-    padding-top: .5rem;
+    margin: 1rem 0 0 0;
   }
 
   ul, ol {
@@ -139,6 +118,15 @@ article {
     }
   }
 
+  h1 {
+    margin-bottom: 1rem;
+
+    & + hr {
+      margin: 0 0 3rem 0 !important;
+      width: 10%;
+    }
+  }
+
   hr {
     margin: 2rem 0 1rem 0;
     height: 0;
@@ -146,8 +134,8 @@ article {
     border-top: 1px solid $color3;
 
     &:last-of-type {
-      width: 20%;
-      margin-top: 4rem;
+      width: 10%;
+      margin-top: 3rem;
 
       & + ol {
         font-size: 90%;
@@ -194,6 +182,20 @@ article {
 
   blockquote {
     font-style: italic;
+    border-left: 3px solid $color3;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '!';
+      color: $color3;
+      font-size: 250%;
+      font-weight: bold;
+      font-style: normal;
+      font-family: $codeFont;
+      margin-right: 1rem;
+      line-height: 1;
+    } 
   }
 
   code {
@@ -240,14 +242,6 @@ h1 {
     }
   }
 
-  pre {
-    font-size: .475rem;
-    font-weight: normal;
-    font-family: $codeFont;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
 }
 
 h2 {font-size: 1.602rem;}
@@ -255,31 +249,40 @@ h3 {font-size: 1.424rem;}
 h4 {font-size: 1.266rem;}
 h5 {font-size: 1.125rem;}
 
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+@keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
 header {
   font-family: $codeFont;
   margin: 2rem auto 0 auto;
 
   h1 {
     margin: 0 0 2rem 0;
-    font-size: 1.602rem;
+    font-size: 1.2rem;
     font-weight: normal;
 
     a {
       color: inherit;
       padding-bottom: .25rem;
       border-bottom: 1px solid $color1;
-
-      &:hover {
-      }
     }
   }
 
-  p {
-    margin: 1rem auto 2rem auto;
+  &.index h1 {
+    font-size: 1.602rem;
 
-    a {
-      color: $color2;
-      font-style: italic;
+    &:after {
+      content: '\00a0';
+      text-decoration: blink;
+      animation: blinker 0.7s infinite ease-in-out alternate;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4AWMwMTH5717gw8AAJMAcAC3GBT28lH6HAAAAAElFTkSuQmCC);
+      margin-left: .25rem;
     }
   }
 }
@@ -338,8 +341,26 @@ a {
 }
 
 span.var {
-  background: $color1;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4AWMwMTH5717gw8AAJMAcAC3GBT28lH6HAAAAAElFTkSuQmCC);
   color: $color4;
   border-radius: 2px;
   padding: 0 2px;
+}
+
+div.nores {
+  display: none;
+}
+
+@media (pointer: coarse)  {
+  header.index h1 {
+    font-size: 1.5em;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  ul.index li {
+    display: block !important;
+  }
 }

@@ -16,9 +16,6 @@
     <div class="wrapper">
       <header{% if page.url == '/' %} class="index"{% endif %}>
         <h1><a href="/">{{site.name}}</a></h1>
-        {% if page.url == '/' %}
-        <p><input type="text" name="q" placeholder="?" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus></p>
-        {% endif %}
       </header>
 
       <div class="content">
