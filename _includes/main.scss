@@ -113,7 +113,7 @@ article {
     font-size: 80%;
     font-family: $codeFont;
     font-weight: normal;
-    margin: 0;
+    margin: 1rem 0 0 0;
   }
 
   ul, ol {
@@ -248,14 +248,6 @@ h1 {
     }
   }
 
-  pre {
-    font-size: .475rem;
-    font-weight: normal;
-    font-family: $codeFont;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
 }
 
 h2 {font-size: 1.602rem;}
