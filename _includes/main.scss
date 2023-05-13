@@ -128,9 +128,13 @@ article {
     }
   }
 
-  h1 + hr {
-    margin: 0 0 3rem 0 !important;
-    width: 10%;
+  h1 {
+    margin-bottom: 1rem;
+
+    & + hr {
+      margin: 0 0 3rem 0 !important;
+      width: 10%;
+    }
   }
 
   hr {
