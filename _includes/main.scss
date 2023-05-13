@@ -263,6 +263,15 @@ h3 {font-size: 1.424rem;}
 h4 {font-size: 1.266rem;}
 h5 {font-size: 1.125rem;}
 
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+@keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
 header {
   font-family: $codeFont;
   margin: 2rem auto 0 auto;
@@ -272,8 +281,20 @@ header {
     font-size: 1.602rem;
     font-weight: normal;
 
+    &:after {
+      content: '\00a0';
+      text-decoration: blink;
+      animation: blinker 0.7s infinite ease-in-out alternate;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4AWMwMTH5717gw8AAJMAcAC3GBT28lH6HAAAAAElFTkSuQmCC);
+      margin-left: .25rem;
+    }
+
     &.small {
       font-size: 1.2rem;
+
+      &:after {
+        display: none;
+      }
     }
 
     a {
@@ -350,7 +371,7 @@ a {
 }
 
 span.var {
-  background: $color1;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4AWMwMTH5717gw8AAJMAcAC3GBT28lH6HAAAAAElFTkSuQmCC);
   color: $color4;
   border-radius: 2px;
   padding: 0 2px;
