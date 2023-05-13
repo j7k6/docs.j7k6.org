@@ -188,6 +188,20 @@ article {
 
   blockquote {
     font-style: italic;
+    border-left: 3px solid $color3;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '!';
+      color: $color3;
+      font-size: 250%;
+      font-weight: bold;
+      font-style: normal;
+      font-family: $codeFont;
+      margin-right: 1rem;
+      line-height: 1;
+    } 
   }
 
   code {
