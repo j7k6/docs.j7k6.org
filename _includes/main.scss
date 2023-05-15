@@ -261,9 +261,6 @@ header {
       color: inherit;
       padding-bottom: .25rem;
       border-bottom: 1px solid $color1;
-
-      &:hover {
-      }
     }
   }
 
@@ -341,6 +338,14 @@ span.var {
 }
 
 @media (pointer: coarse)  {
+  header.index h1 {
+    font-size: 1.5em;
+
+    &:after {
+      display: none;
+    }
+  }
+
   ul.index li {
     display: block !important;
   }
