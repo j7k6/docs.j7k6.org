@@ -25,8 +25,7 @@ if (inputElement != null) {
 
       inputElement.innerHTML = q;
 
-      let qe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ');
-      let qc = qe.replace(/\\/, '')
+      let qc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/(\s\s+|\s)/g, ' ').replace(/\\/, '');
 
       if (qc.length === 1) {
         allItems.forEach(el => el.style.display='block');
@@ -40,6 +39,12 @@ if (inputElement != null) {
 
           let queryWords = q.split(' ').map(word => `(?=.*${word}.*)`).join('');
           let matchItems = allItems.filter(el => el.querySelector('a').innerText.match(new RegExp(`^(${queryWords}.+)`, 'i')));
+
+          if (matchItems.length === 0) {
+            document.querySelector('div.nores').style.display = 'block';
+          } else {
+            document.querySelector('div.nores').style.display = 'none';
+          }
 
           matchItems.forEach(el => el.style.display='block');
           matchItems.forEach(el => el.querySelector('a').innerHTML = el.querySelector('a').innerText.replace(new RegExp(q.split(' ').join('|'), 'gi'), match => `<strong>${match}</strong>`));

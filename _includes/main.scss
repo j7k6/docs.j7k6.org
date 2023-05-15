@@ -337,6 +337,10 @@ span.var {
   padding: 0 2px;
 }
 
+div.nores {
+  display: none;
+}
+
 @media (pointer: coarse)  {
   header.index h1 {
     font-size: 1.5em;

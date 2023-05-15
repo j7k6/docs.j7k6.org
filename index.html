@@ -8,3 +8,4 @@ index: 1
   <li{% if post.fav %} class="fav"{% endif %}><a data-date="{{post.date | date_to_string }}" href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
+<div class="nores">no results found</div>
