@@ -10,7 +10,7 @@ There is a workaround (for now):
 
 1. Run *Microsoft AutoUpdater* and disable all automatic updates.
 2. Remove the incompatible *OneDrive.app* from the *Application* folder.
-3. Download and install the latest compatible version of the OneDrive client (https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg) 
+3. Download and install the latest compatible version of the OneDrive client ([https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg](https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg)) 
 
 This should keep OneDrive working until Microsoft decides to kill the support for that version on the server-side.
 
