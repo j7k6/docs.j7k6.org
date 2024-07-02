@@ -9,8 +9,8 @@ Crooked Microsoft is forcing customers to upgrade their Apple hardware if they w
 There is a workaround (for now):
 
 1. Remove the incompatible *OneDrive.app* from the *Application* folder.
-2. Download and install the latest compatible version of the OneDrive client ([https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg](https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg)) 
-3. Add those hostnames to `/etc/hosts`:
+2. Download and install the latest compatible version of the OneDrive client ([v24.086.0428.0003](https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg)) 
+3. Add those hostnames to `/etc/hosts` to bl:
    ```
    127.0.0.1 oneclient.sfx.ms
    127.0.0.1 g.live.com
