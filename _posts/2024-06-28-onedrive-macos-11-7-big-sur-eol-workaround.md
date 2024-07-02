@@ -10,7 +10,7 @@ There is a workaround (for now):
 
 1. Remove the incompatible *OneDrive.app* from the *Application* folder.
 2. Download and install the latest compatible version of the OneDrive client ([https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg](https://oneclient.sfx.ms/Mac/Installers/24.086.0428.0003/universal/OneDrive.pkg)) 
-3. Add these hostnames to `etc/hosts`:
+3. Add those hostnames to `/etc/hosts`:
    ```
    127.0.0.1 oneclient.sfx.ms
    127.0.0.1 g.live.com
