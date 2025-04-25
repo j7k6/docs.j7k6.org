@@ -22,27 +22,27 @@ tags: [debian, linux, nfs, fix]
    ```
 2. Edit `/etc/systemd/system/rpcbind.service`:
    ```
-[Unit]
-Description=RPC bind portmap service
-After=systemd-tmpfiles-setup.service
-Wants=remote-fs-pre.target
-Before=remote-fs-pre.target
-DefaultDependencies=no
+   [Unit]
+   Description=RPC bind portmap service
+   After=systemd-tmpfiles-setup.service
+   Wants=remote-fs-pre.target
+   Before=remote-fs-pre.target
+   DefaultDependencies=no
 
-[Service]
-ExecStart=/sbin/rpcbind -f -w
-KillMode=process
-Restart=on-failure
+   [Service]
+   ExecStart=/sbin/rpcbind -f -w
+   KillMode=process
+   Restart=on-failure
 
-[Install]
-WantedBy=sysinit.target
-Alias=portmap
+   [Install]
+   WantedBy=sysinit.target
+   Alias=portmap
    ```
 3. Enable Services & Reboot:
    ```bash
-sudo systemctl enable nfs-common
-sudo systemctl enable rpcbind
-sudo reboot 
+   sudo systemctl enable nfs-common
+   sudo systemctl enable rpcbind
+   sudo reboot 
    ```
 
 ---
