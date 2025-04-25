@@ -5,9 +5,9 @@ tags: [java,macos]
 ---
 
 ```bash
-sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
-sudo rm -fr /Library/PreferencesPanes/JavaControlPanel.prefPane
-sudo rm -fr ~/Library/Application\ Support/Java
+sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"
+sudo rm -rf "/Library/PreferencesPanes/JavaControlPanel.prefPane"
+sudo rm -rf "~/Library/Application Support/Java"
 ```
 
 ---
