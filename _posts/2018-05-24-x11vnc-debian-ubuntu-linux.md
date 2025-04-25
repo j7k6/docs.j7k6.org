@@ -21,7 +21,7 @@ chmod 0400 /etc/x11vnc.passwd
 
    [Service]
    Type=simple
-   ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
+   ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -localhost -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
 
    [Install]
    WantedBy=multi-user.target
@@ -30,6 +30,10 @@ chmod 0400 /etc/x11vnc.passwd
    ```bash
 systemctl enable x11vnc.service
 systemctl start x11vnc.service
+   ```
+5. Connect to the VNC server from a remote machine with SSH local port forwarding:
+   ```
+ssh -L 5901:127.0.0.1:5900 ...
    ```
 
 ---
