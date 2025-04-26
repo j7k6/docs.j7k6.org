@@ -1,9 +1,9 @@
 .DS_Store
+*.sw[op]
 _site
+vendor
+Gemfile.lock
+.bundle
 .sass-cache
 .jekyll-metadata
 .jekyll-cache
-*.swp
-*.swo
-_sass
-

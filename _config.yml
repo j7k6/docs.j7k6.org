@@ -1,7 +1,12 @@
-name: "My Sysadmin Cheatsheet"
-url: "https://docs.j7k6.org"
+theme: jekyll-theme-cheatsheet
+title: My Sysadmin Cheatsheet
+url: https://docs.j7k6.org
 base: /
 permalink: /:title/
 encoding: utf-8
 sass:
   style: compressed
+footer:
+  - github:
+    display: GitHub
+    url: htps://github.com/j7k6

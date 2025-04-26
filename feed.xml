@@ -5,7 +5,7 @@ layout: null
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 
 <channel>
-  <title>{{ site.name }}</title>
+  <title>{{ site.title }}</title>
   <link>{{ site.url }}</link>
   <description>{{ site.description | xml_escape}}</description>
   <language>en-us</language>
