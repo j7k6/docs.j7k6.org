@@ -10,3 +10,6 @@ footer:
   - github:
     display: GitHub
     url: htps://github.com/j7k6
+  - donate:
+    display: Ko-fi
+    url: https://ko-fi.com/docsj7k6org
